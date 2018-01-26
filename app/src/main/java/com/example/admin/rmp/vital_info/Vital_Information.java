@@ -15,6 +15,7 @@ import android.widget.Button;
 
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.app.ApiResponseListener;
+import com.example.admin.rmp.medical_condition.MedicalCondition;
 import com.example.admin.rmp.vital_info.apihelper.WebVital_Helper;
 import com.example.admin.rmp.vital_info.model.Vital_Info;
 
@@ -77,7 +78,10 @@ public class Vital_Information extends Fragment {
         btnSaveVital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setVitalInfo();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                MedicalCondition medicalCondition= new MedicalCondition();
+                fragmentTransaction.replace(R.id.framelayout,medicalCondition).addToBackStack(null).commit();
+                /*setVitalInfo();
                 final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                         .setTitleText("Please wait");
 
@@ -110,7 +114,7 @@ public class Vital_Information extends Fragment {
                             }
                         });
                     }
-                });
+                });*/
             }
         });
     }
