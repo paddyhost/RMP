@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.admin.rmp.VitalInformation"
+    tools:context="com.example.admin.rmp.vital_info.Vital_Information"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -41,23 +41,36 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_format_line_spacing_black_24dp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
 
-                <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Height" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
-                android:text="cm" />
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/edt_height"
+                        android:maxLength="4"
+                        android:inputType="number"
+                        android:hint="Height" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center|end"
+                    android:text="cm" />
+
+
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -72,23 +85,34 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_fitness_center_black_24dp" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
             <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/edt_weight"
+                    android:maxLength="4"
+                    android:inputType="number"
                     android:hint="Weight" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center|end"
+                android:layout_alignParentRight="true"
                 android:text="kg" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -103,23 +127,69 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_blood_pressure_control_tool" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
             <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Blood Pressure" />
+                    android:id="@+id/edt_bloodpressure"
+                    android:maxLength="3"
+                    android:inputType="number"
+                    android:hint=" BP (From)" />
             </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
-                android:text="mm of hg" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:textSize="20dp"
+                        android:paddingRight="8dp"
+                        android:paddingLeft="8dp"
+                        android:text="-"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/edt_bloodpressure_to"
+                        android:maxLength="3"
+                        android:inputType="number"
+                        android:hint="To" />
+                </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center|end"
+                        android:text="mm of hg" />
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -134,23 +204,35 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_thermometer" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
             <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/edt_temp"
+                    android:maxLength="6"
+                    android:inputType="number"
                     android:hint="Temperature" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center|end"
                 android:text="@string/Fahrenheit" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -165,26 +247,39 @@
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_nose" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
             <android.support.design.widget.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:id="@+id/edt_resp"
+                    android:maxLength="4"
+                    android:inputType="number"
                     android:hint="Respiration" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true"
+                android:gravity="center|end"
                 android:text="/ min" />
+
+            </RelativeLayout>
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_save_vital"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"

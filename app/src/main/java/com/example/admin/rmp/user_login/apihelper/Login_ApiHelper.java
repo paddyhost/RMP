@@ -40,30 +40,11 @@ public class Login_ApiHelper
                         if(responce.getString("message").equalsIgnoreCase("Login successfully")) {
                             JSONArray result = responce.getJSONArray("result");
                             JSONObject jsonObject = result.getJSONObject(0);
-
-
-
-                            /*{"status":"Success","count":1,"type":"login","result":
-                            [{"id":"1","fname":"vishal","lname":"landepatil","mobile":"9975294782",
-                            "type":"SHG","gender":"M","village_id":"1","city_id":"1","state_id":"1",
-                            "password":"user@123","villagename":"abad","cityname":"abad"}],
-                            "message":"Login successfully"}*/
-                             PrefManager prefManager=new PrefManager(activity);
-                            prefManager.setUserName(jsonObject.getString("fname")+" "+jsonObject.getString("lname"));
+                            PrefManager prefManager=new PrefManager(activity);
                             prefManager.setUserId(jsonObject.getString("id"));
-                            //prefManager.setFname(jsonObject.getString("fname")+" "+jsonObject.getString("lname"));
-                            //prefManager.setLname(jsonObject.getString("lname"));
                             prefManager.setMobile(jsonObject.getString("mobile"));
-                            prefManager.setType(jsonObject.getString("type"));
-                            prefManager.setGender(jsonObject.getString("gender"));
-                            prefManager.setVillageId(jsonObject.getString("village_id"));
-                            prefManager.setCityId(jsonObject.getString("city_id"));
-                            prefManager.setStateId(jsonObject.getString("state_id"));
                             prefManager.setPassword(jsonObject.getString("password"));
-                            prefManager.setVillageName(jsonObject.getString("villagename"));
-                            prefManager.setCityname(jsonObject.getString("cityname"));
-                            //prefManager.setTqId(jsonObject.getString("tq_id"));
-                            //prefManager.setBirthday(jsonObject.getString("dob"));
+                            prefManager.setBirthday(jsonObject.getString("dob"));
 
                             prefManager.createLogin(jsonObject.getString("mobile"));
                             loginUser.fireOnLoginEvent(LoginUser.LOGIN_SUCCESS);
@@ -91,21 +72,13 @@ public class Login_ApiHelper
             public void onErrorResponse(VolleyError error) {
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                     loginUser.fireOnLoginEvent(LoginUser.LOGIN_NO_CONNECTION_ERROR);
-                }
-                else if (error instanceof ServerError)
-                {
+                } else if (error instanceof ServerError) {
                     loginUser.fireOnLoginEvent(LoginUser.LOGIN_SERVER_ERROR);
-                }
-                else if (error instanceof NetworkError)
-                {
+                } else if (error instanceof NetworkError) {
                     loginUser.fireOnLoginEvent(LoginUser.LOGIN_NEWORK_ERROR);
-                }
-                else if (error instanceof ParseError)
-                {
+                } else if (error instanceof ParseError) {
                     loginUser.fireOnLoginEvent(LoginUser.LOGIN_PARSE_ERROR);
-                }
-                else
-                {
+                } else {
                     loginUser.fireOnLoginEvent(LoginUser.LOGIN_UNKNOWN_ERROR);
                 }
 

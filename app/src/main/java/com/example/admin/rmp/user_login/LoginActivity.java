@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.admin.rmp.activity.MainActivity;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.apihelper.Login_ApiHelper;
@@ -33,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
         initialization();
         clickListners();
-
     }
 
     private void initialization()
@@ -110,11 +110,10 @@ public class LoginActivity extends AppCompatActivity {
                         sweetAlertDialog.dismissWithAnimation();
                     }
                 });
-                // new PrefManager(activity).setRegistration_skipped(false);
-//                Intent intent = new Intent(LoginActivity.this, CustomerRegistrationActivity.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                finish();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
 
             @Override
