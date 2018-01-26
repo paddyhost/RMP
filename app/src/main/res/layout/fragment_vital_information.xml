@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.admin.rmp.GeneralInformation">
+    tools:context="com.example.admin.rmp.VitalInformation"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -16,8 +16,9 @@
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:background="@color/colorAccent"
-            app:title="General Information"
-            android:id="@+id/customer_toolbar">
+            app:title="Vital Information"
+            android:id="@+id/vital_toolbar"
+            app:navigationIcon="@drawable/ic_arrow_back_white_24dp">
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -36,19 +37,29 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_filter_1_black_24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_format_line_spacing_black_24dp" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Registration No."/>
+                    android:hint="Height" />
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:text="cm" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,19 +68,29 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_person_outline_black_24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_fitness_center_black_24dp" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Name of patient"/>
+                    android:hint="Weight" />
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:text="kg" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,19 +99,29 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_phone_android_black_24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_blood_pressure_control_tool" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Mobile"/>
+                    android:hint="Blood Pressure" />
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:text="mm of hg" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,51 +130,69 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_date_range_black_24dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_thermometer" />
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="Date Of Birth"/>
+                    android:hint="Temperature" />
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:text="@string/Fahrenheit" />
         </LinearLayout>
-        <RadioGroup
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="38dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:orientation="horizontal">
 
-            <RadioButton
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male"
-                android:paddingLeft="10dp"/>
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_nose" />
 
-            <RadioButton
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Respiration" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="16dp"/>
-
-        </RadioGroup>
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:text="/ min" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btn_geninfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
             android:text="Save &amp; Next"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
