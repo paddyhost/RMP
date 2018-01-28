@@ -61,6 +61,7 @@
                             android:layout_height="50dp"
                             android:hint="Blood Glucose"
                             android:inputType="number"
+                            android:id="@+id/etblood_glucose"
                             android:maxLength="4" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -105,6 +106,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:hint="Heamogram"
+                            android:id="@+id/hemogram"
                             android:inputType="number"
                             android:maxLength="4" />
                     </android.support.design.widget.TextInputLayout>
@@ -164,6 +166,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:id="@+id/creatine"
                     android:hint="Creatine" />
             </android.support.design.widget.TextInputLayout>
 
@@ -176,6 +179,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:id="@+id/urea"
                     android:hint="Urea" />
             </android.support.design.widget.TextInputLayout>
 
@@ -220,6 +224,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:id="@+id/sgot"
                     android:hint="SGOT" />
             </android.support.design.widget.TextInputLayout>
 
@@ -232,6 +237,7 @@
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:id="@+id/sgpt"
                     android:hint="SGPT" />
             </android.support.design.widget.TextInputLayout>
 

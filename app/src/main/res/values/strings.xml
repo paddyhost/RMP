@@ -3,4 +3,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
+
+    <string-array name="advised_aaray">
+        <item>Select Test</item>
+        <item>MRI</item>
+        <item>Blood sugar Test</item>
+        <item>Blood Pressure</item>
+        <item>Cholesterol level check</item>
+        <item>Throat check</item>
+        <item>Electrocardiogram </item>
+
+    </string-array>
+
 </resources>

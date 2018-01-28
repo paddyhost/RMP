@@ -1,4 +1,4 @@
-package com.example.admin.rmp.medical_condition.apihelper;
+package com.example.admin.rmp.mhu_test.apihelper;
 
 import android.app.Activity;
 
@@ -16,7 +16,7 @@ import com.example.admin.rmp.activity.MainActivity;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.app.MyApplication;
 import com.example.admin.rmp.constants.WebServiceUrls;
-import com.example.admin.rmp.medical_condition.model.Medical_Conditions;
+import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.pref_manager.PrefManager;
 
 import org.json.JSONException;
@@ -29,11 +29,11 @@ import java.util.Map;
  * Created by Ashwin on 28-Jan-18.
  */
 
-public class Web_Medical_ApiHelper
+public class Web_MhuApi_Helper
 {
-    public static void webAddMedicalConditions(final Activity activity, final Medical_Conditions medicalConditions, final ApiResponseListener apiResponseListener)
+    public static void webAddMHUTest(final Activity activity, final MHU_Test mhuTest, final ApiResponseListener apiResponseListener)
     {
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddMedicalInfo,new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddMHuTest,new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
@@ -42,19 +42,8 @@ public class Web_Medical_ApiHelper
                     JSONObject responce = new JSONObject(response);
                     if (responce.getString("status").equalsIgnoreCase("success"))
                     {
-                        if(responce.getString("message").equalsIgnoreCase("Medicalcondition added successfully")) {
+                        if(responce.getString("message").equalsIgnoreCase("MHUTest added successfully")) {
 
-                            // {"status":"success","count":1,"type":"addMedicalcondition",
-                            // "result":{"id":"3","chiefcomplaints1":"ghashd","chiefcomplaints2":"bgasdhg",
-                            // "chiefcomplaints3":"gsh","briefHistory1":"sghgs","briefHistory2":"sghjsgxd",
-                            // "briefHistory3":"svxdhs","investigation":"Y","tratementtaken":"N",
-                            // "anyimprovement":"","diagnosys":null,"patient_id":"6","registrationid":"rpm-5a6b03d57b791"},
-                            // "message":"Medicalcondition added successfully"}
-
-                            //JSONObject jsonObject = responce.getJSONObject("result");
-
-                            //{"status":"success","count":0,"type":"addPriscribeDose","result":[],"message":"PriscribeDose added successfully"}
-                            //http://localhost/RMP/index.php/api/V1/addPriscribeDose?mobile=9975294782&password=user@123&&format=json&patient_id=6&registrationno=66767&name=hdhdh&frequency=54&days=5&medicalconditionid=6
 
 
                             apiResponseListener.onSuccess(responce.getString("message"));
@@ -108,24 +97,17 @@ public class Web_Medical_ApiHelper
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
 
-                //http://192.168.1.103/RMP/index.php/api/V1/addMedicalcondition?
-                // mobile=9975294782&password=user@123&&format=json&chiefcomplaints1=ghashd&
-                // chiefcomplaints2=bgasdhg&chiefcomplaints3=gsh&briefHistory1=sghgs&
-                // briefHistory2=sghjsgxd&briefHistory3=svxdhs&investigation=Y&tratementtaken=N&
-                // anyimprovement=ND&patient_id=6&registrationid=rpm-5a6b03d57b791
-
-                params.put("chiefcomplaints1",medicalConditions.getChiefcomplaints1());
-                params.put("chiefcomplaints2",medicalConditions.getChiefcomplaints2());
-                params.put("chiefcomplaints3",medicalConditions.getChiefcomplaints3());
-                params.put("briefHistory1",medicalConditions.getBriefHistory1());
-                params.put("briefHistory2",medicalConditions.getBriefHistory2());
-                params.put("briefHistory3",medicalConditions.getBriefHistory3());
-                params.put("investigation",medicalConditions.getInvestigation());
-                params.put("tratementtaken",medicalConditions.getTratementtaken());
-                params.put("anyimprovement",medicalConditions.getAnyimprovement());
-                params.put("diagnosys",medicalConditions.getDiagnosysList());
-                params.put("patient_id",MainActivity.PATIENT_ID);
-                params.put("registrationid", MainActivity.REGISTRATION_ID);
+                params.put("patient_id", MainActivity.PATIENT_ID);
+                params.put("registration_no",MainActivity.REGISTRATION_ID);
+                params.put("bloodglucose",mhuTest.getBloodGlucose());
+                params.put("heamogram",mhuTest.getHemogram());
+                params.put("creatine",mhuTest.getCreatine());
+                params.put("urea",mhuTest.getUrea());
+                params.put("sgot",mhuTest.getSgot());
+                params.put("sgpt",mhuTest.getSgpt());
+                params.put("adviced",mhuTest.getAdvised());
+                params.put("ferered",mhuTest.getAdvised());
+                params.put("remark",mhuTest.getAdvised());
 
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
@@ -139,4 +121,5 @@ public class Web_Medical_ApiHelper
         MyApplication.getInstance().addToRequestQueue(strReq);
 
     }
+
 }

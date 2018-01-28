@@ -12,4 +12,5 @@ public class WebServiceUrls
     public static final String urlAddMedicalInfo = HOST + "index.php/api/V1/addMedicalcondition";
     public static final String urlAddVaccination = HOST+ "index.php/api/V1/addvaccination";
     public static final String urlAddPatientHistory = HOST + "index.php/api/V1/addPatientHistory";
+    public static final String urlAddMHuTest = HOST + "index.php/api/V1/addMHUTest";
 }

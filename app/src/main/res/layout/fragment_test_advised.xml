@@ -30,6 +30,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
+        android:id="@+id/advised_test"
+        android:entries="@array/advised_aaray"
         style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
 
     <android.support.design.widget.TextInputLayout
@@ -40,6 +42,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:id="@+id/referred_txt"
             android:hint="Refered"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -51,6 +54,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:id="@+id/remarks"
             android:hint="Remarks"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -61,7 +65,8 @@
         android:layout_marginRight="32dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorWhite"
-        android:text="Save &amp; Next"
+        android:id="@+id/submit"
+        android:text="Submit"
         android:layout_marginTop="16dp"/>
 
 </LinearLayout>
