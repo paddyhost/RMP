@@ -206,13 +206,16 @@
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
             <!--Diagnosys multiselect spinner-->
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                style="@style/Widget.AppCompat.Spinner.Underlined">
-            </Spinner>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="Dianosys"
+                    android:gravity="center_vertical"
+                    android:id="@+id/diagnosys"
+                    android:editable="false"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
