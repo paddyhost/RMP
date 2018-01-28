@@ -69,6 +69,8 @@ public class VaccinationRecord extends Fragment {
 
 
 
+
+    
     private void onClickListeners()
     {
         vaccination_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
