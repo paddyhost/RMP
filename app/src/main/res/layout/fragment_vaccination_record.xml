@@ -34,9 +34,11 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:id="@+id/txt_dpt"
             android:layout_height="wrap_content"
             android:text="DPT"/>
         <CheckBox
+            android:id="@+id/checkbox_dpt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -55,9 +57,11 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:id="@+id/txt_bcg"
             android:layout_height="wrap_content"
             android:text="BCG"/>
         <CheckBox
+            android:id="@+id/checkbox_bcg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -76,12 +80,17 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:id="@+id/txt_opv"
             android:layout_height="wrap_content"
             android:text="OPV"/>
         <CheckBox
+            android:id="@+id/checkbox_opv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
@@ -95,11 +104,13 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
         <TextView
+            android:id="@+id/txt_hepatitis"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Hepatitis B"/>
         <CheckBox
+            android:id="@+id/checkbox_hepatitis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -118,9 +129,11 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:id="@+id/txt_tt"
             android:layout_height="wrap_content"
             android:text="TT"/>
         <CheckBox
+            android:id="@+id/checkbox_tt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -136,7 +149,8 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Other"/>
+            android:hint="Other"
+            android:id="@+id/edt_other"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
