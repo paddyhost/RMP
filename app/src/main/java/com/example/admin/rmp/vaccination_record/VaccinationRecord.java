@@ -2,6 +2,7 @@ package com.example.admin.rmp.vaccination_record;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,7 @@ public class VaccinationRecord extends Fragment {
     private TextInputEditText edtOther;
     private String selected_dtp = "",selected_bcg="",selected_opv="",selected_hepatitis="",selected_tt="",selected_Measles ="";
     private Vaccination vaccination;
+    private TextInputLayout edt_otherTextLayout;
 
     public VaccinationRecord() {
         // Required empty public constructor
@@ -68,6 +70,7 @@ public class VaccinationRecord extends Fragment {
         checkboxTt=(CheckBox)view.findViewById(R.id.checkbox_tt);
         checkBoxMeasles = (CheckBox)view.findViewById(R.id.checkbox_measles);
         edtOther=(TextInputEditText)view.findViewById(R.id.edt_other);
+        edt_otherTextLayout=(TextInputLayout)view.findViewById(R.id.edt_other_TextLayout);
     }
     
     private void onClickListeners()
@@ -252,4 +255,6 @@ public class VaccinationRecord extends Fragment {
         vaccination.setMeasles(selected_Measles);
         vaccination.setOther(edtOther.getText().toString());
     }
+
+
 }

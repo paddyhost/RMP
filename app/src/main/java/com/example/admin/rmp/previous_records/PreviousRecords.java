@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class PreviousRecords extends Fragment {
     private Toolbar prerecord_toolbar;
     private TextInputEditText etPreviousHsopital, etDoctorName1, etDoctorName2, etDoctorName3;
     private PatientHistory patientHistory;
-
+    private TextInputLayout prevs_hosptlTextLayout,drname1TextLayout,drname2TextLayout,drname3TextLayout;
     public PreviousRecords()
     {
         // Required empty public constructor
@@ -69,6 +70,10 @@ public class PreviousRecords extends Fragment {
         etDoctorName1 = (TextInputEditText)view.findViewById(R.id.drname1);
         etDoctorName2 = (TextInputEditText)view.findViewById(R.id.drname2);
         etDoctorName3 = (TextInputEditText)view.findViewById(R.id.drname3);
+        prevs_hosptlTextLayout = (TextInputLayout) view.findViewById(R.id.prevs_hosptl_textLayout);
+        drname1TextLayout = (TextInputLayout) view.findViewById(R.id.drname1_textLayout);
+        drname2TextLayout = (TextInputLayout) view.findViewById(R.id.drname2_textLayout);
+        drname3TextLayout = (TextInputLayout) view.findViewById(R.id.drname3_textLayout);
     }
 
     private void saveRecordClickListener()
@@ -78,44 +83,46 @@ public class PreviousRecords extends Fragment {
             public void onClick(View v) {
 
                 setPreviousHistoryData();
+                if(checkValidation()) {
 
-                final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("Please wait");
+                    final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText("Please wait");
 
-                sweetAlertDialog.show();
+                    sweetAlertDialog.show();
 
-                Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
-                    @Override
-                    public void onSuccess(String message) {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
+                    Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
+                        @Override
+                        public void onSuccess(String message) {
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setConfirmText("Ok");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
 
-                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                VaccinationRecord vaccinationRecord= new VaccinationRecord();
-                                fragmentTransaction.replace(R.id.framelayout,vaccinationRecord).addToBackStack(null).commit();
+                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    VaccinationRecord vaccinationRecord = new VaccinationRecord();
+                                    fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
 
-                            }
-                        });
-                    }
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onError(String message) {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                            }
-                        });
-                    }
-                });
+                        @Override
+                        public void onError(String message) {
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setConfirmText("Ok");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
     }
@@ -129,4 +136,56 @@ public class PreviousRecords extends Fragment {
         patientHistory.setDoctorName3(etDoctorName3.getText().toString());
     }
 
+    private boolean checkValidation()
+    {
+
+        boolean response=true;
+
+        if (etPreviousHsopital.getText().toString().trim().length() == 0)
+        {
+            prevs_hosptlTextLayout.setErrorEnabled(true);
+            prevs_hosptlTextLayout.setErrorTextAppearance(R.style.error);
+            prevs_hosptlTextLayout.setError("Enter prevoius hospital");
+            response = false;
+        } else {
+            prevs_hosptlTextLayout.setErrorEnabled(false);
+            prevs_hosptlTextLayout.setError(null);
+        }
+
+
+        if (etDoctorName1.getText().toString().trim().length() == 0)
+        {
+            drname1TextLayout.setErrorEnabled(true);
+            drname1TextLayout.setErrorTextAppearance(R.style.error);
+            drname1TextLayout.setError("Enter doctor name1");
+            response = false;
+        } else {
+            drname1TextLayout.setErrorEnabled(false);
+            drname1TextLayout.setError(null);
+        }
+
+        if (etDoctorName2.getText().toString().trim().length() == 0)
+        {
+            drname2TextLayout.setErrorEnabled(true);
+            drname2TextLayout.setErrorTextAppearance(R.style.error);
+            drname2TextLayout.setError("Enter doctor name2");
+            response = false;
+        } else {
+            drname1TextLayout.setErrorEnabled(false);
+            drname1TextLayout.setError(null);
+        }
+
+        if (etDoctorName3.getText().toString().trim().length() == 0)
+        {
+            drname3TextLayout.setErrorEnabled(true);
+            drname3TextLayout.setErrorTextAppearance(R.style.error);
+            drname3TextLayout.setError("Enter doctor name3");
+            response = false;
+        } else {
+            drname3TextLayout.setErrorEnabled(false);
+            drname3TextLayout.setError(null);
+        }
+        return response;
+
+    }
 }
