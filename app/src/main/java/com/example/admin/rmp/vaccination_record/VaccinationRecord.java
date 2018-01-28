@@ -3,6 +3,7 @@ package com.example.admin.rmp.vaccination_record;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
@@ -10,14 +11,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.MhuTest;
+import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
+import com.example.admin.rmp.vaccination_record.model.Vaccination;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class VaccinationRecord extends Fragment {
 
     private Toolbar vaccination_toolbar;
     private Button btn_save_vaccination;
+    private CheckBox checkboxDpt,checkboxBcg,checkboxOpv,checkboxHepatitis,checkboxTt;
+    private TextInputEditText edtOther;
+    private String selected_dtp = "",selected_bcg="",selected_opv="",selected_hepatitis="",selected_tt="";
+    private Vaccination vaccination;
 
     public VaccinationRecord() {
         // Required empty public constructor
@@ -33,23 +46,189 @@ public class VaccinationRecord extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_vaccination_record, container, false);
-        vaccination_toolbar = (Toolbar) rootview.findViewById(R.id.vaccination_toolbar);
+        View view = inflater.inflate(R.layout.fragment_vaccination_record, container, false);
+        initializations(view);
+        onClickListeners();
+        return view;
+    }
+
+    private void initializations(View view)
+    {
+        vaccination_toolbar = (Toolbar) view.findViewById(R.id.vaccination_toolbar);
+        btn_save_vaccination = (Button) view.findViewById(R.id.btn_save_vaccination);
+        checkboxDpt=(CheckBox)view.findViewById(R.id.checkbox_dpt);
+        checkboxBcg=(CheckBox)view.findViewById(R.id.checkbox_bcg);
+        checkboxHepatitis=(CheckBox)view.findViewById(R.id.checkbox_hepatitis);
+        checkboxOpv=(CheckBox)view.findViewById(R.id.checkbox_opv);
+        checkboxTt=(CheckBox)view.findViewById(R.id.checkbox_tt);
+        edtOther=(TextInputEditText)view.findViewById(R.id.edt_other);
+
+        setDtp();
+        setBcg();
+        setHepatitis();
+        setOpv();
+        setTt();
+    }
+
+    private void onClickListeners()
+    {
         vaccination_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
             }
         });
-        btn_save_vaccination = (Button) rootview.findViewById(R.id.btn_save_vaccination);
+
         btn_save_vaccination.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                MhuTest mhuTest= new MhuTest();
-                fragmentTransaction.replace(R.id.framelayout,mhuTest).addToBackStack(null).commit();
+                setVaccinationData();
+
+
+                final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                        .setTitleText("Please wait");
+
+                sweetAlertDialog.show();
+
+                Vaccination_ApiHelper.webAddVaccination(getActivity(), vaccination, new ApiResponseListener() {
+                    @Override
+                    public void onSuccess(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                MhuTest mhuTest= new MhuTest();
+                                fragmentTransaction.replace(R.id.framelayout,mhuTest).addToBackStack(null).commit();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                });
             }
         });
-        return rootview;
+    }
+
+    private void setDtp()
+    {
+        checkboxDpt.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    selected_dtp="Y";
+                }
+                else
+                {
+                    selected_dtp="N";
+                }
+            }
+        });
+
+    }
+
+    private void setBcg()
+    {
+        checkboxBcg.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    selected_bcg="Y";
+                }
+                else
+                {
+                    selected_bcg="N";
+                }
+            }
+        });
+
+    }
+
+    private void setOpv()
+    {
+        checkboxOpv.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    selected_opv="Y";
+                }
+                else
+                {
+                    selected_opv="N";
+                }
+            }
+        });
+
+    }
+
+    private void setTt()
+    {
+        checkboxTt.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    selected_tt="Y";
+                }
+                else
+                {
+                    selected_tt="N";
+                }
+            }
+        });
+
+    }
+
+    private void setHepatitis()
+    {
+        checkboxHepatitis.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    selected_hepatitis="Y";
+                }
+                else
+                {
+                    selected_hepatitis="N";
+                }
+            }
+        });
+
+    }
+
+    private void setVaccinationData()
+    {
+        vaccination=new Vaccination();
+
+        vaccination.setDpt(selected_dtp);
+        vaccination.setBcg(selected_bcg);
+        vaccination.setOpv(selected_opv);
+        vaccination.setTt(selected_tt);
+        vaccination.setHepatitis(selected_hepatitis);
+        vaccination.setOther(edtOther.getText().toString());
     }
 }
