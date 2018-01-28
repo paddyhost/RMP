@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.TestAdviced.TestAdvised;
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 
 public class MhuTest extends Fragment {
@@ -48,8 +49,8 @@ public class MhuTest extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                MhuTest mhuTest= new MhuTest();
-                fragmentTransaction.replace(R.id.framelayout,mhuTest).addToBackStack(null).commit();
+                TestAdvised testAdvised= new TestAdvised();
+                fragmentTransaction.replace(R.id.framelayout,testAdvised).addToBackStack(null).commit();
             }
         });
         return rootview;

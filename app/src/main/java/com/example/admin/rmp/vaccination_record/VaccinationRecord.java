@@ -24,9 +24,9 @@ public class VaccinationRecord extends Fragment {
 
     private Toolbar vaccination_toolbar;
     private Button btn_save_vaccination;
-    private CheckBox checkboxDpt,checkboxBcg,checkboxOpv,checkboxHepatitis,checkboxTt;
+    private CheckBox checkboxDpt,checkboxBcg,checkboxOpv,checkboxHepatitis,checkboxTt, checkBoxMeasles;
     private TextInputEditText edtOther;
-    private String selected_dtp = "",selected_bcg="",selected_opv="",selected_hepatitis="",selected_tt="";
+    private String selected_dtp = "",selected_bcg="",selected_opv="",selected_hepatitis="",selected_tt="",selected_Measles ="";
     private Vaccination vaccination;
 
     public VaccinationRecord() {
@@ -45,6 +45,14 @@ public class VaccinationRecord extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_vaccination_record, container, false);
         initializations(view);
+
+        setDtp();
+        setBcg();
+        setHepatitis();
+        setOpv();
+        setTt();
+        setMeasles();
+
         onClickListeners();
         return view;
     }
@@ -58,18 +66,9 @@ public class VaccinationRecord extends Fragment {
         checkboxHepatitis=(CheckBox)view.findViewById(R.id.checkbox_hepatitis);
         checkboxOpv=(CheckBox)view.findViewById(R.id.checkbox_opv);
         checkboxTt=(CheckBox)view.findViewById(R.id.checkbox_tt);
+        checkBoxMeasles = (CheckBox)view.findViewById(R.id.checkbox_measles);
         edtOther=(TextInputEditText)view.findViewById(R.id.edt_other);
-
-        setDtp();
-        setBcg();
-        setHepatitis();
-        setOpv();
-        setTt();
     }
-
-
-
-
     
     private void onClickListeners()
     {
@@ -82,9 +81,9 @@ public class VaccinationRecord extends Fragment {
 
         btn_save_vaccination.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 setVaccinationData();
-
 
                 final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                         .setTitleText("Please wait");
@@ -221,6 +220,26 @@ public class VaccinationRecord extends Fragment {
 
     }
 
+    private void setMeasles()
+    {
+        checkBoxMeasles.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    selected_Measles="Y";
+                }
+                else
+                {
+                    selected_Measles="N";
+                }
+            }
+        });
+
+    }
+
+
     private void setVaccinationData()
     {
         vaccination=new Vaccination();
@@ -230,6 +249,7 @@ public class VaccinationRecord extends Fragment {
         vaccination.setOpv(selected_opv);
         vaccination.setTt(selected_tt);
         vaccination.setHepatitis(selected_hepatitis);
+        vaccination.setMeasles(selected_Measles);
         vaccination.setOther(edtOther.getText().toString());
     }
 }

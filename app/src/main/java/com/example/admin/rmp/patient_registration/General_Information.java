@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.admin.rmp.R;
@@ -30,6 +31,7 @@ public class General_Information extends Fragment {
     Button btnSave;
     TextInputEditText edtFName,edtLName,edtMobile,edtDob,edtAddress;
     RadioGroup genderGrp;
+    RadioButton maleBtn, femaleBtn;
     private DatePickerDialog dpd;
     private int year,day,month;
     private String selected_gender = "";
@@ -73,6 +75,8 @@ public class General_Information extends Fragment {
         edtDob = (TextInputEditText)view.findViewById(R.id.dob);
         edtAddress = (TextInputEditText)view.findViewById(R.id.address);
         genderGrp = (RadioGroup)view.findViewById(R.id.gender);
+        maleBtn = (RadioButton)view.findViewById(R.id.male);
+        femaleBtn = (RadioButton)view.findViewById(R.id.female);
         btnSave = (Button)view.findViewById(R.id.btn_save);
         edtDob.setFocusable(false);
     }
@@ -151,6 +155,13 @@ public class General_Information extends Fragment {
                                 Vital_Information vitalInformation= new Vital_Information();
                                 fragmentTransaction.replace(R.id.framelayout,vitalInformation).addToBackStack(null).commit();
 
+                                edtFName.setText("");
+                                edtLName.setText("");
+                                edtAddress.setText("");
+                                edtMobile.setText("");
+                                edtDob.setText("");
+                                maleBtn.setChecked(false);
+                                femaleBtn.setChecked(false);
                             }
                         });
                     }

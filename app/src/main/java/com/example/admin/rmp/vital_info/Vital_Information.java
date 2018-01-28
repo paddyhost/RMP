@@ -1,7 +1,5 @@
 package com.example.admin.rmp.vital_info;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -15,7 +13,7 @@ import android.widget.Button;
 
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.app.ApiResponseListener;
-import com.example.admin.rmp.medical_condition.MedicalCondition;
+import com.example.admin.rmp.medical_condition.MedicalConditionFragment;
 import com.example.admin.rmp.vital_info.apihelper.WebVital_Helper;
 import com.example.admin.rmp.vital_info.model.Vital_Info;
 
@@ -78,10 +76,7 @@ public class Vital_Information extends Fragment {
         btnSaveVital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                MedicalCondition medicalCondition= new MedicalCondition();
-                fragmentTransaction.replace(R.id.framelayout,medicalCondition).addToBackStack(null).commit();
-                /*setVitalInfo();
+                setVitalInfo();
                 final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                         .setTitleText("Please wait");
 
@@ -97,6 +92,16 @@ public class Vital_Information extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                MedicalConditionFragment medicalConditionFragment = new MedicalConditionFragment();
+                                fragmentTransaction.replace(R.id.framelayout, medicalConditionFragment).addToBackStack(null).commit();
+
+                                edtHeight.setText("");
+                                edtWeight.setText("");
+                                edtBloodPressure.setText("");
+                                edtTemperature.setText("");
+                                edtRespiration.setText("");
+                                edtBloodPressTo.setText("");
 
                             }
                         });
@@ -114,7 +119,7 @@ public class Vital_Information extends Fragment {
                             }
                         });
                     }
-                });*/
+                });
             }
         });
     }

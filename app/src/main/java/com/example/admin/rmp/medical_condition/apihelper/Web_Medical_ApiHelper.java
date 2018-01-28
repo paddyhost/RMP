@@ -1,4 +1,4 @@
-package com.example.admin.rmp.vaccination_record.apihelper;
+package com.example.admin.rmp.medical_condition.apihelper;
 
 import android.app.Activity;
 
@@ -16,8 +16,8 @@ import com.example.admin.rmp.activity.MainActivity;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.app.MyApplication;
 import com.example.admin.rmp.constants.WebServiceUrls;
+import com.example.admin.rmp.medical_condition.model.Medical_Conditions;
 import com.example.admin.rmp.pref_manager.PrefManager;
-import com.example.admin.rmp.vaccination_record.model.Vaccination;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,14 +26,14 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Created by Nikam on 28/01/2018.
+ * Created by Ashwin on 28-Jan-18.
  */
 
-public class Vaccination_ApiHelper {
-
-    public static void webAddVaccination(final Activity activity, final Vaccination vaccination, final ApiResponseListener apiResponseListener)
+public class Web_Medical_ApiHelper
+{
+    public static void webAddMedicalConditions(final Activity activity, final Medical_Conditions medicalConditions, final ApiResponseListener apiResponseListener)
     {
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddVaccination,new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddMedicalInfo,new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
@@ -42,9 +42,16 @@ public class Vaccination_ApiHelper {
                     JSONObject responce = new JSONObject(response);
                     if (responce.getString("status").equalsIgnoreCase("success"))
                     {
-                        if(responce.getString("message").equalsIgnoreCase("vaccinationmaster added successfully")) {
+                        if(responce.getString("message").equalsIgnoreCase("Medicalcondition added successfully")) {
 
+                            // {"status":"success","count":1,"type":"addMedicalcondition",
+                            // "result":{"id":"3","chiefcomplaints1":"ghashd","chiefcomplaints2":"bgasdhg",
+                            // "chiefcomplaints3":"gsh","briefHistory1":"sghgs","briefHistory2":"sghjsgxd",
+                            // "briefHistory3":"svxdhs","investigation":"Y","tratementtaken":"N",
+                            // "anyimprovement":"","diagnosys":null,"patient_id":"6","registrationid":"rpm-5a6b03d57b791"},
+                            // "message":"Medicalcondition added successfully"}
 
+                            //JSONObject jsonObject = responce.getJSONObject("result");
 
                             apiResponseListener.onSuccess(responce.getString("message"));
                         }
@@ -97,15 +104,25 @@ public class Vaccination_ApiHelper {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
 
-                params.put("patient_id", MainActivity.PATIENT_ID);
-                params.put("registration_no",MainActivity.REGISTRATION_ID);
-                params.put("dpt",vaccination.getDpt());
-                params.put("bcg",vaccination.getBcg());
-                params.put("measles",vaccination.getMeasles());
-                params.put("opv",vaccination.getOpv());
-                params.put("ttt",vaccination.getTt());
-                params.put("hepatitis",vaccination.getHepatitis());
-                params.put("other",vaccination.getOther());
+                //http://192.168.1.103/RMP/index.php/api/V1/addMedicalcondition?
+                // mobile=9975294782&password=user@123&&format=json&chiefcomplaints1=ghashd&
+                // chiefcomplaints2=bgasdhg&chiefcomplaints3=gsh&briefHistory1=sghgs&
+                // briefHistory2=sghjsgxd&briefHistory3=svxdhs&investigation=Y&tratementtaken=N&
+                // anyimprovement=ND&patient_id=6&registrationid=rpm-5a6b03d57b791
+
+                params.put("chiefcomplaints1",medicalConditions.getChiefcomplaints1());
+                params.put("chiefcomplaints2",medicalConditions.getChiefcomplaints2());
+                params.put("chiefcomplaints3",medicalConditions.getChiefcomplaints3());
+                params.put("briefHistory1",medicalConditions.getBriefHistory1());
+                params.put("briefHistory2",medicalConditions.getBriefHistory2());
+                params.put("briefHistory3",medicalConditions.getBriefHistory3());
+                params.put("investigation",medicalConditions.getInvestigation());
+                params.put("tratementtaken",medicalConditions.getTratementtaken());
+                params.put("anyimprovement",medicalConditions.getAnyimprovement());
+                params.put("diagnosys",medicalConditions.getDiagnosysList());
+                params.put("patient_id",MainActivity.PATIENT_ID);
+                params.put("registrationid", MainActivity.REGISTRATION_ID);
+
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");

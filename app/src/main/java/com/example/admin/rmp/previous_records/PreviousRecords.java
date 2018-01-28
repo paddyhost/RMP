@@ -3,6 +3,7 @@ package com.example.admin.rmp.previous_records;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -13,15 +14,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.app.ApiResponseListener;
+import com.example.admin.rmp.mhu_test.MhuTest;
+import com.example.admin.rmp.previous_records.apihelper.Web_PatientHistory_Helper;
+import com.example.admin.rmp.previous_records.model.PatientHistory;
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
+import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class PreviousRecords extends Fragment {
 
     private Button btn_save_prerecord;
-
     private Toolbar prerecord_toolbar;
+    private TextInputEditText etPreviousHsopital, etDoctorName1, etDoctorName2, etDoctorName3;
+    private PatientHistory patientHistory;
 
-    public PreviousRecords() {
+    public PreviousRecords()
+    {
         // Required empty public constructor
     }
 
@@ -31,11 +41,21 @@ public class PreviousRecords extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_previous_records, container, false);
-        prerecord_toolbar = (Toolbar) rootview.findViewById(R.id.prerecord_toolbar);
+
+        initializations(rootview);
+
+        saveRecordClickListener();
+
+        return rootview;
+    }
+
+    private void initializations(View view)
+    {
+        prerecord_toolbar = (Toolbar) view.findViewById(R.id.prerecord_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(prerecord_toolbar);
         prerecord_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,16 +63,70 @@ public class PreviousRecords extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-        btn_save_prerecord = (Button) rootview.findViewById(R.id.btn_save_prerecord);
+
+        btn_save_prerecord = (Button) view.findViewById(R.id.btn_save_prerecord);
+        etPreviousHsopital = (TextInputEditText)view.findViewById(R.id.prevs_hosptl);
+        etDoctorName1 = (TextInputEditText)view.findViewById(R.id.drname1);
+        etDoctorName2 = (TextInputEditText)view.findViewById(R.id.drname2);
+        etDoctorName3 = (TextInputEditText)view.findViewById(R.id.drname3);
+    }
+
+    private void saveRecordClickListener()
+    {
         btn_save_prerecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                VaccinationRecord vaccinationRecord= new VaccinationRecord();
-                fragmentTransaction.replace(R.id.framelayout,vaccinationRecord).addToBackStack(null).commit();
+
+                setPreviousHistoryData();
+
+                final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                        .setTitleText("Please wait");
+
+                sweetAlertDialog.show();
+
+                Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
+                    @Override
+                    public void onSuccess(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                VaccinationRecord vaccinationRecord= new VaccinationRecord();
+                                fragmentTransaction.replace(R.id.framelayout,vaccinationRecord).addToBackStack(null).commit();
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                });
             }
         });
-        return rootview;
+    }
+
+    private void setPreviousHistoryData()
+    {
+        patientHistory = new PatientHistory();
+        patientHistory.setPrevHospital(etPreviousHsopital.getText().toString());
+        patientHistory.setDoctorName1(etDoctorName1.getText().toString());
+        patientHistory.setDoctorName2(etDoctorName2.getText().toString());
+        patientHistory.setDoctorName3(etDoctorName3.getText().toString());
     }
 
 }

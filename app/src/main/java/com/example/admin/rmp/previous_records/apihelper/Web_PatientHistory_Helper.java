@@ -1,4 +1,4 @@
-package com.example.admin.rmp.vaccination_record.apihelper;
+package com.example.admin.rmp.previous_records.apihelper;
 
 import android.app.Activity;
 
@@ -17,6 +17,7 @@ import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.app.MyApplication;
 import com.example.admin.rmp.constants.WebServiceUrls;
 import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.previous_records.model.PatientHistory;
 import com.example.admin.rmp.vaccination_record.model.Vaccination;
 
 import org.json.JSONException;
@@ -26,14 +27,14 @@ import java.util.Hashtable;
 import java.util.Map;
 
 /**
- * Created by Nikam on 28/01/2018.
+ * Created by Ashwin on 28-Jan-18.
  */
 
-public class Vaccination_ApiHelper {
-
-    public static void webAddVaccination(final Activity activity, final Vaccination vaccination, final ApiResponseListener apiResponseListener)
+public class Web_PatientHistory_Helper
+{
+    public static void webAddPatienHistory(final Activity activity, final PatientHistory patientHistory, final ApiResponseListener apiResponseListener)
     {
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddVaccination,new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddPatientHistory,new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
@@ -42,7 +43,7 @@ public class Vaccination_ApiHelper {
                     JSONObject responce = new JSONObject(response);
                     if (responce.getString("status").equalsIgnoreCase("success"))
                     {
-                        if(responce.getString("message").equalsIgnoreCase("vaccinationmaster added successfully")) {
+                        if(responce.getString("message").equalsIgnoreCase("PatientHistory added successfully")) {
 
 
 
@@ -98,14 +99,11 @@ public class Vaccination_ApiHelper {
                 Map<String, String> params = new Hashtable<String, String>();
 
                 params.put("patient_id", MainActivity.PATIENT_ID);
-                params.put("registration_no",MainActivity.REGISTRATION_ID);
-                params.put("dpt",vaccination.getDpt());
-                params.put("bcg",vaccination.getBcg());
-                params.put("measles",vaccination.getMeasles());
-                params.put("opv",vaccination.getOpv());
-                params.put("ttt",vaccination.getTt());
-                params.put("hepatitis",vaccination.getHepatitis());
-                params.put("other",vaccination.getOther());
+                params.put("registrationno",MainActivity.REGISTRATION_ID);
+                 params.put("drname1",patientHistory.getDoctorName1());
+                params.put("drname2",patientHistory.getDoctorName2());
+                params.put("drname3",patientHistory.getDoctorName3());
+                params.put("hospitalname",patientHistory.getPrevHospital());
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");
@@ -118,4 +116,5 @@ public class Vaccination_ApiHelper {
         MyApplication.getInstance().addToRequestQueue(strReq);
 
     }
+
 }
