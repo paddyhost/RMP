@@ -365,6 +365,7 @@
                 android:layout_height="4px"
                 android:background="@color/colorDarkgray"/>
             <Button
+                android:id="@+id/btn_save_medical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Save &amp; Next"
