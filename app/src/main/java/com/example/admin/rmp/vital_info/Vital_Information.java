@@ -2,6 +2,7 @@ package com.example.admin.rmp.vital_info;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class Vital_Information extends Fragment {
     private TextInputEditText edtHeight,edtWeight, edtBloodPressure, edtTemperature, edtRespiration,
                             edtBloodPressTo;
     private Vital_Info vitalInfo;
+    private TextInputLayout edt_heightTextLayout,edt_weightTextLayout,
+    edt_bloodpressure_TextLayout,edt_bloodpressureTo_TextLayout,edt_tempTextLayout,edt_respTextLayout;
 
     public Vital_Information() {
         // Required empty public constructor
@@ -59,7 +62,13 @@ public class Vital_Information extends Fragment {
         edtTemperature = (TextInputEditText)rootview.findViewById(R.id.edt_temp);
         edtRespiration = (TextInputEditText)rootview.findViewById(R.id.edt_resp);
         edtBloodPressTo = (TextInputEditText)rootview.findViewById(R.id.edt_bloodpressure_to);
-     }
+        edt_heightTextLayout=(TextInputLayout)rootview.findViewById(R.id.edt_height_TextLayout);
+        edt_weightTextLayout=(TextInputLayout)rootview.findViewById(R.id.edt_weight_TextLayout);
+        edt_bloodpressure_TextLayout=(TextInputLayout)rootview.findViewById(R.id.edt_bloodpressure_TextLayout);
+        edt_bloodpressureTo_TextLayout=(TextInputLayout)rootview.findViewById(R.id.edt_bloodpressure_to_TextLayout);
+        edt_tempTextLayout=(TextInputLayout)rootview.findViewById(R.id.edt_temp_TextLayout);
+        edt_respTextLayout=(TextInputLayout)rootview.findViewById(R.id.edt_resp_TextLayout);
+    }
 
     private void toolbarClickListnere()
     {
@@ -77,49 +86,51 @@ public class Vital_Information extends Fragment {
             @Override
             public void onClick(View view) {
                 setVitalInfo();
-                final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("Please wait");
+                if(checkValidation()) {
+                    final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                            .setTitleText("Please wait");
 
-                sweetAlertDialog.show();
+                    sweetAlertDialog.show();
 
-                WebVital_Helper.webAddVitalInfo(getActivity(), vitalInfo, new ApiResponseListener() {
-                    @Override
-                    public void onSuccess(String message) {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                MedicalConditionFragment medicalConditionFragment = new MedicalConditionFragment();
-                                fragmentTransaction.replace(R.id.framelayout, medicalConditionFragment).addToBackStack(null).commit();
+                    WebVital_Helper.webAddVitalInfo(getActivity(), vitalInfo, new ApiResponseListener() {
+                        @Override
+                        public void onSuccess(String message) {
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setConfirmText("Ok");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    MedicalConditionFragment medicalConditionFragment = new MedicalConditionFragment();
+                                    fragmentTransaction.replace(R.id.framelayout, medicalConditionFragment).addToBackStack(null).commit();
 
-                                edtHeight.setText("");
-                                edtWeight.setText("");
-                                edtBloodPressure.setText("");
-                                edtTemperature.setText("");
-                                edtRespiration.setText("");
-                                edtBloodPressTo.setText("");
+                                    edtHeight.setText("");
+                                    edtWeight.setText("");
+                                    edtBloodPressure.setText("");
+                                    edtTemperature.setText("");
+                                    edtRespiration.setText("");
+                                    edtBloodPressTo.setText("");
 
-                            }
-                        });
-                    }
+                                }
+                            });
+                        }
 
-                    @Override
-                    public void onError(String message) {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                            }
-                        });
-                    }
-                });
+                        @Override
+                        public void onError(String message) {
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setConfirmText("Ok");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
     }
@@ -132,5 +143,81 @@ public class Vital_Information extends Fragment {
         vitalInfo.setTemperature(edtTemperature.getText().toString());
         vitalInfo.setRespiration(edtRespiration.getText().toString());
         vitalInfo.setBloodPressureTo(edtBloodPressTo.getText().toString());
+    }
+
+    private boolean checkValidation()
+    {
+        boolean response=true;
+
+        if (edtHeight.getText().toString().trim().length() == 0)
+        {
+            edt_heightTextLayout.setErrorEnabled(true);
+            edt_heightTextLayout.setErrorTextAppearance(R.style.error);
+            edt_heightTextLayout.setError("Enter height");
+            response = false;
+        } else {
+            edt_heightTextLayout.setErrorEnabled(false);
+            edt_heightTextLayout.setError(null);
+        }
+
+
+        if (edtWeight.getText().toString().trim().length() == 0)
+        {
+            edt_weightTextLayout.setErrorEnabled(true);
+            edt_weightTextLayout.setErrorTextAppearance(R.style.error);
+            edt_weightTextLayout.setError("Enter weight");
+            response = false;
+        } else {
+            edt_weightTextLayout.setErrorEnabled(false);
+            edt_weightTextLayout.setError(null);
+        }
+
+        if (edtBloodPressure.getText().toString().trim().length() == 0)
+        {
+            edt_bloodpressure_TextLayout.setErrorEnabled(true);
+            edt_bloodpressure_TextLayout.setErrorTextAppearance(R.style.error);
+            edt_bloodpressure_TextLayout.setError("Enter blood pressure");
+            response = false;
+        } else {
+            edt_bloodpressure_TextLayout.setErrorEnabled(false);
+            edt_bloodpressure_TextLayout.setError(null);
+        }
+
+
+        if (edtBloodPressTo.getText().toString().trim().length() == 0)
+        {
+            edt_bloodpressureTo_TextLayout.setErrorEnabled(true);
+            edt_bloodpressureTo_TextLayout.setErrorTextAppearance(R.style.error);
+            edt_bloodpressureTo_TextLayout.setError("Enter blood pressure to");
+            response = false;
+        } else {
+            edt_bloodpressureTo_TextLayout.setErrorEnabled(false);
+            edt_bloodpressureTo_TextLayout.setError(null);
+        }
+
+
+        if (edtTemperature.getText().toString().trim().length() == 0)
+        {
+            edt_tempTextLayout.setErrorEnabled(true);
+            edt_tempTextLayout.setErrorTextAppearance(R.style.error);
+            edt_tempTextLayout.setError("Enter temperature");
+            response = false;
+        } else {
+            edt_tempTextLayout.setErrorEnabled(false);
+            edt_tempTextLayout.setError(null);
+        }
+
+        if (edtRespiration.getText().toString().trim().length() == 0)
+        {
+            edt_respTextLayout.setErrorEnabled(true);
+            edt_respTextLayout.setErrorTextAppearance(R.style.error);
+            edt_respTextLayout.setError("Enter respiration");
+            response = false;
+        } else {
+            edt_respTextLayout.setErrorEnabled(false);
+            edt_respTextLayout.setError(null);
+        }
+
+        return response;
     }
 }

@@ -3,6 +3,7 @@ package com.example.admin.rmp.patient_registration;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class General_Information extends Fragment {
     private int year,day,month;
     private String selected_gender = "";
     private PatientRegistration patientRegistration;
+    TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout;
 
 
     public General_Information() {
@@ -78,6 +80,12 @@ public class General_Information extends Fragment {
         maleBtn = (RadioButton)view.findViewById(R.id.male);
         femaleBtn = (RadioButton)view.findViewById(R.id.female);
         btnSave = (Button)view.findViewById(R.id.btn_save);
+        firstname_TextLayout=(TextInputLayout)view.findViewById(R.id.firstname_textLayout);
+        lname_TextLayout=(TextInputLayout)view.findViewById(R.id.lname_textLayout);
+        mobile_TextLayout=(TextInputLayout)view.findViewById(R.id.mobile_textLayout);
+        dob_TextLayout=(TextInputLayout)view.findViewById(R.id.dob_textLayout);
+        address_TextLayout=(TextInputLayout)view.findViewById(R.id.address_textLayout);
+
         edtDob.setFocusable(false);
     }
 
@@ -135,54 +143,55 @@ public class General_Information extends Fragment {
             @Override
             public void onClick(View view) {
                     setPatientData();
-                final SweetAlertDialog sweetAlertDialog =new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                        .setTitleText("Please wait");
+                    if(checkValidation()) {
+                        final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                                .setTitleText("Please wait");
 
-                sweetAlertDialog.show();
+                        sweetAlertDialog.show();
 
-                Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
-                    @Override
-                    public void onSuccess(String message)
-                    {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
                             @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                Vital_Information vitalInformation= new Vital_Information();
-                                fragmentTransaction.replace(R.id.framelayout,vitalInformation).addToBackStack(null).commit();
+                            public void onSuccess(String message) {
+                                sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                sweetAlertDialog.setTitleText(message);
+                                sweetAlertDialog.setConfirmText("Ok");
+                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismissWithAnimation();
+                                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                        Vital_Information vitalInformation = new Vital_Information();
+                                        fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
 
-                                edtFName.setText("");
-                                edtLName.setText("");
-                                edtAddress.setText("");
-                                edtMobile.setText("");
-                                edtDob.setText("");
-                                maleBtn.setChecked(false);
-                                femaleBtn.setChecked(false);
+                                        edtFName.setText("");
+                                        edtLName.setText("");
+                                        edtAddress.setText("");
+                                        edtMobile.setText("");
+                                        edtDob.setText("");
+                                        maleBtn.setChecked(false);
+                                        femaleBtn.setChecked(false);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onError(String message) {
+                                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                sweetAlertDialog.setTitleText(message);
+                                sweetAlertDialog.setConfirmText("Ok");
+                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismissWithAnimation();
+                                    }
+                                });
+
                             }
                         });
                     }
-
-                    @Override
-                    public void onError(String message)
-                    {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                            }
-                        });
-
-                    }
-                });
             }
         });
+
     }
 
     private void setPatientData()
@@ -197,4 +206,64 @@ public class General_Information extends Fragment {
     }
 
 
+    private boolean checkValidation()
+    {
+        boolean response=true;
+
+        if (edtFName.getText().toString().trim().length() == 0)
+        {
+            firstname_TextLayout.setErrorEnabled(true);
+            firstname_TextLayout.setErrorTextAppearance(R.style.error);
+            firstname_TextLayout.setError("Enter first name");
+            response = false;
+        } else {
+            firstname_TextLayout.setErrorEnabled(false);
+            firstname_TextLayout.setError(null);
+        }
+
+        if (edtLName.getText().toString().trim().length() == 0)
+        {
+            lname_TextLayout.setErrorEnabled(true);
+            lname_TextLayout.setErrorTextAppearance(R.style.error);
+            lname_TextLayout.setError("Enter last name");
+            response = false;
+        } else {
+            lname_TextLayout.setErrorEnabled(false);
+            lname_TextLayout.setError(null);
+        }
+
+        if (edtMobile.getText().toString().trim().length() == 0)
+        {
+            mobile_TextLayout.setErrorEnabled(true);
+            mobile_TextLayout.setErrorTextAppearance(R.style.error);
+            mobile_TextLayout.setError("Enter mobile number");
+            response = false;
+        } else {
+            mobile_TextLayout.setErrorEnabled(false);
+            mobile_TextLayout.setError(null);
+        }
+
+        if (edtAddress.getText().toString().trim().length() == 0)
+        {
+            address_TextLayout.setErrorEnabled(true);
+            address_TextLayout.setErrorTextAppearance(R.style.error);
+            address_TextLayout.setError("Enter address");
+            response = false;
+        } else {
+            address_TextLayout.setErrorEnabled(false);
+            address_TextLayout.setError(null);
+        }
+
+        if (edtDob.getText().toString().trim().length() == 0)
+        {
+            dob_TextLayout.setErrorEnabled(true);
+            dob_TextLayout.setErrorTextAppearance(R.style.error);
+            dob_TextLayout.setError("Select date of birth");
+            response = false;
+        } else {
+            dob_TextLayout.setErrorEnabled(false);
+            dob_TextLayout.setError(null);
+        }
+        return response;
+    }
 }
