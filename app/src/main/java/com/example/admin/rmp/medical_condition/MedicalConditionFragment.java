@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.admin.rmp.R;
@@ -423,6 +424,36 @@ public class MedicalConditionFragment extends Fragment {
         }
 
 
+
+        if (investigationGroup.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getActivity(), "Please check investigation done or not", Toast.LENGTH_SHORT).show();
+            response = false;
+            // no radio buttons are checked
+        } else {
+            // one of the radio buttons is checked
+
+        }
+
+
+        if (treatmentGroup.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getActivity(), "Please check treatment taken or not", Toast.LENGTH_SHORT).show();
+            response = false;
+            // no radio buttons are checked
+        } else {
+            // one of the radio buttons is checked
+
+        }
+
+
+        if (improvementGroup.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getActivity(), "Please check improvement done or not", Toast.LENGTH_SHORT).show();
+            response = false;
+            // no radio buttons are checked
+        } else {
+            // one of the radio buttons is checked
+
+        }
+
       /*  if(!(BtnInvestigationYes.isChecked()) || !(BtnInvestigationNo.isChecked()) || !(BtnInvestigationDontKnow.isChecked()))
         {
             investigation_radioTextLayout.setErrorEnabled(true);
@@ -436,86 +467,5 @@ public class MedicalConditionFragment extends Fragment {
         return response;
 
     }
-
 }
 
-/*
-
-    private boolean checkValidations()
-    {
-        boolean result = true;
-
-        if (edtCompanyName.getText().toString().trim().length() == 0)
-        {
-            companyNameLayout.setErrorEnabled(true);
-            companyNameLayout.setErrorTextAppearance(R.style.error);
-            companyNameLayout.setError("Enter Company name");
-            result = false;
-        } else {
-            companyNameLayout.setErrorEnabled(false);
-            companyNameLayout.setError(null);
-        }
-        if (edtPhoneName.getText().toString().trim().length() == 0)
-        {
-            phoneNoLayout.setErrorEnabled(true);
-            phoneNoLayout.setErrorTextAppearance(R.style.error);
-            phoneNoLayout.setError("Enter Phone number");
-
-            result = false;
-        } else {
-            phoneNoLayout.setErrorEnabled(false);
-            phoneNoLayout.setError(null);
-        }
-        if (edtAddress.getText().toString().trim().length() == 0)
-        {
-            addressLayout.setErrorEnabled(true);
-            addressLayout.setErrorTextAppearance(R.style.error);
-            addressLayout.setError("Enter Address");
-            result = false;
-        } else {
-            addressLayout.setErrorEnabled(false);
-            addressLayout.setError(null);
-        }
-      */
-/*  if (citySpinner.getSelectedItem().equals("Select City")) {
-
-            if (citySpinner.getSelectedItemPosition() == 0) {
-                cityLayout.setErrorEnabled(true);
-                cityLayout.setErrorTextAppearance(R.style.error);
-                cityLayout.setError("Select City");
-
-            } else {
-                cityLayout.setError(null);
-            }
-
-            result = false;
-        }
-        else
-        {
-            cityLayout.setErrorEnabled(false);
-            cityLayout.setError(null);
-        }
-
-        if (stateSpinner.getSelectedItem().equals("Select State")) {
-
-            if (stateSpinner.getSelectedItemPosition() == 0) {
-                stateLayout.setErrorEnabled(true);
-                stateLayout.setErrorTextAppearance(R.style.error);
-                stateLayout.setError("Select City");
-
-            } else {
-                stateLayout.setError(null);
-            }
-
-            result = false;
-        }
-        else
-        {
-            stateLayout.setErrorEnabled(false);
-            stateLayout.setError(null);
-        }*//*
-
-
-        return result;
-    }
-*/

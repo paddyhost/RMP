@@ -217,7 +217,6 @@ public class Vital_Information extends Fragment {
             edt_respTextLayout.setErrorEnabled(false);
             edt_respTextLayout.setError(null);
         }
-
         return response;
     }
 }

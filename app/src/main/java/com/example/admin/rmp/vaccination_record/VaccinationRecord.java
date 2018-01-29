@@ -242,7 +242,6 @@ public class VaccinationRecord extends Fragment {
 
     }
 
-
     private void setVaccinationData()
     {
         vaccination=new Vaccination();
