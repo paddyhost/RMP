@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.vital_info.Vital_Information;
@@ -264,6 +265,17 @@ public class General_Information extends Fragment {
             dob_TextLayout.setErrorEnabled(false);
             dob_TextLayout.setError(null);
         }
+
+        if (genderGrp.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getActivity(), "Please select gender", Toast.LENGTH_SHORT).show();
+            response = false;
+            // no radio buttons are checked
+        } else {
+            // one of the radio buttons is checked
+
+        }
+
+
         return response;
     }
 }
