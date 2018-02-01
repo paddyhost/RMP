@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +26,7 @@ import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class PreviousRecords extends Fragment {
+public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
 
     private Button btn_save_prerecord;
     private Toolbar prerecord_toolbar;
@@ -188,4 +190,27 @@ public class PreviousRecords extends Fragment {
         return response;
 
     }
+
+
+    /*@Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+        if (editable.length() == 0) {
+            etPreviousHsopital.setError("Required");
+            etDoctorName1.setVisibility(View.GONE);
+        } else {
+            etPreviousHsopital.setError(null);
+            etDoctorName1.setVisibility(View.VISIBLE);
+        }
+    }*/
 }
