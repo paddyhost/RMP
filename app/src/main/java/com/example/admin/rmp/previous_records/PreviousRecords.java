@@ -38,6 +38,8 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
         // Required empty public constructor
     }
 
+
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
