@@ -28,11 +28,8 @@ public class PrefManager {
     public static final String LNAME="lname";
     public static final String CITYNAME="cityname";
 
-
-
-
-
     private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
+    private static final String KEY_IS_LOGGED_OUT = "isLogout";
 
 
     public PrefManager(Context context) {
@@ -53,6 +50,10 @@ public class PrefManager {
         return sharedpreferences.getBoolean(KEY_IS_LOGGED_IN, false);
     }
 
+
+    public boolean isLogout() {
+        return sharedpreferences.getBoolean(KEY_IS_LOGGED_OUT, false);
+    }
 
     public void setLogOut()
     {

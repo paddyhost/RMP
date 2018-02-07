@@ -1,6 +1,7 @@
 package com.example.admin.rmp.mhu_test;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -10,6 +11,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +21,8 @@ import android.widget.Button;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.TestAdviced.TestAdvised;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
+import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 
 public class MhuTest extends Fragment {
@@ -27,6 +33,8 @@ public class MhuTest extends Fragment {
     private MHU_Test mhuTest;
     private TextInputLayout etblood_glucoseTextLayout,hemogramTextLayout,
             creatineTextLayout,ureaTextLayout,sgotTextLayout,sgptTextLayout;
+
+    private PrefManager prefManager;
 
 
     public MhuTest() {
@@ -62,6 +70,9 @@ public class MhuTest extends Fragment {
                 getActivity().onBackPressed();
             }
         });
+
+        setHasOptionsMenu(true);
+        prefManager=new PrefManager(getActivity());
         etBloodGlucose = (TextInputEditText)rootview.findViewById(R.id.etblood_glucose);
         ethemogram = (TextInputEditText)rootview.findViewById(R.id.hemogram);
         etcreatine = (TextInputEditText)rootview.findViewById(R.id.creatine);
@@ -85,12 +96,12 @@ public class MhuTest extends Fragment {
             public void onClick(View v) {
 
                 setMHUTestData();
-                if(checkValidation()) {
+                //if(checkValidation()) {
 
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
                     fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
-                }
+                //}
             }
         });
     }
@@ -181,5 +192,28 @@ public class MhuTest extends Fragment {
         }
 
         return  response;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.admin.rmp.medical_condition;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -10,6 +11,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,6 +27,7 @@ import android.widget.Toast;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.medical_condition.adapter.AdapterDiagnosys;
 import com.example.admin.rmp.medical_condition.model.Diagnosys;
+import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.previous_records.PreviousRecords;
 
 import java.util.ArrayList;
@@ -31,6 +36,7 @@ import java.util.List;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.medical_condition.apihelper.Web_Medical_ApiHelper;
 import com.example.admin.rmp.medical_condition.model.Medical_Conditions;
+import com.example.admin.rmp.user_login.LoginActivity;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -56,6 +62,7 @@ public class MedicalConditionFragment extends Fragment {
     ArrayList<Diagnosys> nameList;
     AlertDialog.Builder dialogBuilder;
     View dialogView;
+    PrefManager prefManager;
 
     public MedicalConditionFragment()
     {
@@ -99,6 +106,8 @@ public class MedicalConditionFragment extends Fragment {
             }
         });
 
+        setHasOptionsMenu(true);
+        prefManager=new PrefManager(getActivity());
         etComplaint1 = (TextInputEditText)view.findViewById(R.id.et_complain1);
         etComplaint2 = (TextInputEditText)view.findViewById(R.id.et_complain2);
         etComplaint3 = (TextInputEditText)view.findViewById(R.id.et_complain3);
@@ -350,7 +359,6 @@ public class MedicalConditionFragment extends Fragment {
         return selectedDiagnosys;
     }
 
-
     private boolean checkValidation()
     {
         boolean response=true;
@@ -467,5 +475,29 @@ public class MedicalConditionFragment extends Fragment {
         return response;
 
     }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
 

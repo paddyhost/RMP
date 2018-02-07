@@ -1,6 +1,7 @@
 package com.example.admin.rmp.previous_records;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -12,6 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,8 +23,10 @@ import android.widget.Button;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.MhuTest;
+import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.previous_records.apihelper.Web_PatientHistory_Helper;
 import com.example.admin.rmp.previous_records.model.PatientHistory;
+import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
@@ -33,13 +39,15 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
     private TextInputEditText etPreviousHsopital, etDoctorName1, etDoctorName2, etDoctorName3;
     private PatientHistory patientHistory;
     private TextInputLayout prevs_hosptlTextLayout,drname1TextLayout,drname2TextLayout,drname3TextLayout;
+    private PrefManager prefManager;
+
     public PreviousRecords()
     {
         // Required empty public constructor
     }
 
 
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +77,9 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
             }
         });
 
+        setHasOptionsMenu(true);
+        prefManager=new PrefManager(getActivity());
+
         btn_save_prerecord = (Button) view.findViewById(R.id.btn_save_prerecord);
         etPreviousHsopital = (TextInputEditText)view.findViewById(R.id.prevs_hosptl);
         etDoctorName1 = (TextInputEditText)view.findViewById(R.id.drname1);
@@ -87,7 +98,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
             public void onClick(View v) {
 
                 setPreviousHistoryData();
-                if(checkValidation()) {
+                //if(checkValidation()) {
 
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
@@ -126,7 +137,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
                             });
                         }
                     });
-                }
+                //}
             }
         });
     }
@@ -215,4 +226,26 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
             etDoctorName1.setVisibility(View.VISIBLE);
         }
     }*/
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

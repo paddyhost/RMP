@@ -1,6 +1,7 @@
 package com.example.admin.rmp.TestAdviced;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -10,6 +11,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,6 +27,8 @@ import com.example.admin.rmp.mhu_test.apihelper.Web_MhuApi_Helper;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.patient_registration.General_Information;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
+import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -36,6 +42,7 @@ public class TestAdvised extends Fragment {
     private MHU_Test mhuTest;
     private Button submitBtn;
     private TextInputLayout referred_txtTextLayout,remarksTextLayout;
+    private PrefManager prefManager;
 
     public TestAdvised() {
         // Required empty public constructor
@@ -72,6 +79,8 @@ public class TestAdvised extends Fragment {
 
     private void initialization(View view)
     {
+        setHasOptionsMenu(true);
+        prefManager=new PrefManager(getActivity());
         test_toolbar = (Toolbar) view.findViewById(R.id.test_toolbar);
         etRefrerredTxt = (TextInputEditText)view.findViewById(R.id.referred_txt);
         etRmarks = (TextInputEditText)view.findViewById(R.id.remarks);
@@ -95,7 +104,7 @@ public class TestAdvised extends Fragment {
             @Override
             public void onClick(View view) {
                 setAdvisedData();
-                if(checkValidation()) {
+                //if(checkValidation()) {
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
 
@@ -132,7 +141,7 @@ public class TestAdvised extends Fragment {
                             });
                         }
                     });
-                }
+                //}
             }
         });
     }
@@ -187,5 +196,27 @@ public class TestAdvised extends Fragment {
 
         return response;
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
