@@ -1,5 +1,6 @@
 package com.example.admin.rmp.vaccination_record;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -7,6 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +20,9 @@ import android.widget.CompoundButton;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.MhuTest;
+import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.user_login.LoginActivity;
+import com.example.admin.rmp.utils.Utility;
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 import com.example.admin.rmp.vaccination_record.model.Vaccination;
 
@@ -30,6 +37,7 @@ public class VaccinationRecord extends Fragment {
     private String selected_dtp = "",selected_bcg="",selected_opv="",selected_hepatitis="",selected_tt="",selected_Measles ="";
     private Vaccination vaccination;
     private TextInputLayout edt_otherTextLayout;
+    private PrefManager prefManager;
 
     public VaccinationRecord() {
         // Required empty public constructor
@@ -61,7 +69,9 @@ public class VaccinationRecord extends Fragment {
 
     private void initializations(View view)
     {
+        setHasOptionsMenu(true);
         vaccination_toolbar = (Toolbar) view.findViewById(R.id.vaccination_toolbar);
+        prefManager=new PrefManager(getActivity());
         btn_save_vaccination = (Button) view.findViewById(R.id.btn_save_vaccination);
         checkboxDpt=(CheckBox)view.findViewById(R.id.checkbox_dpt);
         checkboxBcg=(CheckBox)view.findViewById(R.id.checkbox_bcg);
@@ -78,7 +88,7 @@ public class VaccinationRecord extends Fragment {
         vaccination_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                Utility.closeAppDialog(getActivity());
             }
         });
 
@@ -97,7 +107,7 @@ public class VaccinationRecord extends Fragment {
                     @Override
                     public void onSuccess(String message) {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setTitleText("Done !!");
                         sweetAlertDialog.setConfirmText("Ok");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -242,6 +252,7 @@ public class VaccinationRecord extends Fragment {
 
     }
 
+
     private void setVaccinationData()
     {
         vaccination=new Vaccination();
@@ -256,4 +267,24 @@ public class VaccinationRecord extends Fragment {
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent i= new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
+                getActivity().finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
