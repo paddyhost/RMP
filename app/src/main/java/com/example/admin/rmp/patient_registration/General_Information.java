@@ -1,6 +1,7 @@
 package com.example.admin.rmp.patient_registration;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -9,6 +10,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +22,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.vital_info.Vital_Information;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
@@ -39,6 +45,7 @@ public class General_Information extends Fragment {
     private String selected_gender = "";
     private PatientRegistration patientRegistration;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout;
+    PrefManager prefManager;
 
 
     public General_Information() {
@@ -69,9 +76,11 @@ public class General_Information extends Fragment {
 
     private void initializations(View view)
     {
+        setHasOptionsMenu(true);
         customertoolbar = (Toolbar) view.findViewById(R.id.customer_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(customertoolbar);
 
+        prefManager=new PrefManager(getActivity());
         edtFName = (TextInputEditText)view.findViewById(R.id.firstname);
         edtLName = (TextInputEditText)view.findViewById(R.id.lname);
         edtMobile =(TextInputEditText)view.findViewById(R.id.mobile);
@@ -144,7 +153,7 @@ public class General_Information extends Fragment {
             @Override
             public void onClick(View view) {
                     setPatientData();
-                    if(checkValidation()) {
+                    if (checkValidation()) {
                         final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                                 .setTitleText("Please wait");
 
@@ -154,7 +163,7 @@ public class General_Information extends Fragment {
                             @Override
                             public void onSuccess(String message) {
                                 sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                sweetAlertDialog.setTitleText(message);
+                                sweetAlertDialog.setTitleText("Done !!");
                                 sweetAlertDialog.setConfirmText("Ok");
                                 sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
@@ -190,6 +199,7 @@ public class General_Information extends Fragment {
                             }
                         });
                     }
+
             }
         });
 
@@ -278,4 +288,27 @@ public class General_Information extends Fragment {
 
         return response;
     }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent i= new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
+                getActivity().finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -106,8 +106,8 @@ public class Web_MhuApi_Helper
                 params.put("sgot",mhuTest.getSgot());
                 params.put("sgpt",mhuTest.getSgpt());
                 params.put("adviced",mhuTest.getAdvised());
-                params.put("ferered",mhuTest.getAdvised());
-                params.put("remark",mhuTest.getAdvised());
+                params.put("ferered",mhuTest.getReferred());
+                params.put("remark",mhuTest.getRemark());
 
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
