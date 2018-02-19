@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.util.Util;
 import com.example.admin.rmp.patient_registration.General_Information;
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.utils.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,36 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
-        LayoutInflater inflater = MainActivity.this.getLayoutInflater();
-        View alertLayout = inflater.inflate(R.layout.alert_exit, null);
-        AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-
-        // this is set the view from XML inside AlertDialog
-        alert.setTitle("Exit");
-        alert.setView(alertLayout);
-        // disallow cancel of AlertDialog on click of back button and outside touch
-        alert.setCancelable(false);
-
-        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-               finish();
-            }
-        });
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                dialog.dismiss();
-            }
-        });
-        AlertDialog dialog = alert.create();
-        dialog.show();
-
-
+        Utility.closeAppDialog(MainActivity.this);
 
     }
 }

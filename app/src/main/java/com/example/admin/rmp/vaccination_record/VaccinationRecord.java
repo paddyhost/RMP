@@ -22,6 +22,9 @@ import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.MhuTest;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 import com.example.admin.rmp.vaccination_record.model.Vaccination;
 
@@ -69,8 +72,11 @@ public class VaccinationRecord extends Fragment {
     private void initializations(View view)
     {
         setHasOptionsMenu(true);
+
         prefManager=new PrefManager(getActivity());
+
         vaccination_toolbar = (Toolbar) view.findViewById(R.id.vaccination_toolbar);
+        prefManager=new PrefManager(getActivity());
         btn_save_vaccination = (Button) view.findViewById(R.id.btn_save_vaccination);
         checkboxDpt=(CheckBox)view.findViewById(R.id.checkbox_dpt);
         checkboxBcg=(CheckBox)view.findViewById(R.id.checkbox_bcg);
@@ -87,7 +93,7 @@ public class VaccinationRecord extends Fragment {
         vaccination_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                Utility.closeAppDialog(getActivity());
             }
         });
 
@@ -106,7 +112,7 @@ public class VaccinationRecord extends Fragment {
                     @Override
                     public void onSuccess(String message) {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setTitleText("Done !!");
                         sweetAlertDialog.setConfirmText("Ok");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -251,6 +257,7 @@ public class VaccinationRecord extends Fragment {
 
     }
 
+
     private void setVaccinationData()
     {
         vaccination=new Vaccination();
@@ -264,6 +271,7 @@ public class VaccinationRecord extends Fragment {
         vaccination.setOther(edtOther.getText().toString());
     }
 
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu,menu);
@@ -272,18 +280,16 @@ public class VaccinationRecord extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        switch (id)
+
+        switch (item.getItemId())
         {
             case R.id.logout:
                 prefManager.setLogOut();
-                Intent intent=new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                Intent i= new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
                 getActivity().finish();
-
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

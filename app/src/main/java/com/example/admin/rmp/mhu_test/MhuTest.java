@@ -23,6 +23,9 @@ import com.example.admin.rmp.TestAdviced.TestAdvised;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 
 public class MhuTest extends Fragment {
@@ -67,12 +70,14 @@ public class MhuTest extends Fragment {
         mhu_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                Utility.closeAppDialog(getActivity());
             }
         });
 
         setHasOptionsMenu(true);
+
         prefManager=new PrefManager(getActivity());
+
         etBloodGlucose = (TextInputEditText)rootview.findViewById(R.id.etblood_glucose);
         ethemogram = (TextInputEditText)rootview.findViewById(R.id.hemogram);
         etcreatine = (TextInputEditText)rootview.findViewById(R.id.creatine);
@@ -96,12 +101,16 @@ public class MhuTest extends Fragment {
             public void onClick(View v) {
 
                 setMHUTestData();
+
                 //if(checkValidation()) {
+
 
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
                     fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
+
                 //}
+
             }
         });
     }
@@ -203,13 +212,15 @@ public class MhuTest extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id=item.getItemId();
-        switch (id)
+
+        switch (item.getItemId())
         {
             case R.id.logout:
                 prefManager.setLogOut();
-                Intent intent=new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                Intent i= new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
                 getActivity().finish();
 
                 break;

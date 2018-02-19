@@ -27,6 +27,9 @@ import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.previous_records.apihelper.Web_PatientHistory_Helper;
 import com.example.admin.rmp.previous_records.model.PatientHistory;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
@@ -40,6 +43,8 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
     private PatientHistory patientHistory;
     private TextInputLayout prevs_hosptlTextLayout,drname1TextLayout,drname2TextLayout,drname3TextLayout;
     private PrefManager prefManager;
+
+
 
     public PreviousRecords()
     {
@@ -73,12 +78,14 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
         prerecord_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                Utility.closeAppDialog(getActivity());
             }
         });
 
         setHasOptionsMenu(true);
         prefManager=new PrefManager(getActivity());
+
+
 
         btn_save_prerecord = (Button) view.findViewById(R.id.btn_save_prerecord);
         etPreviousHsopital = (TextInputEditText)view.findViewById(R.id.prevs_hosptl);
@@ -98,6 +105,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
             public void onClick(View v) {
 
                 setPreviousHistoryData();
+
                 //if(checkValidation()) {
 
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
@@ -109,7 +117,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
                         @Override
                         public void onSuccess(String message) {
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setTitleText("Done !!");
                             sweetAlertDialog.setConfirmText("Ok");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -137,7 +145,9 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
                             });
                         }
                     });
+
                 //}
+
             }
         });
     }
@@ -205,6 +215,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
     }
 
 
+
     /*@Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -227,6 +238,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
         }
     }*/
 
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu,menu);
@@ -235,13 +247,14 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id=item.getItemId();
-        switch (id)
+        switch (item.getItemId())
         {
             case R.id.logout:
                 prefManager.setLogOut();
-                Intent intent=new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                Intent i= new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
                 getActivity().finish();
 
                 break;

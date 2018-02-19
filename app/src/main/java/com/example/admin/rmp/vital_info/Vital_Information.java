@@ -19,8 +19,12 @@ import android.widget.Button;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.medical_condition.MedicalConditionFragment;
+
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vital_info.apihelper.WebVital_Helper;
 import com.example.admin.rmp.vital_info.model.Vital_Info;
 
@@ -84,7 +88,7 @@ public class Vital_Information extends Fragment {
         toolbarvital.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                Utility.closeAppDialog(getActivity());
             }
         });
     }
@@ -95,7 +99,9 @@ public class Vital_Information extends Fragment {
             @Override
             public void onClick(View view) {
                 setVitalInfo();
+
                 //if(checkValidation()) {
+
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
 
@@ -105,7 +111,7 @@ public class Vital_Information extends Fragment {
                         @Override
                         public void onSuccess(String message) {
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setTitleText("Done !!");
                             sweetAlertDialog.setConfirmText("Ok");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -139,7 +145,11 @@ public class Vital_Information extends Fragment {
                             });
                         }
                     });
+
                 //}
+
+
+
             }
         });
     }

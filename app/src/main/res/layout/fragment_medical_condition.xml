@@ -225,10 +225,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Dianosys"
+                    android:text="Diagnosis"
                     android:gravity="center_vertical"
                     android:id="@+id/diagnosys"
                     android:editable="false"
+                    android:singleLine="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
@@ -363,56 +364,26 @@
                 android:background="@color/colorGray">
                 <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:text="Add More.."
+                    android:layout_height="50dp"
+                    android:text="Add Prescription"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:textSize="10dp"
                     android:id="@+id/btn_add_prescription"
                     android:layout_marginRight="16dp"
+                    android:paddingRight="15dp"
+                    android:paddingLeft="15dp"
                     android:background="@color/colorPrimary"
                     android:textColor="@color/colorWhite"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="30dp">
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="2"
-                        android:layout_height="wrap_content">
 
-                        <android.support.design.widget.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:id="@+id/et_prescription_dose"
-                            android:hint="Prescribed Dose"/>
-                    </android.support.design.widget.TextInputLayout>
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:id="@+id/dose_list"
+                    android:layout_below="@id/btn_add_prescription"/>
 
-                        <android.support.design.widget.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:id="@+id/et_frequency"
-                            android:hint="Frequency"/>
-                    </android.support.design.widget.TextInputLayout>
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
 
-                        <android.support.design.widget.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:id="@+id/et_days"
-                            android:hint="Days"/>
-                    </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"

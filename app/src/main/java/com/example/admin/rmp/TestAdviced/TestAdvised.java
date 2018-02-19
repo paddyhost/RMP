@@ -29,6 +29,9 @@ import com.example.admin.rmp.patient_registration.General_Information;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -80,8 +83,11 @@ public class TestAdvised extends Fragment {
     private void initialization(View view)
     {
         setHasOptionsMenu(true);
+
         prefManager=new PrefManager(getActivity());
+
         test_toolbar = (Toolbar) view.findViewById(R.id.test_toolbar);
+        prefManager=new PrefManager(getActivity());
         etRefrerredTxt = (TextInputEditText)view.findViewById(R.id.referred_txt);
         etRmarks = (TextInputEditText)view.findViewById(R.id.remarks);
         advisedSpinner = (Spinner)view.findViewById(R.id.advised_test);
@@ -93,7 +99,7 @@ public class TestAdvised extends Fragment {
         test_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                Utility.closeAppDialog(getActivity());
             }
         });
     }
@@ -104,7 +110,9 @@ public class TestAdvised extends Fragment {
             @Override
             public void onClick(View view) {
                 setAdvisedData();
+
                 //if(checkValidation()) {
+
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
 
@@ -114,7 +122,7 @@ public class TestAdvised extends Fragment {
                         @Override
                         public void onSuccess(String message) {
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setTitleText("Done !!");
                             sweetAlertDialog.setConfirmText("Ok");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -141,7 +149,11 @@ public class TestAdvised extends Fragment {
                             });
                         }
                     });
+
                 //}
+
+
+
             }
         });
     }
@@ -180,7 +192,7 @@ public class TestAdvised extends Fragment {
             remarksTextLayout.setError(null);
         }
 
-        View selectedView = advisedSpinner.getSelectedView();
+      /*  View selectedView = advisedSpinner.getSelectedView();
             if (selectedView != null && selectedView instanceof TextView) {
                 TextView selectedTextView = (TextView) selectedView;
                 if (advisedSpinner.getSelectedItemPosition() == 0) {
@@ -193,7 +205,7 @@ public class TestAdvised extends Fragment {
             response = false;
         }
 
-
+*/
         return response;
 
     }
@@ -206,13 +218,14 @@ public class TestAdvised extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id=item.getItemId();
-        switch (id)
+        switch (item.getItemId())
         {
             case R.id.logout:
                 prefManager.setLogOut();
-                Intent intent=new Intent(getActivity(),LoginActivity.class);
-                startActivity(intent);
+                Intent i= new Intent(getActivity(), LoginActivity.class);
+                startActivity(i);
                 getActivity().finish();
 
                 break;
