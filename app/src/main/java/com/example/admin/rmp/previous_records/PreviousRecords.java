@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,13 +27,15 @@ import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.previous_records.apihelper.Web_PatientHistory_Helper;
 import com.example.admin.rmp.previous_records.model.PatientHistory;
 import com.example.admin.rmp.user_login.LoginActivity;
+
 import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class PreviousRecords extends Fragment {
+public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
 
     private Button btn_save_prerecord;
     private Toolbar prerecord_toolbar;
@@ -39,10 +43,15 @@ public class PreviousRecords extends Fragment {
     private PatientHistory patientHistory;
     private TextInputLayout prevs_hosptlTextLayout,drname1TextLayout,drname2TextLayout,drname3TextLayout;
     private PrefManager prefManager;
+
+
+
     public PreviousRecords()
     {
         // Required empty public constructor
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +84,9 @@ public class PreviousRecords extends Fragment {
 
         setHasOptionsMenu(true);
         prefManager=new PrefManager(getActivity());
+
+
+
         btn_save_prerecord = (Button) view.findViewById(R.id.btn_save_prerecord);
         etPreviousHsopital = (TextInputEditText)view.findViewById(R.id.prevs_hosptl);
         etDoctorName1 = (TextInputEditText)view.findViewById(R.id.drname1);
@@ -93,6 +105,8 @@ public class PreviousRecords extends Fragment {
             public void onClick(View v) {
 
                 setPreviousHistoryData();
+
+                //if(checkValidation()) {
 
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
@@ -131,6 +145,8 @@ public class PreviousRecords extends Fragment {
                             });
                         }
                     });
+
+                //}
 
             }
         });
@@ -199,6 +215,30 @@ public class PreviousRecords extends Fragment {
     }
 
 
+
+    /*@Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+        if (editable.length() == 0) {
+            etPreviousHsopital.setError("Required");
+            etDoctorName1.setVisibility(View.GONE);
+        } else {
+            etPreviousHsopital.setError(null);
+            etDoctorName1.setVisibility(View.VISIBLE);
+        }
+    }*/
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu,menu);
@@ -208,6 +248,7 @@ public class PreviousRecords extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id=item.getItemId();
         switch (item.getItemId())
         {
             case R.id.logout:
@@ -215,6 +256,7 @@ public class PreviousRecords extends Fragment {
                 Intent i= new Intent(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
+
                 break;
         }
         return super.onOptionsItemSelected(item);

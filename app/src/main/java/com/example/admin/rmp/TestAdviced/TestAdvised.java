@@ -29,7 +29,9 @@ import com.example.admin.rmp.patient_registration.General_Information;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
 import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -43,7 +45,8 @@ public class TestAdvised extends Fragment {
     private MHU_Test mhuTest;
     private Button submitBtn;
     private TextInputLayout referred_txtTextLayout,remarksTextLayout;
-   private PrefManager prefManager;
+    private PrefManager prefManager;
+
     public TestAdvised() {
         // Required empty public constructor
     }
@@ -80,6 +83,9 @@ public class TestAdvised extends Fragment {
     private void initialization(View view)
     {
         setHasOptionsMenu(true);
+
+        prefManager=new PrefManager(getActivity());
+
         test_toolbar = (Toolbar) view.findViewById(R.id.test_toolbar);
         prefManager=new PrefManager(getActivity());
         etRefrerredTxt = (TextInputEditText)view.findViewById(R.id.referred_txt);
@@ -104,6 +110,9 @@ public class TestAdvised extends Fragment {
             @Override
             public void onClick(View view) {
                 setAdvisedData();
+
+                //if(checkValidation()) {
+
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
 
@@ -140,6 +149,10 @@ public class TestAdvised extends Fragment {
                             });
                         }
                     });
+
+                //}
+
+
 
             }
         });
@@ -206,6 +219,7 @@ public class TestAdvised extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id=item.getItemId();
         switch (item.getItemId())
         {
             case R.id.logout:
@@ -213,6 +227,7 @@ public class TestAdvised extends Fragment {
                 Intent i= new Intent(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
+
                 break;
         }
         return super.onOptionsItemSelected(item);

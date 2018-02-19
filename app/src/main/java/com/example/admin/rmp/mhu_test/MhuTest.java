@@ -23,7 +23,9 @@ import com.example.admin.rmp.TestAdviced.TestAdvised;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
 import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.VaccinationRecord;
 
 public class MhuTest extends Fragment {
@@ -34,6 +36,7 @@ public class MhuTest extends Fragment {
     private MHU_Test mhuTest;
     private TextInputLayout etblood_glucoseTextLayout,hemogramTextLayout,
             creatineTextLayout,ureaTextLayout,sgotTextLayout,sgptTextLayout;
+
     private PrefManager prefManager;
 
 
@@ -72,6 +75,9 @@ public class MhuTest extends Fragment {
         });
 
         setHasOptionsMenu(true);
+
+        prefManager=new PrefManager(getActivity());
+
         etBloodGlucose = (TextInputEditText)rootview.findViewById(R.id.etblood_glucose);
         ethemogram = (TextInputEditText)rootview.findViewById(R.id.hemogram);
         etcreatine = (TextInputEditText)rootview.findViewById(R.id.creatine);
@@ -96,9 +102,14 @@ public class MhuTest extends Fragment {
 
                 setMHUTestData();
 
+                //if(checkValidation()) {
+
+
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
                     fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
+
+                //}
 
             }
         });
@@ -202,6 +213,8 @@ public class MhuTest extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id=item.getItemId();
+
         switch (item.getItemId())
         {
             case R.id.logout:
@@ -209,6 +222,7 @@ public class MhuTest extends Fragment {
                 Intent i= new Intent(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
+
                 break;
         }
         return super.onOptionsItemSelected(item);

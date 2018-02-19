@@ -24,6 +24,9 @@ import android.widget.Toast;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+import com.example.admin.rmp.utils.validation.Validations;
+
 import com.example.admin.rmp.vital_info.Vital_Information;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
@@ -45,7 +48,9 @@ public class General_Information extends Fragment {
     private String selected_gender = "";
     private PatientRegistration patientRegistration;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout;
-    PrefManager prefManager;
+
+
+    private PrefManager prefManager;
 
 
     public General_Information() {
@@ -79,6 +84,9 @@ public class General_Information extends Fragment {
         setHasOptionsMenu(true);
         customertoolbar = (Toolbar) view.findViewById(R.id.customer_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(customertoolbar);
+
+
+        setHasOptionsMenu(true);
 
         prefManager=new PrefManager(getActivity());
         edtFName = (TextInputEditText)view.findViewById(R.id.firstname);
@@ -153,7 +161,11 @@ public class General_Information extends Fragment {
             @Override
             public void onClick(View view) {
                     setPatientData();
+
+                    //if(checkValidation()) {
+
                     if (checkValidation()) {
+
                         final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                                 .setTitleText("Please wait");
 
@@ -198,7 +210,11 @@ public class General_Information extends Fragment {
 
                             }
                         });
+
+                    //}
+
                     }
+
 
             }
         });
@@ -223,57 +239,60 @@ public class General_Information extends Fragment {
 
         if (edtFName.getText().toString().trim().length() == 0)
         {
-            firstname_TextLayout.setErrorEnabled(true);
-            firstname_TextLayout.setErrorTextAppearance(R.style.error);
-            firstname_TextLayout.setError("Enter first name");
+            //firstname_TextLayout.setErrorEnabled(true);
+            //firstname_TextLayout.setErrorTextAppearance(R.style.error);
+            edtFName.setError("Enter first name");
             response = false;
         } else {
-            firstname_TextLayout.setErrorEnabled(false);
-            firstname_TextLayout.setError(null);
+            //firstname_TextLayout.setErrorEnabled(false);
+            edtFName.setError(null);
         }
 
         if (edtLName.getText().toString().trim().length() == 0)
         {
-            lname_TextLayout.setErrorEnabled(true);
-            lname_TextLayout.setErrorTextAppearance(R.style.error);
-            lname_TextLayout.setError("Enter last name");
+            //lname_TextLayout.setErrorEnabled(true);
+            //lname_TextLayout.setErrorTextAppearance(R.style.error);
+            edtLName.setError("Enter last name");
             response = false;
         } else {
-            lname_TextLayout.setErrorEnabled(false);
-            lname_TextLayout.setError(null);
+            //lname_TextLayout.setErrorEnabled(false);
+            edtLName.setError(null);
         }
 
-        if (edtMobile.getText().toString().trim().length() == 0)
+        if(!Validations.isValidPhoneNumber(edtMobile.getText().toString()))
         {
-            mobile_TextLayout.setErrorEnabled(true);
-            mobile_TextLayout.setErrorTextAppearance(R.style.error);
-            mobile_TextLayout.setError("Enter mobile number");
+            //mobile_TextLayout.setErrorEnabled(true);
+            //mobile_TextLayout.setErrorTextAppearance(R.style.error);
+            edtMobile.setError("Enter mobile number");
             response = false;
-        } else {
-            mobile_TextLayout.setErrorEnabled(false);
-            mobile_TextLayout.setError(null);
         }
+        else
+        {
+            //mobile_TextLayout.setErrorEnabled(false);
+            edtMobile.setError(null);
+        }
+
 
         if (edtAddress.getText().toString().trim().length() == 0)
         {
-            address_TextLayout.setErrorEnabled(true);
-            address_TextLayout.setErrorTextAppearance(R.style.error);
-            address_TextLayout.setError("Enter address");
+            //address_TextLayout.setErrorEnabled(true);
+            //address_TextLayout.setErrorTextAppearance(R.style.error);
+            edtAddress.setError("Enter address");
             response = false;
         } else {
-            address_TextLayout.setErrorEnabled(false);
-            address_TextLayout.setError(null);
+            //address_TextLayout.setErrorEnabled(false);
+            edtAddress.setError(null);
         }
 
         if (edtDob.getText().toString().trim().length() == 0)
         {
-            dob_TextLayout.setErrorEnabled(true);
-            dob_TextLayout.setErrorTextAppearance(R.style.error);
-            dob_TextLayout.setError("Select date of birth");
+            //dob_TextLayout.setErrorEnabled(true);
+            //dob_TextLayout.setErrorTextAppearance(R.style.error);
+            edtDob.setError("Select date of birth");
             response = false;
         } else {
-            dob_TextLayout.setErrorEnabled(false);
-            dob_TextLayout.setError(null);
+            //dob_TextLayout.setErrorEnabled(false);
+            edtDob.setError(null);
         }
 
         if (genderGrp.getCheckedRadioButtonId() == -1) {
@@ -299,6 +318,8 @@ public class General_Information extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id=item.getItemId();
+
         switch (item.getItemId())
         {
             case R.id.logout:
@@ -306,9 +327,9 @@ public class General_Information extends Fragment {
                 Intent i= new Intent(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
+
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

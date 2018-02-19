@@ -30,7 +30,9 @@ import com.example.admin.rmp.R;
 import com.example.admin.rmp.medical_condition.adapter.AdapterDiagnosys;
 import com.example.admin.rmp.medical_condition.adapter.DoseList_Adapter;
 import com.example.admin.rmp.medical_condition.model.Diagnosys;
+
 import com.example.admin.rmp.medical_condition.model.Dose;
+
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.previous_records.PreviousRecords;
 
@@ -41,7 +43,10 @@ import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.medical_condition.apihelper.Web_Medical_ApiHelper;
 import com.example.admin.rmp.medical_condition.model.Medical_Conditions;
 import com.example.admin.rmp.user_login.LoginActivity;
+
+
 import com.example.admin.rmp.utils.Utility;
+
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -50,21 +55,20 @@ public class MedicalConditionFragment extends Fragment {
     Toolbar medical_toolbar;
     private TextInputEditText etComplaint1, etComplaint2, etComplaint3,
             etBreifHistory1, etBreifHistory2, etBreifHistory3;
-    private TextInputLayout etComplaint1TextInputLayout,etComplaint2TextInputLayout,
-            etComplaint3TextInputLayout,etBreifHistory1TextInputLayout,
-            etBreifHistory2TextInputLayout,etBreifHistory3TextInputLayout,investigation_radioTextLayout;
+    private TextInputLayout etComplaint1TextInputLayout, etComplaint2TextInputLayout,
+            etComplaint3TextInputLayout, etBreifHistory1TextInputLayout,
+            etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout, investigation_radioTextLayout;
     private RadioGroup investigationGroup, treatmentGroup, improvementGroup;
-    private RadioButton BtnInvestigationYes,BtnInvestigationNo,BtnInvestigationDontKnow,
-            BtnTreatmentYes,BtnTreatmentNo,BtnTreatmentDontKnow,
-            BtnImprovementYes,BtnImprovementNo,BtnImprovementDontKnow;
-    private Button btnAddPrescrption,btnSaveMedical;
+    private RadioButton BtnInvestigationYes, BtnInvestigationNo, BtnInvestigationDontKnow,
+            BtnTreatmentYes, BtnTreatmentNo, BtnTreatmentDontKnow,
+            BtnImprovementYes, BtnImprovementNo, BtnImprovementDontKnow;
+    private Button btnAddPrescrption, btnSaveMedical;
     private Medical_Conditions medicalCondition;
-    private String investigationSelected ="", treatmentSelected = "", improvementSelected ="";
-    private RecyclerView doseList ;
+    private String investigationSelected = "", treatmentSelected = "", improvementSelected = "";
+    private RecyclerView doseList;
     private DoseList_Adapter doseAdapter;
     private LinearLayoutManager mLayoutManager;
     private ArrayList<Dose> doseArrayList;
-    private PrefManager prefManager;
 
     ListView listView;
     private TextView diagnosys;
@@ -72,9 +76,9 @@ public class MedicalConditionFragment extends Fragment {
     ArrayList<Diagnosys> nameList;
     AlertDialog.Builder dialogBuilder;
     View dialogView;
+    PrefManager prefManager;
 
-    public MedicalConditionFragment()
-    {
+    public MedicalConditionFragment() {
         // Required empty public constructor
     }
 
@@ -84,12 +88,11 @@ public class MedicalConditionFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_medical_condition, container, false);
 
-        initialization(rootview,inflater);
+        initialization(rootview, inflater);
 
         saveMedicalClickListener();
 
@@ -106,11 +109,10 @@ public class MedicalConditionFragment extends Fragment {
         return rootview;
     }
 
-    private void initialization(View view, LayoutInflater inflater)
-    {
+    private void initialization(View view, LayoutInflater inflater) {
         setHasOptionsMenu(true);
         medical_toolbar = (Toolbar) view.findViewById(R.id.medical_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(medical_toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(medical_toolbar);
         medical_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,41 +120,44 @@ public class MedicalConditionFragment extends Fragment {
             }
         });
 
-        prefManager=new PrefManager(getActivity());
-        etComplaint1 = (TextInputEditText)view.findViewById(R.id.et_complain1);
-        etComplaint2 = (TextInputEditText)view.findViewById(R.id.et_complain2);
-        etComplaint3 = (TextInputEditText)view.findViewById(R.id.et_complain3);
-        etBreifHistory1 = (TextInputEditText)view.findViewById(R.id.et_breifhistory1);
-        etBreifHistory2 = (TextInputEditText)view.findViewById(R.id.et_breifhistory2);
-        etBreifHistory3 = (TextInputEditText)view.findViewById(R.id.et_breifhistory3);
-        investigationGroup = (RadioGroup)view.findViewById(R.id.investigation_group);
-        improvementGroup = (RadioGroup)view.findViewById(R.id.improvement_group);
-        treatmentGroup = (RadioGroup)view.findViewById(R.id.treatment_group);
-        BtnInvestigationYes= (RadioButton) view.findViewById(R.id.investigation_yes);
-        BtnInvestigationNo= (RadioButton)view.findViewById(R.id.investigation_no);
-        BtnInvestigationDontKnow= (RadioButton)view.findViewById(R.id.investigation_dontknow);
-        BtnTreatmentYes= (RadioButton)view.findViewById(R.id.treatment_yes);
-        BtnTreatmentNo= (RadioButton)view.findViewById(R.id.treatment_no);
-        BtnTreatmentDontKnow= (RadioButton)view.findViewById(R.id.treatment_dont_know);
-        BtnImprovementYes= (RadioButton)view.findViewById(R.id.improvement_yes);
-        BtnImprovementNo= (RadioButton)view.findViewById(R.id.improvement_no);
-        BtnImprovementDontKnow= (RadioButton)view.findViewById(R.id.improvement_dontknow);
-        btnAddPrescrption = (Button)view.findViewById(R.id.btn_add_prescription);
-        btnSaveMedical = (Button)view.findViewById(R.id.btn_save_medical);
+
+        setHasOptionsMenu(true);
+
+        prefManager = new PrefManager(getActivity());
+        etComplaint1 = (TextInputEditText) view.findViewById(R.id.et_complain1);
+        etComplaint2 = (TextInputEditText) view.findViewById(R.id.et_complain2);
+        etComplaint3 = (TextInputEditText) view.findViewById(R.id.et_complain3);
+        etBreifHistory1 = (TextInputEditText) view.findViewById(R.id.et_breifhistory1);
+        etBreifHistory2 = (TextInputEditText) view.findViewById(R.id.et_breifhistory2);
+        etBreifHistory3 = (TextInputEditText) view.findViewById(R.id.et_breifhistory3);
+        investigationGroup = (RadioGroup) view.findViewById(R.id.investigation_group);
+        improvementGroup = (RadioGroup) view.findViewById(R.id.improvement_group);
+        treatmentGroup = (RadioGroup) view.findViewById(R.id.treatment_group);
+        BtnInvestigationYes = (RadioButton) view.findViewById(R.id.investigation_yes);
+        BtnInvestigationNo = (RadioButton) view.findViewById(R.id.investigation_no);
+        BtnInvestigationDontKnow = (RadioButton) view.findViewById(R.id.investigation_dontknow);
+        BtnTreatmentYes = (RadioButton) view.findViewById(R.id.treatment_yes);
+        BtnTreatmentNo = (RadioButton) view.findViewById(R.id.treatment_no);
+        BtnTreatmentDontKnow = (RadioButton) view.findViewById(R.id.treatment_dont_know);
+        BtnImprovementYes = (RadioButton) view.findViewById(R.id.improvement_yes);
+        BtnImprovementNo = (RadioButton) view.findViewById(R.id.improvement_no);
+        BtnImprovementDontKnow = (RadioButton) view.findViewById(R.id.improvement_dontknow);
+        btnAddPrescrption = (Button) view.findViewById(R.id.btn_add_prescription);
+        btnSaveMedical = (Button) view.findViewById(R.id.btn_save_medical);
         diagnosys = (TextView) view.findViewById(R.id.diagnosys);
-        etComplaint1TextInputLayout=(TextInputLayout)view.findViewById(R.id.etComplain1_textInputLayout);
-        etComplaint2TextInputLayout=(TextInputLayout)view.findViewById(R.id.etComplain2_textInputLayout);
-        etComplaint3TextInputLayout=(TextInputLayout)view.findViewById(R.id.etComplain3_textInputLayout);
-        etBreifHistory1TextInputLayout=(TextInputLayout)view.findViewById(R.id.etBreifhistory1_TextInputLayout);
-        etBreifHistory2TextInputLayout=(TextInputLayout)view.findViewById(R.id.etBreifhistory2_TextInputLayout);
-        etBreifHistory3TextInputLayout=(TextInputLayout)view.findViewById(R.id.etBreifhistory3_TextInputLayout);
-        investigation_radioTextLayout=(TextInputLayout)view.findViewById(R.id.investigationRadioTextLayout);
-        doseList = (RecyclerView)view.findViewById(R.id.dose_list);
+        etComplaint1TextInputLayout = (TextInputLayout) view.findViewById(R.id.etComplain1_textInputLayout);
+        etComplaint2TextInputLayout = (TextInputLayout) view.findViewById(R.id.etComplain2_textInputLayout);
+        etComplaint3TextInputLayout = (TextInputLayout) view.findViewById(R.id.etComplain3_textInputLayout);
+        etBreifHistory1TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory1_TextInputLayout);
+        etBreifHistory2TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory2_TextInputLayout);
+        etBreifHistory3TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory3_TextInputLayout);
+        investigation_radioTextLayout = (TextInputLayout) view.findViewById(R.id.investigationRadioTextLayout);
+        doseList = (RecyclerView) view.findViewById(R.id.dose_list);
 
         //set common grp list
-     //   commonGroups_list=
+        //   commonGroups_list=
         doseArrayList = new ArrayList<Dose>();
-        doseAdapter = new DoseList_Adapter(doseArrayList,getActivity().getApplicationContext());
+        doseAdapter = new DoseList_Adapter(doseArrayList, getActivity().getApplicationContext());
 
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         doseList.setHasFixedSize(true);
@@ -161,66 +166,64 @@ public class MedicalConditionFragment extends Fragment {
 
     }
 
-    private void saveMedicalClickListener()
-    {
+    private void saveMedicalClickListener() {
         btnSaveMedical.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 setMedicalInfo();
-                    final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                            .setTitleText("Please wait");
+                final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                        .setTitleText("Please wait");
 
-                    sweetAlertDialog.show();
+                sweetAlertDialog.show();
 
-                    Web_Medical_ApiHelper.webAddMedicalConditions(doseArrayList,getActivity(), medicalCondition, new ApiResponseListener() {
-                        @Override
-                        public void onSuccess(String message) {
-                            sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText("Done !!");
-                            sweetAlertDialog.setConfirmText("Ok");
-                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    sweetAlertDialog.dismissWithAnimation();
-                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    PreviousRecords previousRecords = new PreviousRecords();
-                                    fragmentTransaction.replace(R.id.framelayout, previousRecords).addToBackStack(null).commit();
+                Web_Medical_ApiHelper.webAddMedicalConditions(doseArrayList, getActivity(), medicalCondition, new ApiResponseListener() {
+                    @Override
+                    public void onSuccess(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("Done !!");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                PreviousRecords previousRecords = new PreviousRecords();
+                                fragmentTransaction.replace(R.id.framelayout, previousRecords).addToBackStack(null).commit();
 
-                                    etComplaint1.setText("");
-                                    etComplaint2.setText("");
-                                    etComplaint3.setText("");
-                                    etBreifHistory1.setText("");
-                                    etBreifHistory2.setText("");
-                                    etBreifHistory3.setText("");
+                                etComplaint1.setText("");
+                                etComplaint2.setText("");
+                                etComplaint3.setText("");
+                                etBreifHistory1.setText("");
+                                etBreifHistory2.setText("");
+                                etBreifHistory3.setText("");
 
-                                    BtnInvestigationYes.setChecked(false);
-                                    BtnInvestigationNo.setChecked(false);
-                                    BtnInvestigationDontKnow.setChecked(false);
-                                    BtnTreatmentYes.setChecked(false);
-                                    BtnTreatmentNo.setChecked(false);
-                                    BtnTreatmentDontKnow.setChecked(false);
-                                    BtnImprovementYes.setChecked(false);
-                                    BtnImprovementNo.setChecked(false);
-                                    BtnImprovementDontKnow.setChecked(false);
+                                BtnInvestigationYes.setChecked(false);
+                                BtnInvestigationNo.setChecked(false);
+                                BtnInvestigationDontKnow.setChecked(false);
+                                BtnTreatmentYes.setChecked(false);
+                                BtnTreatmentNo.setChecked(false);
+                                BtnTreatmentDontKnow.setChecked(false);
+                                BtnImprovementYes.setChecked(false);
+                                BtnImprovementNo.setChecked(false);
+                                BtnImprovementDontKnow.setChecked(false);
 
-                                }
-                            });
-                        }
+                            }
+                        });
+                    }
 
-                        @Override
-                        public void onError(String message) {
-                            sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                            sweetAlertDialog.setTitleText(message);
-                            sweetAlertDialog.setConfirmText("Ok");
-                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    sweetAlertDialog.dismissWithAnimation();
-                                }
-                            });
-                        }
-                    });
+                    @Override
+                    public void onError(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                });
 
             }
         });
@@ -228,8 +231,7 @@ public class MedicalConditionFragment extends Fragment {
 
     }
 
-    private void DiagnosysClickListener(final LayoutInflater inflater)
-    {
+    private void DiagnosysClickListener(final LayoutInflater inflater) {
         diagnosys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -238,8 +240,7 @@ public class MedicalConditionFragment extends Fragment {
         });
     }
 
-    private void setMedicalInfo()
-    {
+    private void setMedicalInfo() {
         medicalCondition = new Medical_Conditions();
 
         medicalCondition.setChiefcomplaints1(etComplaint1.getText().toString());
@@ -254,8 +255,7 @@ public class MedicalConditionFragment extends Fragment {
         medicalCondition.setDiagnosysList(getSelectedDiagnosys());
     }
 
-    private void addPrescriptionClickListener()
-    {
+    private void addPrescriptionClickListener() {
         btnAddPrescrption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -275,9 +275,8 @@ public class MedicalConditionFragment extends Fragment {
                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                     @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        Dose dose =new Dose(doseName.getText().toString(),doseFrequency.getText().toString(),days.getText().toString());
+                    public void onClick(DialogInterface dialog, int which) {
+                        Dose dose = new Dose(doseName.getText().toString(), doseFrequency.getText().toString(), days.getText().toString());
                         doseArrayList.add(dose);
                         doseAdapter.notifyDataSetChanged();
                         dialog.dismiss();
@@ -285,8 +284,7 @@ public class MedicalConditionFragment extends Fragment {
                 });
                 alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
+                    public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
@@ -296,95 +294,75 @@ public class MedicalConditionFragment extends Fragment {
         });
     }
 
-    private void investigationRadioGrpListner()
-    {
+    private void investigationRadioGrpListner() {
         investigationGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                if(checkedId == R.id.investigation_yes)
-                {
+                if (checkedId == R.id.investigation_yes) {
                     investigationSelected = "Y";
-                }
-                else if(checkedId == R.id.investigation_no)
-                {
+                } else if (checkedId == R.id.investigation_no) {
                     investigationSelected = "N";
-                }
-                else if(checkedId == R.id.investigation_dontknow)
-                {
+                } else if (checkedId == R.id.investigation_dontknow) {
                     investigationSelected = "DN";
                 }
             }
         });
     }
 
-    private void treatmentRadioGrpListner()
-    {
+    private void treatmentRadioGrpListner() {
         treatmentGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                if(checkedId == R.id.treatment_yes)
-                {
+                if (checkedId == R.id.treatment_yes) {
                     treatmentSelected = "Y";
-                }
-                else if(checkedId == R.id.treatment_no)
-                {
+                } else if (checkedId == R.id.treatment_no) {
                     treatmentSelected = "N";
-                }
-                else if(checkedId == R.id.treatment_dont_know)
-                {
+                } else if (checkedId == R.id.treatment_dont_know) {
                     treatmentSelected = "DN";
                 }
             }
         });
     }
 
-    private void improvementRadioGrpListner()
-    {
+    private void improvementRadioGrpListner() {
         improvementGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                if(checkedId == R.id.improvement_yes)
-                {
+                if (checkedId == R.id.improvement_yes) {
                     improvementSelected = "Y";
-                }
-                else if(checkedId == R.id.improvement_no)
-                {
+                } else if (checkedId == R.id.improvement_no) {
                     improvementSelected = "N";
-                }
-                else if(checkedId == R.id.improvement_dontknow)
-                {
+                } else if (checkedId == R.id.improvement_dontknow) {
                     improvementSelected = "DN";
                 }
             }
         });
     }
 
-    private ArrayList<Diagnosys> diagnosyslist()
-    {
+    private ArrayList<Diagnosys> diagnosyslist() {
         ArrayList<Diagnosys> nameList = new ArrayList<Diagnosys>();
-        nameList.add(new Diagnosys("Childhood Obesity",false));
-        nameList.add(new Diagnosys("Constipation",false));
-        nameList.add(new Diagnosys("Asthma (Pediatric)",false));
-        nameList.add(new Diagnosys("Headache, Migraine",false));
-        nameList.add(new Diagnosys("Substance Use Disorders",false));
-        nameList.add(new Diagnosys("Depression",false));
-        nameList.add(new Diagnosys("Hypertension",false));
-        nameList.add(new Diagnosys("Food Allergy ",false));
-        nameList.add(new Diagnosys("Anxiety Disorder",false));
-        nameList.add(new Diagnosys("Speech Defects",false));
+        nameList.add(new Diagnosys("Childhood Obesity", false));
+        nameList.add(new Diagnosys("Constipation", false));
+        nameList.add(new Diagnosys("Asthma (Pediatric)", false));
+        nameList.add(new Diagnosys("Headache, Migraine", false));
+        nameList.add(new Diagnosys("Substance Use Disorders", false));
+        nameList.add(new Diagnosys("Depression", false));
+        nameList.add(new Diagnosys("Hypertension", false));
+        nameList.add(new Diagnosys("Food Allergy ", false));
+        nameList.add(new Diagnosys("Anxiety Disorder", false));
+        nameList.add(new Diagnosys("Speech Defects", false));
 
         return nameList;
     }
 
-    public void showChangeLangDialog(final LayoutInflater inflater)
-    {
+    public void showChangeLangDialog(final LayoutInflater inflater) {
         dialogBuilder = new AlertDialog.Builder(getActivity());
         dialogView = inflater.inflate(R.layout.customdialog_diagnosys, null);
         dialogBuilder.setView(dialogView);
 
-        listView= (ListView) dialogView.findViewById(R.id.listview_diagnosys);
+        listView = (ListView) dialogView.findViewById(R.id.listview_diagnosys);
         nameList = diagnosyslist();
-        adapter= new AdapterDiagnosys(getActivity(), nameList);
+        adapter = new AdapterDiagnosys(getActivity(), nameList);
         listView.setAdapter(adapter);
 
         dialogBuilder.setTitle("Select Diagnosys");
@@ -403,32 +381,27 @@ public class MedicalConditionFragment extends Fragment {
         b.show();
     }
 
-    public String getSelectedDiagnosys()
-    {
-        String selectedDiagnosys="";
-        if(adapter!=null) {
+    public String getSelectedDiagnosys() {
+        String selectedDiagnosys = "";
+        if (adapter != null) {
             for (Diagnosys diagnosys : adapter.getDiagnosys()) {
                 if (diagnosys.selected) {
                     selectedDiagnosys += diagnosys.name + ",";
                 }
             }
         }
-        if(selectedDiagnosys.length() > 0)
-        {
+        if (selectedDiagnosys.length() > 0) {
             selectedDiagnosys = selectedDiagnosys.substring(0, selectedDiagnosys.length() - 1);
         }
 
         return selectedDiagnosys;
     }
 
-
-    private boolean checkValidation()
-    {
-        boolean response=true;
+    private boolean checkValidation() {
+        boolean response = true;
 
 
-        if (etComplaint1.getText().toString().trim().length() == 0)
-        {
+        if (etComplaint1.getText().toString().trim().length() == 0) {
             etComplaint1TextInputLayout.setErrorEnabled(true);
             etComplaint1TextInputLayout.setErrorTextAppearance(R.style.error);
             etComplaint1TextInputLayout.setError("Enter Complaint1 ");
@@ -438,8 +411,7 @@ public class MedicalConditionFragment extends Fragment {
             etComplaint1TextInputLayout.setError(null);
         }
 
-        if (etComplaint2.getText().toString().trim().length() == 0)
-        {
+        if (etComplaint2.getText().toString().trim().length() == 0) {
             etComplaint2TextInputLayout.setErrorEnabled(true);
             etComplaint2TextInputLayout.setErrorTextAppearance(R.style.error);
             etComplaint2TextInputLayout.setError("Enter Complaint2 ");
@@ -449,8 +421,7 @@ public class MedicalConditionFragment extends Fragment {
             etComplaint2TextInputLayout.setError(null);
         }
 
-        if (etComplaint3.getText().toString().trim().length() == 0)
-        {
+        if (etComplaint3.getText().toString().trim().length() == 0) {
             etComplaint3TextInputLayout.setErrorEnabled(true);
             etComplaint3TextInputLayout.setErrorTextAppearance(R.style.error);
             etComplaint3TextInputLayout.setError("Enter Complaint3 ");
@@ -461,8 +432,7 @@ public class MedicalConditionFragment extends Fragment {
         }
 
 
-        if (etBreifHistory1.getText().toString().trim().length() == 0)
-        {
+        if (etBreifHistory1.getText().toString().trim().length() == 0) {
             etBreifHistory1TextInputLayout.setErrorEnabled(true);
             etBreifHistory1TextInputLayout.setErrorTextAppearance(R.style.error);
             etBreifHistory1TextInputLayout.setError("Enter Brief History1 ");
@@ -472,8 +442,7 @@ public class MedicalConditionFragment extends Fragment {
             etBreifHistory1TextInputLayout.setError(null);
         }
 
-        if (etBreifHistory2.getText().toString().trim().length() == 0)
-        {
+        if (etBreifHistory2.getText().toString().trim().length() == 0) {
             etBreifHistory2TextInputLayout.setErrorEnabled(true);
             etBreifHistory2TextInputLayout.setErrorTextAppearance(R.style.error);
             etBreifHistory2TextInputLayout.setError("Enter Brief History2");
@@ -483,8 +452,7 @@ public class MedicalConditionFragment extends Fragment {
             etBreifHistory2TextInputLayout.setError(null);
         }
 
-        if (etBreifHistory3.getText().toString().trim().length() == 0)
-        {
+        if (etBreifHistory3.getText().toString().trim().length() == 0) {
             etBreifHistory3TextInputLayout.setErrorEnabled(true);
             etBreifHistory3TextInputLayout.setErrorTextAppearance(R.style.error);
             etBreifHistory3TextInputLayout.setError("Enter Brief History3");
@@ -493,7 +461,6 @@ public class MedicalConditionFragment extends Fragment {
             etBreifHistory3TextInputLayout.setErrorEnabled(false);
             etBreifHistory3TextInputLayout.setError(null);
         }
-
 
 
         if (investigationGroup.getCheckedRadioButtonId() == -1) {
@@ -542,24 +509,25 @@ public class MedicalConditionFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu,menu);
+        inflater.inflate(R.menu.menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId())
-        {
-            case R.id.logout:
-                prefManager.setLogOut();
-                Intent i= new Intent(getActivity(), LoginActivity.class);
-                startActivity(i);
-                getActivity().finish();
-                break;
+        int id = item.getItemId();
+        switch (item.getItemId()) {
+                    case R.id.logout:
+                        prefManager.setLogOut();
+                        Intent i = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(i);
+                        getActivity().finish();
+
+                        break;
+                }
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
-    }
 
 }
 

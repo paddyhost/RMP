@@ -1,5 +1,6 @@
 package com.example.admin.rmp.vital_info;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -8,6 +9,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,7 +19,12 @@ import android.widget.Button;
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.medical_condition.MedicalConditionFragment;
+
+import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.user_login.LoginActivity;
+
 import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vital_info.apihelper.WebVital_Helper;
 import com.example.admin.rmp.vital_info.model.Vital_Info;
 
@@ -30,6 +39,7 @@ public class Vital_Information extends Fragment {
     private Vital_Info vitalInfo;
     private TextInputLayout edt_heightTextLayout,edt_weightTextLayout,
     edt_bloodpressure_TextLayout,edt_bloodpressureTo_TextLayout,edt_tempTextLayout,edt_respTextLayout;
+    private PrefManager prefManager;
 
     public Vital_Information() {
         // Required empty public constructor
@@ -54,6 +64,8 @@ public class Vital_Information extends Fragment {
 
     private void initializations(View rootview)
     {
+        setHasOptionsMenu(true);
+        prefManager=new PrefManager(getActivity());
         toolbarvital = (Toolbar) rootview.findViewById(R.id.vital_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbarvital);
         btnSaveVital = (Button)rootview.findViewById(R.id.btn_save_vital);
@@ -87,6 +99,9 @@ public class Vital_Information extends Fragment {
             @Override
             public void onClick(View view) {
                 setVitalInfo();
+
+                //if(checkValidation()) {
+
                     final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                             .setTitleText("Please wait");
 
@@ -131,9 +146,14 @@ public class Vital_Information extends Fragment {
                         }
                     });
 
+                //}
+
+
+
             }
         });
     }
+
     private void setVitalInfo()
     {
         vitalInfo = new Vital_Info();
@@ -218,5 +238,27 @@ public class Vital_Information extends Fragment {
             edt_respTextLayout.setError(null);
         }
         return response;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        switch (id)
+        {
+            case R.id.logout:
+                prefManager.setLogOut();
+                Intent intent=new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -22,7 +22,9 @@ import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.MhuTest;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
+
 import com.example.admin.rmp.utils.Utility;
+
 import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 import com.example.admin.rmp.vaccination_record.model.Vaccination;
 
@@ -70,6 +72,9 @@ public class VaccinationRecord extends Fragment {
     private void initializations(View view)
     {
         setHasOptionsMenu(true);
+
+        prefManager=new PrefManager(getActivity());
+
         vaccination_toolbar = (Toolbar) view.findViewById(R.id.vaccination_toolbar);
         prefManager=new PrefManager(getActivity());
         btn_save_vaccination = (Button) view.findViewById(R.id.btn_save_vaccination);
