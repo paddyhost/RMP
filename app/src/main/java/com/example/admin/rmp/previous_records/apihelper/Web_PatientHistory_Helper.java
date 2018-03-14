@@ -1,6 +1,7 @@
 package com.example.admin.rmp.previous_records.apihelper;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -32,7 +33,8 @@ import java.util.Map;
 
 public class Web_PatientHistory_Helper
 {
-    public static void webAddPatienHistory(final Activity activity, final PatientHistory patientHistory, final ApiResponseListener apiResponseListener)
+    public static void webAddPatienHistory(final Activity activity, final PatientHistory patientHistory)
+            /* final ApiResponseListener apiResponseListener*/
     {
         StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddPatientHistory,new Response.Listener<String>() {
             @Override
@@ -46,22 +48,25 @@ public class Web_PatientHistory_Helper
                         if(responce.getString("message").equalsIgnoreCase("PatientHistory added successfully")) {
 
 
-
-                            apiResponseListener.onSuccess(responce.getString("message"));
+                            Toast.makeText(activity,"PatientHistory added successfully",Toast.LENGTH_SHORT).show();
+                            //apiResponseListener.onSuccess(responce.getString("message"));
                         }
                         else
                         {
-                            apiResponseListener.onError(responce.getString("message"));
+                            Toast.makeText(activity,"PatientHistory add failed",Toast.LENGTH_SHORT).show();
+                            //apiResponseListener.onError(responce.getString("message"));
                         }
                     }
                     else
                     {
-                        apiResponseListener.onError(responce.getString("message"));
+                        Toast.makeText(activity,"PatientHistory add failed",Toast.LENGTH_SHORT).show();
+                        //apiResponseListener.onError(responce.getString("message"));
                     }
                 }
                 catch (JSONException e)
                 {
-                    apiResponseListener.onError("Exception");
+                    Toast.makeText(activity,"Exception",Toast.LENGTH_SHORT).show();
+                    //apiResponseListener.onError("Exception");
                     e.printStackTrace();
                 }
             }
@@ -71,23 +76,29 @@ public class Web_PatientHistory_Helper
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                    apiResponseListener.onError("Check internet connection");
+                    //apiResponseListener.onError("Check internet connection");
+                    Toast.makeText(activity,"Check internet connection",Toast.LENGTH_SHORT).show();
+
                 }
                 else if (error instanceof ServerError)
                 {
-                    apiResponseListener.onError("Server Error");
+                    Toast.makeText(activity,"Server Error",Toast.LENGTH_SHORT).show();
+                    //apiResponseListener.onError("Server Error");
                 }
                 else if (error instanceof NetworkError)
                 {
-                    apiResponseListener.onError("Check internet connection");
+                    Toast.makeText(activity,"Check internet connection",Toast.LENGTH_SHORT).show();
+                    //apiResponseListener.onError("Check internet connection");
                 }
                 else if (error instanceof ParseError)
                 {
-                    apiResponseListener.onError("Parse Error");
+                    Toast.makeText(activity,"Parse Error",Toast.LENGTH_SHORT).show();
+                    //apiResponseListener.onError("Parse Error");
                 }
                 else
                 {
-                    apiResponseListener.onError("Unknown Error");
+                    Toast.makeText(activity,"Unknown Error",Toast.LENGTH_SHORT).show();
+                    //apiResponseListener.onError("Unknown Error");
                 }
 
             }
@@ -100,7 +111,7 @@ public class Web_PatientHistory_Helper
 
                 params.put("patient_id", MainActivity.PATIENT_ID);
                 params.put("registrationno",MainActivity.REGISTRATION_ID);
-                 params.put("drname1",patientHistory.getDoctorName1());
+                params.put("drname1",patientHistory.getDoctorName1());
                 params.put("drname2",patientHistory.getDoctorName2());
                 params.put("drname3",patientHistory.getDoctorName3());
                 params.put("hospitalname",patientHistory.getPrevHospital());

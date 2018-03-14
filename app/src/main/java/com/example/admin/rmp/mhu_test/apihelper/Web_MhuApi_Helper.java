@@ -108,7 +108,6 @@ public class Web_MhuApi_Helper
                 params.put("adviced",mhuTest.getAdvised());
                 params.put("ferered",mhuTest.getReferred());
                 params.put("remark",mhuTest.getRemark());
-
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");

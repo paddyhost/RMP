@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.example.admin.rmp.medical_condition.Add_Prescription_Fragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/colorAccent"
+            app:title="Add Prescription"
+            android:id="@+id/add_prescription_toolbar"
+            app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+       <LinearLayout
+           android:layout_marginTop="20dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:weightSum="2">
+
+
+           <TextView
+               android:layout_marginLeft="15dp"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:text="Add Prescription"
+               android:layout_weight="1.8"
+               android:layout_gravity="center|start"
+               android:gravity="center|start"/>
+
+           <android.support.design.widget.FloatingActionButton
+               android:id="@+id/btn_floating_add_prescription"
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_gravity="center"
+               android:src="@android:drawable/ic_input_add"
+               android:layout_weight="0.50"/>
+       </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:id="@+id/dose_list"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

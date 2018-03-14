@@ -1,8 +1,6 @@
 package com.example.admin.rmp.mhu_test;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -17,25 +15,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.TestAdviced.TestAdvised;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
-
 import com.example.admin.rmp.utils.Utility;
 
-import com.example.admin.rmp.vaccination_record.VaccinationRecord;
+import org.w3c.dom.Text;
 
 public class MhuTest extends Fragment {
 
     private Toolbar mhu_toolbar;
-    private Button btn_save_mhu;
-    private TextInputEditText etBloodGlucose, ethemogram, etcreatine,eturea,etsgot,etsgpt;
+    private Spinner completeBloodCountHomogramSpinner,liverFunctionSpinner,kidneyFunctionTestSpinner,
+            lipidProfileSpinner,glucoseProfileSpinner,urineExaminationSpinner;
+    private TextInputEditText edtBloodReferenceValue,edtBloodReading,edtLiverFunctionReferenceValue,edtKidneyFunctionTestReferenceValue,
+            edtKidneyFunctionTestReading,edtLiverFunctionReading,edtLipidProfileReferenceValue,edtLipidProfileReading,edtGlucoseProfileReferenceValue
+            ,edtGlucoseProfileReading,edtWidalReferenceValue,edtWidalReading,edtTyphidotReferenceValue,edtTyphidotReading,
+            edtMalariaSerologyReferenceValue,edtMalariaSerologyReading,edtRafactorReferenceValue,
+            edtRaFactorReading,edtHbsagReferenceValue,edtHbsagReading,edtUrineExaminationReferenceValue,
+            edtUrineExaminationReading,edtCrpReferenceValue,edtCrpReading,edtAntiHcvReferenceValue,
+            edtAntiHcvReading,edtHivReferenceValue,edtHivReading,edtVdrlReferenceValue,edtVdrlReading,
+            edtGctReferenceValue,edtGctReading,edtAboRhReferenceValue,edtAboRhReading;
+
+    private TextView txtWidal,txtTyphidot,txtMalariaSerology,txtRaFactor,txtHbsag,txtCrp,
+            txtAntiHcv,txtHiv,txtVdrl,txtGct,txtAborh;
+
+    private Button btnSaveMhu;
     private MHU_Test mhuTest;
-    private TextInputLayout etblood_glucoseTextLayout,hemogramTextLayout,
-            creatineTextLayout,ureaTextLayout,sgotTextLayout,sgptTextLayout;
 
     private PrefManager prefManager;
 
@@ -63,9 +73,9 @@ public class MhuTest extends Fragment {
         return rootview;
     }
 
-    private void initializations(View rootview)
+    private void initializations(View view)
     {
-        mhu_toolbar = (Toolbar) rootview.findViewById(R.id.mhu_toolbar);
+        mhu_toolbar = (Toolbar) view.findViewById(R.id.mhu_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(mhu_toolbar);
         mhu_toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,32 +88,86 @@ public class MhuTest extends Fragment {
 
         prefManager=new PrefManager(getActivity());
 
-        etBloodGlucose = (TextInputEditText)rootview.findViewById(R.id.etblood_glucose);
-        ethemogram = (TextInputEditText)rootview.findViewById(R.id.hemogram);
-        etcreatine = (TextInputEditText)rootview.findViewById(R.id.creatine);
-        eturea = (TextInputEditText)rootview.findViewById(R.id.urea);
-        etsgot=(TextInputEditText)rootview.findViewById(R.id.sgot);
-        etsgpt=(TextInputEditText)rootview.findViewById(R.id.sgpt);
-        btn_save_mhu = (Button) rootview.findViewById(R.id.btn_save_mhu);
-        etblood_glucoseTextLayout=(TextInputLayout)rootview.findViewById(R.id.etblood_glucose_TextLayout);
-        hemogramTextLayout=(TextInputLayout)rootview.findViewById(R.id.hemogram_TextLayout);
-        creatineTextLayout=(TextInputLayout)rootview.findViewById(R.id.creatine_TextLayout);
-        ureaTextLayout=(TextInputLayout)rootview.findViewById(R.id.urea_TextLayout);
-        sgotTextLayout=(TextInputLayout)rootview.findViewById(R.id.sgot_TextLayout);
-        sgptTextLayout=(TextInputLayout)rootview.findViewById(R.id.sgpt_TextLayout);
+        completeBloodCountHomogramSpinner=(Spinner)view.findViewById(R.id.complete_blood_count_homogram_spinner);
+        edtBloodReferenceValue=(TextInputEditText)view.findViewById(R.id.blood_reference_value);
+        edtBloodReading=(TextInputEditText)view.findViewById(R.id.blood_reading);
 
+        liverFunctionSpinner=(Spinner)view.findViewById(R.id.liver_function_spinner);
+        edtLiverFunctionReferenceValue=(TextInputEditText)view.findViewById(R.id.liver_function_reference_value);
+        edtLiverFunctionReading=(TextInputEditText)view.findViewById(R.id.liver_function_reading);
+
+        kidneyFunctionTestSpinner=(Spinner)view.findViewById(R.id.kidney_function_test_spinner);
+        edtKidneyFunctionTestReferenceValue=(TextInputEditText)view.findViewById(R.id.kidney_function_test_reference_value);
+        edtKidneyFunctionTestReading=(TextInputEditText)view.findViewById(R.id.kidney_function_test_reading);
+
+        lipidProfileSpinner=(Spinner)view.findViewById(R.id.lipid_profile_spinner);
+        edtLipidProfileReferenceValue=(TextInputEditText)view.findViewById(R.id.lipid_profile_reference_value);
+        edtLipidProfileReading=(TextInputEditText)view.findViewById(R.id.lipid_profile_reading);
+
+        glucoseProfileSpinner=(Spinner)view.findViewById(R.id.glucose_profile_spinner);
+        edtGlucoseProfileReferenceValue=(TextInputEditText)view.findViewById(R.id.glucose_profile_reference_value);
+        edtGlucoseProfileReading=(TextInputEditText)view.findViewById(R.id.glucose_profile_reading);
+
+        txtWidal=(TextView)view.findViewById(R.id.widal);
+        edtWidalReferenceValue=(TextInputEditText)view.findViewById(R.id.widal_reference_value);
+        edtWidalReading=(TextInputEditText)view.findViewById(R.id.widal_reading);
+
+        txtTyphidot=(TextView)view.findViewById(R.id.typhidot);
+        edtTyphidotReferenceValue=(TextInputEditText)view.findViewById(R.id.typhidot_reference_value);
+        edtTyphidotReading=(TextInputEditText)view.findViewById(R.id.typhidot_reading);
+
+        txtMalariaSerology=(TextView)view.findViewById(R.id.malaria_serology);
+        edtMalariaSerologyReferenceValue=(TextInputEditText)view.findViewById(R.id.malaria_serology_reference_value);
+        edtMalariaSerologyReading=(TextInputEditText)view.findViewById(R.id.malaria_serology_reading);
+
+        txtRaFactor=(TextView)view.findViewById(R.id.ra_factor);
+        edtRafactorReferenceValue=(TextInputEditText)view.findViewById(R.id.ra_factor_reference_value);
+        edtRaFactorReading=(TextInputEditText)view.findViewById(R.id.ra_factor_reading);
+
+        txtHbsag=(TextView)view.findViewById(R.id.hbsag);
+        edtHbsagReferenceValue=(TextInputEditText)view.findViewById(R.id.hbsag_reference_value);
+        edtHbsagReading=(TextInputEditText)view.findViewById(R.id.hbsag_reading);
+
+        urineExaminationSpinner=(Spinner)view.findViewById(R.id.urine_examination_spinner);
+        edtUrineExaminationReferenceValue=(TextInputEditText)view.findViewById(R.id.urine_examination_reference_value);
+        edtUrineExaminationReading=(TextInputEditText)view.findViewById(R.id.urine_examination_reading);
+
+        txtCrp=(TextView)view.findViewById(R.id.crp);
+        edtCrpReferenceValue=(TextInputEditText)view.findViewById(R.id.crp_reference_value);
+        edtCrpReading=(TextInputEditText)view.findViewById(R.id.crp_reading);
+
+        txtAntiHcv=(TextView)view.findViewById(R.id.anti_hcv);
+        edtAntiHcvReferenceValue=(TextInputEditText)view.findViewById(R.id.anti_hcv_reference_value);
+        edtAntiHcvReading=(TextInputEditText)view.findViewById(R.id.anti_hcv_reading);
+
+        txtHiv=(TextView)view.findViewById(R.id.hiv);
+        edtHivReferenceValue=(TextInputEditText)view.findViewById(R.id.hiv_reference_value);
+        edtHivReading=(TextInputEditText)view.findViewById(R.id.hiv_reading);
+
+        txtVdrl=(TextView)view.findViewById(R.id.vdrl);
+        edtVdrlReferenceValue=(TextInputEditText)view.findViewById(R.id.vdrl_reference_value);
+        edtVdrlReading=(TextInputEditText)view.findViewById(R.id.vdrl_reading);
+
+        txtGct=(TextView)view.findViewById(R.id.gct);
+        edtGctReferenceValue=(TextInputEditText)view.findViewById(R.id.gct_reference_value);
+        edtGctReading=(TextInputEditText)view.findViewById(R.id.gct_reading);
+
+        txtAborh=(TextView)view.findViewById(R.id.aborh);
+        edtAboRhReferenceValue=(TextInputEditText)view.findViewById(R.id.abo_rh_reference_value);
+        edtAboRhReading=(TextInputEditText)view.findViewById(R.id.abo_rh_reading);
+
+        btnSaveMhu=(Button)view.findViewById(R.id.btn_save);
     }
 
     private void saveClickListner()
     {
-        btn_save_mhu.setOnClickListener(new View.OnClickListener() {
+        btnSaveMhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 setMHUTestData();
 
                 //if(checkValidation()) {
-
 
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
@@ -118,15 +182,15 @@ public class MhuTest extends Fragment {
     private void setMHUTestData()
     {
         mhuTest = new MHU_Test();
-        mhuTest.setBloodGlucose(etBloodGlucose.getText().toString());
+       /* mhuTest.setBloodGlucose(etBloodGlucose.getText().toString());
         mhuTest.setHemogram(ethemogram.getText().toString());
         mhuTest.setCreatine(etcreatine.getText().toString());
         mhuTest.setUrea(eturea.getText().toString());
         mhuTest.setSgot(etsgot.getText().toString());
-        mhuTest.setSgpt(etsgpt.getText().toString());
+        mhuTest.setSgpt(etsgpt.getText().toString());*/
     }
 
-    private boolean checkValidation()
+    /*private boolean checkValidation()
     {
         boolean response=true;
 
@@ -202,7 +266,7 @@ public class MhuTest extends Fragment {
 
         return  response;
     }
-
+*/
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

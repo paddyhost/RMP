@@ -3,6 +3,7 @@ package com.example.admin.rmp.medical_condition;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ListView;
@@ -42,10 +44,14 @@ import java.util.List;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.medical_condition.apihelper.Web_Medical_ApiHelper;
 import com.example.admin.rmp.medical_condition.model.Medical_Conditions;
+import com.example.admin.rmp.previous_records.apihelper.Web_PatientHistory_Helper;
+import com.example.admin.rmp.previous_records.model.PatientHistory;
 import com.example.admin.rmp.user_login.LoginActivity;
 
 
 import com.example.admin.rmp.utils.Utility;
+import com.example.admin.rmp.vaccination_record.VaccinationRecord;
+import com.example.admin.rmp.vital_info.Vital_Information;
 
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -65,18 +71,25 @@ public class MedicalConditionFragment extends Fragment {
     private Button btnAddPrescrption, btnSaveMedical;
     private Medical_Conditions medicalCondition;
     private String investigationSelected = "", treatmentSelected = "", improvementSelected = "";
-    private RecyclerView doseList;
+    /*private RecyclerView doseList;
     private DoseList_Adapter doseAdapter;
-    private LinearLayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;*/
     private ArrayList<Dose> doseArrayList;
 
     ListView listView;
     private TextView diagnosys;
+    private EditText edtDiagnosysDescription;
     AdapterDiagnosys adapter;
     ArrayList<Diagnosys> nameList;
     AlertDialog.Builder dialogBuilder;
     View dialogView;
     PrefManager prefManager;
+
+
+    /*Previous Record Variables*/
+    private TextInputEditText etPreviousHsopital, etDoctorName1, etDoctorName2, etDoctorName3;
+    private PatientHistory patientHistory;
+    private ApiResponseListener apiResponseListener;
 
     public MedicalConditionFragment() {
         // Required empty public constructor
@@ -99,6 +112,8 @@ public class MedicalConditionFragment extends Fragment {
         investigationRadioGrpListner();
 
         treatmentRadioGrpListner();
+
+        checkInvestigationDone();
 
         improvementRadioGrpListner();
 
@@ -130,6 +145,7 @@ public class MedicalConditionFragment extends Fragment {
         etBreifHistory1 = (TextInputEditText) view.findViewById(R.id.et_breifhistory1);
         etBreifHistory2 = (TextInputEditText) view.findViewById(R.id.et_breifhistory2);
         etBreifHistory3 = (TextInputEditText) view.findViewById(R.id.et_breifhistory3);
+        edtDiagnosysDescription= (EditText) view.findViewById(R.id.diagnosys_description);
         investigationGroup = (RadioGroup) view.findViewById(R.id.investigation_group);
         improvementGroup = (RadioGroup) view.findViewById(R.id.improvement_group);
         treatmentGroup = (RadioGroup) view.findViewById(R.id.treatment_group);
@@ -152,17 +168,14 @@ public class MedicalConditionFragment extends Fragment {
         etBreifHistory2TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory2_TextInputLayout);
         etBreifHistory3TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory3_TextInputLayout);
         investigation_radioTextLayout = (TextInputLayout) view.findViewById(R.id.investigationRadioTextLayout);
-        doseList = (RecyclerView) view.findViewById(R.id.dose_list);
 
-        //set common grp list
-        //   commonGroups_list=
-        doseArrayList = new ArrayList<Dose>();
-        doseAdapter = new DoseList_Adapter(doseArrayList, getActivity().getApplicationContext());
 
-        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        doseList.setHasFixedSize(true);
-        doseList.setLayoutManager(mLayoutManager);
-        doseList.setAdapter(doseAdapter);
+        /*Previous Record Variables Initializations*/
+
+        etPreviousHsopital = (TextInputEditText)view.findViewById(R.id.prevs_hosptl);
+        etDoctorName1 = (TextInputEditText)view.findViewById(R.id.drname1);
+        etDoctorName2 = (TextInputEditText)view.findViewById(R.id.drname2);
+        etDoctorName3 = (TextInputEditText)view.findViewById(R.id.drname3);
 
     }
 
@@ -176,6 +189,7 @@ public class MedicalConditionFragment extends Fragment {
 
                 sweetAlertDialog.show();
 
+                Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory);
                 Web_Medical_ApiHelper.webAddMedicalConditions(doseArrayList, getActivity(), medicalCondition, new ApiResponseListener() {
                     @Override
                     public void onSuccess(String message) {
@@ -186,9 +200,10 @@ public class MedicalConditionFragment extends Fragment {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
+
                                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                PreviousRecords previousRecords = new PreviousRecords();
-                                fragmentTransaction.replace(R.id.framelayout, previousRecords).addToBackStack(null).commit();
+                                VaccinationRecord vaccinationRecord = new VaccinationRecord();
+                                fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
 
                                 etComplaint1.setText("");
                                 etComplaint2.setText("");
@@ -196,6 +211,10 @@ public class MedicalConditionFragment extends Fragment {
                                 etBreifHistory1.setText("");
                                 etBreifHistory2.setText("");
                                 etBreifHistory3.setText("");
+                                etPreviousHsopital.setText("");
+                                etDoctorName1.setText("");
+                                etDoctorName2.setText("");
+                                etDoctorName3.setText("");
 
                                 BtnInvestigationYes.setChecked(false);
                                 BtnInvestigationNo.setChecked(false);
@@ -228,7 +247,6 @@ public class MedicalConditionFragment extends Fragment {
             }
         });
 
-
     }
 
     private void DiagnosysClickListener(final LayoutInflater inflater) {
@@ -241,6 +259,7 @@ public class MedicalConditionFragment extends Fragment {
     }
 
     private void setMedicalInfo() {
+
         medicalCondition = new Medical_Conditions();
 
         medicalCondition.setChiefcomplaints1(etComplaint1.getText().toString());
@@ -253,43 +272,22 @@ public class MedicalConditionFragment extends Fragment {
         medicalCondition.setTratementtaken(treatmentSelected);
         medicalCondition.setAnyimprovement(improvementSelected);
         medicalCondition.setDiagnosysList(getSelectedDiagnosys());
+
+
+        patientHistory = new PatientHistory();
+        patientHistory.setPrevHospital(etPreviousHsopital.getText().toString());
+        patientHistory.setDoctorName1(etDoctorName1.getText().toString());
+        patientHistory.setDoctorName2(etDoctorName2.getText().toString());
+        patientHistory.setDoctorName3(etDoctorName3.getText().toString());
     }
 
     private void addPrescriptionClickListener() {
         btnAddPrescrption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                View alertLayout = inflater.inflate(R.layout.dose_dialog_row, null);
-                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
-                final TextInputEditText doseName = (TextInputEditText) alertLayout.findViewById(R.id.et_prescription_dose);
-                final TextInputEditText doseFrequency = (TextInputEditText) alertLayout.findViewById(R.id.et_frequency);
-                final TextInputEditText days = (TextInputEditText) alertLayout.findViewById(R.id.et_days);
-
-                // this is set the view from XML inside AlertDialog
-                alert.setView(alertLayout);
-                // disallow cancel of AlertDialog on click of back button and outside touch
-                alert.setCancelable(false);
-
-                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Dose dose = new Dose(doseName.getText().toString(), doseFrequency.getText().toString(), days.getText().toString());
-                        doseArrayList.add(dose);
-                        doseAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
-                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog dialog = alert.create();
-                dialog.show();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Add_Prescription_Fragment addPrescriptionFragment = new Add_Prescription_Fragment();
+                fragmentTransaction.replace(R.id.framelayout, addPrescriptionFragment).addToBackStack(null).commit();
             }
         });
     }
@@ -300,13 +298,46 @@ public class MedicalConditionFragment extends Fragment {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 if (checkedId == R.id.investigation_yes) {
                     investigationSelected = "Y";
+                    BtnTreatmentYes.setEnabled(true);
+                    BtnTreatmentNo.setEnabled(true);
+                    BtnTreatmentDontKnow.setEnabled(true);
                 } else if (checkedId == R.id.investigation_no) {
                     investigationSelected = "N";
+                    BtnTreatmentYes.setEnabled(false);
+                    BtnTreatmentNo.setEnabled(false);
+                    BtnTreatmentDontKnow.setEnabled(false);
                 } else if (checkedId == R.id.investigation_dontknow) {
                     investigationSelected = "DN";
+                    BtnTreatmentYes.setEnabled(false);
+                    BtnTreatmentNo.setEnabled(false);
+                    BtnTreatmentDontKnow.setEnabled(false);
                 }
+                else
+                {
+                    BtnTreatmentYes.setEnabled(false);
+                    BtnTreatmentNo.setEnabled(false);
+                    BtnTreatmentDontKnow.setEnabled(false);
+                }
+
             }
         });
+    }
+
+    private void checkInvestigationDone() {
+        if(BtnInvestigationYes.isChecked()) {
+
+            BtnTreatmentYes.setEnabled(true);
+            BtnTreatmentNo.setEnabled(true);
+            BtnTreatmentDontKnow.setEnabled(true);
+
+        }
+        else
+        {
+            BtnTreatmentYes.setEnabled(false);
+            BtnTreatmentNo.setEnabled(false);
+            BtnTreatmentDontKnow.setEnabled(false);
+
+        }
     }
 
     private void treatmentRadioGrpListner() {

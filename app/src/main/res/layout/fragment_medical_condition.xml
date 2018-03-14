@@ -30,10 +30,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <!--cheif complain-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,6 +76,7 @@
                         android:paddingLeft="32dp"/>
                 </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -101,6 +105,7 @@
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -128,6 +133,8 @@
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
+
+            <!--breif history-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,6 +174,7 @@
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -194,6 +202,7 @@
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -221,25 +230,139 @@
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
-            <!--Diagnosys multiselect spinner-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="Diagnosis"
-                    android:gravity="center_vertical"
-                    android:id="@+id/diagnosys"
-                    android:editable="false"
-                    android:singleLine="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+
+            <!--Previous Record-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/border_label"
+                android:layout_marginTop="16dp"
+                android:text="Previous Record"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_local_hospital_black_24dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/prevs_hosptl_textLayout"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/prevs_hosptl"
+                        android:hint="Previous Hospital"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_medical_stethoscope"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/drname1_textLayout"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/drname1"
+                        android:hint="Previous Doctor Name 1"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_medical_stethoscope"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/drname2_textLayout"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/drname2"
+                        android:layout_height="50dp"
+                        android:hint="Previous Doctor Name 2"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_medical_stethoscope"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="16dp"/>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/drname3_textLayout"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/drname3"
+                        android:hint="Previous Doctor Name 3"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+            <!--Previous Investigation-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Investigation"
+                android:text="Previous Investigation"
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:textStyle="bold"/>
 
             <FrameLayout
@@ -285,6 +408,9 @@
                 </RadioGroup>
 
             </FrameLayout>
+
+
+            <!--Treatment Taken-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -318,7 +444,11 @@
                     android:id="@+id/treatment_dont_know"
                     android:layout_marginLeft="10dp"/>
             </RadioGroup>
+
+
+            <!--invisible-->
             <TextView
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Any Improvement"
@@ -327,6 +457,7 @@
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"/>
             <RadioGroup
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -351,44 +482,56 @@
                     android:id="@+id/improvement_dontknow"
                     android:layout_marginLeft="10dp"/>
             </RadioGroup>
+
+
+            <!--Diagnosys-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diagnosis"
+                android:gravity="center_vertical"
+                android:id="@+id/diagnosys"
+                android:editable="false"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="Diagnosis Description"
+                android:id="@+id/diagnosys_description"
+                android:background="@drawable/shape"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="4px"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorDarkgray"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:background="@color/colorGray">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="Add Prescription"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:textSize="10dp"
-                    android:id="@+id/btn_add_prescription"
-                    android:layout_marginRight="16dp"
-                    android:paddingRight="15dp"
-                    android:paddingLeft="15dp"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@color/colorWhite"/>
 
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:id="@+id/dose_list"
-                    android:layout_below="@id/btn_add_prescription"/>
+            <!--Add Prescription Button-->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="Add Prescription"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:textSize="10dp"
+                android:id="@+id/btn_add_prescription"
+                android:layout_marginRight="16dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorWhite"/>
 
-
-            </RelativeLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4px"
-                android:background="@color/colorDarkgray"/>
+            <!--Save & next Button-->
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -400,6 +543,7 @@
                 android:layout_marginRight="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
