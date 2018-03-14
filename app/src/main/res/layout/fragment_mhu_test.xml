@@ -31,235 +31,1648 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+
+            <!--Blood Count/Homogram-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="horizontal">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/ic_blood_glucose" />
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Count/Homogram"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
 
-                <RelativeLayout
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_blood"/>
+
+                    <Spinner
+                        android:id="@+id/complete_blood_count_homogram_spinner"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:entries="@array/complete_blood_count_homogram_array"
+                        android:layout_weight="1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/etblood_glucose_TextLayout">
-
+                        android:id="@+id/complete_blood_count_homogram_reference_value_textLayout"
+                        android:layout_height="wrap_content">
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:hint="Blood Glucose"
-                            android:inputType="number"
-                            android:id="@+id/etblood_glucose"
-                            android:maxLength="4" />
+                            android:layout_height="wrap_content"
+                            android:id="@+id/blood_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
                     </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:gravity="center|end"
-                        android:text="MG / DL" />
+                    <LinearLayout
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/reading"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="16dp"/>
 
-                </RelativeLayout>
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:id="@+id/complete_blood_count_homogram_reading_textLayout"
+                                    android:layout_height="wrap_content">
+                                    <android.support.design.widget.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="50dp"
+                                        android:id="@+id/blood_reading"
+                                        android:inputType="textPersonName|text"
+                                        android:maxLength="30"
+                                        android:hint="Reading"/>
+                                </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
+            </android.support.v7.widget.CardView>
+
+
+            <!--Liver Function Test-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:orientation="horizontal">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Liver Function Test"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/liver_funtion_layout"
+                android:weightSum="2">
 
                 <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_liver"/>
+
+                <Spinner
+                    android:id="@+id/liver_function_spinner"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/ic_bood_drop" />
+                    android:layout_gravity="center"
+                    android:entries="@array/liver_function_test_array"
+                    android:layout_weight="1"/>
 
-                <RelativeLayout
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/hemogram_TextLayout">
-
+                        android:id="@+id/liver_function_reference_value_textLayout"
+                        android:layout_height="wrap_content">
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:hint="Heamogram"
-                            android:id="@+id/hemogram"
-                            android:inputType="number"
-                            android:maxLength="4" />
+                            android:id="@+id/liver_function_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
                     </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-                    <TextView
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:gravity="center|end"
-                        android:text="GM %" />
+                        android:layout_marginRight="16dp"/>
 
-                </RelativeLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/liver_function_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/liver_function_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
+            </android.support.v7.widget.CardView>
+
+
+           <!--Kidney Function Test-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kidney Function Test"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/kidney_function_test_layout"
+                android:weightSum="2">
 
                 <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_kidney"/>
+
+                <Spinner
+                    android:id="@+id/kidney_function_test_spinner"
+                    android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/ic_kidney" />
+                    android:layout_gravity="center"
+                    android:entries="@array/kidney_function_array"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/kidney_function_test_reference_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/kidney_function_test_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/kidney_function_test_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/kidney_function_test_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+             <!--Lipid Profile-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+              <TextView
+                  android:layout_marginLeft="12dp"
+                  android:layout_marginRight="12dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Lipid Profile"
+                  android:textColor="@color/black"/>
+              <LinearLayout
+                  android:layout_marginLeft="25dp"
+                  android:layout_marginRight="25dp"
+                  android:layout_marginTop="30dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/lipid_profile_layout"
+                  android:weightSum="2">
+
+                  <ImageView
+                      android:layout_width="25dp"
+                      android:layout_height="40dp"
+                      android:layout_marginLeft="0dp"
+                      android:layout_gravity="center"
+                      android:src="@drawable/ic_cholesterol"/>
+
+                  <Spinner
+                      android:id="@+id/lipid_profile_spinner"
+                      android:layout_marginLeft="12dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:entries="@array/lipid_profile_array"
+                      android:layout_weight="1"/>
+
+              </LinearLayout>
+              <LinearLayout
+                  android:layout_marginLeft="12dp"
+                  android:layout_marginRight="12dp"
+                  android:layout_marginTop="70dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+
+                  <LinearLayout
+                      android:layout_marginLeft="12dp"
+                      android:layout_marginRight="12dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+                      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/reference_value"
+                          android:layout_gravity="center_vertical"
+                          android:layout_marginRight="16dp"/>
+
+                      <android.support.design.widget.TextInputLayout
+                          android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:id="@+id/lipid_profile_reference_value_textLayout"
+                          android:layout_height="wrap_content">
+                          <android.support.design.widget.TextInputEditText
+                              android:layout_width="match_parent"
+                              android:layout_height="50dp"
+                              android:id="@+id/lipid_profile_reference_value"
+                              android:inputType="textPersonName|text"
+                              android:maxLength="30"
+                              android:hint="Reference Value"/>
+                      </android.support.design.widget.TextInputLayout>
+                  </LinearLayout>
+
+                  <LinearLayout
+                      android:layout_marginLeft="12dp"
+                      android:layout_marginRight="12dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+                      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/reading"
+                          android:layout_gravity="center_vertical"
+                          android:layout_marginRight="16dp"/>
+
+                      <android.support.design.widget.TextInputLayout
+                          android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:id="@+id/lipid_profile_reading_textLayout"
+                          android:layout_height="wrap_content">
+                          <android.support.design.widget.TextInputEditText
+                              android:layout_width="match_parent"
+                              android:layout_height="50dp"
+                              android:id="@+id/lipid_profile_reading"
+                              android:inputType="textPersonName|text"
+                              android:maxLength="30"
+                              android:hint="Reading"/>
+                      </android.support.design.widget.TextInputLayout>
+                  </LinearLayout>
+
+              </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+             <!--Glucose Profile (BSR)-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+             <TextView
+                 android:layout_marginLeft="12dp"
+                 android:layout_marginRight="12dp"
+                 android:layout_marginTop="10dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Glucose Profile"
+                 android:textColor="@color/black"/>
+             <LinearLayout
+                 android:layout_marginLeft="25dp"
+                 android:layout_marginRight="25dp"
+                 android:layout_marginTop="30dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/glucose_profile_layout"
+                 android:weightSum="2">
+
+                 <ImageView
+                     android:layout_width="25dp"
+                     android:layout_height="40dp"
+                     android:layout_marginLeft="0dp"
+                     android:layout_gravity="center"
+                     android:src="@drawable/ic_blood_glucose"/>
+
+                 <Spinner
+                     android:id="@+id/glucose_profile_spinner"
+                     android:layout_marginLeft="12dp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:entries="@array/glucose_profile_array"
+                     android:layout_weight="1"/>
+
+             </LinearLayout>
+             <LinearLayout
+                 android:layout_marginLeft="12dp"
+                 android:layout_marginRight="12dp"
+                 android:layout_marginTop="70dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical">
+
+
+                 <LinearLayout
+                     android:layout_marginLeft="12dp"
+                     android:layout_marginRight="12dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/reference_value"
+                         android:layout_gravity="center_vertical"
+                         android:layout_marginRight="16dp"/>
+
+                     <android.support.design.widget.TextInputLayout
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:id="@+id/glucose_profile_reference_value_textLayout"
+                         android:layout_height="wrap_content">
+                         <android.support.design.widget.TextInputEditText
+                             android:layout_width="match_parent"
+                             android:layout_height="50dp"
+                             android:id="@+id/glucose_profile_reference_value"
+                             android:inputType="textPersonName|text"
+                             android:maxLength="30"
+                             android:hint="Reference Value"/>
+                     </android.support.design.widget.TextInputLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_marginLeft="12dp"
+                     android:layout_marginRight="12dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/reading"
+                         android:layout_gravity="center_vertical"
+                         android:layout_marginRight="16dp"/>
+
+                     <android.support.design.widget.TextInputLayout
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:id="@+id/glucose_profile_reading_textLayout"
+                         android:layout_height="wrap_content">
+                         <android.support.design.widget.TextInputEditText
+                             android:layout_width="match_parent"
+                             android:layout_height="50dp"
+                             android:id="@+id/glucose_profile_reading"
+                             android:inputType="textPersonName|text"
+                             android:maxLength="30"
+                             android:hint="Reading"/>
+                     </android.support.design.widget.TextInputLayout>
+                 </LinearLayout>
+
+             </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!--WIDAL-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+               <TextView
+                   android:id="@+id/widal"
+                   android:layout_marginLeft="12dp"
+                   android:layout_marginRight="12dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="WIDAL"
+                   android:textColor="@color/black"/>
+               <LinearLayout
+                   android:layout_marginLeft="12dp"
+                   android:layout_marginRight="12dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+
+
+                   <LinearLayout
+                       android:layout_marginLeft="12dp"
+                       android:layout_marginRight="12dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/reference_value"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginRight="16dp"/>
+
+                       <android.support.design.widget.TextInputLayout
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:id="@+id/widal_reference_value_textLayout"
+                           android:layout_height="wrap_content">
+                           <android.support.design.widget.TextInputEditText
+                               android:layout_width="match_parent"
+                               android:layout_height="50dp"
+                               android:id="@+id/widal_reference_value"
+                               android:inputType="textPersonName|text"
+                               android:maxLength="30"
+                               android:hint="Reference Value"/>
+                       </android.support.design.widget.TextInputLayout>
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_marginLeft="12dp"
+                       android:layout_marginRight="12dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/reading"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginRight="16dp"/>
+
+                       <android.support.design.widget.TextInputLayout
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:id="@+id/widal_reading_textLayout"
+                           android:layout_height="wrap_content">
+                           <android.support.design.widget.TextInputEditText
+                               android:layout_width="match_parent"
+                               android:layout_height="50dp"
+                               android:id="@+id/widal_reading"
+                               android:inputType="textPersonName|text"
+                               android:maxLength="30"
+                               android:hint="Reading"/>
+                       </android.support.design.widget.TextInputLayout>
+                   </LinearLayout>
+
+               </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!--TYPHIDOT-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+               <TextView
+                   android:id="@+id/typhidot"
+                   android:layout_marginLeft="12dp"
+                   android:layout_marginRight="12dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="TYPHIDOT"
+                   android:textColor="@color/black"/>
+               <LinearLayout
+                   android:layout_marginLeft="12dp"
+                   android:layout_marginRight="12dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
+
+
+                   <LinearLayout
+                       android:layout_marginLeft="12dp"
+                       android:layout_marginRight="12dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/reference_value"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginRight="16dp"/>
+
+                       <android.support.design.widget.TextInputLayout
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:id="@+id/typhidot_reference_value_textLayout"
+                           android:layout_height="wrap_content">
+                           <android.support.design.widget.TextInputEditText
+                               android:layout_width="match_parent"
+                               android:layout_height="50dp"
+                               android:id="@+id/typhidot_reference_value"
+                               android:inputType="textPersonName|text"
+                               android:maxLength="30"
+                               android:hint="Reference Value"/>
+                       </android.support.design.widget.TextInputLayout>
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_marginLeft="12dp"
+                       android:layout_marginRight="12dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/reading"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginRight="16dp"/>
+
+                       <android.support.design.widget.TextInputLayout
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:id="@+id/typhidot_reading_textLayout"
+                           android:layout_height="wrap_content">
+                           <android.support.design.widget.TextInputEditText
+                               android:layout_width="match_parent"
+                               android:layout_height="50dp"
+                               android:id="@+id/typhidot_reading"
+                               android:inputType="textPersonName|text"
+                               android:maxLength="30"
+                               android:hint="Reading"/>
+                       </android.support.design.widget.TextInputLayout>
+                   </LinearLayout>
+
+               </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+              <!--Malaria Serology-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Kidney Function"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                   android:id="@+id/malaria_serology"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Malaria Serology"
+                   android:textColor="@color/black"/>
+               <LinearLayout
+                   android:layout_marginLeft="12dp"
+                   android:layout_marginRight="12dp"
+                   android:layout_marginTop="15dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorDarkgray" />
 
-            <android.support.design.widget.TextInputLayout
+                   <LinearLayout
+                       android:layout_marginLeft="12dp"
+                       android:layout_marginRight="12dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/reference_value"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginRight="16dp"/>
+
+                       <android.support.design.widget.TextInputLayout
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:id="@+id/malaria_serology_reference_value_textLayout"
+                           android:layout_height="wrap_content">
+                           <android.support.design.widget.TextInputEditText
+                               android:layout_width="match_parent"
+                               android:layout_height="50dp"
+                               android:id="@+id/malaria_serology_reference_value"
+                               android:inputType="textPersonName|text"
+                               android:maxLength="30"
+                               android:hint="Reference Value"/>
+                       </android.support.design.widget.TextInputLayout>
+                   </LinearLayout>
+
+                   <LinearLayout
+                       android:layout_marginLeft="12dp"
+                       android:layout_marginRight="12dp"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@drawable/reading"
+                           android:layout_gravity="center_vertical"
+                           android:layout_marginRight="16dp"/>
+
+                       <android.support.design.widget.TextInputLayout
+                           android:layout_width="0dp"
+                           android:layout_weight="1"
+                           android:id="@+id/malaria_serology_reading_textLayout"
+                           android:layout_height="wrap_content">
+                           <android.support.design.widget.TextInputEditText
+                               android:layout_width="match_parent"
+                               android:layout_height="50dp"
+                               android:id="@+id/malaria_serology_reading"
+                               android:inputType="textPersonName|text"
+                               android:maxLength="30"
+                               android:hint="Reading"/>
+                       </android.support.design.widget.TextInputLayout>
+                   </LinearLayout>
+
+               </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <!--RA Factor-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/creatine_TextLayout">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:id="@+id/creatine"
-                    android:hint="Creatine" />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/urea_TextLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/urea"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:hint="Urea" />
-            </android.support.design.widget.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+            <TextView
+                android:id="@+id/ra_factor"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RA Factor"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/ra_factor_reference_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/ra_factor_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/ra_factor_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/ra_factor_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!--HBSAG(Hepatitis B AG)-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/hbsag"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HBSAG(Hepatitis B AG)"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/hbsag_reference_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/hbsag_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/hbsag_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/hbsag_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+           <!-- Urine Examination-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Urine Examination"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/urine_examination_layout"
+                android:weightSum="2">
 
                 <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_urine"/>
+
+                <Spinner
+                    android:id="@+id/urine_examination_spinner"
+                    android:layout_marginLeft="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/ic_liver" />
+                    android:layout_gravity="center"
+                    android:entries="@array/urine_examination_array"
+                    android:layout_weight="1"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Liver Function"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorDarkgray" />
-
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="70dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sgot_TextLayout">
+                android:orientation="vertical">
 
-                <android.support.design.widget.TextInputEditText
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:id="@+id/sgot"
-                    android:hint="SGOT" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/urine_examination_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/urine_examination_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/urine_examination_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/urine_examination_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+             <!-- CRP-->
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sgpt_TextLayout">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+              <TextView
+                  android:id="@+id/crp"
+                  android:layout_marginLeft="12dp"
+                  android:layout_marginRight="12dp"
+                  android:layout_marginTop="10dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="CRP"
+                  android:textColor="@color/black"/>
+              <LinearLayout
+                  android:layout_marginLeft="12dp"
+                  android:layout_marginRight="12dp"
+                  android:layout_marginTop="15dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
 
-                <android.support.design.widget.TextInputEditText
+
+                  <LinearLayout
+                      android:layout_marginLeft="12dp"
+                      android:layout_marginRight="12dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+                      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/reference_value"
+                          android:layout_gravity="center_vertical"
+                          android:layout_marginRight="16dp"/>
+
+                      <android.support.design.widget.TextInputLayout
+                          android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:id="@+id/crp_value_textLayout"
+                          android:layout_height="wrap_content">
+                          <android.support.design.widget.TextInputEditText
+                              android:layout_width="match_parent"
+                              android:layout_height="50dp"
+                              android:id="@+id/crp_reference_value"
+                              android:inputType="textPersonName|text"
+                              android:maxLength="30"
+                              android:hint="Reference Value"/>
+                      </android.support.design.widget.TextInputLayout>
+                  </LinearLayout>
+
+                  <LinearLayout
+                      android:layout_marginLeft="12dp"
+                      android:layout_marginRight="12dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+                      <ImageView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:src="@drawable/reading"
+                          android:layout_gravity="center_vertical"
+                          android:layout_marginRight="16dp"/>
+
+                      <android.support.design.widget.TextInputLayout
+                          android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:id="@+id/crp_reading_textLayout"
+                          android:layout_height="wrap_content">
+                          <android.support.design.widget.TextInputEditText
+                              android:layout_width="match_parent"
+                              android:layout_height="50dp"
+                              android:id="@+id/crp_reading"
+                              android:inputType="textPersonName|text"
+                              android:maxLength="30"
+                              android:hint="Reading"/>
+                      </android.support.design.widget.TextInputLayout>
+                  </LinearLayout>
+
+              </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+           <!-- Anti HCV-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+             <TextView
+                 android:id="@+id/anti_hcv"
+                 android:layout_marginLeft="12dp"
+                 android:layout_marginRight="12dp"
+                 android:layout_marginTop="10dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="Anti HCV"
+                 android:textColor="@color/black"/>
+             <LinearLayout
+                 android:layout_marginLeft="12dp"
+                 android:layout_marginRight="12dp"
+                 android:layout_marginTop="15dp"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="vertical">
+
+
+                 <LinearLayout
+                     android:layout_marginLeft="12dp"
+                     android:layout_marginRight="12dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/reference_value"
+                         android:layout_gravity="center_vertical"
+                         android:layout_marginRight="16dp"/>
+
+                     <android.support.design.widget.TextInputLayout
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:id="@+id/anti_hcv_value_textLayout"
+                         android:layout_height="wrap_content">
+                         <android.support.design.widget.TextInputEditText
+                             android:layout_width="match_parent"
+                             android:layout_height="50dp"
+                             android:id="@+id/anti_hcv_reference_value"
+                             android:inputType="textPersonName|text"
+                             android:maxLength="30"
+                             android:hint="Reference Value"/>
+                     </android.support.design.widget.TextInputLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_marginLeft="12dp"
+                     android:layout_marginRight="12dp"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <ImageView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/reading"
+                         android:layout_gravity="center_vertical"
+                         android:layout_marginRight="16dp"/>
+
+                     <android.support.design.widget.TextInputLayout
+                         android:layout_width="0dp"
+                         android:layout_weight="1"
+                         android:id="@+id/anti_hcv_reading_textLayout"
+                         android:layout_height="wrap_content">
+                         <android.support.design.widget.TextInputEditText
+                             android:layout_width="match_parent"
+                             android:layout_height="50dp"
+                             android:id="@+id/anti_hcv_reading"
+                             android:inputType="textPersonName|text"
+                             android:maxLength="30"
+                             android:hint="Reading"/>
+                     </android.support.design.widget.TextInputLayout>
+                 </LinearLayout>
+
+             </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+             <!--HIV-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/hiv"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HIV"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:id="@+id/sgpt"
-                    android:hint="SGPT" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/hiv_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/hiv_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/hiv_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/hiv_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+             <!--VDRL-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/vdrl"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="VDRL"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/vdrl_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/vdrl_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/vdrl_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/vdrl_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+           <!--GCT-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/gct"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GCT"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/gct_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/gct_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/gct_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/gct_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <!--ABO RH (Blood Group)-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/aborh"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ABO RH (Blood Group)"
+                android:textColor="@color/black"/>
+            <LinearLayout
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reference_value"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/abo_rh_value_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/abo_rh_reference_value"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reference Value"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/reading"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="16dp"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:id="@+id/abo_rh_reading_textLayout"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/abo_rh_reading"
+                            android:inputType="textPersonName|text"
+                            android:maxLength="30"
+                            android:hint="Reading"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
             <Button
-                android:id="@+id/btn_save_mhu"
+                android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/colorPrimary"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Save &amp; Next"
-                android:textColor="@color/colorWhite"
-                android:layout_marginBottom="16dp"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

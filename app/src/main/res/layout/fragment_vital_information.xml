@@ -207,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="16dp"
-                android:src="@drawable/ic_thermometer" />
+                android:src="@drawable/reading" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

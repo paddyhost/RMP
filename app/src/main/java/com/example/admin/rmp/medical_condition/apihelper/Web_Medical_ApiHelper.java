@@ -49,6 +49,8 @@ public class Web_Medical_ApiHelper
 
                             JSONObject result=responce.getJSONObject("result");
                             String medicalconditionid=result.getString("id");
+
+                            ArrayList<Dose> doseArrayList = new ArrayList<Dose>();
                             for (Dose dose:doseArrayList)
                             {
                                 addPriscribeDose(activity,  dose,medicalconditionid );

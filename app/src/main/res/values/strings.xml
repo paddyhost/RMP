@@ -15,4 +15,206 @@
 
     </string-array>
 
+    <string-array name="patient_category">
+        <item>Select Patient Category</item>
+        <item>Pregnant Women</item>
+        <item>Lactating Women</item>
+        <item>Child Under-5 Years of Age</item>
+        <item>Senior Citizen-above 60 years of age</item>
+    </string-array>
+
+    <string-array name="state_array">
+        <item>Please Select State</item>
+        <item>Uttar Pradesh</item>
+    </string-array>
+
+    <string-array name="district_array">
+        <item>Please Select District</item>
+        <item>Ghaziabad</item>
+    </string-array>
+
+    <string-array name="city_array">
+        <item>Please Select City</item>
+        <item>Ghaziabad</item>
+    </string-array>
+
+    <string-array name="area_array">
+        <item>Please Select Area</item>
+        <item>Khora</item>
+    </string-array>
+
+    <string-array name="location_array">
+        <item>Please Select Location</item>
+        <item>Ambedkar Part, Indira Vihar</item>
+        <item>Durga Mandir, Bharat Nagar</item>
+        <item>Valmiki Mandir, Adarsh Nagar</item>
+        <item>Shiv Park, Jardawala Road, Lord Shiva Public School</item>
+        <item>Near Nagar Palika office</item>
+        <item>Indraprashtha Vidyalaya, Prem Vihar</item>
+        <item>Near Shriram Builders, Azad Nagar</item>
+        <item>S S International School, Neelam Vihar</item>
+        <item>Near Kajal Printers, Vandana Vihar</item>
+        <item>Extension Chowk, Sangam Park, Rajeev Nagar</item>
+    </string-array>
+
+    <string-array name="medicine_name_array">
+        <item>Please Select Medicine Name</item>
+        <item>OMECAP CAP(B15)</item>
+        <item>VOMISTOP-10DT</item>
+        <item>DOMIPEN SYP</item>
+        <item>MFT-SPAS TAB (B)</item>
+        <item>SPASMINDON DROPS</item>
+        <item>NAYNAMINCETIN APPLICAP</item>
+        <item>DERICIP 300 TETARD</item>
+        <item>DERICIP 150 TETARD</item>
+        <item>AMBROX -LS SYP</item>
+        <item>METRO 400(B) UNIPEX</item>
+        <item>METRO200 (L) INTECT RED OVEL</item>
+        <item>NORBIN GYL SUSP</item>
+        <item>NOR TZ (B) OMEGA</item>
+        <item>CERTRIZINE TAB KNOLL</item>
+        <item>CETCIP SYP</item>
+        <item>CPM TAB (L) WIN</item>
+        <item>PROMIPEN SYP</item>
+        <item>GENTATAB EYE DROPS</item>
+        <item>CEFLOX E DROP</item>
+        <item>CLEARWEX EAR DROP</item>
+        <item>B-COMPEX TAB (B) P</item>
+        <item>C2G SYP 100ML</item>
+        <item>CIPLADINE 10 GM</item>
+        <item>CIPADINE SOLUTION 7.5%</item>
+        <item>MORECAL TAB</item>
+        <item>CIPCAL SYP</item>
+        <item>WANADRYL SYP</item>
+        <item>FOLITAS TAB</item>
+        <item>MAXIRICH SOFTGELS</item>
+        <item>HEMOSTAR SYP</item>
+        <item>NEUROMAX-FORT TAB</item>
+        <item>TETNUS AMP (DENO)</item>
+        <item>ASBIC FORTE TAB</item>
+        <item>ETHAMCIP 500(S) CI</item>
+        <item>MAXTIL TAB</item>
+        <item>NORLUT N TAB</item>
+        <item>ALPRASAFE -0.25 TAB</item>
+        <item>VERTIZEN 8 TAB</item>
+        <item>OMNIGEL 10 GM</item>
+        <item>FLUKA 150 (S) CI</item>
+        <item>1ST AID P-TAP 1</item>
+        <item>X - LON</item>
+        <item>WINGESIC PLUS TAB</item>
+        <item>CHESTON COLD NEW TAB</item>
+        <item>PHENIRAMINE MELEATE</item>
+        <item>TAVERA-M</item>
+        <item>IBU 400(B) RIDLEY</item>
+        <item>IBU 200(L) WIN</item>
+        <item>PARAWIN-500 TAB</item>
+        <item>PCM SUSP INTAS</item>
+        <item>PARACIP DROP</item>
+        <item>IBUFLAM NEW</item>
+        <item>IBUZEN SUSPENSION</item>
+        <item>REACTINE 50MG TAB</item>
+        <item>AMOXY 500 CAP(B)</item>
+        <item>AMOXY 250 CAP(B)</item>
+        <item>LABMOX 125 DT</item>
+        <item>MORMOX SYP</item>
+        <item>CEFLOX 500 TAB(HEXA)</item>
+        <item>CIPRODAC 250(C.P)</item>
+        <item>COTRIMOX SS(B) M-P</item>
+        <item>COTRIMOX SYP 1000ML JK</item>
+        <item>DOXYCYCLINE CAP</item>
+        <item>NORFLOXACIN 400 TAB</item>
+        <item>CEPHADEX 250MG CAP</item>
+        <item>CEPHADEX 125DT TABS</item>
+        <item>CEPHADEX 250MG CAP</item>
+        <item>CEPHADEX 500MG CAP</item>
+        <item>CEPHADEX DRY SYP</item>
+        <item>ZYBEND TAB</item>
+        <item>LUPIBEND SYP 10 ML</item>
+        <item>HIPRES-50 TAB</item>
+        <item>AMLIP-5 TAB(B)</item>
+        <item>SCABY LOTION</item>
+        <item>CLOCIP VAG TAB</item>
+        <item>SOFRAMAX CREAM</item>
+        <item>CLOCIP PLAIN OINT</item>
+        <item>FOURDERM 5GM OINT</item>
+        <item>ACIGENE TAB</item>
+        <item>AUSTRO ANTACID ORANGE SYP</item>
+
+    </string-array>
+
+    <string-array name="complete_blood_count_homogram_array">
+        <item>Select Blood Count(CBC)/Homogram(Hgm)</item>
+        <item>CBB/Hgm</item>
+        <item>Hb</item>
+        <item>TLC</item>
+        <item>DLC</item>
+        <item>PCV</item>
+        <item>RBC count</item>
+        <item>Platelet count</item>
+        <item>MCV/MCH/MCHC</item>
+        <item>ESR</item>
+        <item>AEC</item>
+    </string-array>
+
+    <string-array name="liver_function_test_array">
+        <item>Select Liver Function Test(LFT)</item>
+        <item>D Bil</item>
+        <item>ID Bil</item>
+        <item>T - Bil</item>
+        <item>T-Prot</item>
+        <item>A/G Rat</item>
+        <item>ALT</item>
+        <item>AST</item>
+        <item>ALP</item>
+        <item>Comp. LFT</item>
+        <item>GGT</item>
+        <item>Alb</item>
+
+    </string-array>
+
+    <string-array name="kidney_function_array">
+        <item>Select Kidney Function Test</item>
+        <item>Urea</item>
+        <item>Creat.</item>
+        <item>Uric Acid</item>
+        <item>Electrolyte (Na, K. Cl)</item>
+        <item>T Prot</item>
+        <item>A1b</item>
+        <item>A1b/Cr Ratio</item>
+        <item>Micro Albumin</item>
+        <item>Comp.KFT</item>
+    </string-array>
+
+    <string-array name="lipid_profile_array">
+        <item>Select Lipid Profile</item>
+        <item>Cholesterol</item>
+        <item>TAG</item>
+        <item>HDL</item>
+        <item>Complete Lipid Profile(TCHOL,TAG,HDL,LDL,VLDL)</item>
+
+    </string-array>
+
+    <string-array name="glucose_profile_array">
+        <item>Select Glucose Profile</item>
+        <item>FBG</item>
+        <item>2 Hr</item>
+        <item>Random</item>
+        <item>GTT(0,1,2,3 Hrs)</item>
+        <item>HbA1c</item>
+        <item>Urinary Micro Albumin</item>
+        <item>Insulin F/PP</item>
+
+
+    </string-array>
+
+    <string-array name="urine_examination_array">
+        <item>Select Urine Examination</item>
+        <item>Routine &amp; Microsocopic</item>
+        <item>Protein</item>
+        <item>Sugar</item>
+        <item>Ketone Bodies</item>
+        <item>Bile salt/ bile Pigments</item>
+        <item>Urine Pregnancy Test</item>
+    </string-array>
+
 </resources>

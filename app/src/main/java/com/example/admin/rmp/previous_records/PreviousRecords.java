@@ -35,7 +35,7 @@ import com.example.admin.rmp.vaccination_record.apihelper.Vaccination_ApiHelper;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
+public class PreviousRecords extends Fragment{
 
     private Button btn_save_prerecord;
     private Toolbar prerecord_toolbar;
@@ -66,7 +66,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
 
         initializations(rootview);
 
-        saveRecordClickListener();
+        //saveRecordClickListener();
 
         return rootview;
     }
@@ -98,7 +98,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
         drname3TextLayout = (TextInputLayout) view.findViewById(R.id.drname3_textLayout);
     }
 
-    private void saveRecordClickListener()
+   /* private void saveRecordClickListener()
     {
         btn_save_prerecord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +151,7 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
             }
         });
     }
-
+*/
     private void setPreviousHistoryData()
     {
         patientHistory = new PatientHistory();
@@ -216,27 +216,6 @@ public class PreviousRecords extends Fragment /*implements TextWatcher*/ {
 
 
 
-    /*@Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-
-        if (editable.length() == 0) {
-            etPreviousHsopital.setError("Required");
-            etDoctorName1.setVisibility(View.GONE);
-        } else {
-            etPreviousHsopital.setError(null);
-            etDoctorName1.setVisibility(View.VISIBLE);
-        }
-    }*/
 
 
     @Override

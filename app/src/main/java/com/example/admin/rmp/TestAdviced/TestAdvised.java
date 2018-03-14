@@ -40,7 +40,7 @@ public class TestAdvised extends Fragment {
 
     public static final String MHU_TEST="mhu_test";
     private Toolbar test_toolbar;
-    private TextInputEditText etRefrerredTxt,etRmarks;
+    private TextInputEditText etRefrerredTxt,etRmarks,edtTestName;
     private Spinner advisedSpinner;
     private MHU_Test mhuTest;
     private Button submitBtn;
@@ -90,6 +90,7 @@ public class TestAdvised extends Fragment {
         prefManager=new PrefManager(getActivity());
         etRefrerredTxt = (TextInputEditText)view.findViewById(R.id.referred_txt);
         etRmarks = (TextInputEditText)view.findViewById(R.id.remarks);
+        edtTestName= (TextInputEditText)view.findViewById(R.id.test_name_txt);
         advisedSpinner = (Spinner)view.findViewById(R.id.advised_test);
         submitBtn = (Button) view.findViewById(R.id.submit);
         referred_txtTextLayout=(TextInputLayout)view.findViewById(R.id.referred_txt_TextLayout);

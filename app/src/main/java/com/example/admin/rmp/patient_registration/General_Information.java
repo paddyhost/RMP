@@ -19,37 +19,43 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.Utility;
+import com.example.admin.rmp.app.ApiResponseListener;
+import com.example.admin.rmp.patient_registration.apihelper.Web_ApiHelper;
+import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
-
 import com.example.admin.rmp.utils.validation.Validations;
-
 import com.example.admin.rmp.vital_info.Vital_Information;
-import com.example.admin.rmp.app.ApiResponseListener;
-import com.example.admin.rmp.patient_registration.model.PatientRegistration;
-import com.example.admin.rmp.patient_registration.apihelper.Web_ApiHelper;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+
+import static com.example.admin.rmp.constants.AppConstants.PATIENT_PREFIX;
+import static com.example.admin.rmp.constants.AppConstants.REGISTRATION_PREFIX;
 
 public class General_Information extends Fragment {
 
     Toolbar customertoolbar;
     Button btnSave;
-    TextInputEditText edtFName,edtLName,edtMobile,edtDob,edtAddress;
+    TextInputEditText edtFName,edtLName,edtMobile,edtDob,edtAddress,edtAge,edtRegistrationDate;
     RadioGroup genderGrp;
     RadioButton maleBtn, femaleBtn;
     private DatePickerDialog dpd;
-    private int year,day,month;
+    private int dYear,dDay,dMonth,tYear,tDay,tMonth;
     private String selected_gender = "";
     private PatientRegistration patientRegistration;
-    TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout;
-
-
+    private Spinner patientCategorySpinner,stateSpinner,districtSpinner,citySpinner,areaSpinner,locationSpinner;
+    private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber;
+    TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout,age_textLayout,registartion_date_textLayout;
     private PrefManager prefManager;
 
 
@@ -69,11 +75,11 @@ public class General_Information extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_general_information, container, false);
 
         initializations(rootview);
-
+        generateUniqueId();
+        generateRegistrationNumber();
         DOBClickListener();
-
+        registrationClickListener();
         genderClickListener();
-
         saveClickListener();
 
         return rootview;
@@ -93,7 +99,12 @@ public class General_Information extends Fragment {
         edtLName = (TextInputEditText)view.findViewById(R.id.lname);
         edtMobile =(TextInputEditText)view.findViewById(R.id.mobile);
         edtDob = (TextInputEditText)view.findViewById(R.id.dob);
+        edtAge= (TextInputEditText)view.findViewById(R.id.age);
         edtAddress = (TextInputEditText)view.findViewById(R.id.address);
+        edtRegistrationDate= (TextInputEditText)view.findViewById(R.id.registration_date);
+        txtRegistrationNumber= (TextView) view.findViewById(R.id.registration_number);
+        txtPatientUniqueId=(TextView) view.findViewById(R.id.patient_unique_id);
+        txtVisitNumber=(TextView) view.findViewById(R.id.visit_number);
         genderGrp = (RadioGroup)view.findViewById(R.id.gender);
         maleBtn = (RadioButton)view.findViewById(R.id.male);
         femaleBtn = (RadioButton)view.findViewById(R.id.female);
@@ -103,8 +114,16 @@ public class General_Information extends Fragment {
         mobile_TextLayout=(TextInputLayout)view.findViewById(R.id.mobile_textLayout);
         dob_TextLayout=(TextInputLayout)view.findViewById(R.id.dob_textLayout);
         address_TextLayout=(TextInputLayout)view.findViewById(R.id.address_textLayout);
+        age_textLayout=(TextInputLayout)view.findViewById(R.id.age_textLayout);
+        patientCategorySpinner=(Spinner)view.findViewById(R.id.patient_category_spinner);
+        stateSpinner=(Spinner)view.findViewById(R.id.state_spinner);
+        districtSpinner=(Spinner)view.findViewById(R.id.district_spinner);
+        citySpinner=(Spinner)view.findViewById(R.id.city_spinner);
+        areaSpinner=(Spinner)view.findViewById(R.id.area_spinner);
+        locationSpinner=(Spinner)view.findViewById(R.id.location_spinner);
 
         edtDob.setFocusable(false);
+        edtRegistrationDate.setFocusable(false);
     }
 
     private void DOBClickListener()
@@ -117,25 +136,66 @@ public class General_Information extends Fragment {
         });
     }
 
-    public void displayDatePicker()
-    {
-        Calendar mcurrentDate= Calendar.getInstance();
-        year=mcurrentDate.get(Calendar.YEAR);
-        month=mcurrentDate.get(Calendar.MONTH);
-        day=mcurrentDate.get(Calendar.DAY_OF_MONTH);
+    public void displayDatePicker() {
+        final Calendar DOBDate = Calendar.getInstance();
 
-        dpd=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener()
-        {
+        dYear = DOBDate.get(Calendar.YEAR);
+        dMonth = DOBDate.get(Calendar.MONTH);
+        dDay = DOBDate.get(Calendar.DAY_OF_MONTH);
+
+
+        dpd = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                monthOfYear=monthOfYear+1;
-                edtDob.setText(year+"-"+monthOfYear+"-"+dayOfMonth);
+                monthOfYear = monthOfYear + 1;
+
+                edtDob.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+                final Calendar TodayDate = Calendar.getInstance();
+                tYear = TodayDate.get(Calendar.YEAR);
+                tMonth = TodayDate.get(Calendar.MONTH);
+                tDay = TodayDate.get(Calendar.DAY_OF_MONTH);
+
+                int age=tYear-year;
+                edtAge.setText(String.valueOf(age+"yrs"));
 
             }
-        },year,month,day);
+        }, dYear, dMonth, dDay);
         dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
         dpd.show();
+
     }
+
+    private void registrationClickListener()
+    {
+        edtRegistrationDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registrationDisplayDatePicker();
+            }
+        });
+    }
+
+    public void registrationDisplayDatePicker() {
+        final Calendar mcurrentDate = Calendar.getInstance();
+        tYear = mcurrentDate.get(Calendar.YEAR);
+        tMonth= mcurrentDate.get(Calendar.MONTH);
+        tDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        dpd = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                monthOfYear = monthOfYear + 1;
+
+                edtRegistrationDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+
+            }
+        }, tYear, tMonth, tDay);
+        dpd.getDatePicker().setMaxDate(System.currentTimeMillis());
+        dpd.show();
+
+    }
+
 
     private void genderClickListener()
     {
@@ -164,7 +224,6 @@ public class General_Information extends Fragment {
 
                     //if(checkValidation()) {
 
-                    if (checkValidation()) {
 
                         final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                                 .setTitleText("Please wait");
@@ -213,7 +272,7 @@ public class General_Information extends Fragment {
 
                     //}
 
-                    }
+
 
 
             }
@@ -236,6 +295,16 @@ public class General_Information extends Fragment {
     private boolean checkValidation()
     {
         boolean response=true;
+
+
+        if(edtRegistrationDate.getText().toString().trim().length()==0) {
+            edtRegistrationDate.setError("Select Registration Date");
+            response = false;
+        }
+        else
+        {
+            edtRegistrationDate.setError(null);
+        }
 
         if (edtFName.getText().toString().trim().length() == 0)
         {
@@ -295,6 +364,14 @@ public class General_Information extends Fragment {
             edtDob.setError(null);
         }
 
+        if (edtAge.getText().toString().trim().length() == 0)
+        {
+            edtAge.setError("PLease Enter age");
+            response = false;
+        } else {
+            edtAge.setError(null);
+        }
+
         if (genderGrp.getCheckedRadioButtonId() == -1) {
             Toast.makeText(getActivity(), "Please select gender", Toast.LENGTH_SHORT).show();
             response = false;
@@ -304,7 +381,99 @@ public class General_Information extends Fragment {
 
         }
 
+        if (patientCategorySpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Select Patient Category")) {
 
+            View selectedView = patientCategorySpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (patientCategorySpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select Patient Category";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
+
+        if (stateSpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select State")) {
+
+            View selectedView = stateSpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (stateSpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select State";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
+
+
+        if (districtSpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select District")) {
+
+            View selectedView = districtSpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (districtSpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select District";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
+
+        if (citySpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select City")) {
+
+            View selectedView = citySpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (citySpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select City";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
+
+
+
+        if (areaSpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select Area")) {
+
+            View selectedView = areaSpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (areaSpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select Area";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
+
+
+        if (locationSpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select Location")) {
+
+            View selectedView = locationSpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (locationSpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select Location";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
         return response;
     }
 
@@ -332,4 +501,28 @@ public class General_Information extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    private void generateUniqueId()
+    {
+        Date dNow = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
+        String datetime = ft.format(dNow);
+        txtPatientUniqueId.setText(PATIENT_PREFIX+datetime);
+        String randomNumber= String.valueOf(Utility.generateRandomNumber(getActivity()));
+
+        txtPatientUniqueId.setText(PATIENT_PREFIX+datetime+"_"+randomNumber);
+    }
+
+    private void generateRegistrationNumber()
+    {
+        Date dNow = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
+        String datetime = ft.format(dNow);
+        txtRegistrationNumber.setText(REGISTRATION_PREFIX+datetime);
+        String randomNumber= String.valueOf(Utility.generateRandomNumber(getActivity()));
+
+        txtRegistrationNumber.setText(REGISTRATION_PREFIX+datetime+"_"+randomNumber);
+    }
+
 }
