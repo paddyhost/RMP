@@ -3,37 +3,24 @@ package com.example.admin.rmp.mhu_test.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by Ashwin on 28-Jan-18.
- */
+import java.util.ArrayList;
+
 
 public class MHU_Test  implements Parcelable
 {
-    private String BloodGlucose, hemogram, creatine,urea,sgot,sgpt,advised,referred,remark;
+    private String id,test_name,attribute_id,attribute_name;
+    private ArrayList<MHU_Test> testArrayList;
 
     public MHU_Test() {
     }
 
-    public MHU_Test(String bloodGlucose, String hemogram, String creatine, String urea, String sgot, String sgpt) {
-        BloodGlucose = bloodGlucose;
-        this.hemogram = hemogram;
-        this.creatine = creatine;
-        this.urea = urea;
-        this.sgot = sgot;
-        this.sgpt = sgpt;
-    }
 
     protected MHU_Test(Parcel in) {
-        BloodGlucose = in.readString();
-        hemogram = in.readString();
-        creatine = in.readString();
-        urea = in.readString();
-        sgot = in.readString();
-        sgpt = in.readString();
-        remark = in.readString();
-        referred = in.readString();
-        advised = in.readString();
-
+        id = in.readString();
+        test_name = in.readString();
+        attribute_id = in.readString();
+        attribute_name = in.readString();
+        testArrayList = in.createTypedArrayList(MHU_Test.CREATOR);
     }
 
     public static final Creator<MHU_Test> CREATOR = new Creator<MHU_Test>() {
@@ -48,93 +35,61 @@ public class MHU_Test  implements Parcelable
         }
     };
 
-    public String getBloodGlucose() {
-        return BloodGlucose;
-    }
-
-    public void setBloodGlucose(String bloodGlucose) {
-        BloodGlucose = bloodGlucose;
-    }
-
-    public String getHemogram() {
-        return hemogram;
-    }
-
-    public void setHemogram(String hemogram) {
-        this.hemogram = hemogram;
-    }
-
-    public String getCreatine() {
-        return creatine;
-    }
-
-    public void setCreatine(String creatine) {
-        this.creatine = creatine;
-    }
-
-    public String getUrea() {
-        return urea;
-    }
-
-    public void setUrea(String urea) {
-        this.urea = urea;
-    }
-
-    public String getSgot() {
-        return sgot;
-    }
-
-    public void setSgot(String sgot) {
-        this.sgot = sgot;
-    }
-
-    public String getSgpt() {
-        return sgpt;
-    }
-
-    public void setSgpt(String sgpt) {
-        this.sgpt = sgpt;
-    }
-
     @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(BloodGlucose);
-        parcel.writeString(hemogram);
-        parcel.writeString(creatine);
-        parcel.writeString(urea);
-        parcel.writeString(sgot);
-        parcel.writeString(sgpt);
-        parcel.writeString(remark);
-        parcel.writeString(referred);
-        parcel.writeString(advised);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(test_name);
+        dest.writeString(attribute_id);
+        dest.writeString(attribute_name);
+        dest.writeTypedList(testArrayList);
     }
 
-    public String getAdvised() {
-        return advised;
+    public String getId() {
+        return id;
     }
 
-    public void setAdvised(String advised) {
-        this.advised = advised;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getReferred() {
-        return referred;
+    public String getTest_name() {
+        return test_name;
     }
 
-    public void setReferred(String referred) {
-        this.referred = referred;
+    public void setTest_name(String test_name) {
+        this.test_name = test_name;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getAttribute_id() {
+        return attribute_id;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setAttribute_id(String attribute_id) {
+        this.attribute_id = attribute_id;
+    }
+
+    public String getAttribute_name() {
+        return attribute_name;
+    }
+
+    public void setAttribute_name(String attribute_name) {
+        this.attribute_name = attribute_name;
+    }
+
+    public ArrayList<MHU_Test> getTestArrayList() {
+        return testArrayList;
+    }
+
+    public void setTestArrayList(ArrayList<MHU_Test> testArrayList) {
+        this.testArrayList = testArrayList;
+    }
+
+    public static Creator<MHU_Test> getCREATOR() {
+        return CREATOR;
     }
 }

@@ -19,33 +19,62 @@ import com.example.admin.rmp.constants.WebServiceUrls;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.pref_manager.PrefManager;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
-/**
- * Created by Ashwin on 28-Jan-18.
- */
 
 public class Web_MhuApi_Helper
 {
-    public static void webAddMHUTest(final Activity activity, final MHU_Test mhuTest, final ApiResponseListener apiResponseListener)
+    public static void webGetTestMasterAttribute(final Activity activity, final ArrayList<MHU_Test> mhuTestArrayList, final ApiResponseListener apiResponseListener)
     {
-        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddMHuTest,new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.ulGetTestMasterAttribute,new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
                 try
                 {
                     JSONObject responce = new JSONObject(response);
+                    String message=responce.getString("message");
+
                     if (responce.getString("status").equalsIgnoreCase("success"))
                     {
                         if(responce.getString("message").equalsIgnoreCase("MHUTest added successfully")) {
 
+                            JSONArray result=responce.getJSONArray("result");
+
+                            if(result.length()>0) {
+
+                                for (int i = 0; i < result.length(); i++) {
+
+                                    MHU_Test mhu_test = new MHU_Test();
 
 
+                                    JSONObject jsonObjectResult = result.getJSONObject(i);
+
+                                    mhu_test.setId(jsonObjectResult.getString("id"));
+                                    mhu_test.setTest_name(jsonObjectResult.getString("test_name"));
+
+                                    JSONArray testArray = jsonObjectResult.getJSONArray("attributes");
+                                    ArrayList<MHU_Test> testArrayList =new ArrayList<>();
+
+                                    for (int j = 0; j < testArray.length(); j++) {
+
+                                        JSONObject jsonObjectTeam=testArray.getJSONObject(j);
+
+                                        mhu_test.setAttribute_id(jsonObjectTeam.getString("id"));
+                                        mhu_test.setAttribute_name(jsonObjectTeam.getString("attribute_name"));
+
+                                        testArrayList.add(mhu_test);
+                                    }
+
+                                    mhuTestArrayList.add(mhu_test);
+                                }
+                            }
                             apiResponseListener.onSuccess(responce.getString("message"));
                         }
                         else
@@ -97,20 +126,9 @@ public class Web_MhuApi_Helper
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
 
-                params.put("patient_id", MainActivity.PATIENT_ID);
-                params.put("registration_no",MainActivity.REGISTRATION_ID);
-                params.put("bloodglucose",mhuTest.getBloodGlucose());
-                params.put("heamogram",mhuTest.getHemogram());
-                params.put("creatine",mhuTest.getCreatine());
-                params.put("urea",mhuTest.getUrea());
-                params.put("sgot",mhuTest.getSgot());
-                params.put("sgpt",mhuTest.getSgpt());
-                params.put("adviced",mhuTest.getAdvised());
-                params.put("ferered",mhuTest.getReferred());
-                params.put("remark",mhuTest.getRemark());
-                params.put("mobile",new PrefManager(activity).getMobile());
-                params.put("password",new PrefManager(activity).getPassword());
+                params.put("all","Y");
                 params.put("format","json");
+
                 //returning parameters
                 return params;
             }

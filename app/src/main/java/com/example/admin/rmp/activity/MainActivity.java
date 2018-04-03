@@ -13,11 +13,12 @@ import android.widget.TextView;
 import com.bumptech.glide.util.Util;
 import com.example.admin.rmp.patient_registration.General_Information;
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.patient_registration.UserVerificationFragment;
 import com.example.admin.rmp.utils.Utility;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String PATIENT_ID = "", REGISTRATION_ID = "";
+    public static String PATIENT_ID = "", REGISTRATION_ID = "",Visit_ID="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadFragment()
     {
-        General_Information generalinformation = new General_Information();
+        UserVerificationFragment generalinformation = new UserVerificationFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.framelayout, generalinformation);
         transaction.commit();
