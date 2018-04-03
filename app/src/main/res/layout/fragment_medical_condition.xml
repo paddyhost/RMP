@@ -274,6 +274,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/doctor_name1_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -301,6 +302,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/doctor_name2_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -328,6 +330,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/doctor_name3_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -364,7 +367,6 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
                 android:textStyle="bold"/>
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
@@ -485,51 +487,60 @@
 
 
             <!--Diagnosys-->
-            <TextView
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/diagnosys_textLayout"
                 android:layout_height="wrap_content"
-                android:text="Diagnosis"
-                android:gravity="center_vertical"
-                android:id="@+id/diagnosys"
-                android:editable="false"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:hint="Diagnosis Description"
-                android:id="@+id/diagnosys_description"
-                android:background="@drawable/shape"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"/>
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/diagnosis"
+                    android:hint="Diagnosis"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4px"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorDarkgray"/>
+            </android.support.design.widget.TextInputLayout>
+
 
             <!--Add Prescription Button-->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="Add Prescription"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:textSize="10dp"
-                android:id="@+id/btn_add_prescription"
+            <LinearLayout
+                android:id="@+id/add_prescription_layout"
+                android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="right"
-                android:background="@color/colorPrimary"
-                android:textColor="@color/colorWhite"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="Add Prescription"
+                    android:layout_weight="1.8"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center|start"
+                    android:gravity="center|start"/>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/btn_floating_add_prescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_weight="0.50"/>
+            </LinearLayout>
+
+            <!--Add Prescription Details-->
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:id="@+id/dose_list"/>
 
             <!--Save & next Button-->
             <Button
@@ -541,7 +552,7 @@
                 android:textColor="@color/colorWhite"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="16dp"/>
 
         </LinearLayout>

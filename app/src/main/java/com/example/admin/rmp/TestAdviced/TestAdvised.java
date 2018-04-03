@@ -21,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.admin.rmp.R;
+import com.example.admin.rmp.TestAdviced.apihelper.Web_TestAdviced_Helper;
+import com.example.admin.rmp.TestAdviced.model.TestAdvicedModel;
 import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.MhuTest;
 import com.example.admin.rmp.mhu_test.apihelper.Web_MhuApi_Helper;
@@ -42,10 +44,11 @@ public class TestAdvised extends Fragment {
     private Toolbar test_toolbar;
     private TextInputEditText etRefrerredTxt,etRmarks,edtTestName;
     private Spinner advisedSpinner;
-    private MHU_Test mhuTest;
+    private TestAdvicedModel testAdvicedModel;
     private Button submitBtn;
     private TextInputLayout referred_txtTextLayout,remarksTextLayout;
     private PrefManager prefManager;
+    private MHU_Test mhuTest;
 
     public TestAdvised() {
         // Required empty public constructor
@@ -119,7 +122,7 @@ public class TestAdvised extends Fragment {
 
                     sweetAlertDialog.show();
 
-                    Web_MhuApi_Helper.webAddMHUTest(getActivity(), mhuTest, new ApiResponseListener() {
+                    Web_TestAdviced_Helper.webAddMHuTest(getActivity(), testAdvicedModel, new ApiResponseListener() {
                         @Override
                         public void onSuccess(String message) {
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
@@ -159,11 +162,11 @@ public class TestAdvised extends Fragment {
         });
     }
 
-    private void setAdvisedData()
+     private void setAdvisedData()
     {
-        mhuTest.setAdvised(advisedSpinner.getSelectedItem().toString());
-        mhuTest.setReferred(etRefrerredTxt.getText().toString());
-        mhuTest.setRemark(etRmarks.getText().toString());
+        testAdvicedModel.setAdviced(advisedSpinner.getSelectedItem().toString());
+        testAdvicedModel.setRerered(etRefrerredTxt.getText().toString());
+        testAdvicedModel.setRemark(etRmarks.getText().toString());
     }
 
     private boolean checkValidation()

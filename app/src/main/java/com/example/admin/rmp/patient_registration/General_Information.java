@@ -1,6 +1,7 @@
 package com.example.admin.rmp.patient_registration;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -33,9 +34,11 @@ import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.utils.validation.Validations;
 import com.example.admin.rmp.vital_info.Vital_Information;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -43,10 +46,11 @@ import static com.example.admin.rmp.constants.AppConstants.PATIENT_PREFIX;
 import static com.example.admin.rmp.constants.AppConstants.REGISTRATION_PREFIX;
 
 public class General_Information extends Fragment {
-
+    PatientRegistration registration;
     Toolbar customertoolbar;
     Button btnSave;
-    TextInputEditText edtFName,edtLName,edtMobile,edtDob,edtAddress,edtAge,edtRegistrationDate;
+    TextInputEditText edtFName,edtLName,edtMobile,edtAge,edtAddress,edtRegistrationDate;
+    static TextInputEditText edtDob;
     RadioGroup genderGrp;
     RadioButton maleBtn, femaleBtn;
     private DatePickerDialog dpd;
@@ -57,49 +61,82 @@ public class General_Information extends Fragment {
     private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout,age_textLayout,registartion_date_textLayout;
     private PrefManager prefManager;
-
-
     public General_Information() {
         // Required empty public constructor
     }
+    public static General_Information newInstance(PatientRegistration param1) {
+        General_Information fragment = new General_Information();
+        Bundle args = new Bundle();
+        args.putParcelable(PatientRegistration.class.getName(), param1);
 
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            registration = getArguments().getParcelable(PatientRegistration.class.getName());
+        }
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootview = inflater.inflate(R.layout.fragment_general_information, container, false);
-
         initializations(rootview);
-        generateUniqueId();
-        generateRegistrationNumber();
-        DOBClickListener();
-        registrationClickListener();
-        genderClickListener();
+       if(registration==null)
+       {
+           generateUniqueId();
+           generateRegistrationNumber();
+           DOBClickListener();
+           registrationClickListener();
+           genderClickListener();
+       }
+       else
+       {
+           txtPatientUniqueId.setText(registration.getUnique_id());
+           txtRegistrationNumber.setText(registration.getRegistrationNo());
+           edtRegistrationDate.setText(registration.getDateOfRegistration());
+           //patientCategorySpinner.
+           edtFName.setText(registration.getfName());
+           edtLName.setText(registration.getLname());
+           edtMobile.setText(registration.getMobileNo());
+           edtDob.setText(registration.getDob());
+           edtAddress.setText(registration.getAddress());
+           patientCategorySpinner.setSelection(1);
+           stateSpinner.setSelection(1);
+           districtSpinner.setSelection(1);
+           citySpinner.setSelection(1);
+           areaSpinner.setSelection(1);
+           locationSpinner.setSelection(1);
+           if(registration.getGender().equalsIgnoreCase("M"))
+           {
+              // patientRegistration.setGender("Female");
+               maleBtn.setChecked(true);
+           }
+           else
+           {
+               //patientRegistration.setGender("Male");
+              femaleBtn.setChecked(true);
+           }
+       }
+        //calculateDOBFromAge(getActivity(),24,06,00);
         saveClickListener();
-
         return rootview;
     }
-
     private void initializations(View view)
     {
         setHasOptionsMenu(true);
         customertoolbar = (Toolbar) view.findViewById(R.id.customer_toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(customertoolbar);
-
-
         setHasOptionsMenu(true);
-
         prefManager=new PrefManager(getActivity());
         edtFName = (TextInputEditText)view.findViewById(R.id.firstname);
         edtLName = (TextInputEditText)view.findViewById(R.id.lname);
         edtMobile =(TextInputEditText)view.findViewById(R.id.mobile);
         edtDob = (TextInputEditText)view.findViewById(R.id.dob);
-        edtAge= (TextInputEditText)view.findViewById(R.id.age);
+        edtAge= (TextInputEditText)view.findViewById(R.id.edt_age);
         edtAddress = (TextInputEditText)view.findViewById(R.id.address);
         edtRegistrationDate= (TextInputEditText)view.findViewById(R.id.registration_date);
         txtRegistrationNumber= (TextView) view.findViewById(R.id.registration_number);
@@ -121,11 +158,9 @@ public class General_Information extends Fragment {
         citySpinner=(Spinner)view.findViewById(R.id.city_spinner);
         areaSpinner=(Spinner)view.findViewById(R.id.area_spinner);
         locationSpinner=(Spinner)view.findViewById(R.id.location_spinner);
-
         edtDob.setFocusable(false);
         edtRegistrationDate.setFocusable(false);
     }
-
     private void DOBClickListener()
     {
         edtDob.setOnClickListener(new View.OnClickListener() {
@@ -135,14 +170,101 @@ public class General_Information extends Fragment {
             }
         });
     }
+    public static void calculateDOBFromAge(Context context, int CurrentAge, int MonthCompleted, int DaysCompleted)
+    {
+        //Function call like this ---- calculateDOBFromAge(MainActivity.this,25,01,15);
 
+        Calendar calender = Calendar.getInstance();
+        int mYear = calender.get(Calendar.YEAR);
+        int mMonth = calender.get(Calendar.MONTH);
+        int mDay = calender.get(Calendar.DAY_OF_MONTH);
+        mMonth=mMonth+1;
+        String AgewithZero = "0";
+        String MonthswithZero = "0";
+        String DaysswithZero = "0";
+        String currentYearWithZero = "0";
+        String currentMonthsWithZero = "0";
+        String currentDaysswithZero = "0";
+        if(String.valueOf(CurrentAge).length()==1)
+        {
+            AgewithZero = String.valueOf(AgewithZero)+String.valueOf(CurrentAge);
+        }
+        else
+        {
+            AgewithZero = String.valueOf(CurrentAge);
+        }
+
+        if(String.valueOf(MonthCompleted).length()==1)
+        {
+            MonthswithZero = String.valueOf(MonthswithZero)+String.valueOf(MonthCompleted);
+        }
+        else
+        {
+            MonthswithZero = String.valueOf(MonthCompleted);
+        }
+
+        if(String.valueOf(DaysCompleted).length()==1)
+        {
+            DaysswithZero = String.valueOf(DaysswithZero)+String.valueOf(DaysCompleted);
+        }
+        else
+        {
+            DaysswithZero = String.valueOf(DaysCompleted);
+        }
+
+        if(String.valueOf(mYear).length()==1)
+        {
+            currentYearWithZero = String.valueOf(currentYearWithZero)+String.valueOf(mYear);
+        }
+        else
+        {
+            currentYearWithZero = String.valueOf(mYear);
+        }
+
+        if(String.valueOf(mMonth).length()==1)
+        {
+            currentMonthsWithZero = String.valueOf(currentMonthsWithZero)+String.valueOf(mMonth);
+        }
+        else
+        {
+            currentMonthsWithZero = String.valueOf(mMonth);
+        }
+
+        if(String.valueOf(mDay).length()==1)
+        {
+            currentDaysswithZero = String.valueOf(currentDaysswithZero)+String.valueOf(mDay);
+        }
+        else
+        {
+            currentDaysswithZero = String.valueOf(mDay);
+        }
+
+        String age = AgewithZero + MonthswithZero + DaysswithZero;
+        String currentDate = currentYearWithZero + currentMonthsWithZero + currentDaysswithZero;
+
+        int calculatedDob = Integer.parseInt(age)- Integer.parseInt(currentDate);
+        calculatedDob = Math.abs(calculatedDob);
+
+
+        String finalDob="";
+        SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyMMdd");
+        try {
+            Date date = originalFormat.parse(String.valueOf(calculatedDob));
+            SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd");
+            finalDob = newFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        edtDob.setText(finalDob);
+        //Toast.makeText(context,finalDob,Toast.LENGTH_SHORT).show();
+    }
     public void displayDatePicker() {
-        final Calendar DOBDate = Calendar.getInstance();
 
+        final Calendar DOBDate = Calendar.getInstance();
         dYear = DOBDate.get(Calendar.YEAR);
         dMonth = DOBDate.get(Calendar.MONTH);
         dDay = DOBDate.get(Calendar.DAY_OF_MONTH);
-
 
         dpd = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -156,8 +278,10 @@ public class General_Information extends Fragment {
                 tMonth = TodayDate.get(Calendar.MONTH);
                 tDay = TodayDate.get(Calendar.DAY_OF_MONTH);
 
-                int age=tYear-year;
-                edtAge.setText(String.valueOf(age+"yrs"));
+                int ageYear=tYear-year;
+
+                edtAge.setText(String.valueOf(ageYear+"yrs"));
+                edtAge.setFocusable(false);
 
             }
         }, dYear, dMonth, dDay);
@@ -165,7 +289,6 @@ public class General_Information extends Fragment {
         dpd.show();
 
     }
-
     private void registrationClickListener()
     {
         edtRegistrationDate.setOnClickListener(new View.OnClickListener() {
@@ -175,7 +298,6 @@ public class General_Information extends Fragment {
             }
         });
     }
-
     public void registrationDisplayDatePicker() {
         final Calendar mcurrentDate = Calendar.getInstance();
         tYear = mcurrentDate.get(Calendar.YEAR);
@@ -195,8 +317,6 @@ public class General_Information extends Fragment {
         dpd.show();
 
     }
-
-
     private void genderClickListener()
     {
         genderGrp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -214,84 +334,138 @@ public class General_Information extends Fragment {
             }
         });
     }
-
     private void saveClickListener()
     {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(registration==null)
+                {
                     setPatientData();
+                    final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
+                    sweetAlertDialog.show();
+                    Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
+                        @Override
+                        public void onSuccess(String message) {
+                            /*sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            sweetAlertDialog.setTitleText("Done !!");
+                            sweetAlertDialog.setConfirmText("Ok");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    Vital_Information vitalInformation = new Vital_Information();
+                                    fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
 
-                    //if(checkValidation()) {
+                                    edtFName.setText("");
+                                    edtLName.setText("");
+                                    edtAddress.setText("");
+                                    edtMobile.setText("");
+                                    edtDob.setText("");
+                                    maleBtn.setChecked(false);
+                                    femaleBtn.setChecked(false);
+                                }
+                            });*/
+                            addVisit();
+                        }
 
+                        @Override
+                        public void onError(String message) {
+                            sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            sweetAlertDialog.setTitleText(message);
+                            sweetAlertDialog.setConfirmText("Ok");
+                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    sweetAlertDialog.dismissWithAnimation();
+                                }
+                            });
 
-                        final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
-                                .setTitleText("Please wait");
-
-                        sweetAlertDialog.show();
-
-                        Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
-                            @Override
-                            public void onSuccess(String message) {
-                                sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                sweetAlertDialog.setTitleText("Done !!");
-                                sweetAlertDialog.setConfirmText("Ok");
-                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                        sweetAlertDialog.dismissWithAnimation();
-                                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                        Vital_Information vitalInformation = new Vital_Information();
-                                        fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
-
-                                        edtFName.setText("");
-                                        edtLName.setText("");
-                                        edtAddress.setText("");
-                                        edtMobile.setText("");
-                                        edtDob.setText("");
-                                        maleBtn.setChecked(false);
-                                        femaleBtn.setChecked(false);
-                                    }
-                                });
-                            }
-
-                            @Override
-                            public void onError(String message) {
-                                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                sweetAlertDialog.setTitleText(message);
-                                sweetAlertDialog.setConfirmText("Ok");
-                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                        sweetAlertDialog.dismissWithAnimation();
-                                    }
-                                });
-
-                            }
-                        });
-
-                    //}
-
-
-
+                        }
+                    });
+                }
+                else
+                {
+                    addVisit();
+                    //"VISIT_GENERATED"
+                }
 
             }
         });
+
+
+    }
+    private  void addVisit()
+    {
+        final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
+        sweetAlertDialog.show();
+        Web_ApiHelper.addVisit(getActivity(), new ApiResponseListener() {
+            @Override
+            public void onSuccess(String message) {
+
+                sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                sweetAlertDialog.setTitleText("Done !!");
+                sweetAlertDialog.setConfirmText("Ok");
+                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.dismissWithAnimation();
+                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        Vital_Information vitalInformation = new Vital_Information();
+                        fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
+
+                        edtFName.setText("");
+                        edtLName.setText("");
+                        edtAddress.setText("");
+                        edtMobile.setText("");
+                        edtDob.setText("");
+                        maleBtn.setChecked(false);
+                        femaleBtn.setChecked(false);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onError(String message) {
+                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                sweetAlertDialog.setTitleText(message);
+                sweetAlertDialog.setConfirmText("Ok");
+                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.dismissWithAnimation();
+                    }
+                });
+            }
+        },registration.getUnique_id());
+
 
     }
 
     private void setPatientData()
     {
         patientRegistration = new PatientRegistration();
+        patientRegistration.setUnique_id(txtPatientUniqueId.getText().toString());
+        patientRegistration.setRegistrationNo(txtRegistrationNumber.getText().toString());
+        patientRegistration.setDateOfRegistration(edtRegistrationDate.getText().toString());
+        patientRegistration.setPatient_category(patientCategorySpinner.getSelectedItem().toString());
         patientRegistration.setfName(edtFName.getText().toString());
         patientRegistration.setLname(edtLName.getText().toString());
-        patientRegistration.setAddress(edtAddress.getText().toString());
         patientRegistration.setMobileNo(edtMobile.getText().toString());
         patientRegistration.setDob(edtDob.getText().toString());
+        patientRegistration.setAddress(edtAddress.getText().toString());
+        patientRegistration.setState(stateSpinner.getSelectedItem().toString());
+        patientRegistration.setDistrict(districtSpinner.getSelectedItem().toString());
+        patientRegistration.setCity(citySpinner.getSelectedItem().toString());
+        patientRegistration.setArea(areaSpinner.getSelectedItem().toString());
+        patientRegistration.setLocation(locationSpinner.getSelectedItem().toString());
+       // patientRegistration.setVisit_id(txtVisitNumber.getText().toString());
         patientRegistration.setGender(selected_gender);
+
     }
-
-
     private boolean checkValidation()
     {
         boolean response=true;
@@ -340,6 +514,7 @@ public class General_Information extends Fragment {
             //mobile_TextLayout.setErrorEnabled(false);
             edtMobile.setError(null);
         }
+
 
 
         if (edtAddress.getText().toString().trim().length() == 0)
@@ -476,14 +651,11 @@ public class General_Information extends Fragment {
         }
         return response;
     }
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu,menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -501,8 +673,6 @@ public class General_Information extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
     private void generateUniqueId()
     {
         Date dNow = new Date();
@@ -513,7 +683,6 @@ public class General_Information extends Fragment {
 
         txtPatientUniqueId.setText(PATIENT_PREFIX+datetime+"_"+randomNumber);
     }
-
     private void generateRegistrationNumber()
     {
         Date dNow = new Date();
@@ -521,8 +690,6 @@ public class General_Information extends Fragment {
         String datetime = ft.format(dNow);
         txtRegistrationNumber.setText(REGISTRATION_PREFIX+datetime);
         String randomNumber= String.valueOf(Utility.generateRandomNumber(getActivity()));
-
         txtRegistrationNumber.setText(REGISTRATION_PREFIX+datetime+"_"+randomNumber);
     }
-
 }

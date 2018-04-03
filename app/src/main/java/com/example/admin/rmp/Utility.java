@@ -3,11 +3,7 @@ package com.example.admin.rmp;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.TypedValue;
 
-/**
- * Created by Ashwin on 26-Jan-18.
- */
 
 public class Utility
 {

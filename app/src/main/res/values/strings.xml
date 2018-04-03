@@ -3,6 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
+    <string name="patient_category_title">Select Patient Category</string>
 
     <string-array name="advised_aaray">
         <item>Select Test</item>
@@ -169,7 +170,6 @@
         <item>Comp. LFT</item>
         <item>GGT</item>
         <item>Alb</item>
-
     </string-array>
 
     <string-array name="kidney_function_array">
@@ -191,7 +191,6 @@
         <item>TAG</item>
         <item>HDL</item>
         <item>Complete Lipid Profile(TCHOL,TAG,HDL,LDL,VLDL)</item>
-
     </string-array>
 
     <string-array name="glucose_profile_array">
@@ -203,8 +202,6 @@
         <item>HbA1c</item>
         <item>Urinary Micro Albumin</item>
         <item>Insulin F/PP</item>
-
-
     </string-array>
 
     <string-array name="urine_examination_array">
@@ -216,5 +213,29 @@
         <item>Bile salt/ bile Pigments</item>
         <item>Urine Pregnancy Test</item>
     </string-array>
+
+    <string-array name="tests_array">
+        <item>Select Tests</item>
+        <item>Complete Blood Count(CBC)/Homogram(Hgm)</item>
+        <item>Liver Function Test(LFT)</item>
+        <item>Kidney Function Test</item>
+        <item>Lipid Profile</item>
+        <item>Glucose Profile(BSR)</item>
+        <item>WIDAL</item>
+        <item>TYPHIDOT</item>
+        <item>Malaria Serology</item>
+        <item>RA Factor</item>
+        <item>HBSAG(Hepatitis B AG)</item>
+        <item>Urine Examination</item>
+        <item>CRP</item>
+        <item>Anti HCV</item>
+        <item>HIV</item>
+        <item>VDRL</item>
+        <item>GCT</item>
+        <item>ABO RH (Blood Group)</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
