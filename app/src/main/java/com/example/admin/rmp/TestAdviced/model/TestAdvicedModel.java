@@ -7,12 +7,12 @@ package com.example.admin.rmp.TestAdviced.model;
 public class TestAdvicedModel {
 
 
-    private String id, bloodglucose, heamogram, creatine,urea,sgot,sgpt,adviced,ferered,remark;
+    private String id, bloodglucose, heamogram, creatine,urea,sgot,sgpt,test_name,ferered,remark;
 
     public TestAdvicedModel() {
     }
 
-    public TestAdvicedModel(String id, String bloodglucose, String heamogram, String creatine, String urea, String sgot, String sgpt, String adviced, String ferered, String remark) {
+    public TestAdvicedModel(String id, String bloodglucose, String heamogram, String creatine, String urea, String sgot, String sgpt, String test_name, String ferered, String remark) {
         this.id = id;
         this.bloodglucose = bloodglucose;
         this.heamogram = heamogram;
@@ -20,7 +20,7 @@ public class TestAdvicedModel {
         this.urea = urea;
         this.sgot = sgot;
         this.sgpt = sgpt;
-        this.adviced = adviced;
+        this.test_name = test_name;
         this.ferered = ferered;
         this.remark = remark;
     }
@@ -82,12 +82,12 @@ public class TestAdvicedModel {
         this.sgpt = sgpt;
     }
 
-    public String getAdviced() {
-        return adviced;
+    public String getTestName() {
+        return test_name;
     }
 
-    public void setAdviced(String adviced) {
-        this.adviced = adviced;
+    public void setTestName(String adviced) {
+        this.test_name = test_name;
     }
 
     public String getRerered() {

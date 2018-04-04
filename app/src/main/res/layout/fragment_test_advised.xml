@@ -48,6 +48,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:id="@+id/test_name_txt"
+            android:inputType="text"
             android:hint="Test Name"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -62,6 +63,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:id="@+id/referred_txt"
+            android:inputType="text"
             android:hint="Refered"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -75,6 +77,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:id="@+id/remarks"
+            android:inputType="text"
             android:hint="Remarks"/>
     </android.support.design.widget.TextInputLayout>
 

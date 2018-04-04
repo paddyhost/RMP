@@ -108,6 +108,7 @@ public class Vaccination_ApiHelper {
                 params.put("other",vaccination.getOther());
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
+                params.put("visit_master_id",MainActivity.Visit_ID);
                 params.put("format","json");
                 //returning parameters
                 return params;

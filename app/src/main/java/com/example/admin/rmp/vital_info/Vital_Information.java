@@ -110,13 +110,14 @@ public class Vital_Information extends Fragment {
                     WebVital_Helper.webAddVitalInfo(getActivity(), vitalInfo, new ApiResponseListener() {
                         @Override
                         public void onSuccess(String message) {
+
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             sweetAlertDialog.setTitleText("Done !!");
                             sweetAlertDialog.setConfirmText("Ok");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    sweetAlertDialog.dismissWithAnimation();
+                                    sweetAlertDialog.dismiss();
                                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     MedicalConditionFragment medicalConditionFragment = new MedicalConditionFragment();
                                     fragmentTransaction.replace(R.id.framelayout, medicalConditionFragment).addToBackStack(null).commit();

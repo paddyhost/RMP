@@ -103,7 +103,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_cbb_hgm_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="CBB/Hgm Reference Value"/>
 
@@ -121,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_cbb_hgm_reading"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="CBB/Hgm Reading"/>
 
@@ -151,7 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_hb_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="HB Reference Value"/>
 
@@ -169,7 +169,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_hb_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="HB Reading"/>
 
@@ -198,7 +198,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_tlc_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="TLC Reference Value"/>
 
@@ -217,7 +217,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_tlc_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="TLC Reading"/>
 
@@ -246,7 +246,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_dlc_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="DLC Reference Value"/>
 
@@ -265,7 +265,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_dlc_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="DLC Reading"/>
 
@@ -295,7 +295,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_pcv_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:layout_weight="1"
                         android:hint="PCV Reference Value"/>
@@ -316,7 +316,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_pcv_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:layout_weight="1"
                             android:hint="PCV Reading"/>
@@ -346,7 +346,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_rbc_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="RBC count Reference Value"/>
 
@@ -365,7 +365,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_rbc_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="RBC count Reading"/>
 
@@ -393,7 +393,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_platelet_count_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="Platelet count Reference Value"/>
 
@@ -411,7 +411,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_platelet_count_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Platelet count Reading"/>
 
@@ -439,7 +439,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_mcv_mch_mchc_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="MCV/MCH/MCHC Reference Value"/>
 
@@ -458,7 +458,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_mcv_mch_mchc_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="MCV/MCH/MCHC Reading"/>
 
@@ -486,7 +486,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_esr_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="ESR Reference Value"/>
 
@@ -504,7 +504,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_esr_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="ESR Reading"/>
 
@@ -533,7 +533,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_aec_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="AEC Reference Value"/>
 
@@ -552,7 +552,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_aec_reading"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="AEC Reading"/>
 
@@ -625,7 +625,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_d_bil_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="D Bil Reference Value"/>
 
@@ -643,7 +643,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_d_bil_reading"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="D Bil Reading"/>
 
@@ -672,7 +672,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_id_bil_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="ID Bil Reference Value"/>
 
@@ -690,7 +690,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_id_bil_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="ID Bil Reading"/>
 
@@ -718,7 +718,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_t_bil_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="T-Bil Reference Value"/>
 
@@ -736,7 +736,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_t_bil_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="T-Bil Reading"/>
 
@@ -764,7 +764,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_t_prot_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="T-Prot Reference Value"/>
 
@@ -782,7 +782,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_t_prot_reading"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="T-Prot Reading"/>
 
@@ -809,7 +809,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_ag_rat_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="A/G Rat Reference Value"/>
 
@@ -827,7 +827,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_ag_rat_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="A/G Rat Reading"/>
 
@@ -855,7 +855,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_alt_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="ALT Reference Value"/>
 
@@ -873,7 +873,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_alt_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="ALT Reading"/>
 
@@ -901,7 +901,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_ast_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="AST Reference Value"/>
 
@@ -919,7 +919,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_ast_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="AST Reading"/>
 
@@ -992,7 +992,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_comp_lft_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Comp. LFT Reference Value"/>
 
@@ -1010,7 +1010,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_comp_lft_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Comp. LFT Reading"/>
 
@@ -1036,7 +1036,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_ggt_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="GGT Reference Value"/>
 
@@ -1054,7 +1054,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/edt_ggt_reading"
-                                    android:inputType="text"
+                                    android:inputType="number"
                                     android:maxLength="30"
                                     android:hint="GGT Reading"/>
 
@@ -1081,7 +1081,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_alb_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Alb Reference Value"/>
 
@@ -1099,7 +1099,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_alb_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Alb Reading"/>
 
@@ -1171,7 +1171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_urea_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Urea Reference Value"/>
 
@@ -1189,7 +1189,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_urea_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Urea Reading"/>
 
@@ -1216,7 +1216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_creat_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Creat. Reference Value"/>
 
@@ -1234,7 +1234,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_creat_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Creat. Reading"/>
 
@@ -1261,7 +1261,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_uric_acid_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Uric Acid Reference Value"/>
 
@@ -1279,7 +1279,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_uric_acid_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Uric Acid Reading"/>
 
@@ -1306,7 +1306,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_electrolyte_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Electrolyte(Na,K.Cl)Reference Value"/>
 
@@ -1324,7 +1324,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_electrolyte_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Electrolyte(Na,K.Cl) Reading"/>
 
@@ -1351,7 +1351,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_liverfunction_tprot_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="T Prot Reference Value"/>
 
@@ -1369,7 +1369,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_liverfunction_tprot_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="T Prot Reading"/>
 
@@ -1377,7 +1377,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/alb_liver_function_linearlayout"
+                    android:id="@+id/a1b_kidney_function_linearlayout"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1395,8 +1395,8 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt_a1b_liver_function_reference_value"
-                    android:inputType="text"
+                    android:id="@+id/edt_a1b_kidney_function_reference_value"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="A1b Reference Value"/>
 
@@ -1413,8 +1413,8 @@
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edt_a1b_liver_function_reading"
-                            android:inputType="text"
+                            android:id="@+id/edt_a1b_kidney_function_reading"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="A1b Reading"/>
 
@@ -1441,7 +1441,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_a1b_cr_ratio_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="A1b/Cr Ratio Reference Value"/>
 
@@ -1459,7 +1459,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_a1b_cr_ratio_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="A1b/Cr Ratio Reading"/>
 
@@ -1486,7 +1486,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_micro_albumin_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Micro Albumin Reference Value"/>
 
@@ -1504,7 +1504,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_micro_albumin_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Micro Albumin Reading"/>
 
@@ -1530,7 +1530,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_kidney_comp_kft_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Comp.KFT Reference Value"/>
 
@@ -1548,7 +1548,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_kidney_comp_kft_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Comp.KFT Reading"/>
 
@@ -1620,7 +1620,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_cholesterol_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Cholesterol Reference Value"/>
 
@@ -1638,7 +1638,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_cholesterol_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Cholesterol Reading"/>
 
@@ -1665,7 +1665,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_tag_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="TAG Reference Value"/>
 
@@ -1683,7 +1683,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_tag_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="TAG Reading"/>
 
@@ -1710,7 +1710,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_hdl_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="HDL Reference Value"/>
 
@@ -1728,7 +1728,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_hdl_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="HDL Reading"/>
 
@@ -1754,7 +1754,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_complete_lipid_profile_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Complete Lipid Profile(TCHOL,TAG,HDL,LDL,VLDL)Reference Value"/>
 
@@ -1772,7 +1772,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_complete_lipid_profile_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Complete Lipid Profile(TCHOL,TAG,HDL,LDL,VLDL) Reading"/>
 
@@ -1844,7 +1844,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_fbg_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="FBG Reference Value"/>
 
@@ -1862,7 +1862,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_fbg_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="FBG Reading"/>
 
@@ -1888,7 +1888,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_twohr_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="2 Hr Reference Value"/>
 
@@ -1906,7 +1906,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_twohr_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="2 Hr Reading"/>
 
@@ -1932,7 +1932,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_random_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Random Reference Value"/>
 
@@ -1950,7 +1950,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_random_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Random Reading"/>
 
@@ -1959,7 +1959,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/glucose_profile_ggt_linearlayout"
+                    android:id="@+id/glucose_profile_gtt_linearlayout"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1968,7 +1968,7 @@
                 <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/glucose_profile_ggt_reference_value_textInputLayout"
+                android:id="@+id/glucose_profile_gtt_reference_value_textInputLayout"
                 android:layout_weight="1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
@@ -1977,8 +1977,8 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt_glucose_profile_ggt_reference_value"
-                    android:inputType="text"
+                    android:id="@+id/edt_glucose_profile_gtt_reference_value"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="GTT(0,1,2,3 Hrs)Reference Value"/>
 
@@ -1986,7 +1986,7 @@
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/glucose_profile_ggt_reading_textInputLayout"
+                        android:id="@+id/glucose_profile_gtt_reading_textInputLayout"
                         android:layout_weight="1"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
@@ -1995,8 +1995,8 @@
                         <android.support.design.widget.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/edt_glucose_profile_ggt_reading"
-                            android:inputType="text"
+                            android:id="@+id/edt_glucose_profile_gtt_reading"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="GTT(0,1,2,3 Hrs) Reading"/>
 
@@ -2022,7 +2022,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_hba1c_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="HbA1c Reference Value"/>
 
@@ -2040,7 +2040,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_hba1c_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="HbA1c Reading"/>
 
@@ -2065,7 +2065,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_urinary_micro_albuminrefrancevalue"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Urinary Micro Albumin Reference Value"/>
 
@@ -2083,7 +2083,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_urinary_micro_albumin_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Urinary Micro Albumin Reading"/>
 
@@ -2109,7 +2109,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_insulin_fpp_refrancevalue"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="Insulin FPP Reference Value"/>
 
@@ -2126,7 +2126,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_insulin_fpp_reading"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="Insulin FPP Reading"/>
 
@@ -2147,7 +2147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_insulin_fpp"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Insulin F/PP Reference Value and Reading"/>
 
@@ -2218,7 +2218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_widaltext_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Widal Reference Value"/>
 
@@ -2236,7 +2236,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_widaltext_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Widal Reading"/>
 
@@ -2273,7 +2273,7 @@
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_blood_glucose"
                     android:drawablePadding="10dp"
-                    android:text="TYPHIDOT"
+                    android:text="TYPHOID"
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -2309,7 +2309,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_typhidot_text_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Typhidot Reference Value"/>
 
@@ -2327,7 +2327,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_typhidot_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Typhidot Reading"/>
 
@@ -2399,7 +2399,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_malaria_serology_text_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Malaria Serology Reference Value"/>
 
@@ -2417,7 +2417,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_malaria_serology_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Malaria Serology Reading"/>
 
@@ -2488,7 +2488,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_ra_factor_text_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="RA Factor Reference Value"/>
 
@@ -2506,7 +2506,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_ra_factor_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="RA Factor Reading"/>
 
@@ -2577,7 +2577,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_hbsag_text_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="HBSAG Reference Value"/>
 
@@ -2595,7 +2595,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_hbsag_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="HBSAG Reading"/>
 
@@ -2665,7 +2665,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_routine_microsocopic_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Routine &amp; Microsocopic Reference Value"/>
 
@@ -2683,7 +2683,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_routine_microsocopic_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Routine &amp; Microsocopic Reading"/>
 
@@ -2710,7 +2710,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_protein_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Protein Reference Value"/>
 
@@ -2728,7 +2728,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_protein_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Protein Reading"/>
 
@@ -2755,7 +2755,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_sugar_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Sugar Reference Value"/>
 
@@ -2773,7 +2773,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_sugar_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Sugar Reading"/>
 
@@ -2800,7 +2800,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_ketone_bodies_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Ketone Bodies Reference Value"/>
 
@@ -2818,7 +2818,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_ketone_bodies_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Ketone Bodies Reading"/>
 
@@ -2845,7 +2845,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_bile_salt_bile_pigments_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="Bile salt/bile Pigments Reference Value"/>
 
@@ -2863,7 +2863,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_bile_salt_bile_pigments_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Bile salt/bile Pigments Reading"/>
 
@@ -2890,7 +2890,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_urine_pregnancy_test_reference_value"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="Urine Pregnancy Test Reference Value"/>
 
@@ -2908,7 +2908,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/edt_urine_pregnancy_test_reading"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLength="30"
                         android:hint="Urine Pregnancy Test Reading"/>
 
@@ -2998,7 +2998,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/edt_crp_text_reference_value"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:hint="CRP Reference Value"/>
 
@@ -3016,7 +3016,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_crp_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="CRP Reading"/>
 
@@ -3086,13 +3086,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_anti_hcv_text_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Anti HCV Reference Value"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/anti_hcv_text_reading_textInputLayout"
                         android:layout_weight="1"
@@ -3104,7 +3104,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_anti_hcv_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Anti HCV Reading"/>
 
@@ -3176,7 +3176,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_hiv_text_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Anti HCV Reference Value"/>
 
@@ -3194,7 +3194,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_hiv_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="Anti HCV Reading"/>
 
@@ -3264,7 +3264,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_vdrl_text_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="VDRL Reference Value"/>
 
@@ -3282,7 +3282,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_vdrl_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="VDRL Reading"/>
 
@@ -3352,7 +3352,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_gct_text_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="GCT Reference Value"/>
 
@@ -3370,7 +3370,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_gct_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="GCT Reading"/>
 
@@ -3441,7 +3441,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_abo_rh_text_reference_value"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="ABO RH Reference Value"/>
 
@@ -3459,7 +3459,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/edt_abo_rh_text_reading"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:maxLength="30"
                             android:hint="ABO RH Reading"/>
 

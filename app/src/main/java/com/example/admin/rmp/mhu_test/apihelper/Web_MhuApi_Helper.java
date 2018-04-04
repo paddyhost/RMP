@@ -30,6 +30,7 @@ import java.util.Map;
 
 public class Web_MhuApi_Helper
 {
+/*
     public static void webGetTestMasterAttribute(final Activity activity, final ArrayList<MHU_Test> mhuTestArrayList, final ApiResponseListener apiResponseListener)
     {
         StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.ulGetTestMasterAttribute,new Response.Listener<String>() {
@@ -130,6 +131,93 @@ public class Web_MhuApi_Helper
                 params.put("format","json");
 
                 //returning parameters
+                return params;
+            }
+
+        };
+
+        MyApplication.getInstance().addToRequestQueue(strReq);
+
+    }
+*/
+
+    public static void webAddTestAttributeValues(final Activity activity, final ApiResponseListener apiResponseListener, final JSONArray testobj)
+    {
+        StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddTestAttributeValues,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+                try
+                {
+                    JSONObject responce = new JSONObject(response);
+                    String message=responce.getString("message");
+
+                    if (responce.getString("status").equalsIgnoreCase("success"))
+                    {
+                        if(responce.getString("message").equalsIgnoreCase("VALUES_ADDED")) {
+
+                            JSONArray result=responce.getJSONArray("result");
+
+                            apiResponseListener.onSuccess(responce.getString("message"));
+                        }
+                        else
+                        {
+                            apiResponseListener.onError(responce.getString("message"));
+                        }
+                    }
+                    else
+                    {
+                        apiResponseListener.onError(responce.getString("message"));
+                    }
+                }
+                catch (JSONException e)
+                {
+                    apiResponseListener.onError("Exception");
+                    e.printStackTrace();
+                }
+            }
+        }
+                , new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    apiResponseListener.onError("Check internet connection");
+                }
+                else if (error instanceof ServerError)
+                {
+                    apiResponseListener.onError("Server Error");
+                }
+                else if (error instanceof NetworkError)
+                {
+                    apiResponseListener.onError("Check internet connection");
+                }
+                else if (error instanceof ParseError)
+                {
+                    apiResponseListener.onError("Parse Error");
+                }
+                else
+                {
+                    apiResponseListener.onError("Unknown Error");
+                }
+
+            }
+        }) {
+
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new Hashtable<String, String>();
+
+                params.put("patient_id",MainActivity.PATIENT_ID);
+                params.put("registeration_id",MainActivity.REGISTRATION_ID);
+
+
+                params.put("format","json");
+                params.put("testobj",testobj+"");
+
+
+
                 return params;
             }
 

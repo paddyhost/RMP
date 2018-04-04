@@ -25,9 +25,6 @@ import org.json.JSONObject;
 import java.util.Hashtable;
 import java.util.Map;
 
-/**
- * Created by Ashwin on 26-Jan-18.
- */
 
 public class WebVital_Helper
 {
@@ -44,12 +41,15 @@ public class WebVital_Helper
                     {
                         if(responce.getString("message").equalsIgnoreCase("Vital added successfully")) {
 
-                            // {"status":"success","count":1,"type":"addVital",
-                            // "result":{"id":"3","pid":"1","registrationno":"rpm-5a6b03d57b791",
-                            // "height":"23","weight":"23","bloodpresure":"2","tempreture":"2","respiration":"9"},
-                            // "message":"Vital added successfully"}
-
-                            //JSONObject jsonObject = responce.getJSONObject("result");
+                            //{"status":"success","count":1,
+                            // "type":"addVital",
+                            // "result":{"id":"208","pid":"1",
+                            // "registrationno":"rpm-5a6b03d57b791",
+                            // "height":"23","weight":"23",
+                            // "bloodpresure":"2","tempreture":"2",
+                            // "respiration":"9",
+                            // "updatedate":"2018-04-03 03:06:49","bpto":"3",
+                            // "visit_master_id":"1"},"message":"Vital added successfully"}
 
                             apiResponseListener.onSuccess(responce.getString("message"));
                         }
@@ -102,10 +102,11 @@ public class WebVital_Helper
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
 
-                //http://192.168.1.101/RMP/index.php/api/V1/addVital?
-                // mobile=9975294782&password=user@123&&format=json&
-                // pid=1&registrationno=rpm-5a6b03d57b791&height=23&
-                // weight=23&bloodpresure=2&tempreture=2&respiration=9
+               //http://mobilehealthunit.in/api/V1_1/addVital
+                // ?mobile=9975294782&password=user@123&
+                // &format=json&pid=1&registrationno=rpm-5a6b03d57b791
+                // &height=23&bpto=3&weight=23&bloodpresure=2
+                // &tempreture=2&respiration=9&visit_master_id=1
 
                 params.put("pid", MainActivity.PATIENT_ID);
                 params.put("registrationno",MainActivity.REGISTRATION_ID);
@@ -117,6 +118,7 @@ public class WebVital_Helper
                 params.put("bpto",vitalInfo.getBloodPressureTo());
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
+                params.put("visit_master_id",MainActivity.Visit_ID);
                 params.put("format","json");
                 //returning parameters
                 return params;

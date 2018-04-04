@@ -7,14 +7,14 @@ import android.os.Parcelable;
 public class PatientRegistration implements Parcelable
 {
     private String id, registrationNo, fName,Lname,gender,dateOfRegistration,address,
-            mobileNo,dob,unique_id,patient_category,state,district,city,area,location,visit_id;
+            mobileNo,dob,unique_id,patient_category,state,district,city,area,location,visit_id,visit_master_id;
 
 
     public PatientRegistration()
     {
     }
 
-    public PatientRegistration(String id, String registrationNo, String fName, String lname,String age, String gender, String dateOfRegistration, String address, String mobileNo, String dob, String state, String district, String city, String area, String location, String unique_id, String patient_category,String visit_id) {
+    public PatientRegistration(String id, String registrationNo, String fName, String lname,String age, String gender, String dateOfRegistration, String address, String mobileNo, String dob, String state, String district, String city, String area, String location, String unique_id, String patient_category,String visit_id,String visit_master_id) {
         this.id = id;
         this.registrationNo = registrationNo;
         this.fName = fName;
@@ -32,6 +32,7 @@ public class PatientRegistration implements Parcelable
         this.unique_id = unique_id;
         this.patient_category = patient_category;
         this.visit_id=visit_id;
+        this.visit_master_id=visit_master_id;
     }
 
     protected PatientRegistration(Parcel in) {
@@ -52,6 +53,7 @@ public class PatientRegistration implements Parcelable
         unique_id = in.readString();
         patient_category = in.readString();
         visit_id=in.readString();
+        visit_master_id=in.readString();
     }
 
     @Override
@@ -73,6 +75,7 @@ public class PatientRegistration implements Parcelable
         dest.writeString(area);
         dest.writeString(location);
         dest.writeString(visit_id);
+        dest.writeString(visit_master_id);
     }
 
     @Override
@@ -226,5 +229,13 @@ public class PatientRegistration implements Parcelable
 
     public void setVisit_id(String visit_id) {
         this.visit_id = visit_id;
+    }
+
+    public String getVisit_master_id() {
+        return visit_master_id;
+    }
+
+    public void setVisit_master_id(String visit_master_id) {
+        this.visit_master_id = visit_master_id;
     }
 }
