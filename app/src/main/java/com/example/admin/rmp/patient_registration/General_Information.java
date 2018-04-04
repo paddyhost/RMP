@@ -61,6 +61,7 @@ public class General_Information extends Fragment {
     private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout,age_textLayout,registartion_date_textLayout;
     private PrefManager prefManager;
+
     public General_Information() {
         // Required empty public constructor
     }
@@ -293,6 +294,7 @@ public class General_Information extends Fragment {
                 monthOfYear = monthOfYear + 1;
 
                 edtDob.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                edtDob.setError(null);
 
                 final Calendar TodayDate = Calendar.getInstance();
                 tYear = TodayDate.get(Calendar.YEAR);
@@ -302,6 +304,7 @@ public class General_Information extends Fragment {
                 int ageYear=tYear-year;
 
                 edtAge.setText(String.valueOf(ageYear+"yrs"));
+                edtAge.setError(null);
                 edtAge.setFocusable(false);
 
             }
@@ -333,6 +336,7 @@ public class General_Information extends Fragment {
                 monthOfYear = monthOfYear + 1;
 
                 edtRegistrationDate.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                edtRegistrationDate.setError(null);
 
             }
         }, tYear, tMonth, tDay);
@@ -567,13 +571,13 @@ public class General_Information extends Fragment {
             edtDob.setError(null);
         }
 
-        if (edtAge.getText().toString().trim().length() == 0)
+      /*  if (edtAge.getText().toString().trim().length() == 0)
         {
             edtAge.setError("PLease Enter age");
             response = false;
         } else {
             edtAge.setError(null);
-        }
+        }*/
 
         if (genderGrp.getCheckedRadioButtonId() == -1) {
             Toast.makeText(getActivity(), "Please select gender", Toast.LENGTH_SHORT).show();
