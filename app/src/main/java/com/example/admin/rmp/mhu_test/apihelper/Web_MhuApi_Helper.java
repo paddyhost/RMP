@@ -211,7 +211,7 @@ public class Web_MhuApi_Helper
 
                 params.put("patient_id",MainActivity.PATIENT_ID);
                 params.put("registeration_id",MainActivity.REGISTRATION_ID);
-
+                params.put("visit_master_id",MainActivity.Visit_ID);
 
                 params.put("format","json");
                 params.put("testobj",testobj+"");

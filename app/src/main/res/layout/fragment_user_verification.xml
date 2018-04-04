@@ -42,6 +42,7 @@
                     android:padding="10dp"
                     android:inputType="number"
                     android:layout_margin="10dp"
+                    android:maxLength="25"
                     android:hint="Patient Unique/Adhar ID"
                     android:background="@android:color/transparent" />
             </android.support.design.widget.TextInputLayout>

@@ -114,17 +114,17 @@ public class General_Information extends Fragment {
            edtAddress.setText(registration.getAddress());
            edtAddress.setFocusable(false);
            patientCategorySpinner.setSelection(1);
-           patientCategorySpinner.setFocusable(false);
+           patientCategorySpinner.setEnabled(false);
            stateSpinner.setSelection(1);
-           stateSpinner.setSelected(false);
+           stateSpinner.setEnabled(false);
            districtSpinner.setSelection(1);
-           districtSpinner.setSelected(false);
+           districtSpinner.setEnabled(false);
            citySpinner.setSelection(1);
-           citySpinner.setSelected(false);
+           citySpinner.setEnabled(false);
            areaSpinner.setSelection(1);
-           areaSpinner.setSelected(false);
+           areaSpinner.setEnabled(false);
            locationSpinner.setSelection(1);
-           locationSpinner.setSelected(false);
+           locationSpinner.setEnabled(false);
            if(registration.getGender().equalsIgnoreCase("M"))
            {
               // patientRegistration.setGender("Female");
@@ -365,8 +365,8 @@ public class General_Information extends Fragment {
             @Override
             public void onClick(View view) {
 
-                    //if(checkValidation())
-                    //{
+                    if(checkValidation())
+                    {
                     if (registration == null) {
                         setPatientData();
                          final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
@@ -416,7 +416,7 @@ public class General_Information extends Fragment {
                             addVisit();
                             //"VISIT_GENERATED"
                         }
-                //}
+                }
             }
         });
 
@@ -489,6 +489,7 @@ public class General_Information extends Fragment {
         patientRegistration.setCity(citySpinner.getSelectedItem().toString());
         patientRegistration.setArea(areaSpinner.getSelectedItem().toString());
         patientRegistration.setLocation(locationSpinner.getSelectedItem().toString());
+
         patientRegistration.setGender(selected_gender);
 
     }

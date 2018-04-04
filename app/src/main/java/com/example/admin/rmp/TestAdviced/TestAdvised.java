@@ -28,6 +28,7 @@ import com.example.admin.rmp.mhu_test.MhuTest;
 import com.example.admin.rmp.mhu_test.apihelper.Web_MhuApi_Helper;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.patient_registration.General_Information;
+import com.example.admin.rmp.patient_registration.UserVerificationFragment;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
@@ -134,7 +135,7 @@ public class TestAdvised extends Fragment {
                                     sweetAlertDialog.dismissWithAnimation();
 
                                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    General_Information general_information = new General_Information();
+                                    UserVerificationFragment general_information = new UserVerificationFragment();
                                     fragmentTransaction.replace(R.id.framelayout, general_information).addToBackStack(null).commit();
                                 }
                             });
@@ -164,6 +165,7 @@ public class TestAdvised extends Fragment {
 
      private void setAdvisedData()
     {
+        testAdvicedModel=new TestAdvicedModel();
         testAdvicedModel.setTestName(edtTestName.getText().toString());
         testAdvicedModel.setRerered(etRefrerredTxt.getText().toString());
         testAdvicedModel.setRemark(etRmarks.getText().toString());
