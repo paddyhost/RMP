@@ -86,7 +86,7 @@ public class TestAdvicedModel {
         return test_name;
     }
 
-    public void setTestName(String adviced) {
+    public void setTestName(String test_name) {
         this.test_name = test_name;
     }
 

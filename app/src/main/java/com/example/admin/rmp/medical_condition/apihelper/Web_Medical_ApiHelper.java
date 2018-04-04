@@ -50,11 +50,11 @@ public class Web_Medical_ApiHelper
                             JSONObject result=responce.getJSONObject("result");
                             String medicalconditionid=result.getString("id");
 
-                            ArrayList<Dose> doseArrayList = new ArrayList<Dose>();
-                            for (Dose dose:doseArrayList)
-                            {
-                                addPriscribeDose(activity,  dose,medicalconditionid );
+                            if(doseArrayList!=null) {
+                                for (Dose dose : doseArrayList) {
+                                    addPriscribeDose(activity, dose, medicalconditionid);
 
+                                }
                             }
                             // {"status":"success","count":1,"type":"addMedicalcondition",
                             // "result":{"id":"3","chiefcomplaints1":"ghashd","chiefcomplaints2":"bgasdhg",

@@ -22,6 +22,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.TestAdviced.TestAdvised;
@@ -429,7 +430,7 @@ public class MhuTest extends Fragment {
 
                     @Override
                     public void onError(String message) {
-
+                        Toast.makeText(getActivity(),"Insert atleast one test or check properly",Toast.LENGTH_SHORT).show();
                     }
                 },jsonoarray);
 

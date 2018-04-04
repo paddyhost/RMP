@@ -98,6 +98,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
     private DoseList_Adapter doseAdapter;
     private RecyclerView doseList;
     private LinearLayoutManager mLayoutManager;
+    private Spinner medicinNameSpinner;
 
 
     public MedicalConditionFragment() {
@@ -317,6 +318,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                 View alertLayout = inflater2.inflate(R.layout.dose_dialog_row, null);
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
+                medicinNameSpinner=(Spinner)alertLayout.findViewById(R.id.medicin_name_spinner);
                 final TextInputEditText doseName = (TextInputEditText) alertLayout.findViewById(R.id.et_prescription_dose);
                 final TextInputEditText doseFrequency = (TextInputEditText) alertLayout.findViewById(R.id.et_frequency);
                 final TextInputEditText days = (TextInputEditText) alertLayout.findViewById(R.id.et_days);
@@ -330,10 +332,18 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Dose dose = new Dose(doseName.getText().toString(), doseFrequency.getText().toString(), days.getText().toString());
-                        doseArrayList.add(dose);
-                        doseAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
+
+                        if(medicinNameSpinner.getSelectedItemPosition()>0) {
+                            Dose dose = new Dose(medicinNameSpinner.getSelectedItem().toString(), doseFrequency.getText().toString(), days.getText().toString());
+                            doseArrayList.add(dose);
+                            doseAdapter.notifyDataSetChanged();
+                            dialog.dismiss();
+                        }
+                        else
+                        {
+                            Toast.makeText(getActivity(),"Select atleast one medincine name",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
                     }
                 });
                 alert.setNegativeButton("No", new DialogInterface.OnClickListener() {

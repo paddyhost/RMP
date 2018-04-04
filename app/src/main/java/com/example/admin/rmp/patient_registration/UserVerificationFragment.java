@@ -45,7 +45,7 @@ public class UserVerificationFragment extends Fragment {
                 sweetAlertDialog.show();
 
 
-                //if (uid.getText().toString().trim().length() == 0 || uid.getText().toString().trim().length() == 12 || uid.getText().toString().trim().length() == 16 || uid.getText().toString().trim().length() == 25){
+                if (uid.getText().toString().trim().length() == 0 || uid.getText().toString().trim().length() == 12 || uid.getText().toString().trim().length() == 16 || uid.getText().toString().trim().length() == 25){
 
                     final PatientRegistration patientRegistration = new PatientRegistration();
                     Web_ApiHelper.isPatientExist(getActivity(), patientRegistration, new ApiResponseListener() {
@@ -104,12 +104,12 @@ public class UserVerificationFragment extends Fragment {
                             sweetAlertDialog.setConfirmText(message);
                         }
                     }, uid.getText().toString());
-                //}
-                /*else
+                }
+                else
                 {
                     sweetAlertDialog.dismiss();
                     Toast.makeText(getActivity(),"Please enter valid Unique or Adhar Number",Toast.LENGTH_SHORT).show();
-                }*/
+                }
             }
 
         });

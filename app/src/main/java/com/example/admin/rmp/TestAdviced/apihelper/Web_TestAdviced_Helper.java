@@ -104,12 +104,12 @@ public class Web_TestAdviced_Helper
                 // &creatine=888&urea=888&sgot=77&sgpt=7767&adviced=7878&ferered=878&remark=887
                 params.put("patient_id", MainActivity.PATIENT_ID);
                 params.put("registrationno",MainActivity.REGISTRATION_ID);
-                params.put("bloodglucose",testAdvicedModel.getBloodglucose());
-                params.put("heamogram",testAdvicedModel.getHeamogram());
-                params.put("creatine",testAdvicedModel.getCreatine());
-                params.put("urea",testAdvicedModel.getUrea());
-                params.put("sgot",testAdvicedModel.getSgot());
-                params.put("sgpt",testAdvicedModel.getSgpt());
+                //params.put("bloodglucose",testAdvicedModel.getBloodglucose());
+               // params.put("heamogram",testAdvicedModel.getHeamogram());
+                //params.put("creatine",testAdvicedModel.getCreatine());
+               //params.put("urea",testAdvicedModel.getUrea());
+                //params.put("sgot",testAdvicedModel.getSgot());
+               //params.put("sgpt",testAdvicedModel.getSgpt());
                 params.put("adviced",testAdvicedModel.getTestName());
                 params.put("ferered",testAdvicedModel.getRerered());
                 params.put("remark",testAdvicedModel.getRemark());
