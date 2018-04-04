@@ -9,14 +9,14 @@ import android.os.Parcelable;
 
 public class Vital_Info implements Parcelable
 {
-   private String id, registrationNo, height, weight, bloodPressure, temperature, respiration,bloodPressureTo;
+   private String id, registrationNo, height, weight, bloodPressure, temperature, respiration,bloodPressureTo,visit_master_id,updatedate;
 
     public Vital_Info()
     {
 
     }
 
-    public Vital_Info(String id, String registrationNo, String height, String weight, String bloodPressure, String temperature, String respiration)
+    public Vital_Info(String id, String registrationNo, String height, String weight, String bloodPressure, String temperature, String respiration,String visit_master_id,String updatedate)
     {
         this.id = id;
         this.registrationNo = registrationNo;
@@ -25,6 +25,8 @@ public class Vital_Info implements Parcelable
         this.bloodPressure = bloodPressure;
         this.temperature = temperature;
         this.respiration = respiration;
+        this.visit_master_id=visit_master_id;
+        this.updatedate=updatedate;
     }
 
     protected Vital_Info(Parcel in)
@@ -36,6 +38,8 @@ public class Vital_Info implements Parcelable
         bloodPressure = in.readString();
         temperature = in.readString();
         respiration = in.readString();
+        visit_master_id=in.readString();
+        updatedate=in.readString();
     }
 
     public static final Creator<Vital_Info> CREATOR = new Creator<Vital_Info>()
@@ -121,6 +125,8 @@ public class Vital_Info implements Parcelable
         parcel.writeString(bloodPressure);
         parcel.writeString(temperature);
         parcel.writeString(respiration);
+        parcel.writeString(visit_master_id);
+        parcel.writeString(updatedate);
     }
 
     public String getBloodPressureTo() {
@@ -129,5 +135,21 @@ public class Vital_Info implements Parcelable
 
     public void setBloodPressureTo(String bloodPressureTo) {
         this.bloodPressureTo = bloodPressureTo;
+    }
+
+    public String getVisit_master_id() {
+        return visit_master_id;
+    }
+
+    public void setVisit_master_id(String visit_master_id) {
+        this.visit_master_id = visit_master_id;
+    }
+
+    public String getUpdatedate() {
+        return updatedate;
+    }
+
+    public void setUpdatedate(String updatedate) {
+        this.updatedate = updatedate;
     }
 }

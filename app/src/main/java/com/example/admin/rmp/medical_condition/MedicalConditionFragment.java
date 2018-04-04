@@ -63,8 +63,8 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
             etBreifHistory1, etBreifHistory2, etBreifHistory3,etPrevsHosptl;
     private TextInputLayout etComplaint1TextInputLayout, etComplaint2TextInputLayout,
             etComplaint3TextInputLayout, etBreifHistory1TextInputLayout,
-            etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout,
-            investigation_radioTextLayout,doctorName1Layout;
+            etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout;
+
     private RadioGroup investigationGroup, treatmentGroup, improvementGroup;
     private RadioButton BtnInvestigationYes, BtnInvestigationNo, BtnInvestigationDontKnow,
             BtnTreatmentYes, BtnTreatmentNo, BtnTreatmentDontKnow,
@@ -179,11 +179,10 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         etBreifHistory1TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory1_TextInputLayout);
         etBreifHistory2TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory2_TextInputLayout);
         etBreifHistory3TextInputLayout = (TextInputLayout) view.findViewById(R.id.etBreifhistory3_TextInputLayout);
-        investigation_radioTextLayout = (TextInputLayout) view.findViewById(R.id.investigationRadioTextLayout);
         addPrescriptionLayout=(LinearLayout)view.findViewById(R.id.add_prescription_layout);
         doseList = (RecyclerView) view.findViewById(R.id.dose_list);
         etPrevsHosptl=(TextInputEditText)view.findViewById(R.id.prevs_hosptl);
-        doctorName1Layout=(TextInputLayout)view.findViewById(R.id.doctor_name1_layout);
+
 
 
         /*Previous Record Variables Initializations*/

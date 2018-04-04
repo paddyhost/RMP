@@ -142,6 +142,7 @@ public class Web_Medical_ApiHelper
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");
+                params.put("visit_master_id",MainActivity.Visit_ID);
                 //returning parameters
                 return params;
             }
@@ -238,6 +239,7 @@ public class Web_Medical_ApiHelper
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");
+                params.put("visit_master_id",MainActivity.Visit_ID);
                 //returning parameters
                 return params;
             }

@@ -45,6 +45,7 @@
                 android:background="@drawable/border_label"
                 android:layout_marginTop="16dp"
                 android:text="Chief Complaint"
+                android:inputType="text"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:padding="5dp"/>
@@ -102,6 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/et_complain2"
+                    android:inputType="text"
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
@@ -130,6 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/et_complain3"
+                    android:inputType="text"
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
@@ -171,6 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/et_breifhistory1"
+                    android:inputType="text"
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
@@ -199,6 +203,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/et_breifhistory2"
+                    android:inputType="text"
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
@@ -227,6 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/et_breifhistory3"
+                    android:inputType="text"
                     android:paddingLeft="32dp"/>
             </android.support.design.widget.TextInputLayout>
             </RelativeLayout>
@@ -268,6 +274,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:id="@+id/prevs_hosptl"
+                        android:inputType="text"
                         android:hint="Previous Hospital"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -296,6 +303,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:id="@+id/drname1"
+                        android:inputType="text"
                         android:hint="Previous Doctor Name 1"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -323,6 +331,7 @@
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:id="@+id/drname2"
+                        android:inputType="text"
                         android:layout_height="50dp"
                         android:hint="Previous Doctor Name 2"/>
 
@@ -352,6 +361,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:id="@+id/drname3"
+                        android:inputType="text"
                         android:hint="Previous Doctor Name 3"/>
 
                 </android.support.design.widget.TextInputLayout>
@@ -498,6 +508,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/diagnosis"
+                    android:inputType="text"
                     android:hint="Diagnosis"/>
 
             </android.support.design.widget.TextInputLayout>

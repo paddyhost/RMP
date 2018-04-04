@@ -94,7 +94,7 @@ public class TestAdvised extends Fragment {
         etRefrerredTxt = (TextInputEditText)view.findViewById(R.id.referred_txt);
         etRmarks = (TextInputEditText)view.findViewById(R.id.remarks);
         edtTestName= (TextInputEditText)view.findViewById(R.id.test_name_txt);
-        advisedSpinner = (Spinner)view.findViewById(R.id.advised_test);
+        //advisedSpinner = (Spinner)view.findViewById(R.id.advised_test);
         submitBtn = (Button) view.findViewById(R.id.submit);
         referred_txtTextLayout=(TextInputLayout)view.findViewById(R.id.referred_txt_TextLayout);
         remarksTextLayout=(TextInputLayout)view.findViewById(R.id.remarks_TextLayout);
@@ -164,7 +164,7 @@ public class TestAdvised extends Fragment {
 
      private void setAdvisedData()
     {
-        testAdvicedModel.setAdviced(advisedSpinner.getSelectedItem().toString());
+        testAdvicedModel.setTestName(edtTestName.getText().toString());
         testAdvicedModel.setRerered(etRefrerredTxt.getText().toString());
         testAdvicedModel.setRemark(etRmarks.getText().toString());
     }

@@ -1,5 +1,6 @@
 package com.example.admin.rmp.mhu_test;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -24,14 +25,25 @@ import android.widget.TextView;
 
 import com.example.admin.rmp.R;
 import com.example.admin.rmp.TestAdviced.TestAdvised;
+import com.example.admin.rmp.activity.MainActivity;
+import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.mhu_test.model.MHU_Test;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.utils.Utility;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import static com.example.admin.rmp.mhu_test.apihelper.Web_MhuApi_Helper.webAddTestAttributeValues;
+
 public class MhuTest extends Fragment {
+
+    JSONArray jsonoarray=new JSONArray();
+
+    JSONObject jsonobjmain=new JSONObject();
 
     private Toolbar mhu_toolbar;
     private LinearLayout completeBloodCountHomogramLinearlayout,hbLinearlayout,tlcLinearlayout,dlcLinearlayout,
@@ -39,9 +51,9 @@ public class MhuTest extends Fragment {
             aecLinearlayout,dbilLinearlayout,idbilLinearlayout,tbilLinearlayout,tprotLinearlayout,
             agRatLinearlayout,altLinearlayout,astLinearlayout,alpLinearlayout,compLftLinearlayout,ggtLinearlayout,
             albLinearlayout,ureaLinearlayout,creatLinearlayout,uricAcidLinearlayout,electrolyteLinearlayout,liverFunctionTprotLinearlayout,
-            albLiverFunctionLinearlayout,a1bCrRatioLinearlayout,microAlbuminLinearlayout,kidneyCompKftLinearlayout,
+            a1bKidneyFunctionLinearlayout,a1bCrRatioLinearlayout,microAlbuminLinearlayout,kidneyCompKftLinearlayout,
             cholesterolLinearlayout,tagLinearlayout,hdlLinearlayout,completeLipidProfileLinearlayout,fbgLinearlayout,twohrLinearlayout,
-            randomLinearlayout,glucoseProfileGgtLinearlayout,hba1cLinearlayout,urinaryMicroAlbuminLinearlayout,insulinFppLinearlayout,
+            randomLinearlayout,glucoseProfileGttLinearlayout,hba1cLinearlayout,urinaryMicroAlbuminLinearlayout,insulinFppLinearlayout,
             widaltextLinearlayout,typhidotTextLinearlayout,malariaSerologyTextLinearlayout,raFactorTextLinearlayout,hbsagTextLinearlayout,routineMicrosocopicLinearlayout,
             proteinLinearlayout,sugarLinearlayout,ketoneBodiesLinearlayout,bileSaltBilePigmentsLinearlayout,urinePregnancyTestLinearlayout,crpTextLinearlayout,antiHcvLinearlayout,
             hivTextLinearlayout,vdrlTextLinearlayout,gctTextLinearlayout,aboRhTextLinearlayout;
@@ -54,11 +66,11 @@ public class MhuTest extends Fragment {
             edtTProtReading,edtAgRatReferenceValue,edtAgRatReading,edtAltReferenceValue,edtAltReading,edtAstReferenceValue,edtAstReading,edtAlpReferenceValue,
             edtAlpReading,edtCompLftReferenceValue,edtCompLftReading,edtGgtReferenceValue,edtGggtReading,edtAlbReferenceValue,edtAlbReading,
             edtUreaReferenceValue,edtUreaReading,edtCreatReferenceValue,edtCreatReading,edtUricAcidReferenceValue,edtUricAcidReading,edtElectrolyteReferenceValue,
-            edtElectrolyteReading,edtLiverfunctionTprotReferenceValue,edtLiverfunctionTprotReading,edtA1bLiverFunctionReferenceValue,edtA1bLiverFunctionReading,edtA1bCrRatioReferenceValue,
+            edtElectrolyteReading,edtLiverfunctionTprotReferenceValue,edtLiverfunctionTprotReading,edtA1bKidneyFunctionReferenceValue,edtA1bKidneyFunctionReading,edtA1bCrRatioReferenceValue,
             edtA1bCrRatioReading,edtMicroAlbuminReferenceValue,edtMicroAlbuminReading,edtKidneyCompKftReferenceValue,edtKidneyCompKftReading,
             edtCholesterolReferenceValue,edtCholesterolReading,edtTagReferenceValue,edtTagReading,edtHdlReferenceValue,edtHdlReading,
             edtCompleteLipidProfileReferenceValue,edtCompleteLipidProfileReading,edtFbgReferenceValue,edtFbgReading,edtTwohrReferenceValue,edtTwohrReading,
-            edtRandomReferenceValue,edtRandomReading,edtGlucoseProfileGgtReferenceValue,edtGlucoseProfileGgtReading,edtHba1cReferenceValue,edtHba1cReading,
+            edtRandomReferenceValue,edtRandomReading,edtGlucoseProfileGttReferenceValue,edtGlucoseProfileGttReading,edtHba1cReferenceValue,edtHba1cReading,
             edtUrinaryMicroAlbuminRefrancevalue,edtUrinaryMicroAlbuminReading,edtInsulinFppRefrancevalue,edtInsulinFppReading,
             edtWidaltextReferenceValue,edtWidaltextReading,edtTyphidotTextReferenceValue,edtTyphidotTextReading,edtMalariaSerologyTextReferenceValue,edtMalariaSerologyTextReading,
             edtRaFactorTextReferenceValue,edtRaFactorTextReading,edtHbsagTextReferenceValue,edtHbsagTextReading,edtRoutineMicrosocopicReferenceValue,edtRoutineMicrosocopicReading,
@@ -235,7 +247,7 @@ public class MhuTest extends Fragment {
         edtCreatReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_creat_reference_value);
         edtCreatReading=(TextInputEditText)view.findViewById(R.id.edt_creat_reading);
 
-        uricAcidLinearlayout=(LinearLayout)view.findViewById(R.id.edt_uric_acid_reference_value);
+        uricAcidLinearlayout=(LinearLayout)view.findViewById(R.id.uric_acid_linearlayout);
         edtUricAcidReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_uric_acid_reference_value);
         edtUricAcidReading=(TextInputEditText)view.findViewById(R.id.edt_uric_acid_reading);
 
@@ -243,13 +255,13 @@ public class MhuTest extends Fragment {
         edtElectrolyteReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_electrolyte_reference_value);
         edtElectrolyteReading=(TextInputEditText)view.findViewById(R.id.edt_electrolyte_reading);
 
-        liverFunctionTprotLinearlayout=(LinearLayout)view.findViewById(R.id.edt_liverfunction_tprot_reference_value);
+        liverFunctionTprotLinearlayout=(LinearLayout)view.findViewById(R.id.liverfunction_tprot_linearlayout);
         edtLiverfunctionTprotReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_liverfunction_tprot_reference_value);
         edtLiverfunctionTprotReading=(TextInputEditText)view.findViewById(R.id.edt_liverfunction_tprot_reading);
 
-        albLiverFunctionLinearlayout=(LinearLayout)view.findViewById(R.id.alb_liver_function_linearlayout);
-        edtA1bLiverFunctionReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_a1b_liver_function_reference_value);
-        edtA1bLiverFunctionReading=(TextInputEditText)view.findViewById(R.id.edt_a1b_liver_function_reading);
+        a1bKidneyFunctionLinearlayout=(LinearLayout)view.findViewById(R.id.a1b_kidney_function_linearlayout);
+        edtA1bKidneyFunctionReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_a1b_kidney_function_reference_value);
+        edtA1bKidneyFunctionReading=(TextInputEditText)view.findViewById(R.id.edt_a1b_kidney_function_reading);
 
         a1bCrRatioLinearlayout=(LinearLayout)view.findViewById(R.id.a1bCrRatio_linearlayout);
         edtA1bCrRatioReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_a1b_cr_ratio_reference_value);
@@ -294,9 +306,9 @@ public class MhuTest extends Fragment {
         edtRandomReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_random_reference_value);
         edtRandomReading=(TextInputEditText)view.findViewById(R.id.edt_random_reading);
 
-        glucoseProfileGgtLinearlayout=(LinearLayout)view.findViewById(R.id.glucose_profile_ggt_linearlayout);
-        edtGlucoseProfileGgtReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_glucose_profile_ggt_reference_value);
-        edtGlucoseProfileGgtReading=(TextInputEditText)view.findViewById(R.id.edt_glucose_profile_ggt_reading);
+        glucoseProfileGttLinearlayout=(LinearLayout)view.findViewById(R.id.glucose_profile_gtt_linearlayout);
+        edtGlucoseProfileGttReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_glucose_profile_gtt_reference_value);
+        edtGlucoseProfileGttReading=(TextInputEditText)view.findViewById(R.id.edt_glucose_profile_gtt_reading);
 
         hba1cLinearlayout=(LinearLayout)view.findViewById(R.id.hba1c_linearlayout);
         edtHba1cReferenceValue=(TextInputEditText)view.findViewById(R.id.edt_hba1c_reference_value);
@@ -404,15 +416,24 @@ public class MhuTest extends Fragment {
             @Override
             public void onClick(View v) {
 
-                 setMHUTestData();
+                    setMHUTestData();
 
-                //if(checkValidation()) {
+                webAddTestAttributeValues(getActivity(), new ApiResponseListener() {
+                    @Override
+                    public void onSuccess(String message) {
+                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
+                        fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
 
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
-                    fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
+                    }
 
-                //}
+                    @Override
+                    public void onError(String message) {
+
+                    }
+                },jsonoarray);
+
+
 
             }
         });
@@ -420,10 +441,851 @@ public class MhuTest extends Fragment {
 
     private void setMHUTestData()
     {
-        mhuTest = new MHU_Test();
+        jsonoarray.put(jsonobjmain);
+
+        if(checkboxCompleteBloodCountHomogram.isChecked())
+        {
+            JSONArray jsonArray=new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "1");
+                jsonobj.put("reference_value", edtCbbHgmReferenceValue.getText().toString());
+                jsonobj.put("reading", edtCbbHgmReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "2");
+                jsonobj.put("reference_value", edtHbReferenceValue.getText().toString());
+                jsonobj.put("reading", edtHbReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "3");
+                jsonobj.put("reference_value", edtTlcReferenceValue.getText().toString());
+                jsonobj.put("reading", edtTlcReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "4");
+                jsonobj.put("reference_value", edtDlcReferenceValue.getText().toString());
+                jsonobj.put("reading", edtDlcReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "5");
+                jsonobj.put("reference_value", edtPcvReferenceValue.getText().toString());
+                jsonobj.put("reading", edtPcvReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "6");
+                jsonobj.put("reference_value", edtRbcReferenceValue.getText().toString());
+                jsonobj.put("reading", edtRbcReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "7");
+                jsonobj.put("reference_value", edtPlateletCountReferencevalue.getText().toString());
+                jsonobj.put("reading", edtPlateletCountReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "8");
+                jsonobj.put("reference_value", edtMcvMchMchcReferenceValue.getText().toString());
+                jsonobj.put("reading", edtMcvMchMchcReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "9");
+                jsonobj.put("reference_value", edtEsrReferenceValue.getText().toString());
+                jsonobj.put("reading", edtEsrReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "10");
+                jsonobj.put("reference_value", edtAecReferenceValue.getText().toString());
+                jsonobj.put("reading", edtAecReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            try {
+                jsonobjmain.put(" 1",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        if(checkboxLiverFunctionTest.isChecked())
+        {
+            JSONArray jsonArray=new JSONArray();
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "11");
+                jsonobj.put("reference_value", edtDBilReferenceValue.getText().toString());
+                jsonobj.put("reading", edtDBilReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "12");
+                jsonobj.put("reference_value", edtIdBilReferenceValue.getText().toString());
+                jsonobj.put("reading", edtIdBilReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "13");
+                jsonobj.put("reference_value", edtTBilReferenceValue.getText().toString());
+                jsonobj.put("reading", edtTBilReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "14");
+                jsonobj.put("reference_value", edtLiverfunctionTprotReferenceValue.getText().toString());
+                jsonobj.put("reading", edtLiverfunctionTprotReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "15");
+                jsonobj.put("reference_value", edtAgRatReferenceValue.getText().toString());
+                jsonobj.put("reading", edtAgRatReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "16");
+                jsonobj.put("reference_value", edtAltReferenceValue.getText().toString());
+                jsonobj.put("reading", edtAltReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "17");
+                jsonobj.put("reference_value", edtAstReferenceValue.getText().toString());
+                jsonobj.put("reading", edtAstReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+            JSONObject jsonobj = new JSONObject();
+            jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+            jsonobj.put("map_test_attribute_id", "18");
+            jsonobj.put("reference_value", edtAlpReferenceValue.getText().toString());
+            jsonobj.put("reading", edtAlpReading.getText().toString());
+            jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "19");
+                jsonobj.put("reference_value", edtCompLftReferenceValue.getText().toString());
+                jsonobj.put("reading", edtCompLftReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "20");
+                jsonobj.put("reference_value", edtGgtReferenceValue.getText().toString());
+                jsonobj.put("reading", edtGggtReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "21");
+                jsonobj.put("reference_value", edtAlbReferenceValue.getText().toString());
+                jsonobj.put("reading", edtAlbReading.getText().toString());
+                jsonArray.put(jsonobj);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+
+            try {
+                jsonobjmain.put("2",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        if(checkboxKidneyFunctionTest.isChecked()) {
+            JSONArray jsonArray=new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "22");
+                jsonobj.put("reference_value", edtUreaReferenceValue.getText().toString());
+                jsonobj.put("reading", edtUreaReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+            try {
+
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "23");
+                jsonobj.put("reference_value", edtCreatReferenceValue.getText().toString());
+                jsonobj.put("reading", edtCreatReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "24");
+                jsonobj.put("reference_value", edtUricAcidReferenceValue.getText().toString());
+                jsonobj.put("reading", edtUricAcidReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "25");
+                jsonobj.put("reference_value", edtElectrolyteReferenceValue.getText().toString());
+                jsonobj.put("reading", edtElectrolyteReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "26");
+                jsonobj.put("reference_value", edtTProtReferenceValue.getText().toString());
+                jsonobj.put("reading", edtTProtReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+           try {
+                JSONObject jsonobj = new JSONObject();
+               jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "27");
+                jsonobj.put("reference_value", edtA1bKidneyFunctionReferenceValue.getText().toString());
+                jsonobj.put("reading", edtA1bKidneyFunctionReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "28");
+                jsonobj.put("reference_value", edtA1bCrRatioReferenceValue.getText().toString());
+                jsonobj.put("reading", edtA1bCrRatioReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "29");
+                jsonobj.put("reference_value", edtMicroAlbuminReferenceValue.getText().toString());
+                jsonobj.put("reading", edtMicroAlbuminReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "30");
+                jsonobj.put("reference_value", edtKidneyCompKftReferenceValue.getText().toString());
+                jsonobj.put("reading", edtCompLftReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                jsonobjmain.put("3",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxLipidProfile.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "31");
+                jsonobj.put("reference_value", edtCholesterolReferenceValue.getText().toString());
+                jsonobj.put("reading", edtCholesterolReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "32");
+                jsonobj.put("reference_value", edtTagReferenceValue.getText().toString());
+                jsonobj.put("reading", edtTagReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "33");
+                jsonobj.put("reference_value", edtHdlReferenceValue.getText().toString());
+                jsonobj.put("reading", edtHdlReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "34");
+                jsonobj.put("reference_value", edtCompleteLipidProfileReferenceValue.getText().toString());
+                jsonobj.put("reading", edtCompleteLipidProfileReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("4",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxGlucoseProfile.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "35");
+                jsonobj.put("reference_value", edtFbgReferenceValue.getText().toString());
+                jsonobj.put("reading", edtFbgReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "36");
+                jsonobj.put("reference_value", edtTwohrReferenceValue.getText().toString());
+                jsonobj.put("reading", edtTwohrReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
 
 
 
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "37");
+                jsonobj.put("reference_value", edtRandomReferenceValue.getText().toString());
+                jsonobj.put("reading", edtRandomReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "38");
+                jsonobj.put("reference_value", edtGlucoseProfileGttReferenceValue.getText().toString());
+                jsonobj.put("reading", edtGlucoseProfileGttReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "39");
+                jsonobj.put("reference_value",edtHba1cReferenceValue.getText().toString());
+                jsonobj.put("reading", edtHba1cReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "40");
+                jsonobj.put("reference_value",edtUrinaryMicroAlbuminRefrancevalue.getText().toString());
+                jsonobj.put("reading", edtUrinaryMicroAlbuminReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "41");
+                jsonobj.put("reference_value",edtInsulinFppRefrancevalue.getText().toString());
+                jsonobj.put("reading", edtInsulinFppReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("5",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        if(checkboxWidal.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "42");
+                jsonobj.put("reference_value", edtWidaltextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtWidaltextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("6",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxTyphidot.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "43");
+                jsonobj.put("reference_value", edtTyphidotTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtTyphidotTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("7",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(checkboxMalariaSerology.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "44");
+                jsonobj.put("reference_value", edtMalariaSerologyTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtMalariaSerologyTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("8",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxRaFactor.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "45");
+                jsonobj.put("reference_value", edtRaFactorTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtRaFactorTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("9",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxHbsag.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "46");
+                jsonobj.put("reference_value", edtHbsagTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtHbsagTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("10",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxUrineExamination.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "47");
+                jsonobj.put("reference_value", edtRoutineMicrosocopicReferenceValue.getText().toString());
+                jsonobj.put("reading", edtRoutineMicrosocopicReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "48");
+                jsonobj.put("reference_value", edtProteinReferenceValue.getText().toString());
+                jsonobj.put("reading", edtProteinReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "49");
+                jsonobj.put("reference_value", edtSugarReferenceValue.getText().toString());
+                jsonobj.put("reading", edtSugarReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "50");
+                jsonobj.put("reference_value", edtKetoneBodiesReferenceValue.getText().toString());
+                jsonobj.put("reading", edtKetoneBodiesReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "51");
+                jsonobj.put("reference_value", edtBileSaltBilePigmentsReferenceValue.getText().toString());
+                jsonobj.put("reading", edtBileSaltBilePigmentsReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "52");
+                jsonobj.put("reference_value", edtUrinePregnancyTestReferenceValue.getText().toString());
+                jsonobj.put("reading", edtUrinePregnancyTestReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("11",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxCrp.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "53");
+                jsonobj.put("reference_value",edtCrpTextReferenceValue .getText().toString());
+                jsonobj.put("reading", edtCrpTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                jsonobjmain.put("12",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxAntiHcv.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "54");
+                jsonobj.put("reference_value",edtAntiHcvTextReferenceValue .getText().toString());
+                jsonobj.put("reading", edtAntiHcvTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("13",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxHiv.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "55");
+                jsonobj.put("reference_value", edtHivTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtHivTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("14",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(checkboxVdrl.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "56");
+                jsonobj.put("reference_value", edtVdrlTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtVdrlTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("15",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(checkboxGct.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "57");
+                jsonobj.put("reference_value", edtGctTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtGctTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("16",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(checkboxAboRh.isChecked()) {
+            JSONArray jsonArray = new JSONArray();
+            try {
+                JSONObject jsonobj = new JSONObject();
+                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
+                jsonobj.put("map_test_attribute_id", "58");
+                jsonobj.put("reference_value", edtAboRhTextReferenceValue.getText().toString());
+                jsonobj.put("reading", edtAboRhTextReading.getText().toString());
+                jsonArray.put(jsonobj);
+            } catch (Exception e) {
+
+            }
+
+            try {
+                jsonobjmain.put("17",jsonArray);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void setSelectedBloodCount()
@@ -522,7 +1384,7 @@ public class MhuTest extends Fragment {
                     uricAcidLinearlayout.setVisibility(View.VISIBLE);
                     electrolyteLinearlayout.setVisibility(View.VISIBLE);
                     liverFunctionTprotLinearlayout.setVisibility(View.VISIBLE);
-                    albLiverFunctionLinearlayout.setVisibility(View.VISIBLE);
+                    a1bKidneyFunctionLinearlayout.setVisibility(View.VISIBLE);
                     a1bCrRatioLinearlayout.setVisibility(View.VISIBLE);
                     microAlbuminLinearlayout.setVisibility(View.VISIBLE);
                     kidneyCompKftLinearlayout.setVisibility(View.VISIBLE);
@@ -538,7 +1400,7 @@ public class MhuTest extends Fragment {
                     uricAcidLinearlayout.setVisibility(View.GONE);
                     electrolyteLinearlayout.setVisibility(View.GONE);
                     liverFunctionTprotLinearlayout.setVisibility(View.GONE);
-                    albLiverFunctionLinearlayout.setVisibility(View.GONE);
+                    a1bKidneyFunctionLinearlayout.setVisibility(View.GONE);
                     a1bCrRatioLinearlayout.setVisibility(View.GONE);
                     microAlbuminLinearlayout.setVisibility(View.GONE);
                     kidneyCompKftLinearlayout.setVisibility(View.GONE);
@@ -589,7 +1451,7 @@ public class MhuTest extends Fragment {
                     fbgLinearlayout.setVisibility(View.VISIBLE);
                     twohrLinearlayout.setVisibility(View.VISIBLE);
                     randomLinearlayout.setVisibility(View.VISIBLE);
-                    glucoseProfileGgtLinearlayout.setVisibility(View.VISIBLE);
+                    glucoseProfileGttLinearlayout.setVisibility(View.VISIBLE);
                     hba1cLinearlayout.setVisibility(View.VISIBLE);
                     urinaryMicroAlbuminLinearlayout.setVisibility(View.VISIBLE);
                     insulinFppLinearlayout.setVisibility(View.VISIBLE);
@@ -602,7 +1464,7 @@ public class MhuTest extends Fragment {
                     fbgLinearlayout.setVisibility(View.GONE);
                     twohrLinearlayout.setVisibility(View.GONE);
                     randomLinearlayout.setVisibility(View.GONE);
-                    glucoseProfileGgtLinearlayout.setVisibility(View.GONE);
+                    glucoseProfileGttLinearlayout.setVisibility(View.GONE);
                     hba1cLinearlayout.setVisibility(View.GONE);
                     urinaryMicroAlbuminLinearlayout.setVisibility(View.GONE);
                     insulinFppLinearlayout.setVisibility(View.GONE);

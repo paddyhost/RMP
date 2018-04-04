@@ -177,6 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Other"
+            android:inputType="text"
             android:id="@+id/edt_other"/>
     </android.support.design.widget.TextInputLayout>
 

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.rmp.R;
@@ -43,6 +44,8 @@ public class UserVerificationFragment extends Fragment {
                 sweetAlertDialog.setTitleText("Please wait");
                 sweetAlertDialog.show();
 
+
+                //if (uid.getText().toString().trim().length() == 0 || uid.getText().toString().trim().length() == 12 || uid.getText().toString().trim().length() == 16 || uid.getText().toString().trim().length() == 25){
 
                     final PatientRegistration patientRegistration = new PatientRegistration();
                     Web_ApiHelper.isPatientExist(getActivity(), patientRegistration, new ApiResponseListener() {
@@ -85,7 +88,6 @@ public class UserVerificationFragment extends Fragment {
                                 }
                             });
 
-
                         }
 
                         @Override
@@ -102,12 +104,18 @@ public class UserVerificationFragment extends Fragment {
                             sweetAlertDialog.setConfirmText(message);
                         }
                     }, uid.getText().toString());
+                //}
+                /*else
+                {
+                    sweetAlertDialog.dismiss();
+                    Toast.makeText(getActivity(),"Please enter valid Unique or Adhar Number",Toast.LENGTH_SHORT).show();
+                }*/
             }
-
 
         });
         return view;
 
     }
+
 
 }

@@ -31,7 +31,6 @@ import java.util.Map;
 public class Web_TestAdviced_Helper
 {
     public static void webAddMHuTest(final Activity activity, final TestAdvicedModel testAdvicedModel, final ApiResponseListener apiResponseListener)
-
     {
         StringRequest strReq = new StringRequest(Request.Method.POST, WebServiceUrls.urlAddMHuTest,new Response.Listener<String>() {
             @Override
@@ -111,12 +110,14 @@ public class Web_TestAdviced_Helper
                 params.put("urea",testAdvicedModel.getUrea());
                 params.put("sgot",testAdvicedModel.getSgot());
                 params.put("sgpt",testAdvicedModel.getSgpt());
-                params.put("adviced",testAdvicedModel.getAdviced());
+                params.put("adviced",testAdvicedModel.getTestName());
                 params.put("ferered",testAdvicedModel.getRerered());
                 params.put("remark",testAdvicedModel.getRemark());
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");
+                params.put("visit_master_id",MainActivity.Visit_ID);
+
                 //returning parameters
                 return params;
             }
