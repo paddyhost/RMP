@@ -54,6 +54,7 @@ public class Web_Medical_ApiHelper
                                 for (Dose dose : doseArrayList) {
                                     addPriscribeDose(activity, dose, medicalconditionid);
 
+
                                 }
                             }
                             // {"status":"success","count":1,"type":"addMedicalcondition",
@@ -165,7 +166,7 @@ public class Web_Medical_ApiHelper
                     JSONObject responce = new JSONObject(response);
                     if (responce.getString("status").equalsIgnoreCase("success"))
                     {
-                        if(responce.getString("message").equalsIgnoreCase("Medicalcondition added successfully")) {
+                        if(responce.getString("message").equalsIgnoreCase("PriscribeDose added successfully")) {
 
                             // {"status":"success","count":1,"type":"addMedicalcondition",
                             // "result":{"id":"3","chiefcomplaints1":"ghashd","chiefcomplaints2":"bgasdhg",
@@ -183,6 +184,7 @@ public class Web_Medical_ApiHelper
                         }
                         else
                         {
+
                         }
                     }
                     else

@@ -286,6 +286,8 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         });
     }
 
+    
+
     private void setMedicalInfo() {
 
         medicalCondition = new Medical_Conditions();
@@ -334,7 +336,8 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                     public void onClick(DialogInterface dialog, int which) {
 
                         if(medicinNameSpinner.getSelectedItemPosition()>0) {
-                            Dose dose = new Dose(medicinNameSpinner.getSelectedItem().toString(), doseFrequency.getText().toString(), days.getText().toString());
+                            //Dose dose = new Dose("Medicine Name: \n"+medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
+                            Dose dose = new Dose("Medicine Name: \n"+medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
                             doseArrayList.add(dose);
                             doseAdapter.notifyDataSetChanged();
                             dialog.dismiss();

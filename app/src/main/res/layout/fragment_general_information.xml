@@ -153,6 +153,7 @@
                 android:id="@+id/registration_date"
                 android:inputType="text"
                 android:maxLength="30"
+                android:imeOptions="actionDone"
                 android:hint="Registration Date"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -208,6 +209,7 @@
                     android:id="@+id/firstname"
                     android:inputType="textPersonName|text"
                     android:maxLength="30"
+                    android:imeOptions="actionDone"
                     android:hint="First Name of patient"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -236,6 +238,7 @@
                     android:id="@+id/lname"
                     android:inputType="textPersonName|text"
                     android:maxLength="30"
+                    android:imeOptions="actionDone"
                     android:hint="Last Name of patient"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -262,6 +265,7 @@
                     android:layout_height="50dp"
                     android:id="@+id/mobile"
                     android:inputType="number"
+                    android:imeOptions="actionNext"
                     android:maxLength="10"
                     android:hint="Mobile"/>
             </android.support.design.widget.TextInputLayout>
@@ -289,6 +293,7 @@
                     android:layout_height="50dp"
                     android:id="@+id/dob"
                     android:inputType="text"
+                    android:imeOptions="actionDone"
                     android:maxLength="30"
                     android:hint="Date Of Birth"/>
             </android.support.design.widget.TextInputLayout>
@@ -339,6 +344,7 @@
                     android:id="@+id/address"
                     android:inputType="textImeMultiLine"
                     android:maxLines="3"
+                    android:imeOptions="actionDone"
                     android:hint="Address"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
