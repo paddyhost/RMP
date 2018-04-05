@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Patient Unique Id: "
+            android:id="@+id/lableuiid"
             android:layout_gravity="center|start"
             android:textColor="@color/black"/>
 
@@ -68,6 +69,7 @@
         </LinearLayout>
 
         <TextView
+            android:visibility="gone"
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,6 +78,7 @@
             android:textColor="@color/black"/>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -100,12 +103,14 @@
         <TextView
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:text="Visit Number: "
             android:layout_gravity="center|start"
             android:textColor="@color/black"/>
 
         <LinearLayout
+            android:visibility="gone"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

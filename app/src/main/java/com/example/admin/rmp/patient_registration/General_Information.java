@@ -47,6 +47,7 @@ import static com.example.admin.rmp.constants.AppConstants.REGISTRATION_PREFIX;
 
 public class General_Information extends Fragment {
     PatientRegistration registration;
+    String adharid;
     Toolbar customertoolbar;
     Button btnSave;
     TextInputEditText edtFName,edtLName,edtMobile,edtAge,edtAddress,edtRegistrationDate;
@@ -66,10 +67,11 @@ public class General_Information extends Fragment {
         // Required empty public constructor
     }
 
-    public static General_Information newInstance(PatientRegistration param1) {
+    public static General_Information newInstance(PatientRegistration param1,String adharid) {
         General_Information fragment = new General_Information();
         Bundle args = new Bundle();
         args.putParcelable(PatientRegistration.class.getName(), param1);
+        args.putString("AAdhar",adharid);
 
         fragment.setArguments(args);
         return fragment;
@@ -80,6 +82,7 @@ public class General_Information extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             registration = getArguments().getParcelable(PatientRegistration.class.getName());
+            adharid=getArguments().getString("AAdhar");
         }
 
     }
@@ -416,7 +419,8 @@ public class General_Information extends Fragment {
                                 }
                             });
                         }
-                        else {
+                        else
+                            {
                             addVisit();
                             //"VISIT_GENERATED"
                         }
@@ -710,13 +714,19 @@ public class General_Information extends Fragment {
 
     private void generateUniqueId()
     {
-        Date dNow = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
-        String datetime = ft.format(dNow);
-        txtPatientUniqueId.setText(PATIENT_PREFIX+datetime);
-        String randomNumber= String.valueOf(Utility.generateRandomNumber(getActivity()));
+        if(adharid==null) {
+            Date dNow = new Date();
+            SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
+            String datetime = ft.format(dNow);
+            txtPatientUniqueId.setText(PATIENT_PREFIX + datetime);
+            String randomNumber = String.valueOf(Utility.generateRandomNumber(getActivity()));
 
-        txtPatientUniqueId.setText(PATIENT_PREFIX+datetime+"_"+randomNumber);
+            txtPatientUniqueId.setText(PATIENT_PREFIX + datetime + "_" + randomNumber);
+        }
+        else
+        {
+            txtPatientUniqueId.setText(adharid);
+        }
     }
 
     private void generateRegistrationNumber()
