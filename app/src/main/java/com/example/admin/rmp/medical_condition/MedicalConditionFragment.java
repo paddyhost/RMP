@@ -286,7 +286,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         });
     }
 
-    
+
 
     private void setMedicalInfo() {
 

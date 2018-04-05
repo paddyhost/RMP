@@ -444,27 +444,27 @@ public class MhuTest extends Fragment {
     {
         jsonoarray.put(jsonobjmain);
 
-        if(checkboxCompleteBloodCountHomogram.isChecked())
+        //if(checkboxCompleteBloodCountHomogram.isChecked())
         {
             JSONArray jsonArray=new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "1");
-                jsonobj.put("reference_value", edtCbbHgmReferenceValue.getText().toString());
-                jsonobj.put("reading", edtCbbHgmReading.getText().toString());
+                jsonobj.put("reference_value", edtCbbHgmReferenceValue.getText());
+                jsonobj.put("reading", edtCbbHgmReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
             {
-
+                Toast.makeText(getActivity(),"tostring",Toast.LENGTH_SHORT).show();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "2");
-                jsonobj.put("reference_value", edtHbReferenceValue.getText().toString());
-                jsonobj.put("reading", edtHbReading.getText().toString());
+                jsonobj.put("reference_value", edtHbReferenceValue.getText());
+                jsonobj.put("reading", edtHbReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -475,8 +475,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "3");
-                jsonobj.put("reference_value", edtTlcReferenceValue.getText().toString());
-                jsonobj.put("reading", edtTlcReading.getText().toString());
+                jsonobj.put("reference_value", edtTlcReferenceValue.getText());
+                jsonobj.put("reading", edtTlcReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -487,8 +487,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "4");
-                jsonobj.put("reference_value", edtDlcReferenceValue.getText().toString());
-                jsonobj.put("reading", edtDlcReading.getText().toString());
+                jsonobj.put("reference_value", edtDlcReferenceValue.getText());
+                jsonobj.put("reading", edtDlcReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -499,8 +499,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "5");
-                jsonobj.put("reference_value", edtPcvReferenceValue.getText().toString());
-                jsonobj.put("reading", edtPcvReading.getText().toString());
+                jsonobj.put("reference_value", edtPcvReferenceValue.getText());
+                jsonobj.put("reading", edtPcvReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -511,8 +511,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "6");
-                jsonobj.put("reference_value", edtRbcReferenceValue.getText().toString());
-                jsonobj.put("reading", edtRbcReading.getText().toString());
+                jsonobj.put("reference_value", edtRbcReferenceValue.getText());
+                jsonobj.put("reading", edtRbcReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -523,8 +523,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "7");
-                jsonobj.put("reference_value", edtPlateletCountReferencevalue.getText().toString());
-                jsonobj.put("reading", edtPlateletCountReading.getText().toString());
+                jsonobj.put("reference_value", edtPlateletCountReferencevalue.getText());
+                jsonobj.put("reading", edtPlateletCountReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -535,8 +535,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "8");
-                jsonobj.put("reference_value", edtMcvMchMchcReferenceValue.getText().toString());
-                jsonobj.put("reading", edtMcvMchMchcReading.getText().toString());
+                jsonobj.put("reference_value", edtMcvMchMchcReferenceValue.getText());
+                jsonobj.put("reading", edtMcvMchMchcReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -547,8 +547,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "9");
-                jsonobj.put("reference_value", edtEsrReferenceValue.getText().toString());
-                jsonobj.put("reading", edtEsrReading.getText().toString());
+                jsonobj.put("reference_value", edtEsrReferenceValue.getText());
+                jsonobj.put("reading", edtEsrReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -559,8 +559,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "10");
-                jsonobj.put("reference_value", edtAecReferenceValue.getText().toString());
-                jsonobj.put("reading", edtAecReading.getText().toString());
+                jsonobj.put("reference_value", edtAecReferenceValue.getText());
+                jsonobj.put("reading", edtAecReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -574,7 +574,7 @@ public class MhuTest extends Fragment {
                 e.printStackTrace();
             }
         }
-        if(checkboxLiverFunctionTest.isChecked())
+       // if(checkboxLiverFunctionTest.isChecked())
         {
             JSONArray jsonArray=new JSONArray();
 
@@ -582,8 +582,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "11");
-                jsonobj.put("reference_value", edtDBilReferenceValue.getText().toString());
-                jsonobj.put("reading", edtDBilReading.getText().toString());
+                jsonobj.put("reference_value", edtDBilReferenceValue.getText());
+                jsonobj.put("reading", edtDBilReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -594,8 +594,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "12");
-                jsonobj.put("reference_value", edtIdBilReferenceValue.getText().toString());
-                jsonobj.put("reading", edtIdBilReading.getText().toString());
+                jsonobj.put("reference_value", edtIdBilReferenceValue.getText());
+                jsonobj.put("reading", edtIdBilReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -606,8 +606,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "13");
-                jsonobj.put("reference_value", edtTBilReferenceValue.getText().toString());
-                jsonobj.put("reading", edtTBilReading.getText().toString());
+                jsonobj.put("reference_value", edtTBilReferenceValue.getText());
+                jsonobj.put("reading", edtTBilReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -618,8 +618,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "14");
-                jsonobj.put("reference_value", edtLiverfunctionTprotReferenceValue.getText().toString());
-                jsonobj.put("reading", edtLiverfunctionTprotReading.getText().toString());
+                jsonobj.put("reference_value", edtLiverfunctionTprotReferenceValue.getText());
+                jsonobj.put("reading", edtLiverfunctionTprotReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -630,8 +630,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "15");
-                jsonobj.put("reference_value", edtAgRatReferenceValue.getText().toString());
-                jsonobj.put("reading", edtAgRatReading.getText().toString());
+                jsonobj.put("reference_value", edtAgRatReferenceValue.getText());
+                jsonobj.put("reading", edtAgRatReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -642,8 +642,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "16");
-                jsonobj.put("reference_value", edtAltReferenceValue.getText().toString());
-                jsonobj.put("reading", edtAltReading.getText().toString());
+                jsonobj.put("reference_value", edtAltReferenceValue.getText());
+                jsonobj.put("reading", edtAltReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -654,8 +654,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "17");
-                jsonobj.put("reference_value", edtAstReferenceValue.getText().toString());
-                jsonobj.put("reading", edtAstReading.getText().toString());
+                jsonobj.put("reference_value", edtAstReferenceValue.getText());
+                jsonobj.put("reading", edtAstReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -666,8 +666,8 @@ public class MhuTest extends Fragment {
             JSONObject jsonobj = new JSONObject();
             jsonobj.put("visit_master_id", MainActivity.Visit_ID);
             jsonobj.put("map_test_attribute_id", "18");
-            jsonobj.put("reference_value", edtAlpReferenceValue.getText().toString());
-            jsonobj.put("reading", edtAlpReading.getText().toString());
+            jsonobj.put("reference_value", edtAlpReferenceValue.getText());
+            jsonobj.put("reading", edtAlpReading.getText());
             jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -678,8 +678,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "19");
-                jsonobj.put("reference_value", edtCompLftReferenceValue.getText().toString());
-                jsonobj.put("reading", edtCompLftReading.getText().toString());
+                jsonobj.put("reference_value", edtCompLftReferenceValue.getText());
+                jsonobj.put("reading", edtCompLftReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -690,8 +690,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "20");
-                jsonobj.put("reference_value", edtGgtReferenceValue.getText().toString());
-                jsonobj.put("reading", edtGggtReading.getText().toString());
+                jsonobj.put("reference_value", edtGgtReferenceValue.getText());
+                jsonobj.put("reading", edtGggtReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -702,8 +702,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "21");
-                jsonobj.put("reference_value", edtAlbReferenceValue.getText().toString());
-                jsonobj.put("reading", edtAlbReading.getText().toString());
+                jsonobj.put("reference_value", edtAlbReferenceValue.getText());
+                jsonobj.put("reading", edtAlbReading.getText());
                 jsonArray.put(jsonobj);
             }
             catch (Exception e)
@@ -719,14 +719,15 @@ public class MhuTest extends Fragment {
             }
 
         }
-        if(checkboxKidneyFunctionTest.isChecked()) {
+        //if(checkboxKidneyFunctionTest.isChecked())
+        {
             JSONArray jsonArray=new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "22");
-                jsonobj.put("reference_value", edtUreaReferenceValue.getText().toString());
-                jsonobj.put("reading", edtUreaReading.getText().toString());
+                jsonobj.put("reference_value", edtUreaReferenceValue.getText());
+                jsonobj.put("reading", edtUreaReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -736,8 +737,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "23");
-                jsonobj.put("reference_value", edtCreatReferenceValue.getText().toString());
-                jsonobj.put("reading", edtCreatReading.getText().toString());
+                jsonobj.put("reference_value", edtCreatReferenceValue.getText());
+                jsonobj.put("reading", edtCreatReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -746,8 +747,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "24");
-                jsonobj.put("reference_value", edtUricAcidReferenceValue.getText().toString());
-                jsonobj.put("reading", edtUricAcidReading.getText().toString());
+                jsonobj.put("reference_value", edtUricAcidReferenceValue.getText());
+                jsonobj.put("reading", edtUricAcidReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -756,8 +757,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "25");
-                jsonobj.put("reference_value", edtElectrolyteReferenceValue.getText().toString());
-                jsonobj.put("reading", edtElectrolyteReading.getText().toString());
+                jsonobj.put("reference_value", edtElectrolyteReferenceValue.getText());
+                jsonobj.put("reading", edtElectrolyteReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -766,8 +767,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "26");
-                jsonobj.put("reference_value", edtTProtReferenceValue.getText().toString());
-                jsonobj.put("reading", edtTProtReading.getText().toString());
+                jsonobj.put("reference_value", edtTProtReferenceValue.getText());
+                jsonobj.put("reading", edtTProtReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -777,8 +778,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "27");
-                jsonobj.put("reference_value", edtA1bKidneyFunctionReferenceValue.getText().toString());
-                jsonobj.put("reading", edtA1bKidneyFunctionReading.getText().toString());
+                jsonobj.put("reference_value", edtA1bKidneyFunctionReferenceValue.getText());
+                jsonobj.put("reading", edtA1bKidneyFunctionReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -789,8 +790,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "28");
-                jsonobj.put("reference_value", edtA1bCrRatioReferenceValue.getText().toString());
-                jsonobj.put("reading", edtA1bCrRatioReading.getText().toString());
+                jsonobj.put("reference_value", edtA1bCrRatioReferenceValue.getText());
+                jsonobj.put("reading", edtA1bCrRatioReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -801,8 +802,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "29");
-                jsonobj.put("reference_value", edtMicroAlbuminReferenceValue.getText().toString());
-                jsonobj.put("reading", edtMicroAlbuminReading.getText().toString());
+                jsonobj.put("reference_value", edtMicroAlbuminReferenceValue.getText());
+                jsonobj.put("reading", edtMicroAlbuminReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -813,8 +814,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "30");
-                jsonobj.put("reference_value", edtKidneyCompKftReferenceValue.getText().toString());
-                jsonobj.put("reading", edtCompLftReading.getText().toString());
+                jsonobj.put("reference_value", edtKidneyCompKftReferenceValue.getText());
+                jsonobj.put("reading", edtCompLftReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -829,14 +830,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxLipidProfile.isChecked()) {
+       // if(checkboxLipidProfile.isChecked())
+       {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "31");
-                jsonobj.put("reference_value", edtCholesterolReferenceValue.getText().toString());
-                jsonobj.put("reading", edtCholesterolReading.getText().toString());
+                jsonobj.put("reference_value", edtCholesterolReferenceValue.getText());
+                jsonobj.put("reading", edtCholesterolReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -847,8 +849,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "32");
-                jsonobj.put("reference_value", edtTagReferenceValue.getText().toString());
-                jsonobj.put("reading", edtTagReading.getText().toString());
+                jsonobj.put("reference_value", edtTagReferenceValue.getText());
+                jsonobj.put("reading", edtTagReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -858,8 +860,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "33");
-                jsonobj.put("reference_value", edtHdlReferenceValue.getText().toString());
-                jsonobj.put("reading", edtHdlReading.getText().toString());
+                jsonobj.put("reference_value", edtHdlReferenceValue.getText());
+                jsonobj.put("reading", edtHdlReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -870,8 +872,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "34");
-                jsonobj.put("reference_value", edtCompleteLipidProfileReferenceValue.getText().toString());
-                jsonobj.put("reading", edtCompleteLipidProfileReading.getText().toString());
+                jsonobj.put("reference_value", edtCompleteLipidProfileReferenceValue.getText());
+                jsonobj.put("reading", edtCompleteLipidProfileReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -885,14 +887,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxGlucoseProfile.isChecked()) {
+        //if(checkboxGlucoseProfile.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "35");
-                jsonobj.put("reference_value", edtFbgReferenceValue.getText().toString());
-                jsonobj.put("reading", edtFbgReading.getText().toString());
+                jsonobj.put("reference_value", edtFbgReferenceValue.getText());
+                jsonobj.put("reading", edtFbgReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -903,8 +906,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "36");
-                jsonobj.put("reference_value", edtTwohrReferenceValue.getText().toString());
-                jsonobj.put("reading", edtTwohrReading.getText().toString());
+                jsonobj.put("reference_value", edtTwohrReferenceValue.getText());
+                jsonobj.put("reading", edtTwohrReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -916,8 +919,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "37");
-                jsonobj.put("reference_value", edtRandomReferenceValue.getText().toString());
-                jsonobj.put("reading", edtRandomReading.getText().toString());
+                jsonobj.put("reference_value", edtRandomReferenceValue.getText());
+                jsonobj.put("reading", edtRandomReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -928,8 +931,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "38");
-                jsonobj.put("reference_value", edtGlucoseProfileGttReferenceValue.getText().toString());
-                jsonobj.put("reading", edtGlucoseProfileGttReading.getText().toString());
+                jsonobj.put("reference_value", edtGlucoseProfileGttReferenceValue.getText());
+                jsonobj.put("reading", edtGlucoseProfileGttReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -939,8 +942,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "39");
-                jsonobj.put("reference_value",edtHba1cReferenceValue.getText().toString());
-                jsonobj.put("reading", edtHba1cReading.getText().toString());
+                jsonobj.put("reference_value",edtHba1cReferenceValue.getText());
+                jsonobj.put("reading", edtHba1cReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -951,8 +954,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "40");
-                jsonobj.put("reference_value",edtUrinaryMicroAlbuminRefrancevalue.getText().toString());
-                jsonobj.put("reading", edtUrinaryMicroAlbuminReading.getText().toString());
+                jsonobj.put("reference_value",edtUrinaryMicroAlbuminRefrancevalue.getText());
+                jsonobj.put("reading", edtUrinaryMicroAlbuminReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -963,8 +966,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "41");
-                jsonobj.put("reference_value",edtInsulinFppRefrancevalue.getText().toString());
-                jsonobj.put("reading", edtInsulinFppReading.getText().toString());
+                jsonobj.put("reference_value",edtInsulinFppRefrancevalue.getText());
+                jsonobj.put("reading", edtInsulinFppReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -979,14 +982,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxWidal.isChecked()) {
+        //if(checkboxWidal.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "42");
-                jsonobj.put("reference_value", edtWidaltextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtWidaltextReading.getText().toString());
+                jsonobj.put("reference_value", edtWidaltextReferenceValue.getText());
+                jsonobj.put("reading", edtWidaltextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1006,8 +1010,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "43");
-                jsonobj.put("reference_value", edtTyphidotTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtTyphidotTextReading.getText().toString());
+                jsonobj.put("reference_value", edtTyphidotTextReferenceValue.getText());
+                jsonobj.put("reading", edtTyphidotTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1026,8 +1030,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "44");
-                jsonobj.put("reference_value", edtMalariaSerologyTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtMalariaSerologyTextReading.getText().toString());
+                jsonobj.put("reference_value", edtMalariaSerologyTextReferenceValue.getText());
+                jsonobj.put("reading", edtMalariaSerologyTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1041,14 +1045,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxRaFactor.isChecked()) {
+       // if(checkboxRaFactor.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "45");
-                jsonobj.put("reference_value", edtRaFactorTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtRaFactorTextReading.getText().toString());
+                jsonobj.put("reference_value", edtRaFactorTextReferenceValue.getText());
+                jsonobj.put("reading", edtRaFactorTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1068,8 +1073,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "46");
-                jsonobj.put("reference_value", edtHbsagTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtHbsagTextReading.getText().toString());
+                jsonobj.put("reference_value", edtHbsagTextReferenceValue.getText());
+                jsonobj.put("reading", edtHbsagTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1083,14 +1088,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxUrineExamination.isChecked()) {
+        //if(checkboxUrineExamination.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "47");
-                jsonobj.put("reference_value", edtRoutineMicrosocopicReferenceValue.getText().toString());
-                jsonobj.put("reading", edtRoutineMicrosocopicReading.getText().toString());
+                jsonobj.put("reference_value", edtRoutineMicrosocopicReferenceValue.getText());
+                jsonobj.put("reading", edtRoutineMicrosocopicReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1101,8 +1107,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "48");
-                jsonobj.put("reference_value", edtProteinReferenceValue.getText().toString());
-                jsonobj.put("reading", edtProteinReading.getText().toString());
+                jsonobj.put("reference_value", edtProteinReferenceValue.getText());
+                jsonobj.put("reading", edtProteinReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1113,8 +1119,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "49");
-                jsonobj.put("reference_value", edtSugarReferenceValue.getText().toString());
-                jsonobj.put("reading", edtSugarReading.getText().toString());
+                jsonobj.put("reference_value", edtSugarReferenceValue.getText());
+                jsonobj.put("reading", edtSugarReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1125,8 +1131,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "50");
-                jsonobj.put("reference_value", edtKetoneBodiesReferenceValue.getText().toString());
-                jsonobj.put("reading", edtKetoneBodiesReading.getText().toString());
+                jsonobj.put("reference_value", edtKetoneBodiesReferenceValue.getText());
+                jsonobj.put("reading", edtKetoneBodiesReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1137,8 +1143,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "51");
-                jsonobj.put("reference_value", edtBileSaltBilePigmentsReferenceValue.getText().toString());
-                jsonobj.put("reading", edtBileSaltBilePigmentsReading.getText().toString());
+                jsonobj.put("reference_value", edtBileSaltBilePigmentsReferenceValue.getText());
+                jsonobj.put("reading", edtBileSaltBilePigmentsReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1149,8 +1155,8 @@ public class MhuTest extends Fragment {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "52");
-                jsonobj.put("reference_value", edtUrinePregnancyTestReferenceValue.getText().toString());
-                jsonobj.put("reading", edtUrinePregnancyTestReading.getText().toString());
+                jsonobj.put("reference_value", edtUrinePregnancyTestReferenceValue.getText());
+                jsonobj.put("reading", edtUrinePregnancyTestReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1164,14 +1170,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxCrp.isChecked()) {
+       // if(checkboxCrp.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "53");
-                jsonobj.put("reference_value",edtCrpTextReferenceValue .getText().toString());
-                jsonobj.put("reading", edtCrpTextReading.getText().toString());
+                jsonobj.put("reference_value",edtCrpTextReferenceValue .getText());
+                jsonobj.put("reading", edtCrpTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1186,14 +1193,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxAntiHcv.isChecked()) {
+       // if(checkboxAntiHcv.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "54");
-                jsonobj.put("reference_value",edtAntiHcvTextReferenceValue .getText().toString());
-                jsonobj.put("reading", edtAntiHcvTextReading.getText().toString());
+                jsonobj.put("reference_value",edtAntiHcvTextReferenceValue .getText());
+                jsonobj.put("reading", edtAntiHcvTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1207,14 +1215,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxHiv.isChecked()) {
+        //if(checkboxHiv.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "55");
-                jsonobj.put("reference_value", edtHivTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtHivTextReading.getText().toString());
+                jsonobj.put("reference_value", edtHivTextReferenceValue.getText());
+                jsonobj.put("reading", edtHivTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1227,14 +1236,15 @@ public class MhuTest extends Fragment {
             }
         }
 
-        if(checkboxVdrl.isChecked()) {
+        //if(checkboxVdrl.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "56");
-                jsonobj.put("reference_value", edtVdrlTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtVdrlTextReading.getText().toString());
+                jsonobj.put("reference_value", edtVdrlTextReferenceValue.getText());
+                jsonobj.put("reading", edtVdrlTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1247,14 +1257,15 @@ public class MhuTest extends Fragment {
             }
         }
 
-        if(checkboxGct.isChecked()) {
+        //if(checkboxGct.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "57");
-                jsonobj.put("reference_value", edtGctTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtGctTextReading.getText().toString());
+                jsonobj.put("reference_value", edtGctTextReferenceValue.getText());
+                jsonobj.put("reading", edtGctTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1268,14 +1279,15 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxAboRh.isChecked()) {
+        //if(checkboxAboRh.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
                 jsonobj.put("visit_master_id", MainActivity.Visit_ID);
                 jsonobj.put("map_test_attribute_id", "58");
-                jsonobj.put("reference_value", edtAboRhTextReferenceValue.getText().toString());
-                jsonobj.put("reading", edtAboRhTextReading.getText().toString());
+                jsonobj.put("reference_value", edtAboRhTextReferenceValue.getText());
+                jsonobj.put("reading", edtAboRhTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
 
@@ -1742,7 +1754,7 @@ public class MhuTest extends Fragment {
     {
         boolean response=true;
 
-        if (etBloodGlucose.getText().toString().trim().length() == 0)
+        if (etBloodGlucose.getText().trim().length() == 0)
         {
             etblood_glucoseTextLayout.setErrorEnabled(true);
             etblood_glucoseTextLayout.setErrorTextAppearance(R.style.error);
@@ -1754,7 +1766,7 @@ public class MhuTest extends Fragment {
         }
 
 
-        if (etcreatine.getText().toString().trim().length() == 0)
+        if (etcreatine.getText().trim().length() == 0)
         {
             creatineTextLayout.setErrorEnabled(true);
             creatineTextLayout.setErrorTextAppearance(R.style.error);
@@ -1766,7 +1778,7 @@ public class MhuTest extends Fragment {
         }
 
 
-        if (ethemogram.getText().toString().trim().length() == 0)
+        if (ethemogram.getText().trim().length() == 0)
         {
             hemogramTextLayout.setErrorEnabled(true);
             hemogramTextLayout.setErrorTextAppearance(R.style.error);
@@ -1777,7 +1789,7 @@ public class MhuTest extends Fragment {
             hemogramTextLayout.setError(null);
         }
 
-        if (etsgot.getText().toString().trim().length() == 0)
+        if (etsgot.getText().trim().length() == 0)
         {
             sgotTextLayout.setErrorEnabled(true);
             sgotTextLayout.setErrorTextAppearance(R.style.error);
@@ -1789,7 +1801,7 @@ public class MhuTest extends Fragment {
         }
 
 
-        if (etsgpt.getText().toString().trim().length() == 0)
+        if (etsgpt.getText().trim().length() == 0)
         {
             sgptTextLayout.setErrorEnabled(true);
             sgptTextLayout.setErrorTextAppearance(R.style.error);
@@ -1801,7 +1813,7 @@ public class MhuTest extends Fragment {
         }
 
 
-        if (eturea.getText().toString().trim().length() == 0)
+        if (eturea.getText().trim().length() == 0)
         {
             ureaTextLayout.setErrorEnabled(true);
             ureaTextLayout.setErrorTextAppearance(R.style.error);

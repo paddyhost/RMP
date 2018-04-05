@@ -36,6 +36,17 @@ public class UserVerificationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_user_verification, container, false);
         Button btnstart= (Button) view.findViewById(R.id.btnstart);
+        Button btnstartwithoutadhar= (Button) view.findViewById(R.id.btnnew);
+        btnstartwithoutadhar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                General_Information generalinformation = General_Information.newInstance(null,null);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.framelayout, generalinformation);
+                transaction.commit();
+
+            }
+        });
         final TextInputEditText uid= (TextInputEditText) view.findViewById(R.id.et_uid);
         btnstart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +56,7 @@ public class UserVerificationFragment extends Fragment {
                 sweetAlertDialog.show();
 
 
-                if (uid.getText().toString().trim().length() == 0 || uid.getText().toString().trim().length() == 12 || uid.getText().toString().trim().length() == 16 || uid.getText().toString().trim().length() == 20){
+                if (uid.getText().toString().trim().length() == 12 || uid.getText().toString().trim().length() == 16 || uid.getText().toString().trim().length() == 20){
 
                     final PatientRegistration patientRegistration = new PatientRegistration();
                     Web_ApiHelper.isPatientExist(getActivity(), patientRegistration, new ApiResponseListener() {
@@ -57,7 +68,7 @@ public class UserVerificationFragment extends Fragment {
                                 sweetAlertDialog.setConfirmText("OK");
                                 sweetAlertDialog.dismiss();
 
-                                General_Information generalinformation = General_Information.newInstance(patientRegistration);
+                                General_Information generalinformation = General_Information.newInstance(patientRegistration,uid.getText().toString());
                                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                 transaction.replace(R.id.framelayout, generalinformation);
                                 transaction.commit();
@@ -75,7 +86,7 @@ public class UserVerificationFragment extends Fragment {
                                 sweetAlertDialog.setTitleText("PATIENT NOT EXISTS");
                                 sweetAlertDialog.setConfirmText("OK");
 
-                                General_Information generalinformation = General_Information.newInstance(null);
+                              General_Information generalinformation = General_Information.newInstance(null,uid.getText().toString());
                                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                                 transaction.replace(R.id.framelayout, generalinformation);
                                 transaction.commit();
