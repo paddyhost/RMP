@@ -9,7 +9,7 @@ public class WebServiceUrls
     public static final String urlUserLogin=HOST + "index.php/api/v1_1/login";
     public static final String urlAddPatient = HOST+"index.php/api/v1_1/addPatient";
     public static final String urlAddVitalInfo ="http://mobilehealthunit.in/api/V1_1/addVital";
-    public static final String urlAddMedicalInfo =HOST+ "index.php/api/v1/addMedicalcondition";
+    public static final String urlAddMedicalInfo =HOST+ "index.php/api/v1_1/addMedicalcondition";
     public static final String urlAddVaccination = HOST+ "index.php/api/v1_1/addvaccination";
     public static final String urlAddPatientHistory ="http://mobilehealthunit.in/api/V1_1/addPatient";
     public static final String urlAddMHuTest ="http://mobilehealthunit.in/api/v1_1/addMHUTest";

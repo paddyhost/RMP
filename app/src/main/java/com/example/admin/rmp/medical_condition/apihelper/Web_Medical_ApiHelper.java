@@ -136,7 +136,7 @@ public class Web_Medical_ApiHelper
                 params.put("investigation",medicalConditions.getInvestigation());
                 params.put("tratementtaken",medicalConditions.getTratementtaken());
                 params.put("anyimprovement",medicalConditions.getAnyimprovement());
-                params.put("diagnosys",medicalConditions.getDiagnosysList());
+                params.put("diagnosys",medicalConditions.getDiagnosys());
                 params.put("patient_id",MainActivity.PATIENT_ID);
                 params.put("registrationid", MainActivity.REGISTRATION_ID);
 

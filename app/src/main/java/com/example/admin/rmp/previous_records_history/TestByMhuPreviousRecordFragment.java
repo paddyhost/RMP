@@ -1,6 +1,7 @@
 package com.example.admin.rmp.previous_records_history;
 
-
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,11 +11,9 @@ import android.view.ViewGroup;
 import com.example.admin.rmp.R;
 
 
-public class MedicationConditionPrevoiusRecordsFragment extends Fragment {
+public class TestByMhuPreviousRecordFragment extends Fragment {
 
-
-
-    public MedicationConditionPrevoiusRecordsFragment() {
+    public TestByMhuPreviousRecordFragment() {
         // Required empty public constructor
     }
 
@@ -24,9 +23,7 @@ public class MedicationConditionPrevoiusRecordsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_medication_condition_prevoius_records, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_test_by_mhu_previous_record, container, false);
     }
-
 
 }

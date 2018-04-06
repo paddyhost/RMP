@@ -11,14 +11,14 @@ public class Medical_Conditions implements Parcelable
 {
     private String chiefcomplaints1, chiefcomplaints2,chiefcomplaints3,briefHistory1,
      briefHistory2,briefHistory3,investigation,tratementtaken,
-     anyimprovement,diagnosysList;
+     anyimprovement,diagnosys;
 
     public Medical_Conditions() {
     }
 
     public Medical_Conditions(String chiefcomplaints1, String chiefcomplaints2, String chiefcomplaints3,
                               String briefHistory1, String briefHistory2, String briefHistory3, String investigation,
-                              String tratementtaken, String anyimprovement,String diagnosysList)
+                              String tratementtaken, String anyimprovement,String diagnosys)
     {
         this.chiefcomplaints1 = chiefcomplaints1;
         this.chiefcomplaints2 = chiefcomplaints2;
@@ -29,7 +29,7 @@ public class Medical_Conditions implements Parcelable
         this.investigation = investigation;
         this.tratementtaken = tratementtaken;
         this.anyimprovement = anyimprovement;
-        this.diagnosysList = diagnosysList;
+        this.diagnosys=diagnosys;
     }
 
     protected Medical_Conditions(Parcel in) {
@@ -42,7 +42,7 @@ public class Medical_Conditions implements Parcelable
         investigation = in.readString();
         tratementtaken = in.readString();
         anyimprovement = in.readString();
-        diagnosysList = in.readString();
+        diagnosys= in.readString();
     }
 
     public static final Creator<Medical_Conditions> CREATOR = new Creator<Medical_Conditions>() {
@@ -145,14 +145,15 @@ public class Medical_Conditions implements Parcelable
         parcel.writeString(investigation);
         parcel.writeString(tratementtaken);
         parcel.writeString(anyimprovement);
-        parcel.writeString(diagnosysList);
+        parcel.writeString(diagnosys);
     }
 
-    public String getDiagnosysList() {
-        return diagnosysList;
+
+    public String getDiagnosys() {
+        return diagnosys;
     }
 
-    public void setDiagnosysList(String diagnosysList) {
-        this.diagnosysList = diagnosysList;
+    public void setDiagnosys(String diagnosys) {
+        this.diagnosys = diagnosys;
     }
 }

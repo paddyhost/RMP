@@ -60,7 +60,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
     Toolbar medical_toolbar;
     private TextInputEditText etComplaint1, etComplaint2, etComplaint3,
-            etBreifHistory1, etBreifHistory2, etBreifHistory3,etPrevsHosptl;
+            etBreifHistory1, etBreifHistory2, etBreifHistory3,etPrevsHosptl,edtDiagnosys;
     private TextInputLayout etComplaint1TextInputLayout, etComplaint2TextInputLayout,
             etComplaint3TextInputLayout, etBreifHistory1TextInputLayout,
             etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout;
@@ -158,7 +158,6 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         etBreifHistory1 = (TextInputEditText) view.findViewById(R.id.et_breifhistory1);
         etBreifHistory2 = (TextInputEditText) view.findViewById(R.id.et_breifhistory2);
         etBreifHistory3 = (TextInputEditText) view.findViewById(R.id.et_breifhistory3);
-        etDiagnosis=(TextInputEditText) view.findViewById(R.id.diagnosis);
         investigationGroup = (RadioGroup) view.findViewById(R.id.investigation_group);
         improvementGroup = (RadioGroup) view.findViewById(R.id.improvement_group);
         treatmentGroup = (RadioGroup) view.findViewById(R.id.treatment_group);
@@ -172,6 +171,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         BtnImprovementNo = (RadioButton) view.findViewById(R.id.improvement_no);
         BtnImprovementDontKnow = (RadioButton) view.findViewById(R.id.improvement_dontknow);
         btnSaveMedical = (Button) view.findViewById(R.id.btn_save_medical);
+        edtDiagnosys= (TextInputEditText) view.findViewById(R.id.edt_diagnosys);
 
 
         etComplaint1TextInputLayout = (TextInputLayout) view.findViewById(R.id.etComplain1_textInputLayout);
@@ -298,10 +298,12 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         medicalCondition.setBriefHistory1(etBreifHistory1.getText().toString());
         medicalCondition.setBriefHistory2(etBreifHistory2.getText().toString());
         medicalCondition.setBriefHistory3(etBreifHistory3.getText().toString());
+
         medicalCondition.setInvestigation(investigationSelected);
         medicalCondition.setTratementtaken(treatmentSelected);
         medicalCondition.setAnyimprovement(improvementSelected);
-        medicalCondition.setDiagnosysList(getSelectedDiagnosys());
+       // medicalCondition.setDiagnosysList(getSelectedDiagnosys());
+        medicalCondition.setDiagnosys(edtDiagnosys.getText().toString());
 
 
         patientHistory = new PatientHistory();
