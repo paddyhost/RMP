@@ -19,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".user_login.LoginActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".user_login.LoginActivity" />
+        <activity android:name=".previous_records_history.PreviousRecordsActivity"></activity>
     </application>
 
 </manifest>

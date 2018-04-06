@@ -31,6 +31,7 @@ import com.example.admin.rmp.patient_registration.apihelper.Web_ApiHelper;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
 import com.example.admin.rmp.previous_records_history.GeneralInformationPreviousRecordFragment;
+import com.example.admin.rmp.previous_records_history.PreviousRecordsActivity;
 import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.utils.validation.Validations;
 import com.example.admin.rmp.vital_info.Vital_Information;
@@ -713,9 +714,8 @@ public class General_Information extends Fragment {
                 break;
 
             case R.id.previous_record:
-                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                GeneralInformationPreviousRecordFragment generalInformationPreviousRecordFragment = new GeneralInformationPreviousRecordFragment();
-                fragmentTransaction.replace(R.id.framelayout, generalInformationPreviousRecordFragment).addToBackStack(null).commit();
+                Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
+                startActivity(intent);
 
                 break;
         }

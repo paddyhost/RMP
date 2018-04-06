@@ -4,25 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.admin.rmp.previous_records_history.MedicationConditionPrevoiusRecordsFragment">
+    tools:context="com.example.admin.rmp.previous_records_history.MedicalConditionPrevoiusRecordsFragment">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:background="@color/colorAccent"
-            app:title="Medical Condition"
-            android:id="@+id/medical_condition_toolbar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -328,45 +311,7 @@
                     android:text="Prescribe Dose"
                     android:textColor="@color/black"/>
 
-                <TableLayout
-                    android:id="@+id/simpleTableLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:stretchColumns="1">
-                    <!-- stretch the second column of the layout-->
 
-                    <!-- first row of the table layout-->
-                    <TableRow
-
-                        android:id="@+id/firstRow"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-
-                        <!-- first element of the row-->
-                        <TextView
-
-                            android:id="@+id/simpleTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#b0b0b0"
-                            android:padding="18dip"
-                            android:text="Text 1"
-                            android:textColor="#000"
-                            android:textSize="12dp" />
-
-                        <TextView
-
-                            android:id="@+id/simpleTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#FF0000"
-                            android:padding="18dip"
-                            android:text="Text 2"
-                            android:textColor="#000"
-                            android:textSize="14dp" />
-
-                    </TableRow>
-                </TableLayout>
             </LinearLayout>
 
 
