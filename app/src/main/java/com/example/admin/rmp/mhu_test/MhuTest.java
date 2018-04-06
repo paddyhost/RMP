@@ -1004,7 +1004,8 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxTyphidot.isChecked()) {
+        //if(checkboxTyphidot.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -1024,7 +1025,8 @@ public class MhuTest extends Fragment {
             }
         }
 
-        if(checkboxMalariaSerology.isChecked()) {
+        //if(checkboxMalariaSerology.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -1067,7 +1069,8 @@ public class MhuTest extends Fragment {
         }
 
 
-        if(checkboxHbsag.isChecked()) {
+            //if(checkboxHbsag.isChecked())
+        {
             JSONArray jsonArray = new JSONArray();
             try {
                 JSONObject jsonobj = new JSONObject();
