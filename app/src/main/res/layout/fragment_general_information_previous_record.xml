@@ -1,0 +1,431 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.example.admin.rmp.previous_records_history.GeneralInformationPreviousRecordFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/colorAccent"
+            app:title="General Information"
+            android:id="@+id/general_information_toolbar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Unique_id"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txt_patient_unique_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="17-01-2018"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorDarkgray"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Registration No"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txt_registration_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="123456789522"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorDarkgray"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visit No"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/txt_visit_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="123456789522"/>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:drawableLeft="@drawable/ic_date_range_black_24dp"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Registration Date: "
+            android:textColor="@color/black"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txt_registration_date"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Registration Date"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Category: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_patient_category"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Category"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Name: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_patient_name"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Name"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Mobile: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_patient_mobile"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Mobile"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/ic_date_range_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient DOB: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_patient_dob"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient DOB"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/ic_date_range_black_24dp"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Age: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_patient_age"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Age"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Address: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_patient_address"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Patient Address"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="State: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_state"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="State"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="District: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_district"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="District"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="City: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_city"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="City"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Area: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_area"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Area"/>
+        </LinearLayout>
+
+            <LinearLayout
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:drawableLeft="@drawable/address"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Location: "
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_location"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Location"/>
+        </LinearLayout>
+
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:drawableLeft="@drawable/ic_gender"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gender: "
+                    android:textColor="@color/black"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/txt_gender"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"/>
+            </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

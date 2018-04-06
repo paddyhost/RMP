@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.example.admin.rmp.previous_records_history.VitalInfoPreviousRecordFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/colorAccent"
+            app:title="Vital Information"
+            android:id="@+id/vital_information_toolbar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:drawableLeft="@drawable/ic_height"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Height: "
+                        android:textColor="@color/black"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/txt_registration_date"
+                        android:layout_weight="1"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Height"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:drawableLeft="@drawable/ic_weighing"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Weight: "
+                        android:textColor="@color/black"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/txt_weight"
+                        android:layout_weight="1"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Weight"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:drawableLeft="@drawable/ic_blood_pressure_control_tool"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="BP: "
+                        android:textColor="@color/black"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/txt_bp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="BP"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:drawableLeft="@drawable/reading"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Temperature: "
+                        android:textColor="@color/black"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/txt_temperature"
+                        android:layout_weight="1"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Temperature"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:drawableLeft="@drawable/ic_respirator"
+                        android:drawablePadding="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Respiration: "
+                        android:textColor="@color/black"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/txt_respiration"
+                        android:layout_weight="1"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Respiration"/>
+                </LinearLayout>
+
+            </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

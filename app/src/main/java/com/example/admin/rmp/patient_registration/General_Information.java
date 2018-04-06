@@ -30,6 +30,7 @@ import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.patient_registration.apihelper.Web_ApiHelper;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
+import com.example.admin.rmp.previous_records_history.GeneralInformationPreviousRecordFragment;
 import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.utils.validation.Validations;
 import com.example.admin.rmp.vital_info.Vital_Information;
@@ -62,6 +63,8 @@ public class General_Information extends Fragment {
     private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout,age_textLayout,registartion_date_textLayout;
     private PrefManager prefManager;
+    FragmentTransaction fragmentTransaction;
+
 
     public General_Information() {
         // Required empty public constructor
@@ -706,6 +709,13 @@ public class General_Information extends Fragment {
                 Intent i= new Intent(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
+
+                break;
+
+            case R.id.previous_record:
+                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                GeneralInformationPreviousRecordFragment generalInformationPreviousRecordFragment = new GeneralInformationPreviousRecordFragment();
+                fragmentTransaction.replace(R.id.framelayout, generalInformationPreviousRecordFragment).addToBackStack(null).commit();
 
                 break;
         }
