@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.admin.rmp.patient_registration.General_Information">
+    tools:context="mhu.rmp.patient_registration.General_Information">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:entries="@array/patient_category1"
+                android:entries="@array/patient_category"
                 android:layout_weight="1"
                 android:prompt="@string/patient_category_title"/>
 

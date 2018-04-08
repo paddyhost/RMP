@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "474699763812",
+    "firebase_url": "https://mobilehealthunit-visit.firebaseio.com",
+    "project_id": "mobilehealthunit-visit",
+    "storage_bucket": "mobilehealthunit-visit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474699763812:android:f28a594e1715d4c4",
+        "android_client_info": {
+          "package_name": "mhu.rmp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474699763812-ipe5e1o4h9tleoabmpm592s1pn958ofr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9xARsg8FV45cFhlqV_HMKLQzRTVXZr2I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

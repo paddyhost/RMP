@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context="com.example.admin.rmp.vaccination_record.VaccinationPreviousRecordsFragment">
+    tools:context="mhu.rmp.vaccination_record.VaccinationPreviousRecordsFragment">
 
 
     <LinearLayout

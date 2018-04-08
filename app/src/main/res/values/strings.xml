@@ -22,6 +22,7 @@
         <item>Lactating Women</item>
         <item>Child Under-5 Years of Age</item>
         <item>Senior Citizen-above 60 years of age</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="patient_category1">

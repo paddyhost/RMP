@@ -6,7 +6,7 @@
     android:gravity="center"
     android:layout_gravity="center"
     android:background="@color/faint_blue"
-    tools:context="com.example.admin.rmp.patient_registration.UserVerificationFragment">
+    tools:context="mhu.rmp.patient_registration.UserVerificationFragment">
 
 
     <ScrollView
