@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.example.admin.rmp.vaccination_record.VaccinationRecord">
+    tools:context="mhu.rmp.vaccination_record.VaccinationRecord">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

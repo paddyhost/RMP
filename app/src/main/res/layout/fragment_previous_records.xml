@@ -5,7 +5,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.example.admin.rmp.previous_records.PreviousRecords">
+    tools:context="mhu.rmp.previous_records.PreviousRecords">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
