@@ -2,12 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical"
-    tools:context="com.example.admin.rmp.previous_records_history.VaccinationPreviousRecordsFragment">
-
-
-
+    tools:context="com.example.admin.rmp.vaccination_record.VaccinationPreviousRecordsFragment">
 
 
     <LinearLayout
@@ -16,28 +13,41 @@
         android:orientation="horizontal"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingTop="30dp"
         android:paddingBottom="10dp">
 
         <TextView
+            android:drawableLeft="@drawable/ic_check_mark"
+            android:paddingLeft="10dp"
+            android:drawablePadding="15dp"
             android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="DPT"/>
+
         <TextView
             android:layout_weight="1"
             android:id="@+id/txt_dpt"
             android:layout_width="0dp"
             android:text="Yes"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
+
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/colorDarkgray"/>
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -47,24 +57,35 @@
         android:paddingBottom="10dp">
 
         <TextView
+            android:drawableLeft="@drawable/ic_check_mark"
+            android:paddingLeft="10dp"
+            android:drawablePadding="15dp"
             android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="BCG"/>
+
         <TextView
             android:layout_weight="1"
             android:id="@+id/txt_bcg"
             android:layout_width="0dp"
             android:text="Yes"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
+
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/colorDarkgray"/>
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -74,24 +95,35 @@
         android:paddingBottom="10dp">
 
         <TextView
+            android:drawableLeft="@drawable/ic_check_mark"
+            android:paddingLeft="10dp"
+            android:drawablePadding="15dp"
             android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Measles"/>
+
         <TextView
             android:layout_weight="1"
             android:id="@+id/txt_measles"
             android:layout_width="0dp"
             android:text="Yes"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
+
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/colorDarkgray"/>
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -101,6 +133,9 @@
         android:paddingBottom="10dp">
 
         <TextView
+            android:drawableLeft="@drawable/ic_check_mark"
+            android:paddingLeft="10dp"
+            android:drawablePadding="15dp"
             android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -113,12 +148,18 @@
             android:text="Yes"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/colorDarkgray"/>
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -127,6 +168,9 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
         <TextView
+            android:drawableLeft="@drawable/ic_check_mark"
+            android:paddingLeft="10dp"
+            android:drawablePadding="15dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -141,12 +185,18 @@
             android:text="NO"/>
 
     </LinearLayout>
+
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/colorDarkgray"/>
 
     <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -155,6 +205,9 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp">
         <TextView
+            android:drawableLeft="@drawable/ic_check_mark"
+            android:paddingLeft="10dp"
+            android:drawablePadding="15dp"
             android:text="TT"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -167,9 +220,13 @@
             android:layout_height="wrap_content"
             android:text="NO"/>
     </LinearLayout>
+
     <View
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="1px"
+        android:layout_height="1dp"
         android:background="@color/colorDarkgray"/>
 
 </LinearLayout>

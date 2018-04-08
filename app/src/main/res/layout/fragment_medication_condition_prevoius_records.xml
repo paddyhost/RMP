@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.admin.rmp.previous_records_history.MedicalConditionPrevoiusRecordsFragment">
+    tools:context="com.example.admin.rmp.medical_condition.MedicalConditionPrevoiusRecordsFragment">
 
 
     <ScrollView
@@ -61,10 +60,10 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
+                    android:background="@color/colorDarkgray"/>
 
                 <LinearLayout
                     android:layout_marginLeft="10dp"
@@ -108,10 +107,10 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
+                    android:background="@color/colorDarkgray"/>
 
                 <LinearLayout
                     android:layout_marginLeft="10dp"
@@ -174,10 +173,10 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
+                    android:background="@color/colorDarkgray"/>
 
                 <LinearLayout
                     android:layout_marginRight="10dp"
@@ -194,11 +193,11 @@
                             android:layout_height="wrap_content"
                             android:text="Previous Investigation: "
                             android:textColor="@color/black"
-                            android:layout_weight="1.1"/>
+                            android:layout_weight="1.5"/>
 
                         <TextView
-                            android:id="@+id/txt_revious_investigation"
-                            android:layout_weight="0.45"
+                            android:id="@+id/txt_previous_investigation"
+                            android:layout_weight="0.5"
                             android:layout_marginTop="15dp"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -206,10 +205,10 @@
                     </LinearLayout>
 
                 <View
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
+                    android:background="@color/colorDarkgray"/>
 
                 <LinearLayout
                     android:layout_marginLeft="10dp"
@@ -230,7 +229,7 @@
 
                     <TextView
                         android:id="@+id/txt_treatment_taken"
-                        android:layout_weight="0.45"
+                        android:layout_weight="0.5"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -238,10 +237,10 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
+                    android:background="@color/colorDarkgray"/>
 
                 <LinearLayout
                     android:layout_marginLeft="10dp"
@@ -269,12 +268,13 @@
                 </LinearLayout>
 
                 <View
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
+                    android:background="@color/colorDarkgray"/>
 
                 <LinearLayout
+                    android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
@@ -286,35 +286,29 @@
                         android:layout_marginTop="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Diagnosys: "
+                        android:text="Prescribe Dose: "
                         android:textColor="@color/black" />
 
-                    <TextView
-                        android:id="@+id/txt_prescribe_dose"
+
+                    <TableLayout
+                        android:visibility="gone"
+                        android:layout_marginBottom="30dp"
                         android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="10dp"
                         android:layout_height="wrap_content"
-                        android:text="Don't Know jgskdk kdhkah kjkdhakj dkjhakjd djg hcks ahdgj ahh shd"/>
+                        android:layout_width="match_parent"
+                        android:stretchColumns="0,1"
+                        android:id="@+id/table_layout"
+                        android:layout_weight="1">
+                    </TableLayout>
+
+                    <include
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        layout="@layout/table_layout_row" />
+
                 </LinearLayout>
 
-                <View
-                    android:layout_margin="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/DarkGrey"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Prescribe Dose"
-                    android:textColor="@color/black"/>
-
-
             </LinearLayout>
-
-
 
     </ScrollView>
 

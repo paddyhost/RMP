@@ -1,7 +1,5 @@
-package com.example.admin.rmp.previous_records_history;
+package com.example.admin.rmp.TestAdviced;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,9 +9,9 @@ import android.view.ViewGroup;
 import com.example.admin.rmp.R;
 
 
-public class TestByMhuPreviousRecordFragment extends Fragment {
+public class TestAdvicedPreviousRecordsFragment extends Fragment {
 
-    public TestByMhuPreviousRecordFragment() {
+    public TestAdvicedPreviousRecordsFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +21,9 @@ public class TestByMhuPreviousRecordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test_by_mhu_previous_record, container, false);
+        View view= inflater.inflate(R.layout.fragment_test_adviced_previous_records, container, false);
+        return view;
     }
+
 
 }

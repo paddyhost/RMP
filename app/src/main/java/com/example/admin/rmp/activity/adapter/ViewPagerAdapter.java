@@ -1,4 +1,4 @@
-package com.example.admin.rmp.previous_records_history;
+package com.example.admin.rmp.activity.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

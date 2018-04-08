@@ -1,4 +1,4 @@
-package com.example.admin.rmp.previous_records_history;
+package com.example.admin.rmp.vaccination_record;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import com.example.admin.rmp.R;
 
 
-public class VitalInfoPreviousRecordFragment extends Fragment {
+public class VaccinationPreviousRecordsFragment extends Fragment {
 
-    public VitalInfoPreviousRecordFragment() {
+    public VaccinationPreviousRecordsFragment() {
         // Required empty public constructor
     }
 
@@ -22,7 +22,7 @@ public class VitalInfoPreviousRecordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_vital_info_previous_record, container, false);
+        View view= inflater.inflate(R.layout.fragment_vaccination_previous_records, container, false);
         return view;
     }
 

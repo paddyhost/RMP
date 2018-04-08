@@ -1,4 +1,4 @@
-package com.example.admin.rmp.previous_records_history;
+package com.example.admin.rmp.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,8 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.admin.rmp.R;
-import com.example.admin.rmp.medical_condition.MedicalConditionFragment;
+import com.example.admin.rmp.TestAdviced.TestAdvicedPreviousRecordsFragment;
+import com.example.admin.rmp.medical_condition.MedicalConditionPrevoiusRecordsFragment;
+import com.example.admin.rmp.mhu_test.TestByMhuPreviousRecordFragment;
+import com.example.admin.rmp.patient_registration.GeneralInformationPreviousRecordFragment;
+import com.example.admin.rmp.activity.adapter.ViewPagerAdapter;
 import com.example.admin.rmp.utils.Utility;
+import com.example.admin.rmp.vaccination_record.VaccinationPreviousRecordsFragment;
+import com.example.admin.rmp.vital_info.VitalInfoPreviousRecordFragment;
 
 public class PreviousRecordsActivity extends AppCompatActivity {
 
@@ -49,7 +55,7 @@ public class PreviousRecordsActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        setupTabIcons();
+        //setupTabIcons();
     }
 
     private void setupTabIcons() {
@@ -63,12 +69,12 @@ public class PreviousRecordsActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new GeneralInformationPreviousRecordFragment(), "General\n\nInformation");
-        adapter.addFragment(new VitalInfoPreviousRecordFragment(), "Vital\n\nInformation");
-        adapter.addFragment(new MedicalConditionPrevoiusRecordsFragment(), "Medical\n\nCondition");
-        adapter.addFragment(new VaccinationPreviousRecordsFragment(), "Vaccination\n\nRecords");
-        adapter.addFragment(new TestByMhuPreviousRecordFragment(), "Test By\n\nMHU");
-        adapter.addFragment(new TestAdvicedPreviousRecordsFragment(), "Test\n\nAdvice");
+        adapter.addFragment(new GeneralInformationPreviousRecordFragment(), "General\nInformation");
+        adapter.addFragment(new VitalInfoPreviousRecordFragment(), "Vital\nInformation");
+        adapter.addFragment(new MedicalConditionPrevoiusRecordsFragment(), "Medical\nCondition");
+        adapter.addFragment(new VaccinationPreviousRecordsFragment(), "Vaccination\nRecords");
+        adapter.addFragment(new TestByMhuPreviousRecordFragment(), "Test By\nMHU");
+        adapter.addFragment(new TestAdvicedPreviousRecordsFragment(), "Test\nAdvice");
         viewPager.setAdapter(adapter);
     }
 

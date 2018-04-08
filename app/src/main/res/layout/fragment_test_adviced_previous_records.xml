@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.admin.rmp.previous_records_history.TestAdvicedPreviousRecordsFragment">
+    tools:context="com.example.admin.rmp.TestAdviced.TestAdvicedPreviousRecordsFragment">
 
 
 
@@ -37,11 +37,10 @@
     </LinearLayout>
 
     <View
-        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/DarkGrey"/>
-
+        android:background="@color/colorDarkgray"/>
 
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -71,10 +70,10 @@
     </LinearLayout>
 
     <View
-        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/DarkGrey"/>
+        android:background="@color/colorDarkgray"/>
 
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -104,9 +103,9 @@
     </LinearLayout>
 
     <View
-        android:layout_margin="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/DarkGrey"/>
+        android:background="@color/colorDarkgray"/>
 
 </LinearLayout>

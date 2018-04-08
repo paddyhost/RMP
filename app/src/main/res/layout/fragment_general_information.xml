@@ -133,7 +133,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
@@ -183,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:entries="@array/patient_category"
+                android:entries="@array/patient_category1"
                 android:layout_weight="1"
                 android:prompt="@string/patient_category_title"/>
 
