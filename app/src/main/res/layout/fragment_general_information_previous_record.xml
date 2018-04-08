@@ -2,9 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.example.admin.rmp.previous_records_history.GeneralInformationPreviousRecordFragment">
+    tools:context="com.example.admin.rmp.patient_registration.GeneralInformationPreviousRecordFragment">
 
 
     <ScrollView
@@ -13,15 +12,15 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:layout_margin="20dp"
+            android:layout_margin="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
             <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <LinearLayout
                 android:weightSum="3"
                 android:layout_width="match_parent"
@@ -55,17 +54,19 @@
                     android:background="@color/colorDarkgray"/>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.4"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:gravity="right">
+                    android:gravity="center|start">
                     <TextView
+                        android:paddingLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Registration No"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
+                        android:paddingLeft="5dp"
                         android:id="@+id/txt_registration_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -78,17 +79,19 @@
                     android:background="@color/colorDarkgray"/>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.8"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:gravity="right">
+                    android:gravity="center|start">
                     <TextView
+                        android:paddingLeft="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Visit No"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
+                        android:paddingLeft="5dp"
                         android:id="@+id/txt_visit_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -125,7 +128,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -155,7 +158,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -185,7 +188,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -215,7 +218,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -245,7 +248,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -275,7 +278,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -305,7 +308,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -335,7 +338,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -365,7 +368,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -395,7 +398,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -425,7 +428,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
             android:weightSum="2"
@@ -455,10 +458,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/DarkGrey"/>
+                android:background="@color/colorDarkgray"/>
 
             <LinearLayout
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:weightSum="2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -482,6 +485,13 @@
                     android:text="Gender"/>
             </LinearLayout>
 
-    </LinearLayout>
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDarkgray"/>
+
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

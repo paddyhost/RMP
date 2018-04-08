@@ -30,8 +30,7 @@ import com.example.admin.rmp.app.ApiResponseListener;
 import com.example.admin.rmp.patient_registration.apihelper.Web_ApiHelper;
 import com.example.admin.rmp.patient_registration.model.PatientRegistration;
 import com.example.admin.rmp.pref_manager.PrefManager;
-import com.example.admin.rmp.previous_records_history.GeneralInformationPreviousRecordFragment;
-import com.example.admin.rmp.previous_records_history.PreviousRecordsActivity;
+import com.example.admin.rmp.activity.PreviousRecordsActivity;
 import com.example.admin.rmp.user_login.LoginActivity;
 import com.example.admin.rmp.utils.validation.Validations;
 import com.example.admin.rmp.vital_info.Vital_Information;
@@ -40,7 +39,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 

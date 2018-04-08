@@ -24,6 +24,14 @@
         <item>Senior Citizen-above 60 years of age</item>
     </string-array>
 
+    <string-array name="patient_category1">
+        <item>Select Patient Category</item>
+        <item>PW</item>
+        <item>LW</item>
+        <item>CU5YA</item>
+        <item>SCA60YA</item>
+    </string-array>
+
     <string-array name="state_array">
         <item>Please Select State</item>
         <item>Uttar Pradesh</item>
