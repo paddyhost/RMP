@@ -78,4 +78,6 @@ public class PreviousRecordsActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+
+
 }
