@@ -417,7 +417,7 @@ public class MhuTest extends Fragment {
                     @Override
                     public void onSuccess(String message) {
                         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        TestAdvised testAdvised = TestAdvised.getInstance(mhuTest);
+                        TestAdvised testAdvised = TestAdvised.getInstance();
                         fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
 
                     }

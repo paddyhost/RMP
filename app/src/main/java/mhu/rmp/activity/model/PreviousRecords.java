@@ -1,12 +1,17 @@
 package mhu.rmp.activity.model;
 
-/**
- * Created by Nikam on 08/04/2018.
- */
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class PreviousRecords {
+import java.util.ArrayList;
 
-    String id, registration_no, fname, lanme, dob, gender, mobile, regitrationdate, address, state, district,
+import mhu.rmp.mhu_test.model.MHU_Test;
+
+
+
+public class PreviousRecords implements Parcelable{
+
+    public  static String id, registration_no, fname, lanme, dob, gender, mobile, regitrationdate, address, state, district,
             city, area, location, unique_id, patient_category, visit_master_id, created_at,
 
     //vital
@@ -24,6 +29,81 @@ public class PreviousRecords {
     //vaccination
     dpt, bcg, measles, opv, ttt, hepatitis, other;
 
+    protected PreviousRecords(Parcel in) {
+        id = in.readString();
+        registration_no = in.readString();
+        fname = in.readString();
+        lanme = in.readString();
+        dob = in.readString();
+        gender = in.readString();
+        mobile = in.readString();
+        regitrationdate = in.readString();
+        address = in.readString();
+        state = in.readString();
+        district = in.readString();
+        city = in.readString();
+        area = in.readString();
+        location = in.readString();
+        unique_id = in.readString();
+        patient_category = in.readString();
+        visit_master_id = in.readString();
+        created_at = in.readString();
+        pid = in.readString();
+        registrationno = in.readString();
+        height = in.readString();
+        weight = in.readString();
+        bloodpresure = in.readString();
+        tempreture = in.readString();
+        respiration = in.readString();
+        updatedate = in.readString();
+        bpto = in.readString();
+        chiefcomplaints1 = in.readString();
+        chiefcomplaints2 = in.readString();
+        chiefcomplaints3 = in.readString();
+        briefHistory1 = in.readString();
+        briefHistory2 = in.readString();
+        briefHistory3 = in.readString();
+        investigation = in.readString();
+        tratementtaken = in.readString();
+        anyimprovement = in.readString();
+        diagnosys = in.readString();
+        patient_id = in.readString();
+        registrationid = in.readString();
+        name = in.readString();
+        frequency = in.readString();
+        days = in.readString();
+        medicalconditionid = in.readString();
+        dpt = in.readString();
+        bcg = in.readString();
+        measles = in.readString();
+        opv = in.readString();
+        ttt = in.readString();
+        hepatitis = in.readString();
+        other = in.readString();
+    }
+
+    public static final Creator<PreviousRecords> CREATOR = new Creator<PreviousRecords>() {
+        @Override
+        public PreviousRecords createFromParcel(Parcel in) {
+            return new PreviousRecords(in);
+        }
+
+        @Override
+        public PreviousRecords[] newArray(int size) {
+            return new PreviousRecords[size];
+        }
+    };
+
+    public ArrayList<MHU_Test> getTestList() {
+        return testList;
+    }
+
+    public void setTestList(ArrayList<MHU_Test> testList) {
+        this.testList = testList;
+    }
+
+    //test
+    ArrayList<MHU_Test> testList;
 
     public PreviousRecords() {
     }
@@ -480,6 +560,65 @@ public class PreviousRecords {
 
     public void setOther(String other) {
         this.other = other;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(registration_no);
+        dest.writeString(fname);
+        dest.writeString(lanme);
+        dest.writeString(dob);
+        dest.writeString(gender);
+        dest.writeString(mobile);
+        dest.writeString(regitrationdate);
+        dest.writeString(address);
+        dest.writeString(state);
+        dest.writeString(district);
+        dest.writeString(city);
+        dest.writeString(area);
+        dest.writeString(location);
+        dest.writeString(unique_id);
+        dest.writeString(patient_category);
+        dest.writeString(visit_master_id);
+        dest.writeString(created_at);
+        dest.writeString(pid);
+        dest.writeString(registrationno);
+        dest.writeString(height);
+        dest.writeString(weight);
+        dest.writeString(bloodpresure);
+        dest.writeString(tempreture);
+        dest.writeString(respiration);
+        dest.writeString(updatedate);
+        dest.writeString(bpto);
+        dest.writeString(chiefcomplaints1);
+        dest.writeString(chiefcomplaints2);
+        dest.writeString(chiefcomplaints3);
+        dest.writeString(briefHistory1);
+        dest.writeString(briefHistory2);
+        dest.writeString(briefHistory3);
+        dest.writeString(investigation);
+        dest.writeString(tratementtaken);
+        dest.writeString(anyimprovement);
+        dest.writeString(diagnosys);
+        dest.writeString(patient_id);
+        dest.writeString(registrationid);
+        dest.writeString(name);
+        dest.writeString(frequency);
+        dest.writeString(days);
+        dest.writeString(medicalconditionid);
+        dest.writeString(dpt);
+        dest.writeString(bcg);
+        dest.writeString(measles);
+        dest.writeString(opv);
+        dest.writeString(ttt);
+        dest.writeString(hepatitis);
+        dest.writeString(other);
     }
 }
 
