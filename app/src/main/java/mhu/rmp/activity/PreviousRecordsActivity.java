@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import mhu.rmp.R;
 import mhu.rmp.TestAdviced.TestAdvicedPreviousRecordsFragment;
+import mhu.rmp.activity.model.PreviousRecords;
+import mhu.rmp.activity.previous_record_apihelper.Web_GetSinglePatientRecord_ApiHelper;
+import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.medical_condition.MedicalConditionPrevoiusRecordsFragment;
 import mhu.rmp.mhu_test.TestByMhuPreviousRecordFragment;
 import mhu.rmp.patient_registration.GeneralInformationPreviousRecordFragment;
@@ -19,10 +23,12 @@ import mhu.rmp.vital_info.VitalInfoPreviousRecordFragment;
 
 public class PreviousRecordsActivity extends AppCompatActivity {
 
-
+public static PreviousRecords previousRecords=new PreviousRecords();
     private Toolbar previousRecordsToolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    //public static String visit_id="";
+    String visit_id="5";
     private int[] tabIcons = {
             R.drawable.ic_general_information,
             R.drawable.ic_brief_history,
@@ -32,10 +38,14 @@ public class PreviousRecordsActivity extends AppCompatActivity {
             R.drawable.ic_referred
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_records);
+
+       // previousRecords=getIntent().getParcelableExtra(visit_id);
 
         previousRecordsToolbar = (Toolbar) findViewById(R.id.previous_records_toolbar);
         setSupportActionBar(previousRecordsToolbar);
@@ -50,10 +60,11 @@ public class PreviousRecordsActivity extends AppCompatActivity {
         });
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        //Web_GetSinglePatientRecord_ApiHelper.
+        getDataFromServer();
 
         //setupTabIcons();
     }
@@ -67,7 +78,8 @@ public class PreviousRecordsActivity extends AppCompatActivity {
         tabLayout.getTabAt(5).setIcon(tabIcons[5]);
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager)
+    {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GeneralInformationPreviousRecordFragment(), "General\nInformation");
         adapter.addFragment(new VitalInfoPreviousRecordFragment(), "Vital\nInformation");
@@ -78,6 +90,46 @@ public class PreviousRecordsActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+
+    private void getDataFromServer()
+    {
+      final SweetAlertDialog  sweetAlertDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        sweetAlertDialog.setConfirmText("Please Wait");
+        sweetAlertDialog.show();
+
+        Web_GetSinglePatientRecord_ApiHelper.webGetSinglePatientRecord(this, previousRecords, new ApiResponseListener() {
+            @Override
+            public void onSuccess(String message) {
+                sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                sweetAlertDialog.setTitleText(message);
+                sweetAlertDialog.setConfirmText("Ok");
+                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.dismissWithAnimation();
+
+                        setupViewPager(viewPager);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onError(String message) {
+                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                sweetAlertDialog.setTitleText(""+message);
+                sweetAlertDialog.setConfirmText("Ok");
+
+                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.dismissWithAnimation();
+                    }
+                });
+
+            }
+        },visit_id);
+    }
 
 
 }

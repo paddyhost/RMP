@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadFragment()
     {
-        UserVerificationFragment generalinformation = new UserVerificationFragment();
+        UserVerificationFragment userVerificationFragment = new UserVerificationFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.framelayout, generalinformation);
+        transaction.add(R.id.framelayout, userVerificationFragment);
         transaction.commit();
     }
 

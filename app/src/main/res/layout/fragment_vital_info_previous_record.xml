@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="mhu.rmp.vital_info.VitalInfoPreviousRecordFragment">
 
@@ -35,12 +34,12 @@
                         android:layout_weight="1"/>
 
                     <TextView
-                        android:id="@+id/txt_registration_date"
+                        android:id="@+id/txt_height"
                         android:layout_weight="1"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Height"/>
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -69,8 +68,8 @@
                         android:layout_weight="1"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Weight"/>
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -99,8 +98,8 @@
                         android:layout_weight="1"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="BP"/>
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -129,8 +128,8 @@
                         android:layout_weight="1"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Temperature"/>
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -159,8 +158,8 @@
                         android:layout_weight="1"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Respiration"/>
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View

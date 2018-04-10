@@ -40,16 +40,15 @@ public class TestAdvised extends Fragment {
     private Button submitBtn;
     private TextInputLayout referred_txtTextLayout,remarksTextLayout;
     private PrefManager prefManager;
-    private MHU_Test mhuTest;
 
     public TestAdvised() {
         // Required empty public constructor
     }
 
-    public static TestAdvised getInstance(MHU_Test mhuTest) {
+    public static TestAdvised getInstance() {
         TestAdvised fragment = new TestAdvised();
         Bundle args = new Bundle();
-        args.putParcelable(MHU_TEST, mhuTest);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,7 +57,6 @@ public class TestAdvised extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mhuTest = getArguments().getParcelable(MHU_TEST);
         }
     }
 

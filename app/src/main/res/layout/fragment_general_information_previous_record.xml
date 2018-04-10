@@ -12,31 +12,10 @@
         android:fillViewport="true">
 
         <LinearLayout
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
-
-            <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_visit_number"
-                    android:layout_marginRight="10dp"/>
-
-                <Spinner
-                    android:id="@+id/visit_no_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    style="@android:style/Widget.Holo.Light.Spinner" />
-            </LinearLayout>
 
             <android.support.v7.widget.CardView
                 android:layout_marginTop="15dp"
@@ -66,8 +45,7 @@
                     <TextView
                         android:id="@+id/txt_patient_unique_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="17-01-2018"/>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
                 <View
                     android:layout_width="1px"
@@ -75,7 +53,7 @@
                     android:background="@color/colorDarkgray"/>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1.4"
+                    android:layout_weight="1.5"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center|start">
@@ -91,7 +69,7 @@
                         android:id="@+id/txt_registration_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="123456789522"/>
+                       />
                 </LinearLayout>
 
                 <View
@@ -100,23 +78,22 @@
                     android:background="@color/colorDarkgray"/>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center|start">
                     <TextView
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Visit No"
+                        android:text="VisitNo"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="4dp"
                         android:id="@+id/txt_visit_no"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="12"/>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -141,8 +118,8 @@
             android:layout_weight="1"
             android:layout_marginTop="15dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Registration Date"/>
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -171,8 +148,8 @@
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Patient Category"/>
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
             <View
@@ -182,28 +159,58 @@
                 android:background="@color/colorDarkgray"/>
 
             <LinearLayout
-            android:weightSum="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
-                android:drawablePadding="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_width="0dp"
+                android:weightSum="2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Patient Name: "
-                android:textColor="@color/black"
-                android:layout_weight="1"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="First Name: "
+                    android:textColor="@color/black"
+                    android:layout_weight="1"/>
 
-            <TextView
-                android:id="@+id/txt_patient_name"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/txt_patient_fname"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDarkgray"/>
+
+            <LinearLayout
+                android:weightSum="2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Patient Name"/>
-        </LinearLayout>
+                android:orientation="horizontal">
+                <TextView
+                    android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Last Name: "
+                    android:textColor="@color/black"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/txt_patient_lname"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
             <View
                 android:layout_marginTop="10dp"
@@ -227,12 +234,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_patient_mobile"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Patient Mobile"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -257,12 +264,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_patient_dob"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Patient DOB"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -287,12 +294,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_patient_age"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Patient Age"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -317,12 +324,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_patient_address"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Patient Address"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -347,12 +354,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_state"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="State"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -377,12 +384,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_district"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="District"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -407,12 +414,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_city"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="City"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -437,12 +444,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_area"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Area"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -467,12 +474,12 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/txt_location"
                 android:layout_weight="1"
                 android:layout_marginTop="15dp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Location"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
             <View
@@ -498,12 +505,12 @@
                     android:layout_weight="1"/>
 
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/txt_gender"
                     android:layout_weight="1"
                     android:layout_marginTop="15dp"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Gender"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <View
@@ -511,7 +518,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/colorDarkgray"/>
-
 
         </LinearLayout>
     </ScrollView>

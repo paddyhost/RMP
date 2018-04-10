@@ -142,7 +142,7 @@
                         android:drawableLeft="@drawable/ic_medical_stethoscope"
                         android:padding="10dp"
                         android:paddingLeft="10dp"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/txt_doctor_name1"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
@@ -153,7 +153,7 @@
                         android:paddingLeft="10dp"
                         android:drawableLeft="@drawable/ic_medical_stethoscope"
                         android:padding="10dp"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/txt_doctor_name2"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
@@ -164,7 +164,7 @@
                         android:paddingLeft="10dp"
                         android:drawableLeft="@drawable/ic_medical_stethoscope"
                         android:padding="10dp"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="25dp"
                         android:id="@+id/txt_doctor_name3"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
@@ -291,7 +291,6 @@
 
 
                     <TableLayout
-                        android:visibility="gone"
                         android:layout_marginBottom="30dp"
                         android:layout_marginTop="15dp"
                         android:layout_height="wrap_content"
