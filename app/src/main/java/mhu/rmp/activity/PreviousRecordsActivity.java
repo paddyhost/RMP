@@ -27,8 +27,8 @@ public static PreviousRecords previousRecords=new PreviousRecords();
     private Toolbar previousRecordsToolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    //public static String visit_id="";
-    String visit_id="5";
+    public  String visit_id;
+   // String Visit_ID="";
     private int[] tabIcons = {
             R.drawable.ic_general_information,
             R.drawable.ic_brief_history,
@@ -45,7 +45,8 @@ public static PreviousRecords previousRecords=new PreviousRecords();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_records);
 
-       // previousRecords=getIntent().getParcelableExtra(visit_id);
+        visit_id=getIntent().getStringExtra("VISITID");
+        //previousRecords=getIntent().getParcelableExtra(PreviousRecords.visit_master_id);
 
         previousRecordsToolbar = (Toolbar) findViewById(R.id.previous_records_toolbar);
         setSupportActionBar(previousRecordsToolbar);

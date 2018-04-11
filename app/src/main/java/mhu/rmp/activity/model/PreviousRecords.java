@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+import mhu.rmp.medical_condition.model.Dose;
 import mhu.rmp.mhu_test.model.MHU_Test;
 
 
@@ -23,7 +24,7 @@ public class PreviousRecords implements Parcelable{
             investigation, tratementtaken, anyimprovement, diagnosys, patient_id, registrationid,
 
     //prescribe_dose
-    name, frequency, days, medicalconditionid,
+
 
 
     //vaccination
@@ -69,10 +70,7 @@ public class PreviousRecords implements Parcelable{
         diagnosys = in.readString();
         patient_id = in.readString();
         registrationid = in.readString();
-        name = in.readString();
-        frequency = in.readString();
-        days = in.readString();
-        medicalconditionid = in.readString();
+
         dpt = in.readString();
         bcg = in.readString();
         measles = in.readString();
@@ -105,10 +103,24 @@ public class PreviousRecords implements Parcelable{
     //test
     ArrayList<MHU_Test> testList;
 
+    public static Creator<PreviousRecords> getCREATOR() {
+        return CREATOR;
+    }
+
+    public ArrayList<Dose> getDoseArrayList() {
+        return doseArrayList;
+    }
+
+    public void setDoseArrayList(ArrayList<Dose> doseArrayList) {
+        this.doseArrayList = doseArrayList;
+    }
+
+    ArrayList<Dose> doseArrayList;
+
     public PreviousRecords() {
     }
 
-    public PreviousRecords(String id, String registration_no, String fname, String lanme, String dob, String gender, String mobile, String regitrationdate, String address, String state, String district, String city, String area, String location, String unique_id, String patient_category, String visit_master_id, String created_at, String pid, String registrationno, String height, String weight, String bloodpresure, String tempreture, String respiration, String updatedate, String bpto, String chiefcomplaints1, String chiefcomplaints2, String chiefcomplaints3, String briefHistory1, String briefHistory2, String briefHistory3, String investigation, String tratementtaken, String anyimprovement, String diagnosys, String patient_id, String registrationid, String name, String frequency, String days, String medicalconditionid, String dpt, String bcg, String measles, String opv, String ttt, String hepatitis, String other) {
+    public PreviousRecords(String id, String registration_no, String fname, String lanme, String dob, String gender, String mobile, String regitrationdate, String address, String state, String district, String city, String area, String location, String unique_id, String patient_category, String visit_master_id, String created_at, String pid, String registrationno, String height, String weight, String bloodpresure, String tempreture, String respiration, String updatedate, String bpto, String chiefcomplaints1, String chiefcomplaints2, String chiefcomplaints3, String briefHistory1, String briefHistory2, String briefHistory3, String investigation, String tratementtaken, String anyimprovement, String diagnosys, String patient_id, String dpt, String bcg, String measles, String opv, String ttt, String hepatitis, String other) {
         this.id = id;
         this.registration_no = registration_no;
         this.fname = fname;
@@ -148,10 +160,7 @@ public class PreviousRecords implements Parcelable{
         this.diagnosys = diagnosys;
         this.patient_id = patient_id;
         this.registrationid = registrationid;
-        this.name = name;
-        this.frequency = frequency;
-        this.days = days;
-        this.medicalconditionid = medicalconditionid;
+
         this.dpt = dpt;
         this.bcg = bcg;
         this.measles = measles;
@@ -474,37 +483,7 @@ public class PreviousRecords implements Parcelable{
         this.registrationid = registrationid;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
-    }
-
-    public String getDays() {
-        return days;
-    }
-
-    public void setDays(String days) {
-        this.days = days;
-    }
-
-    public String getMedicalconditionid() {
-        return medicalconditionid;
-    }
-
-    public void setMedicalconditionid(String medicalconditionid) {
-        this.medicalconditionid = medicalconditionid;
-    }
 
     public String getDpt() {
         return dpt;
@@ -608,10 +587,7 @@ public class PreviousRecords implements Parcelable{
         dest.writeString(diagnosys);
         dest.writeString(patient_id);
         dest.writeString(registrationid);
-        dest.writeString(name);
-        dest.writeString(frequency);
-        dest.writeString(days);
-        dest.writeString(medicalconditionid);
+
         dest.writeString(dpt);
         dest.writeString(bcg);
         dest.writeString(measles);

@@ -1,6 +1,7 @@
 package mhu.rmp.patient_registration;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,36 +20,11 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
 
     private PreviousRecords previousRecords;
 
-    public static String visit_id;
+    public  String visit_id;
 
     private TextView txtPatientUniqueId,txtRegistrationNo,txtVisitNo,txtRegistrationDate,txtPatientCategory,
             txtPatientFname,txtPatientLname,txtPatientMobile,txtPatientDob,txtPatientAddress,txtState,txtDistrict,txtCity,txtArea,
-            txtLocation,txtGender;
-
-
-
-    /*public static GeneralInformationPreviousRecordFragment getInstance(PreviousRecords previousRecords)
-    {
-        GeneralInformationPreviousRecordFragment fragment = new GeneralInformationPreviousRecordFragment();
-        Bundle args = new Bundle();
-        args.putParcelable(visit_id,previousRecords);
-        fragment.setArguments(args);
-        return fragment;
-
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null)
-        {
-            previousRecords = getArguments().getParcelable(visit_id);
-
-        }
-    }*/
-
-
+            txtLocation,txtGender,txtAge;
 
 
     public GeneralInformationPreviousRecordFragment() {
@@ -78,6 +54,7 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
         txtPatientLname=(TextView)view.findViewById(R.id.txt_patient_lname);
         txtPatientMobile=(TextView)view.findViewById(R.id.txt_patient_mobile);
         txtPatientDob=(TextView)view.findViewById(R.id.txt_patient_dob);
+        txtAge=(TextView)view.findViewById(R.id.txt_patient_age);
         txtState=(TextView)view.findViewById(R.id.txt_state);
         txtDistrict=(TextView)view.findViewById(R.id.txt_district);
         txtCity=(TextView)view.findViewById(R.id.txt_city);
@@ -229,6 +206,14 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
             }
       }
       catch (Exception e)
+      {
+
+      }
+      try
+      {
+          txtAge.setText(General_Information.ageYear);
+      }
+      catch(Exception e)
       {
 
       }

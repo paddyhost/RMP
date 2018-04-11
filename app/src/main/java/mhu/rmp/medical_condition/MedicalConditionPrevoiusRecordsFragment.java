@@ -4,6 +4,10 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.OrientationHelper;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,7 @@ import android.widget.TextView;
 import mhu.rmp.R;
 import mhu.rmp.activity.PreviousRecordsActivity;
 import mhu.rmp.activity.model.PreviousRecords;
+import mhu.rmp.medical_condition.adapter.DoseList_Adapter;
 
 public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
 
@@ -23,7 +28,8 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
 
     private TextView txtCheifComplaint1,txtCheifComplaint2,txtCheifComplaint3,txtBriefHistory1,
             txtBriefHistory2,txtBriefHistory3,txtDoctorName1,txtDoctorName2,txtDoctorName3,txtPreviousInvestigation,
-            txtTreatmentTaken,txtDiagnosys,txtMedicineName,txtFrequency,txtDays;
+            txtTreatmentTaken,txtDiagnosys;
+    RecyclerView dose_list;
 
     private PreviousRecords previousRecords;
 
@@ -40,87 +46,6 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
         initializations(view);
         setData();
 
-      /*  TableRow tr_head = new TableRow(getActivity());
-        //tr_head.setId(10+count);
-        tr_head.setBackgroundColor(Color.GRAY);
-        tr_head.setLayoutParams(new TableLayout.LayoutParams(
-                TableLayout.LayoutParams.FILL_PARENT,
-                TableLayout.LayoutParams.WRAP_CONTENT));
-
-
-        TextView medicine_name = new TextView(getActivity());
-
-        //medicine_name.setId(20);
-        medicine_name.setText("Medicine Name");
-        medicine_name.setTextColor(Color.WHITE);
-        medicine_name.setPadding(5, 5, 5, 5);
-        tr_head.addView(medicine_name);// add the column to the table row here
-
-
-        TextView frequency = new TextView(getActivity());
-        //frequency.setId(30);
-        frequency.setText("Frequency");
-        frequency.setTextColor(Color.WHITE);
-        frequency.setPadding(5, 5, 5, 5);
-        tr_head.addView(frequency);// add the column to the table row here
-
-
-        TextView days = new TextView(getActivity());
-        //days.setId(40+count);
-        days.setText("Days");
-        days.setTextColor(Color.WHITE);
-        days.setPadding(5, 5, 5, 5);
-        tr_head.addView(days);// add the column to the table row here
-
-
-        tableLayout.addView(tr_head, new TableLayout.LayoutParams(
-                TableLayout.LayoutParams.FILL_PARENT,
-                TableLayout.LayoutParams.WRAP_CONTENT));
-
-        for(int i = 0; i <tableLayout.getChildCount(); i++) {
-
-            TableRow tr = new TableRow(getActivity());
-            //tr_head.setId(10+count);
-            tr.setBackgroundColor(Color.GRAY);
-            tr.setLayoutParams(new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.FILL_PARENT,
-                    TableLayout.LayoutParams.WRAP_CONTENT));
-
-
-            TextView txt_medicine_name = new TextView(getActivity());
-
-            //medicine_name.setId(20);
-            //txt_medicine_name.setText("Medicine Name");
-            txt_medicine_name.setText(String.valueOf(previousRecords.getName()));
-            txt_medicine_name.setTextColor(Color.WHITE);
-            txt_medicine_name.setPadding(5, 5, 5, 5);
-            tr.addView(txt_medicine_name);// add the column to the table row here
-
-
-            TextView txt_frequency = new TextView(getActivity());
-            //frequency.setId(30);
-            //txt_frequency.setText("Frequency");
-            txt_frequency.setText(String.valueOf(previousRecords.getFrequency()));
-            txt_frequency.setTextColor(Color.WHITE);
-            txt_frequency.setPadding(5, 5, 5, 5);
-            tr.addView(txt_frequency);// add the column to the table row here
-
-
-            TextView txt_days = new TextView(getActivity());
-            //days.setId(40+count)
-            // txt_days.setText("Days");
-            txt_days.setText(String.valueOf(previousRecords.getDays()));
-            txt_days.setTextColor(Color.WHITE);
-            txt_days.setPadding(5, 5, 5, 5);
-            tr.addView(txt_days);// add the column to the table row here
-
-
-
-            tableLayout.addView(tr, new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.FILL_PARENT,
-                    TableLayout.LayoutParams.WRAP_CONTENT));}
-
-*/
 
         return view;
     }
@@ -140,26 +65,65 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
         txtPreviousInvestigation=(TextView)view.findViewById(R.id.txt_previous_investigation);
         txtTreatmentTaken=(TextView)view.findViewById(R.id.txt_treatment_taken);
         txtDiagnosys=(TextView)view.findViewById(R.id.txt_diagnosys);
-        tableLayout=(TableLayout)view.findViewById(R.id.table_layout);
-        txtMedicineName=(TextView)view.findViewById(R.id.txt_medicine_name);
-        txtFrequency=(TextView)view.findViewById(R.id.txt_frequency);
-        txtDays=(TextView)view.findViewById(R.id.txt_days);
+        dose_list=(RecyclerView) view.findViewById(R.id.dose_list);
     }
 
     private void setData()
     {
-        txtCheifComplaint1.setText(String.valueOf(previousRecords.getChiefcomplaints1()));
+        if(txtCheifComplaint1.getText().toString().trim().length() == 0) {
+                txtCheifComplaint1.setText("Cheif Complaint1: NA");
+        }
+
+        else {
+                txtCheifComplaint1.setText(String.valueOf(previousRecords.getChiefcomplaints1()));
+        }
         txtCheifComplaint2.setText(String.valueOf(previousRecords.getChiefcomplaints2()));
         txtCheifComplaint3.setText(String.valueOf(previousRecords.getChiefcomplaints3()));
         txtBriefHistory1.setText(String.valueOf(previousRecords.getBriefHistory1()));
         txtBriefHistory2.setText(String.valueOf(previousRecords.getBriefHistory2()));
         txtBriefHistory3.setText(String.valueOf(previousRecords.getBriefHistory3()));
-        txtPreviousInvestigation.setText(String.valueOf(previousRecords.getInvestigation()));
-        txtTreatmentTaken.setText(String.valueOf(previousRecords.getTratementtaken()));
+        if(previousRecords.getInvestigation().equalsIgnoreCase("Y")) {
+            txtPreviousInvestigation.setText("Yes");
+        }
+        else if(previousRecords.getInvestigation().equalsIgnoreCase("N"))
+        {
+            txtPreviousInvestigation.setText("No");
+        }
+        else if(previousRecords.getInvestigation().equalsIgnoreCase("D"))
+        {
+            txtPreviousInvestigation.setText("Don't Know");
+        }
+        else
+        {
+            txtPreviousInvestigation.setText("NA");
+        }
+
+        if(previousRecords.getTratementtaken().equalsIgnoreCase("Y")) {
+            txtTreatmentTaken.setText("Yes");
+        }
+        else if(previousRecords.getTratementtaken().equalsIgnoreCase("N"))
+        {
+            txtTreatmentTaken.setText("No");
+        }
+        else if(previousRecords.getTratementtaken().equalsIgnoreCase("D"))
+        {
+            txtTreatmentTaken.setText("Don't Know");
+        }
+        else
+        {
+            txtTreatmentTaken.setText("NA");
+        }
+
         txtDiagnosys.setText(String.valueOf(previousRecords.getDiagnosys()));
-        /*txtMedicineName.setText(String.valueOf(previousRecords.getName()));
-        txtFrequency.setText(String.valueOf(previousRecords.getFrequency()));
-        txtDays.setText(String.valueOf(previousRecords.getDays()));*/
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), OrientationHelper.VERTICAL, false);
+        dose_list.setLayoutManager(linearLayoutManager);
+        dose_list.setItemAnimator(new DefaultItemAnimator());
+        DoseList_Adapter doseAdapter = new DoseList_Adapter(previousRecords.getDoseArrayList(), getActivity().getApplicationContext());
+        dose_list.setAdapter(doseAdapter);
+
+
     }
 
 }
