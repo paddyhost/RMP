@@ -20,6 +20,8 @@ import android.widget.Spinner;
 import mhu.rmp.R;
 import mhu.rmp.TestAdviced.apihelper.Web_TestAdviced_Helper;
 import mhu.rmp.TestAdviced.model.TestAdvicedModel;
+import mhu.rmp.activity.MainActivity;
+import mhu.rmp.activity.PreviousRecordsActivity;
 import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.mhu_test.model.MHU_Test;
 import mhu.rmp.patient_registration.UserVerificationFragment;
@@ -123,9 +125,14 @@ public class TestAdvised extends Fragment {
                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
                                     sweetAlertDialog.dismissWithAnimation();
 
-                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                   /* FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     UserVerificationFragment general_information = new UserVerificationFragment();
-                                    fragmentTransaction.replace(R.id.framelayout, general_information).addToBackStack(null).commit();
+                                    fragmentTransaction.replace(R.id.framelayout, general_information).addToBackStack(null).commit();*/
+                                    Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
+                                    intent.putExtra("VISITID", MainActivity.Visit_ID);
+                                    startActivity(intent);
+
+
                                 }
                             });
                         }

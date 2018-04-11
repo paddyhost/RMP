@@ -30,7 +30,6 @@ import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.patient_registration.apihelper.Web_ApiHelper;
 import mhu.rmp.patient_registration.model.PatientRegistration;
 import mhu.rmp.pref_manager.PrefManager;
-import mhu.rmp.activity.PreviousRecordsActivity;
 import mhu.rmp.user_login.LoginActivity;
 import mhu.rmp.utils.validation.Validations;
 import mhu.rmp.vital_info.Vital_Information;
@@ -40,6 +39,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -55,6 +55,7 @@ public class General_Information extends Fragment {
     TextInputEditText edtFName,edtLName,edtMobile,edtAge,edtAddress,edtRegistrationDate;
     static TextInputEditText edtDob;
     RadioGroup genderGrp;
+    static int ageYear;
     RadioButton maleBtn, femaleBtn;
     private DatePickerDialog dpd;
     private int dYear,dDay,dMonth,tYear,tDay,tMonth;
@@ -70,6 +71,39 @@ public class General_Information extends Fragment {
 
     public General_Information() {
         // Required empty public constructor
+    }
+
+     int getPatientCategoryIndex(String text)
+    {
+        Iterator it = category.entrySet().iterator();
+        int i=0;
+        while (it.hasNext())
+        {
+            Map.Entry pair = (Map.Entry)it.next();
+            if(pair.getValue().toString().equalsIgnoreCase(text))
+            {
+                return i;
+            }
+            i++;
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+            //it.remove(); // avoids a ConcurrentModificationException
+        }
+        return  0;
+    }
+
+    private int getLocationIndex(String location)
+    {
+      String[] loactionlist=  getResources().getStringArray(R.array.location_array);
+      for(int i=0;i<loactionlist.length;i++)
+      {
+
+          if(loactionlist[i].toString().trim().equalsIgnoreCase(location.trim()));
+          {
+              return i;
+          }
+      }
+      return 0;
+
     }
 
     public static General_Information newInstance(PatientRegistration param1,String adharid) {
@@ -126,9 +160,13 @@ public class General_Information extends Fragment {
            edtMobile.setFocusable(false);
            edtDob.setText(registration.getDob());
            edtDob.setFocusable(false);
+
+
            edtAge.setFocusable(false);
            edtAddress.setText(registration.getAddress());
            edtAddress.setFocusable(false);
+          // int i=getPatientCategoryIndex(registration.getPatient_category());
+          // patientCategorySpinner.setSelection(i);
            patientCategorySpinner.setSelection(1);
            patientCategorySpinner.setEnabled(false);
            stateSpinner.setSelection(1);
@@ -140,6 +178,7 @@ public class General_Information extends Fragment {
            areaSpinner.setSelection(1);
            areaSpinner.setEnabled(false);
            locationSpinner.setSelection(1);
+           //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
            locationSpinner.setEnabled(false);
            if(registration.getGender().equalsIgnoreCase("M"))
            {
@@ -316,7 +355,7 @@ public class General_Information extends Fragment {
                 tMonth = TodayDate.get(Calendar.MONTH);
                 tDay = TodayDate.get(Calendar.DAY_OF_MONTH);
 
-                int ageYear=tYear-year;
+                ageYear=tYear-year;
 
                 edtAge.setText(String.valueOf(ageYear+"yrs"));
                 edtAge.setError(null);
@@ -727,8 +766,7 @@ public class General_Information extends Fragment {
                 break;
 
             case R.id.previous_record:
-                Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
-                startActivity(intent);
+
 
                 break;
         }

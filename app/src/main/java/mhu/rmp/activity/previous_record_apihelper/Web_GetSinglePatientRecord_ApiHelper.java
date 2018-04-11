@@ -26,6 +26,7 @@ import mhu.rmp.activity.model.PreviousRecords;
 import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.app.MyApplication;
 import mhu.rmp.constants.WebServiceUrls;
+import mhu.rmp.medical_condition.model.Dose;
 import mhu.rmp.mhu_test.model.MHU_Test;
 import mhu.rmp.mhu_test.model.SubTest;
 
@@ -133,12 +134,21 @@ public class Web_GetSinglePatientRecord_ApiHelper {
 
 
                                         try {
-                                            JSONObject jsonObjectPrescribeDose = jsonObjectMedical.getJSONObject("prescribe_dose");
+                                            ArrayList<Dose> doseArrayList=new ArrayList<>();
 
-                                            previousRecords.setId(jsonObjectPrescribeDose.getString("id"));
-                                            previousRecords.setName(jsonObjectMedical.getString("name"));
-                                            previousRecords.setFrequency(jsonObjectMedical.getString("frequency"));
-                                            previousRecords.setDays(jsonObjectMedical.getString("days"));
+                                            JSONArray jsonArrayPrescribeDose = jsonObjectMedical.getJSONArray("prescribe_dose");
+
+                                            for(int k=0;k<jsonArrayPrescribeDose.length();k++) {
+                                                JSONObject jsonobj=jsonArrayPrescribeDose.getJSONObject(k);
+                                                Dose dose=new Dose();
+
+                                                dose.setDoseName(jsonobj.getString("name"));
+                                                dose.setDoseFrequency(jsonobj.getString("frequency"));
+                                                dose.setDoseNoOfDays(jsonobj.getString("days"));
+                                                doseArrayList.add(dose);
+                                            }
+
+                                            previousRecords.setDoseArrayList(doseArrayList);
                                         } catch (Exception e) {
 
                                         }

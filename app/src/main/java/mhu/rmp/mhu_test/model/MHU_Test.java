@@ -1,13 +1,13 @@
 package mhu.rmp.mhu_test.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.util.ArrayList;
 
 
 public class MHU_Test
 {
+    public static final int TEST_TYPE = 0;
+    public static final int SUBTEST_TYPE = 1;
+
     public String getTestName() {
         return testName;
     }

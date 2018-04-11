@@ -18,11 +18,11 @@ import mhu.rmp.mhu_test.model.SubTest;
 public class SubTestAdapter extends RecyclerView.Adapter<SubTestAdapter.MyViewHolder> {
 
     private List<SubTest> subTestList;
-    private RecyclerView recyclerView;
 
-    public SubTestAdapter(List<SubTest> subTestList, RecyclerView recyclerView) {
+
+    public SubTestAdapter(List<SubTest> subTestList) {
         this.subTestList = subTestList;
-        this.recyclerView=recyclerView;
+
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SubTestAdapter extends RecyclerView.Adapter<SubTestAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return subTestList.size();
+        return subTestList==null?0:subTestList.size();
     }
 
 
