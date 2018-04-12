@@ -1,19 +1,15 @@
 package mhu.rmp.patient_registration;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import mhu.rmp.R;
-import mhu.rmp.activity.PreviousRecordsActivity;
-import mhu.rmp.activity.model.PreviousRecords;
-import mhu.rmp.activity.previous_record_apihelper.Web_GetSinglePatientRecord_ApiHelper;
-import mhu.rmp.app.ApiResponseListener;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
 
 
 public class GeneralInformationPreviousRecordFragment extends Fragment {

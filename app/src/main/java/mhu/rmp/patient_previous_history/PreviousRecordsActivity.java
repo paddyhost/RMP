@@ -1,5 +1,6 @@
-package mhu.rmp.activity;
+package mhu.rmp.patient_previous_history;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +11,13 @@ import android.view.View;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import mhu.rmp.R;
 import mhu.rmp.TestAdviced.TestAdvicedPreviousRecordsFragment;
-import mhu.rmp.activity.model.PreviousRecords;
-import mhu.rmp.activity.previous_record_apihelper.Web_GetSinglePatientRecord_ApiHelper;
+import mhu.rmp.patient_previous_history.adapter.ViewPagerAdapter;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
+import mhu.rmp.patient_previous_history.web_apihelper.Web_GetSinglePatientRecord_ApiHelper;
 import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.medical_condition.MedicalConditionPrevoiusRecordsFragment;
 import mhu.rmp.mhu_test.TestByMhuPreviousRecordFragment;
 import mhu.rmp.patient_registration.GeneralInformationPreviousRecordFragment;
-import mhu.rmp.activity.adapter.ViewPagerAdapter;
 import mhu.rmp.utils.Utility;
 import mhu.rmp.vaccination_record.VaccinationPreviousRecordsFragment;
 import mhu.rmp.vital_info.VitalInfoPreviousRecordFragment;
@@ -28,7 +29,7 @@ public static PreviousRecords previousRecords=new PreviousRecords();
     private TabLayout tabLayout;
     private ViewPager viewPager;
     public  String visit_id;
-   // String Visit_ID="";
+
     private int[] tabIcons = {
             R.drawable.ic_general_information,
             R.drawable.ic_brief_history,
@@ -45,8 +46,12 @@ public static PreviousRecords previousRecords=new PreviousRecords();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_records);
 
-        visit_id=getIntent().getStringExtra("VISITID");
-        //previousRecords=getIntent().getParcelableExtra(PreviousRecords.visit_master_id);
+        Intent intent = new Intent(this, PreviousRecordsActivity.class);
+        intent.putExtra("VISITID", "VISITID");
+        startActivity(intent);
+
+        //visit_id=getIntent().getStringExtra("VISITID");
+
 
         previousRecordsToolbar = (Toolbar) findViewById(R.id.previous_records_toolbar);
         setSupportActionBar(previousRecordsToolbar);
@@ -131,6 +136,10 @@ public static PreviousRecords previousRecords=new PreviousRecords();
             }
         },visit_id);
     }
+
+
+
+
 
 
 }

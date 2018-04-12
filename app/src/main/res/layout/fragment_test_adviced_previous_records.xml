@@ -31,8 +31,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cheif Complaintbshhkds "/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -64,8 +63,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cheif Complaintbshhkds havsgduka jhjaggs jh ahg agjf jafdjjaj ahfdj afy "/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
@@ -97,8 +95,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cheif Complaintbshhkds havsgduka jhjaggs jh ahg agjf jafdjjaj ahfdj afy "/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

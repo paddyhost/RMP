@@ -1,7 +1,5 @@
 package mhu.rmp.medical_condition;
 
-import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,23 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import mhu.rmp.R;
-import mhu.rmp.activity.PreviousRecordsActivity;
-import mhu.rmp.activity.model.PreviousRecords;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
 import mhu.rmp.medical_condition.adapter.DoseList_Adapter;
 
 public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
 
-    private static final int DIVIDER_SIZE = 2;
-    private TableLayout tableLayout;
-
-
     private TextView txtCheifComplaint1,txtCheifComplaint2,txtCheifComplaint3,txtBriefHistory1,
-            txtBriefHistory2,txtBriefHistory3,txtDoctorName1,txtDoctorName2,txtDoctorName3,txtPreviousInvestigation,
+            txtBriefHistory2,txtBriefHistory3,txtDoctorName1,txtDoctorName2,txtDoctorName3,txtHosptialName,txtPreviousInvestigation,
             txtTreatmentTaken,txtDiagnosys;
     RecyclerView dose_list;
 
@@ -66,37 +58,42 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
         txtTreatmentTaken=(TextView)view.findViewById(R.id.txt_treatment_taken);
         txtDiagnosys=(TextView)view.findViewById(R.id.txt_diagnosys);
         dose_list=(RecyclerView) view.findViewById(R.id.dose_list);
+        txtDoctorName1=(TextView)view.findViewById(R.id.txt_doctor_name1);
+        txtDoctorName2=(TextView)view.findViewById(R.id.txt_doctor_name2);
+        txtDoctorName3=(TextView)view.findViewById(R.id.txt_doctor_name3);
+        txtHosptialName=(TextView)view.findViewById(R.id.txt_previous_hospital_name);
     }
 
     private void setData()
     {
-        if(txtCheifComplaint1.getText().toString().trim().length() == 0) {
-                txtCheifComplaint1.setText("Cheif Complaint1: NA");
-        }
 
-        else {
-                txtCheifComplaint1.setText(String.valueOf(previousRecords.getChiefcomplaints1()));
-        }
+        txtDoctorName1.setText(String.valueOf(previousRecords.getDrname1()));
+        txtDoctorName2.setText(String.valueOf(previousRecords.getDrname2()));
+        txtDoctorName3.setText(String.valueOf(previousRecords.getDrname3()));
+        txtHosptialName.setText(String.valueOf(previousRecords.getHospitalname()));
+
+        txtCheifComplaint1.setText(String.valueOf(previousRecords.getChiefcomplaints1()));
         txtCheifComplaint2.setText(String.valueOf(previousRecords.getChiefcomplaints2()));
         txtCheifComplaint3.setText(String.valueOf(previousRecords.getChiefcomplaints3()));
         txtBriefHistory1.setText(String.valueOf(previousRecords.getBriefHistory1()));
         txtBriefHistory2.setText(String.valueOf(previousRecords.getBriefHistory2()));
         txtBriefHistory3.setText(String.valueOf(previousRecords.getBriefHistory3()));
+
+
+
         if(previousRecords.getInvestigation().equalsIgnoreCase("Y")) {
             txtPreviousInvestigation.setText("Yes");
-        }
-        else if(previousRecords.getInvestigation().equalsIgnoreCase("N"))
+        } else if(previousRecords.getInvestigation().equalsIgnoreCase("N"))
         {
             txtPreviousInvestigation.setText("No");
-        }
-        else if(previousRecords.getInvestigation().equalsIgnoreCase("D"))
+        }else if(previousRecords.getInvestigation().equalsIgnoreCase("D"))
         {
             txtPreviousInvestigation.setText("Don't Know");
-        }
-        else
+        }else
         {
             txtPreviousInvestigation.setText("NA");
         }
+
 
         if(previousRecords.getTratementtaken().equalsIgnoreCase("Y")) {
             txtTreatmentTaken.setText("Yes");
@@ -108,22 +105,19 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
         else if(previousRecords.getTratementtaken().equalsIgnoreCase("D"))
         {
             txtTreatmentTaken.setText("Don't Know");
-        }
-        else
+        }else
         {
             txtTreatmentTaken.setText("NA");
         }
 
-        txtDiagnosys.setText(String.valueOf(previousRecords.getDiagnosys()));
 
+        txtDiagnosys.setText(String.valueOf(previousRecords.getDiagnosys()));
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), OrientationHelper.VERTICAL, false);
         dose_list.setLayoutManager(linearLayoutManager);
         dose_list.setItemAnimator(new DefaultItemAnimator());
         DoseList_Adapter doseAdapter = new DoseList_Adapter(previousRecords.getDoseArrayList(), getActivity().getApplicationContext());
         dose_list.setAdapter(doseAdapter);
-
-
     }
 
 }

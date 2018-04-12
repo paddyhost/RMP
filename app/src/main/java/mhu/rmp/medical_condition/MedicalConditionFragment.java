@@ -215,7 +215,48 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
                 sweetAlertDialog.show();
 
-                Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory);
+                Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
+                    @Override
+                    public void onSuccess(String message) {
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("Done!!");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+
+
+                                etPreviousHsopital.setText("");
+                                etDoctorName1.setText("");
+                                etDoctorName2.setText("");
+                                etDoctorName3.setText("");
+
+
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                VaccinationRecord vaccinationRecord = new VaccinationRecord();
+                                fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(String message) {
+
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        sweetAlertDialog.setTitleText(message);
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                            }
+                        });
+                    }
+                });
+
+
                 Web_Medical_ApiHelper.webAddMedicalConditions(doseArrayList, getActivity(), medicalCondition, new ApiResponseListener() {
                     @Override
                     public void onSuccess(String message) {
@@ -227,9 +268,6 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
 
-                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                VaccinationRecord vaccinationRecord = new VaccinationRecord();
-                                fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
 
                                 etComplaint1.setText("");
                                 etComplaint2.setText("");
@@ -237,10 +275,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                                 etBreifHistory1.setText("");
                                 etBreifHistory2.setText("");
                                 etBreifHistory3.setText("");
-                                etPreviousHsopital.setText("");
-                                etDoctorName1.setText("");
-                                etDoctorName2.setText("");
-                                etDoctorName3.setText("");
+
 
                                 BtnInvestigationYes.setChecked(false);
                                 BtnInvestigationNo.setChecked(false);
@@ -337,7 +372,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
                         if(medicinNameSpinner.getSelectedItemPosition()>0) {
                             //Dose dose = new Dose("Medicine Name: \n"+medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
-                            Dose dose = new Dose("Medicine Name: \n"+medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
+                            Dose dose = new Dose(medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
                             doseArrayList.add(dose);
                             doseAdapter.notifyDataSetChanged();
                             dialog.dismiss();

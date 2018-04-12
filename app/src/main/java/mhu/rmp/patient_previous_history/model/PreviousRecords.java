@@ -1,4 +1,4 @@
-package mhu.rmp.activity.model;
+package mhu.rmp.patient_previous_history.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -23,12 +23,19 @@ public class PreviousRecords implements Parcelable{
     chiefcomplaints1, chiefcomplaints2, chiefcomplaints3, briefHistory1, briefHistory2, briefHistory3,
             investigation, tratementtaken, anyimprovement, diagnosys, patient_id, registrationid,
 
-    //prescribe_dose
 
+    //mhutestmaster
+
+    bloodglucose,heamogram,creatine,urea,sgot,sgpt,adviced,ferered,remark,
 
 
     //vaccination
-    dpt, bcg, measles, opv, ttt, hepatitis, other;
+    dpt, bcg, measles, opv, ttt, hepatitis, other,
+
+    //patient_history
+
+    drname1,drname2,drname3,hospitalname;
+
 
     protected PreviousRecords(Parcel in) {
         id = in.readString();
@@ -78,6 +85,22 @@ public class PreviousRecords implements Parcelable{
         ttt = in.readString();
         hepatitis = in.readString();
         other = in.readString();
+
+        bloodglucose= in.readString();
+        heamogram= in.readString();
+        creatine= in.readString();
+        urea= in.readString();
+        sgot= in.readString();
+        sgpt= in.readString();
+        adviced= in.readString();
+        ferered= in.readString();
+        remark= in.readString();
+
+        drname1= in.readString();
+        drname2= in.readString();
+        drname3= in.readString();
+        hospitalname= in.readString();
+
     }
 
     public static final Creator<PreviousRecords> CREATOR = new Creator<PreviousRecords>() {
@@ -546,6 +569,112 @@ public class PreviousRecords implements Parcelable{
         return 0;
     }
 
+
+    public  String getBloodglucose() {
+        return bloodglucose;
+    }
+
+    public  void setBloodglucose(String bloodglucose) {
+        PreviousRecords.bloodglucose = bloodglucose;
+    }
+
+    public  String getHeamogram() {
+        return heamogram;
+    }
+
+    public  void setHeamogram(String heamogram) {
+        PreviousRecords.heamogram = heamogram;
+    }
+
+    public  String getCreatine() {
+        return creatine;
+    }
+
+    public  void setCreatine(String creatine) {
+        PreviousRecords.creatine = creatine;
+    }
+
+    public  String getUrea() {
+        return urea;
+    }
+
+    public  void setUrea(String urea) {
+        PreviousRecords.urea = urea;
+    }
+
+    public String getSgot() {
+        return sgot;
+    }
+
+    public  void setSgot(String sgot) {
+        PreviousRecords.sgot = sgot;
+    }
+
+    public  String getSgpt() {
+        return sgpt;
+    }
+
+    public  void setSgpt(String sgpt) {
+        PreviousRecords.sgpt = sgpt;
+    }
+
+    public  String getAdviced() {
+        return adviced;
+    }
+
+    public  void setAdviced(String adviced) {
+        PreviousRecords.adviced = adviced;
+    }
+
+    public  String getFerered() {
+        return ferered;
+    }
+
+    public  void setFerered(String ferered) {
+        PreviousRecords.ferered = ferered;
+    }
+
+    public  String getRemark() {
+        return remark;
+    }
+
+    public  void setRemark(String remark) {
+        PreviousRecords.remark = remark;
+    }
+
+
+    public  String getDrname1() {
+        return drname1;
+    }
+
+    public  void setDrname1(String drname1) {
+        PreviousRecords.drname1 = drname1;
+    }
+
+    public  String getDrname2() {
+        return drname2;
+    }
+
+    public  void setDrname2(String drname2) {
+        PreviousRecords.drname2 = drname2;
+    }
+
+    public String getDrname3() {
+        return drname3;
+    }
+
+    public  void setDrname3(String drname3) {
+        PreviousRecords.drname3 = drname3;
+    }
+
+    public String getHospitalname() {
+        return hospitalname;
+    }
+
+    public void setHospitalname(String hospitalname) {
+        PreviousRecords.hospitalname = hospitalname;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
@@ -595,6 +724,21 @@ public class PreviousRecords implements Parcelable{
         dest.writeString(ttt);
         dest.writeString(hepatitis);
         dest.writeString(other);
+
+        dest.writeString(bloodglucose);
+        dest.writeString(heamogram);
+        dest.writeString(creatine);
+        dest.writeString(urea);
+        dest.writeString(sgot);
+        dest.writeString(sgpt);
+        dest.writeString(adviced);
+        dest.writeString(ferered);
+        dest.writeString(remark);
+
+        dest.writeString(drname1);
+        dest.writeString(drname2);
+        dest.writeString(drname3);
+        dest.writeString(hospitalname);
     }
 }
 

@@ -5,10 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".user_login.LoginActivity"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/morefaint_blue"
     android:gravity="center_vertical">
 
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
     <ImageView
+        android:layout_marginTop="50dp"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:src="@drawable/rmp"
@@ -31,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@color/colorWhite">
+        android:background="@color/faint_blue">
 
 
         <LinearLayout
@@ -130,5 +142,8 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

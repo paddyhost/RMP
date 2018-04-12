@@ -98,7 +98,7 @@ public class Add_Prescription_Fragment extends Fragment {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Dose dose = new Dose(doseName.getText().toString(), doseFrequency.getText().toString(), days.getText().toString());
+                        Dose dose = new Dose(doseName.getText().toString(),"\t\t\t\t"+doseFrequency.getText().toString(),days.getText().toString());
                         doseArrayList.add(dose);
                         doseAdapter.notifyDataSetChanged();
                         dialog.dismiss();

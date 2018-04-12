@@ -21,10 +21,9 @@ import mhu.rmp.R;
 import mhu.rmp.TestAdviced.apihelper.Web_TestAdviced_Helper;
 import mhu.rmp.TestAdviced.model.TestAdvicedModel;
 import mhu.rmp.activity.MainActivity;
-import mhu.rmp.activity.PreviousRecordsActivity;
+import mhu.rmp.patient_previous_history.CheckPreviousRecordsFragment;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.app.ApiResponseListener;
-import mhu.rmp.mhu_test.model.MHU_Test;
-import mhu.rmp.patient_registration.UserVerificationFragment;
 import mhu.rmp.pref_manager.PrefManager;
 import mhu.rmp.user_login.LoginActivity;
 
@@ -128,10 +127,18 @@ public class TestAdvised extends Fragment {
                                    /* FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     UserVerificationFragment general_information = new UserVerificationFragment();
                                     fragmentTransaction.replace(R.id.framelayout, general_information).addToBackStack(null).commit();*/
-                                    Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
+                                    /*Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
                                     intent.putExtra("VISITID", MainActivity.Visit_ID);
                                     startActivity(intent);
+*/
 
+                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("VISITID", MainActivity.Visit_ID);
+                                    // Your fragment
+                                    CheckPreviousRecordsFragment checkPreviousRecordsFragment = new CheckPreviousRecordsFragment();
+                                    checkPreviousRecordsFragment.setArguments(bundle);
+                                    fragmentTransaction.replace(R.id.framelayout, checkPreviousRecordsFragment).addToBackStack(null).commit();
 
                                 }
                             });
