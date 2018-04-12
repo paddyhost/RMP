@@ -6,18 +6,19 @@
     android:background="?android:attr/selectableItemBackground">
 
     <TextView
-
         android:id="@+id/test_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:textColor="@color/black"
-        android:textSize="20dp"
-
+        android:textSize="16dp"
         android:textStyle="bold" />
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recyclerview"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"/>
 
 </LinearLayout>

@@ -8,34 +8,36 @@
     android:background="?android:attr/selectableItemBackground">
 
     <TextView
-            android:layout_weight="1"
+            android:layout_weight="1.4"
             android:id="@+id/subtest_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textColor="@color/black"
-            android:textSize="16dp"/>
+            android:textColor="@color/DarkGrey"
+            android:textSize="14dp"
+        android:text="444"/>
 
 
     <TextView
+        android:layout_marginLeft="5dp"
         android:layout_weight="1"
         android:id="@+id/txt_reference_value"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-
-        />
+        android:textColor="@color/DarkGrey"
+        android:textSize="14dp"
+        android:text="444"/>
 
     <TextView
-        android:layout_weight="0.2"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="0.5"
         android:id="@+id/txt_reading_value"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:textColor="@color/black"
-        android:textSize="16dp"
-    />
+        android:textColor="@color/DarkGrey"
+        android:textSize="14dp"
+        android:text="444"/>
 
-    </LinearLayout>
+</LinearLayout>

@@ -53,8 +53,7 @@
                         android:id="@+id/txt_cheif_complaint3"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cheif Complaintbshhkds sjbdjdkk skd jj ksk jsgaaaaa kjsk"/>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -84,24 +83,21 @@
                         android:id="@+id/txt_brief_history1"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cheif Complaintbshhkds sjbdjdkk skd jj ksk jsgaaaaa kjsk"/>
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:layout_marginLeft="30dp"
                         android:id="@+id/txt_brief_history2"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cheif Complaintbshhkds sjbdjdkk skd jj ksk jsgaaaaa kjsk"/>
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:layout_marginLeft="30dp"
                         android:id="@+id/txt_brief_history3"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cheif Complaintbshhkds sjbdjdkk skd jj ksk jsgaaaaa kjsk"/>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -109,6 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDarkgray"/>
+
 
                 <LinearLayout
                     android:layout_marginLeft="10dp"
@@ -127,6 +124,28 @@
                         android:textColor="@color/black"/>
 
 
+
+                    <LinearLayout
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:drawableLeft="@drawable/ic_hospital"
+                            android:drawablePadding="10dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Previous Hospital Name: "
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/txt_previous_hospital_name"
+                            android:layout_marginTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
                     <TextView
                         android:layout_marginTop="15dp"
                         android:layout_marginLeft="35dp"
@@ -144,8 +163,7 @@
                         android:id="@+id/txt_doctor_name1"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Poonam Deshmukh"/>
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:paddingLeft="10dp"
@@ -155,8 +173,7 @@
                         android:id="@+id/txt_doctor_name2"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Priyanka Beldar"/>
+                        android:layout_height="wrap_content"/>
 
                     <TextView
                         android:paddingLeft="10dp"
@@ -166,9 +183,10 @@
                         android:id="@+id/txt_doctor_name3"
                         android:layout_marginTop="15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Gopika Nikam"/>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
+
+
 
                 <View
                     android:layout_marginTop="10dp"
@@ -195,11 +213,10 @@
 
                         <TextView
                             android:id="@+id/txt_previous_investigation"
-                            android:layout_weight="0.5"
+                            android:layout_weight="0.6"
                             android:layout_marginTop="15dp"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="Don't Know"/>
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
 
                 <View
@@ -230,8 +247,7 @@
                         android:layout_weight="0.5"
                         android:layout_marginTop="15dp"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Don't Know"/>
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
 
                 <View
@@ -269,19 +285,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorDarkgray"/>
+
                 <TextView
                     android:drawableLeft="@drawable/ic_diagnosys"
                     android:drawablePadding="10dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Prescribe Dose: "
                     android:textColor="@color/black" />
-               <android.support.v7.widget.RecyclerView
+
+                <android.support.v7.widget.RecyclerView
                    android:id="@+id/dose_list"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:layout_marginBottom="20dp"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginLeft="20dp"
                    android:layout_marginTop="15dp"/>
 
             </LinearLayout>

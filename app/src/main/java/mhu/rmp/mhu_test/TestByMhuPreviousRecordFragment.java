@@ -10,17 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import mhu.rmp.R;
-import mhu.rmp.activity.PreviousRecordsActivity;
-import mhu.rmp.mhu_test.adapter.MultiViewTypeAdapter;
-import mhu.rmp.mhu_test.adapter.SubTestAdapter;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.mhu_test.adapter.TestAdapter;
-import mhu.rmp.mhu_test.model.MHU_Test;
-import mhu.rmp.mhu_test.model.Model;
-import mhu.rmp.mhu_test.model.SubTest;
 
 
 public class TestByMhuPreviousRecordFragment extends Fragment {

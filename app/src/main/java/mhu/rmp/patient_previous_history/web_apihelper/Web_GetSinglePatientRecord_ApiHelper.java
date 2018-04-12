@@ -1,4 +1,4 @@
-package mhu.rmp.activity.previous_record_apihelper;
+package mhu.rmp.patient_previous_history.web_apihelper;
 
 import android.app.Activity;
 
@@ -22,7 +22,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 
-import mhu.rmp.activity.model.PreviousRecords;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
 import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.app.MyApplication;
 import mhu.rmp.constants.WebServiceUrls;
@@ -172,7 +172,45 @@ public class Web_GetSinglePatientRecord_ApiHelper {
                                         previousRecords.setVisit_master_id(jsonObjectVaccination.getString("visit_master_id"));
 
 
-                                        //"test":
+                                        //"mhutestmaster":{"id":"1","bloodglucose":null,
+                                        // "heamogram":null,"creatine":null,"urea":null,
+                                        // "sgot":null,"sgpt":null,"adviced":"dhdh",
+                                        // "ferered":"fhdh","remark":"dhdh",
+                                        // "visit_master_id":"5"},
+
+                                        JSONObject jsonObjectMhuTestMaster = jsonObjectResult.getJSONObject("mhutestmaster");
+
+                                        previousRecords.setId(jsonObjectMhuTestMaster.getString("id"));
+                                        previousRecords.setBloodglucose(jsonObjectMhuTestMaster.getString("bloodglucose"));
+                                        previousRecords.setHeamogram(jsonObjectMhuTestMaster.getString("heamogram"));
+                                        previousRecords.setCreatine(jsonObjectMhuTestMaster.getString("creatine"));
+                                        previousRecords.setUrea(jsonObjectMhuTestMaster.getString("urea"));
+                                        previousRecords.setSgot(jsonObjectMhuTestMaster.getString("sgot"));
+                                        previousRecords.setSgpt(jsonObjectMhuTestMaster.getString("sgpt"));
+                                        previousRecords.setAdviced(jsonObjectMhuTestMaster.getString("adviced"));
+                                        previousRecords.setFerered(jsonObjectMhuTestMaster.getString("ferered"));
+                                        previousRecords.setRemark(jsonObjectMhuTestMaster.getString("remark"));
+                                        previousRecords.setVisit_master_id(jsonObjectMhuTestMaster.getString("visit_master_id"));
+
+
+                                       //"patient_history":{"id":"2","patient_id":"6",
+                                        // "registrationno":"66767","drname1":"sharma",
+                                        // "drname2":null,"drname3":null,"hospitalname":
+                                        // "hegewar","visit_master_id":"5"},
+
+                                        JSONObject jsonObjectPatientHistory = jsonObjectResult.getJSONObject("patient_history");
+
+                                        previousRecords.setId(jsonObjectPatientHistory.getString("id"));
+                                        previousRecords.setPatient_id(jsonObjectPatientHistory.getString("patient_id"));
+                                        previousRecords.setRegistrationno(jsonObjectPatientHistory.getString("registrationno"));
+                                        previousRecords.setDrname1(jsonObjectPatientHistory.getString("drname1"));
+                                        previousRecords.setDrname2(jsonObjectPatientHistory.getString("drname2"));
+                                        previousRecords.setDrname3(jsonObjectPatientHistory.getString("drname3"));
+                                        previousRecords.setHospitalname(jsonObjectPatientHistory.getString("hospitalname"));
+                                        previousRecords.setVisit_master_id(jsonObjectPatientHistory.getString("visit_master_id"));
+
+
+                                        // /"test":
                                         // {"Complete Blood Count (CBC)\/ Homogram (Hgm)"
                                         // :["Hb  =  - ","TLC =  - ","DLC =  - ","PCV =  - ","RBC count  =  - ",
                                         // "Platelet count =  - ","MCV\/MCH\/MCHC =  - ","ESR =  - ","AEC =  - ",

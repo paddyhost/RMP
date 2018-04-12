@@ -1,4 +1,4 @@
-package mhu.rmp.activity.adapter;
+package mhu.rmp.patient_previous_history.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Nikam on 06/04/2018.
  */
 
-public class ViewPagerAdapter  extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 

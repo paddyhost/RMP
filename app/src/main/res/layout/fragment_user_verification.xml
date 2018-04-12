@@ -15,6 +15,7 @@
 
 
         <LinearLayout
+            android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="35dp"
                 android:background="@color/colorPrimary"
                 android:text="Proceed with Aadhar/UID"
                 android:textAllCaps="false"
@@ -65,8 +66,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:padding="10dp"
+                android:layout_marginTop="10dp"
                 android:text="Or"
+                android:textStyle="bold"
                 android:textSize="20dp" />
 
             <Button
@@ -77,7 +79,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
-                android:text="Proceed without Adhar"
+                android:text="Proceed without Aadhar"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="25dp" />

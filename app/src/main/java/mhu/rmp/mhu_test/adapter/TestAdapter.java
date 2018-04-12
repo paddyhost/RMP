@@ -27,7 +27,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
 
     public TestAdapter(List<MHU_Test> mhuTestList) {
         this.mhuTestList = mhuTestList;
-
     }
 
     @Override
@@ -53,7 +52,9 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return mhuTestList.size();
+        //return mhuTestList.size();
+
+        return mhuTestList==null?0:mhuTestList.size();
     }
 
 
@@ -68,8 +69,6 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
 
             test_name = (TextView) itemView.findViewById(R.id.test_name);
             recyclerview= (RecyclerView) itemView.findViewById(R.id.recyclerview);
-
-
 
             this.itemView = itemView;
         }

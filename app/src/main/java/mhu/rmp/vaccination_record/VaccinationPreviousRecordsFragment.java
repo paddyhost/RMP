@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import mhu.rmp.R;
-import mhu.rmp.activity.PreviousRecordsActivity;
-import mhu.rmp.activity.model.PreviousRecords;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
 
 
 public class VaccinationPreviousRecordsFragment extends Fragment {
@@ -83,7 +83,7 @@ public class VaccinationPreviousRecordsFragment extends Fragment {
         }
         else
         {
-            txtHepatitis.setText("NO");
+            txtHepatitis.setText("No");
         }
 
 
@@ -96,6 +96,7 @@ public class VaccinationPreviousRecordsFragment extends Fragment {
         }
 
 
-        txtOther.setText(String.valueOf(previousRecords.getOther()));
+            txtOther.setText(String.valueOf(previousRecords.getOther()));
+
     }
 }

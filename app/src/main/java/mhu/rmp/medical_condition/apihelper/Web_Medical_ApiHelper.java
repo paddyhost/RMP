@@ -53,8 +53,6 @@ public class Web_Medical_ApiHelper
                             if(doseArrayList!=null) {
                                 for (Dose dose : doseArrayList) {
                                     addPriscribeDose(activity, dose, medicalconditionid);
-
-
                                 }
                             }
                             // {"status":"success","count":1,"type":"addMedicalcondition",
@@ -179,7 +177,6 @@ public class Web_Medical_ApiHelper
 
                             //{"status":"success","count":0,"type":"addPriscribeDose","result":[],"message":"PriscribeDose added successfully"}
                             //http://localhost/RMP/index.php/api/V1/addPriscribeDose?mobile=9975294782&password=user@123&&format=json&patient_id=6&registrationno=66767&name=hdhdh&frequency=54&days=5&medicalconditionid=6
-
 
                         }
                         else

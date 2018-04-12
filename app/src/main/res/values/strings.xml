@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Mobile Health Unit</string>
+    <string name="na">NA</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
@@ -24,7 +25,6 @@
         <item>Senior Citizen-above 60 years of age</item>
         <item>Other</item>
     </string-array>
-
 
 
     <string-array name="state_array">
@@ -72,8 +72,8 @@
         <item>DERICIP 300 TETARD</item>
         <item>DERICIP 150 TETARD</item>
         <item>AMBROX -LS SYP</item>
-        <item>METRO 400(B) UNIPEX</item>
-        <item>METRO200 (L) INTECT RED OVEL</item>
+        <item>METRO 400(B)UNIPEX</item>
+        <item>METRO200(L)INTECT RED OVEL</item>
         <item>NORBIN GYL SUSP</item>
         <item>NOR TZ (B) OMEGA</item>
         <item>CERTRIZINE TAB KNOLL</item>
@@ -237,6 +237,9 @@
         <item>GCT</item>
         <item>ABO RH (Blood Group)</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -11,7 +11,7 @@ public class WebServiceUrls
     public static final String urlAddVitalInfo =HOST + "api/V1_1/addVital";
     public static final String urlAddMedicalInfo =HOST+ "api/V1_1/addMedicalcondition";
     public static final String urlAddVaccination = HOST+ "api/v1_1/addvaccination";
-    public static final String urlAddPatientHistory =HOST+ "api/V1_1/addPatient";
+    public static final String urlAddPatientHistory =HOST+ "api/V1_1/addPatientHistory";
     public static final String urlAddMHuTest =HOST+ "api/v1_1/addMHUTest";
     public static final String addPriscribeDose = HOST + "api/v1_1/addPriscribeDose";
     public static final String ulGetTestMasterAttribute =HOST+ "api/v1_1/gettestmasterattribute";
