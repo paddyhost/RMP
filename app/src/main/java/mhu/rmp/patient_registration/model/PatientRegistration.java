@@ -3,11 +3,15 @@ package mhu.rmp.patient_registration.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
+import mhu.rmp.check_previous_records.model.CheckPreviousRecordModel;
+
 
 public class PatientRegistration implements Parcelable
 {
     private String id, registrationNo, fName,Lname,gender,dateOfRegistration,address,
-            mobileNo,dob,unique_id,patient_category,state,district,city,area,location,visit_id,visit_master_id;
+            mobileNo,dob,unique_id,patient_category,state,district,city,area,location,visit_id,visit_master_id,selectedVisitSpinner;
 
 
     public PatientRegistration()
@@ -54,6 +58,7 @@ public class PatientRegistration implements Parcelable
         patient_category = in.readString();
         visit_id=in.readString();
         visit_master_id=in.readString();
+        selectedVisitSpinner=in.readString();
     }
 
     @Override
@@ -76,6 +81,7 @@ public class PatientRegistration implements Parcelable
         dest.writeString(location);
         dest.writeString(visit_id);
         dest.writeString(visit_master_id);
+        dest.writeString(selectedVisitSpinner);
     }
 
     @Override
@@ -238,4 +244,24 @@ public class PatientRegistration implements Parcelable
     public void setVisit_master_id(String visit_master_id) {
         this.visit_master_id = visit_master_id;
     }
+
+
+    public String getSelectedVisitSpinner() {
+        return selectedVisitSpinner;
+    }
+
+    public void setSelectedVisitSpinner(String selectedVisitSpinner) {
+        this.selectedVisitSpinner = selectedVisitSpinner;
+    }
+
+
+    public ArrayList<CheckPreviousRecordModel> getCheckPreviousRecordModelArrayList() {
+        return checkPreviousRecordModelArrayList;
+    }
+
+    public void setCheckPreviousRecordModelArrayList(ArrayList<CheckPreviousRecordModel> checkPreviousRecordModelArrayList) {
+        this.checkPreviousRecordModelArrayList = checkPreviousRecordModelArrayList;
+    }
+
+    ArrayList<CheckPreviousRecordModel> checkPreviousRecordModelArrayList;
 }

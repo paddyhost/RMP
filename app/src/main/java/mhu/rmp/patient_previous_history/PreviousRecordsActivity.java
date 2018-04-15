@@ -46,11 +46,9 @@ public static PreviousRecords previousRecords=new PreviousRecords();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_previous_records);
 
-        Intent intent = new Intent(this, PreviousRecordsActivity.class);
-        intent.putExtra("VISITID", "VISITID");
-        startActivity(intent);
 
-        //visit_id=getIntent().getStringExtra("VISITID");
+
+        visit_id=getIntent().getStringExtra("VISITID");
 
 
         previousRecordsToolbar = (Toolbar) findViewById(R.id.previous_records_toolbar);
@@ -107,7 +105,8 @@ public static PreviousRecords previousRecords=new PreviousRecords();
             @Override
             public void onSuccess(String message) {
                 sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                sweetAlertDialog.setTitleText(message);
+                //sweetAlertDialog.setTitleText(message);
+                sweetAlertDialog.setTitleText("Previous Records History");
                 sweetAlertDialog.setConfirmText("Ok");
                 sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
@@ -136,10 +135,5 @@ public static PreviousRecords previousRecords=new PreviousRecords();
             }
         },visit_id);
     }
-
-
-
-
-
 
 }

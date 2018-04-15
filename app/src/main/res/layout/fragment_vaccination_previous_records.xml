@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:id="@+id/txt_dpt"
             android:layout_width="0dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:id="@+id/txt_bcg"
             android:layout_width="0dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -108,7 +108,7 @@
             android:layout_weight="1"
             android:id="@+id/txt_measles"
             android:layout_width="0dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -145,7 +145,7 @@
             android:layout_weight="1"
             android:id="@+id/txt_opv"
             android:layout_width="0dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
@@ -181,7 +181,7 @@
             android:id="@+id/txt_hepatitis"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
@@ -217,7 +217,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:id="@+id/txt_tt"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
@@ -253,7 +253,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:id="@+id/txt_other"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 

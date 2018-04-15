@@ -21,9 +21,9 @@ import mhu.rmp.R;
 import mhu.rmp.TestAdviced.apihelper.Web_TestAdviced_Helper;
 import mhu.rmp.TestAdviced.model.TestAdvicedModel;
 import mhu.rmp.activity.MainActivity;
-import mhu.rmp.patient_previous_history.CheckPreviousRecordsFragment;
-import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
+import mhu.rmp.check_previous_records.CheckPreviousRecordsFragment;
 import mhu.rmp.app.ApiResponseListener;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.pref_manager.PrefManager;
 import mhu.rmp.user_login.LoginActivity;
 
@@ -117,7 +117,7 @@ public class TestAdvised extends Fragment {
                         @Override
                         public void onSuccess(String message) {
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText("Done !!");
+                            sweetAlertDialog.setTitleText("Test Advice Data Saved!!");
                             sweetAlertDialog.setConfirmText("Ok");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -129,17 +129,12 @@ public class TestAdvised extends Fragment {
                                     fragmentTransaction.replace(R.id.framelayout, general_information).addToBackStack(null).commit();*/
                                     /*Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
                                     intent.putExtra("VISITID", MainActivity.Visit_ID);
+                                    startActivity(intent);*/
+
+                                    Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
+                                    intent.putExtra("VISITID", MainActivity.Visit_ID);
                                     startActivity(intent);
-*/
-
-                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("VISITID", MainActivity.Visit_ID);
-                                    // Your fragment
-                                    CheckPreviousRecordsFragment checkPreviousRecordsFragment = new CheckPreviousRecordsFragment();
-                                    checkPreviousRecordsFragment.setArguments(bundle);
-                                    fragmentTransaction.replace(R.id.framelayout, checkPreviousRecordsFragment).addToBackStack(null).commit();
-
+                                    getActivity().finish();
                                 }
                             });
                         }
@@ -169,9 +164,26 @@ public class TestAdvised extends Fragment {
      private void setAdvisedData()
     {
         testAdvicedModel=new TestAdvicedModel();
-        testAdvicedModel.setTestName(edtTestName.getText().toString());
-        testAdvicedModel.setRerered(etRefrerredTxt.getText().toString());
-        testAdvicedModel.setRemark(etRmarks.getText().toString());
+        try {
+            testAdvicedModel.setTestName(edtTestName.getText().toString());
+        }
+        catch(Exception e) {
+
+        }
+        try
+        {
+            testAdvicedModel.setRerered(etRefrerredTxt.getText().toString());
+        }
+        catch (Exception e)
+        {}
+
+        try {
+            testAdvicedModel.setRemark(etRmarks.getText().toString());
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
     private boolean checkValidation()

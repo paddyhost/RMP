@@ -170,6 +170,7 @@
             android:weightSum="2">
 
             <ImageView
+                android:id="@+id/patient_category_imageview"
                 android:layout_width="25dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="0dp"
@@ -187,6 +188,23 @@
                 android:prompt="@string/patient_category_title"/>
 
         </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/spinner_value"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:padding="5dp"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"/>
+
 
         <LinearLayout
             android:layout_marginTop="15dp"
@@ -213,7 +231,8 @@
                     android:id="@+id/firstname"
                     android:inputType="textPersonName|text"
                     android:maxLength="30"
-                    android:imeOptions="actionDone"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:hint="First Name of patient"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -242,7 +261,8 @@
                     android:id="@+id/lname"
                     android:inputType="textPersonName|text"
                     android:maxLength="30"
-                    android:imeOptions="actionDone"
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:hint="Last Name of patient"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -348,7 +368,7 @@
                     android:id="@+id/address"
                     android:inputType="textImeMultiLine"
                     android:maxLines="3"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionNext"
                     android:hint="Address"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -418,6 +438,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/area_spinner_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/village"
@@ -431,12 +452,16 @@
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
+
+
+
         <LinearLayout
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
+                android:id="@+id/location_spinner_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/village"
@@ -450,6 +475,19 @@
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
+        <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:padding="5dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/village"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/location_spinner_value"/>
 
         <RadioGroup
             android:layout_width="match_parent"

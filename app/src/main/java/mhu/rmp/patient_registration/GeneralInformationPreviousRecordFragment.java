@@ -64,11 +64,16 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
     private void setData()
     {
 
-        try {
-            txtPatientUniqueId.setText(String.valueOf(previousRecords.getUnique_id()));
-        }
-        catch (Exception e)
-        {}
+
+            if (txtPatientUniqueId!=null)
+            {
+                txtPatientUniqueId.setText(String.valueOf(previousRecords.getUnique_id()));
+            }
+            else
+            {
+
+            }
+
         try {
             txtRegistrationNo.setText(String.valueOf(previousRecords.getRegistrationno()));
         }
@@ -213,6 +218,9 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
       {
 
       }
+
+
+
     }
 
 }

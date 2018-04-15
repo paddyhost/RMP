@@ -96,25 +96,125 @@ public class Web_TestAdviced_Helper
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new Hashtable<String, String>();
 
-               // http://mobilehealthunit.in/api/V1/addMHUTest?
-                // mobile=9975294782&password=user@123&&format=json&patient_id=6
-                // &registrationno=66767&bloodglucose=12&heamogram=88
-                // &creatine=888&urea=888&sgot=77&sgpt=7767&adviced=7878&ferered=878&remark=887
-                params.put("patient_id", MainActivity.PATIENT_ID);
-                params.put("registrationno",MainActivity.REGISTRATION_ID);
-                //params.put("bloodglucose",testAdvicedModel.getBloodglucose());
-               // params.put("heamogram",testAdvicedModel.getHeamogram());
-                //params.put("creatine",testAdvicedModel.getCreatine());
-               //params.put("urea",testAdvicedModel.getUrea());
-                //params.put("sgot",testAdvicedModel.getSgot());
-               //params.put("sgpt",testAdvicedModel.getSgpt());
-                params.put("adviced",testAdvicedModel.getTestName());
-                params.put("ferered",testAdvicedModel.getRerered());
-                params.put("remark",testAdvicedModel.getRemark());
-                params.put("mobile",new PrefManager(activity).getMobile());
-                params.put("password",new PrefManager(activity).getPassword());
-                params.put("format","json");
-                params.put("visit_master_id",MainActivity.Visit_ID);
+                //http://mobilehealthunit.in/api/V1_1/addMHUTest?
+                // mobile=9975294782&password=user@123&
+                // format=json&patient_id=6&registrationno=66767
+                // &bloodglucose=12&heamogram=88&creatine=888&urea=888
+                // &sgot=77&sgpt=7767&adviced=7878&ferered=878&remark=887
+                try {
+                    params.put("patient_id", MainActivity.PATIENT_ID);
+                    }
+                    catch (Exception e)
+                {
+                }
+
+                try {
+                    params.put("registrationno",MainActivity.REGISTRATION_ID);
+                }
+                catch (Exception e)
+                {
+                }
+
+/*
+                try {
+                    params.put("bloodglucose",testAdvicedModel.getBloodglucose());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+                try {
+                    params.put("heamogram",testAdvicedModel.getHeamogram());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+
+                try {
+                    params.put("creatine",testAdvicedModel.getCreatine());
+                }
+                catch (Exception e)
+                {
+                }
+
+                try {
+                    params.put("urea",testAdvicedModel.getUrea());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+                try {
+                    params.put("sgot",testAdvicedModel.getSgot());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+                try {
+                    params.put("sgpt",testAdvicedModel.getSgpt());
+                }
+                catch (Exception e)
+                {
+                }*/
+
+
+                try {
+                    params.put("adviced",testAdvicedModel.getTestName());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+                try {
+                    params.put("ferered",testAdvicedModel.getRerered());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+                try {
+                    params.put("remark",testAdvicedModel.getRemark());
+                }
+                catch (Exception e)
+                {
+                }
+
+                try {
+                    params.put("mobile",new PrefManager(activity).getMobile());
+                }
+                catch (Exception e)
+                {
+                }
+
+
+                try {
+                    params.put("password",new PrefManager(activity).getPassword());
+                }
+                catch (Exception e)
+                {
+                }
+
+                try {
+                    params.put("format","json");
+                }
+                catch (Exception e)
+                {
+                }
+
+                try {
+                    params.put("visit_master_id",MainActivity.Visit_ID);
+                }
+                catch (Exception e)
+                {
+                }
 
                 //returning parameters
                 return params;

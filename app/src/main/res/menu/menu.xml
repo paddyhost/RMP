@@ -8,7 +8,7 @@
     </item>
 
     <item
-        android:visible="false"
+
         android:title="Previous Record"
         android:id="@+id/previous_record">
     </item>
