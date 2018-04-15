@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+import mhu.rmp.check_previous_records.model.CheckPreviousRecordModel;
 import mhu.rmp.medical_condition.model.Dose;
 import mhu.rmp.mhu_test.model.MHU_Test;
 
@@ -133,12 +134,15 @@ public class PreviousRecords implements Parcelable{
     public ArrayList<Dose> getDoseArrayList() {
         return doseArrayList;
     }
+    ArrayList<Dose> doseArrayList;
 
     public void setDoseArrayList(ArrayList<Dose> doseArrayList) {
         this.doseArrayList = doseArrayList;
     }
 
-    ArrayList<Dose> doseArrayList;
+
+
+
 
     public PreviousRecords() {
     }

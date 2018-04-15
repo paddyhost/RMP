@@ -40,21 +40,26 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        MHU_Test test = mhuTestList.get(position);
-        holder.test_name.setText(test.getTestName());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, OrientationHelper.VERTICAL, false);
+        try {
+            MHU_Test test = mhuTestList.get(position-1);
+            holder.test_name.setText(test.getTestName());
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, OrientationHelper.VERTICAL, false);
 
-        holder.recyclerview.setLayoutManager(linearLayoutManager);
-        holder.recyclerview.setItemAnimator(new DefaultItemAnimator());
-        holder.recyclerview.setAdapter(new SubTestAdapter(mhuTestList.get(position).getSubtests()));
+            holder.recyclerview.setLayoutManager(linearLayoutManager);
+            holder.recyclerview.setItemAnimator(new DefaultItemAnimator());
+            holder.recyclerview.setAdapter(new SubTestAdapter(mhuTestList.get(position-1).getSubtests()));
+        }
+        catch (Exception e)
+        {
 
+        }
     }
 
     @Override
     public int getItemCount() {
         //return mhuTestList.size();
 
-        return mhuTestList==null?0:mhuTestList.size();
+        return mhuTestList==null?1:mhuTestList.size()+1;
     }
 
 

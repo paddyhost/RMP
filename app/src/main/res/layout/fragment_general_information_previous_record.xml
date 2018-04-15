@@ -33,7 +33,7 @@
                 android:paddingBottom="10dp">
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.1"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
@@ -53,19 +53,19 @@
                     android:background="@color/colorDarkgray"/>
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1.4"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center|start">
                     <TextView
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="3dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Registration No"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="3dp"
                         android:id="@+id/txt_registration_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -83,14 +83,14 @@
                     android:orientation="vertical"
                     android:gravity="center|start">
                     <TextView
-                        android:paddingLeft="4dp"
+                        android:paddingLeft="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="VisitNo"
                         android:textColor="@color/black"
                         android:textStyle="bold"/>
                     <TextView
-                        android:paddingLeft="4dp"
+                        android:paddingLeft="2dp"
                         android:id="@+id/txt_visit_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>

@@ -58,7 +58,8 @@
                         android:id="@+id/edt_height"
                         android:maxLength="4"
                         android:inputType="number"
-                        android:hint="Height" />
+                        android:hint="Height"
+                        android:imeOptions="actionNext"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
@@ -103,7 +104,8 @@
                     android:id="@+id/edt_weight"
                     android:maxLength="4"
                     android:inputType="number"
-                    android:hint="Weight" />
+                    android:hint="Weight"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -152,7 +154,8 @@
                     android:id="@+id/edt_bloodpressure"
                     android:maxLength="3"
                     android:inputType="number"
-                    android:hint=" BP (Sys)" />
+                    android:hint=" BP (Sys)"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -177,7 +180,8 @@
                         android:id="@+id/edt_bloodpressure_to"
                         android:maxLength="3"
                         android:inputType="number"
-                        android:hint="BP(Dia)" />
+                        android:hint="BP(Dia)"
+                        android:imeOptions="actionNext"/>
                 </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
@@ -225,7 +229,8 @@
                     android:id="@+id/edt_temp"
                     android:maxLength="6"
                     android:inputType="number"
-                    android:hint="Temperature" />
+                    android:hint="Temperature"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -269,7 +274,8 @@
                     android:id="@+id/edt_resp"
                     android:maxLength="4"
                     android:inputType="number"
-                    android:hint="Respiration" />
+                    android:hint="Respiration"
+                    android:imeOptions="actionNext"/>
             </android.support.design.widget.TextInputLayout>
 
             <TextView

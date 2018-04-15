@@ -112,7 +112,7 @@ public class Vital_Information extends Fragment {
                         public void onSuccess(String message) {
 
                             sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText("Done !!");
+                            sweetAlertDialog.setTitleText("Vital Information Saved!!");
                             sweetAlertDialog.setConfirmText("Ok");
                             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -145,7 +145,8 @@ public class Vital_Information extends Fragment {
                                 }
                             });
                         }
-                    });
+                    }
+                    );
 
                 //}
 

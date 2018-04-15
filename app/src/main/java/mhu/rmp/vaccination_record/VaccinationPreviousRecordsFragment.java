@@ -96,7 +96,15 @@ public class VaccinationPreviousRecordsFragment extends Fragment {
         }
 
 
+        if(previousRecords.getOther().equalsIgnoreCase("") && txtOther.getText().toString().trim().length()<=0)
+        {
+            txtOther.setText("NA");
+        }
+        else
+        {
             txtOther.setText(String.valueOf(previousRecords.getOther()));
+        }
+
 
     }
 }

@@ -112,7 +112,7 @@ public class VaccinationRecord extends Fragment {
                     @Override
                     public void onSuccess(String message) {
                         sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("Done !!");
+                        sweetAlertDialog.setTitleText("Vaccination Record Saved!!");
                         sweetAlertDialog.setConfirmText("Ok");
                         sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override

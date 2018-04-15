@@ -19,11 +19,14 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import mhu.rmp.R;
 import mhu.rmp.TestAdviced.TestAdvised;
 import mhu.rmp.activity.MainActivity;
 import mhu.rmp.app.ApiResponseListener;
+import mhu.rmp.check_previous_records.CheckPreviousRecordsFragment;
 import mhu.rmp.mhu_test.model.MHU_Test;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.pref_manager.PrefManager;
 import mhu.rmp.user_login.LoginActivity;
 import mhu.rmp.utils.Utility;
@@ -86,6 +89,8 @@ public class MhuTest extends Fragment {
     private MHU_Test mhuTest;
 
     private PrefManager prefManager;
+
+    private SweetAlertDialog sweetAlertDialog;
 
 
     public MhuTest() {
@@ -411,14 +416,30 @@ public class MhuTest extends Fragment {
             @Override
             public void onClick(View v) {
 
-                    setMHUTestData();
+                setMHUTestData();
+
+                final SweetAlertDialog  sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+                sweetAlertDialog.setConfirmText("Please Wait");
+                sweetAlertDialog.show();
 
                 webAddTestAttributeValues(getActivity(), new ApiResponseListener() {
                     @Override
                     public void onSuccess(String message) {
-                        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                        TestAdvised testAdvised = TestAdvised.getInstance();
-                        fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
+
+                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("MHU Test Data Saved!!");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                TestAdvised testAdvised = TestAdvised.getInstance();
+                                fragmentTransaction.replace(R.id.framelayout, testAdvised).addToBackStack(null).commit();
+
+                            }
+                        });
 
                     }
 
@@ -1774,8 +1795,6 @@ public class MhuTest extends Fragment {
                 Intent i= new Intent(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
-
-
 
                 break;
         }

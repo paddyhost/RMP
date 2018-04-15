@@ -98,6 +98,8 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
     private LinearLayoutManager mLayoutManager;
     private Spinner medicinNameSpinner;
 
+     SweetAlertDialog sweetAlertDialog;
+
 
     public MedicalConditionFragment() {
         // Required empty public constructor
@@ -210,85 +212,36 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
             @Override
             public void onClick(View view) {
                 setMedicalInfo();
-                final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                         .setTitleText("Please wait");
 
                 sweetAlertDialog.show();
-
-                Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
-                    @Override
-                    public void onSuccess(String message) {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("Done!!");
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-
-
-                                etPreviousHsopital.setText("");
-                                etDoctorName1.setText("");
-                                etDoctorName2.setText("");
-                                etDoctorName3.setText("");
-
-
-                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                VaccinationRecord vaccinationRecord = new VaccinationRecord();
-                                fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
-
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onError(String message) {
-
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                        sweetAlertDialog.setTitleText(message);
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
-                            }
-                        });
-                    }
-                });
 
 
                 Web_Medical_ApiHelper.webAddMedicalConditions(doseArrayList, getActivity(), medicalCondition, new ApiResponseListener() {
                     @Override
                     public void onSuccess(String message) {
-                        sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("Done !!");
-                        sweetAlertDialog.setConfirmText("Ok");
-                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                sweetAlertDialog.dismissWithAnimation();
 
 
-                                etComplaint1.setText("");
-                                etComplaint2.setText("");
-                                etComplaint3.setText("");
-                                etBreifHistory1.setText("");
-                                etBreifHistory2.setText("");
-                                etBreifHistory3.setText("");
+                        functioncall();
+                        etComplaint1.setText("");
+                        etComplaint2.setText("");
+                        etComplaint3.setText("");
+                        etBreifHistory1.setText("");
+                        etBreifHistory2.setText("");
+                        etBreifHistory3.setText("");
 
 
-                                BtnInvestigationYes.setChecked(false);
-                                BtnInvestigationNo.setChecked(false);
-                                BtnInvestigationDontKnow.setChecked(false);
-                                BtnTreatmentYes.setChecked(false);
-                                BtnTreatmentNo.setChecked(false);
-                                BtnTreatmentDontKnow.setChecked(false);
-                                BtnImprovementYes.setChecked(false);
-                                BtnImprovementNo.setChecked(false);
-                                BtnImprovementDontKnow.setChecked(false);
+                        BtnInvestigationYes.setChecked(false);
+                        BtnInvestigationNo.setChecked(false);
+                        BtnInvestigationDontKnow.setChecked(false);
+                        BtnTreatmentYes.setChecked(false);
+                        BtnTreatmentNo.setChecked(false);
+                        BtnTreatmentDontKnow.setChecked(false);
+                        BtnImprovementYes.setChecked(false);
+                        BtnImprovementNo.setChecked(false);
+                        BtnImprovementDontKnow.setChecked(false);
 
-                            }
-                        });
                     }
 
                     @Override
@@ -300,16 +253,62 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 sweetAlertDialog.dismissWithAnimation();
+
                             }
                         });
                     }
                 });
 
-            }
+
+                         }
         });
 
     }
+private void functioncall()
+{
+    Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
+        @Override
+        public void onSuccess(String message) {
+            sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+            sweetAlertDialog.setTitleText("Medical Condition Added");
+            sweetAlertDialog.setConfirmText("Ok");
+            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    sweetAlertDialog.dismissWithAnimation();
 
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    VaccinationRecord vaccinationRecord = new VaccinationRecord();
+                    fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
+
+                    etPreviousHsopital.setText("");
+                    etDoctorName1.setText("");
+                    etDoctorName2.setText("");
+                    etDoctorName3.setText("");
+                }
+            });
+        }
+
+        @Override
+        public void onError(String message) {
+
+            sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+            sweetAlertDialog.setTitleText(message);
+            sweetAlertDialog.setConfirmText("Ok");
+            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    sweetAlertDialog.dismissWithAnimation();
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    VaccinationRecord vaccinationRecord = new VaccinationRecord();
+                    fragmentTransaction.replace(R.id.framelayout, vaccinationRecord).addToBackStack(null).commit();
+
+                }
+            });
+        }
+    });
+
+}
     private void DiagnosysClickListener(final LayoutInflater inflater) {
         diagnosys.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -27,6 +28,8 @@ import android.widget.Toast;
 import mhu.rmp.R;
 import mhu.rmp.Utility;
 import mhu.rmp.app.ApiResponseListener;
+import mhu.rmp.check_previous_records.CheckPreviousRecordsFragment;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
 import mhu.rmp.patient_registration.apihelper.Web_ApiHelper;
 import mhu.rmp.patient_registration.model.PatientRegistration;
 import mhu.rmp.pref_manager.PrefManager;
@@ -48,7 +51,7 @@ import static mhu.rmp.constants.AppConstants.PATIENT_PREFIX;
 import static mhu.rmp.constants.AppConstants.REGISTRATION_PREFIX;
 
 public class General_Information extends Fragment {
-    PatientRegistration registration;
+    public static PatientRegistration registration;
     String adharid;
     Toolbar customertoolbar;
     Button btnSave;
@@ -67,13 +70,14 @@ public class General_Information extends Fragment {
     private PrefManager prefManager;
     FragmentTransaction fragmentTransaction;
     Map<String, String> category = new Hashtable<String, String>();
-
+    TextView SpinnerValue,locationSpinnerValue;
+    ImageView patientCategoryImageview,location_spinner_image;
 
     public General_Information() {
         // Required empty public constructor
     }
 
-     int getPatientCategoryIndex(String text)
+    int getPatientCategoryIndex(String text)
     {
         Iterator it = category.entrySet().iterator();
         int i=0;
@@ -82,14 +86,27 @@ public class General_Information extends Fragment {
             Map.Entry pair = (Map.Entry)it.next();
             if(pair.getValue().toString().equalsIgnoreCase(text))
             {
-                return i;
+
+                //return i;
+
             }
             i++;
             System.out.println(pair.getKey() + " = " + pair.getValue());
-            //it.remove(); // avoids a ConcurrentModificationException
+
+        /*String[] list = getResources().getStringArray(R.array.patient_category);
+        int i = 0;
+        for(String item : list)
+        {
+            if(item.equals(text))
+            {
+                return i;
+                //break;
+            }
+            i++;*/
         }
         return  0;
     }
+
 
     private int getLocationIndex(String location)
     {
@@ -102,6 +119,19 @@ public class General_Information extends Fragment {
               return i;
           }
       }
+
+
+        /*String[] list = getResources().getStringArray(R.array.location_array);
+        int i = 0;
+        for(String item : list)
+        {
+            if(item.equals(location))
+            {
+                return i;
+                //break;
+            }
+            i++;
+        }*/
       return 0;
 
     }
@@ -138,6 +168,7 @@ public class General_Information extends Fragment {
         category.put("Senior Citizen-above 60 years of age","S");
         category.put("Other","O");
         initializations(rootview);
+
        if(registration==null)
        {
            generateUniqueId();
@@ -166,9 +197,40 @@ public class General_Information extends Fragment {
            edtAddress.setText(registration.getAddress());
            edtAddress.setFocusable(false);
           // int i=getPatientCategoryIndex(registration.getPatient_category());
-          // patientCategorySpinner.setSelection(i);
-           patientCategorySpinner.setSelection(1);
-           patientCategorySpinner.setEnabled(false);
+           //patientCategorySpinner.setSelection(i);
+           patientCategorySpinner.setVisibility(View.GONE);
+           patientCategoryImageview.setVisibility(View.GONE);
+           SpinnerValue.setVisibility(View.VISIBLE);
+
+
+           if(registration.getPatient_category().equalsIgnoreCase("PW"))
+           {
+               SpinnerValue.setText("Pregnant Women");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("LW"))
+           {
+               SpinnerValue.setText("Lactating Women");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("C"))
+           {
+               SpinnerValue.setText("Child Under-5 Years of Age");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("S"))
+           {
+               SpinnerValue.setText("Senior Citizen-above 60 years of age");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("O"))
+           {
+               SpinnerValue.setText("Other");
+
+           }
+          // patientCategorySpinner.setSelection(1);
+           SpinnerValue.setEnabled(false);
+
            stateSpinner.setSelection(1);
            stateSpinner.setEnabled(false);
            districtSpinner.setSelection(1);
@@ -177,9 +239,14 @@ public class General_Information extends Fragment {
            citySpinner.setEnabled(false);
            areaSpinner.setSelection(1);
            areaSpinner.setEnabled(false);
-           locationSpinner.setSelection(1);
+           //locationSpinner.setSelection(1);
            //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
-           locationSpinner.setEnabled(false);
+           locationSpinner.setVisibility(View.GONE);
+           location_spinner_image.setVisibility(View.GONE);
+           locationSpinnerValue.setVisibility(View.VISIBLE);
+           locationSpinnerValue.setText(registration.getLocation());
+
+           locationSpinnerValue.setEnabled(false);
            if(registration.getGender().equalsIgnoreCase("M"))
            {
               // patientRegistration.setGender("Female");
@@ -205,6 +272,9 @@ public class General_Information extends Fragment {
         ((AppCompatActivity)getActivity()).setSupportActionBar(customertoolbar);
         setHasOptionsMenu(true);
         prefManager=new PrefManager(getActivity());
+        location_spinner_image=(ImageView)view.findViewById(R.id.location_spinner_image);
+        patientCategoryImageview=(ImageView)view.findViewById(R.id.patient_category_imageview);
+        locationSpinnerValue=(TextView)view.findViewById(R.id.location_spinner_value);
         edtFName = (TextInputEditText)view.findViewById(R.id.firstname);
         edtLName = (TextInputEditText)view.findViewById(R.id.lname);
         edtMobile =(TextInputEditText)view.findViewById(R.id.mobile);
@@ -233,6 +303,7 @@ public class General_Information extends Fragment {
         locationSpinner=(Spinner)view.findViewById(R.id.location_spinner);
         edtDob.setFocusable(false);
         edtRegistrationDate.setFocusable(false);
+        SpinnerValue=(TextView)view.findViewById(R.id.spinner_value);
     }
 
     private void DOBClickListener()
@@ -509,7 +580,7 @@ public class General_Information extends Fragment {
                     }
                 });
                 sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                sweetAlertDialog.setTitleText("Done !!");
+                sweetAlertDialog.setTitleText("Patient Registration Successful!!");
                 sweetAlertDialog.setConfirmText("Ok");
 
             }
@@ -766,6 +837,11 @@ public class General_Information extends Fragment {
                 break;
 
             case R.id.previous_record:
+                if(registration!=null) {
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    CheckPreviousRecordsFragment vitalInformation = CheckPreviousRecordsFragment.getInstance(registration.getfName()+" "+registration.getLname(),registration.getUnique_id());
+                    fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
+                }
 
 
                 break;

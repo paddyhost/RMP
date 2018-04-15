@@ -52,11 +52,17 @@ public class SubTestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
         else if(holder instanceof MyViewHolder)
         {
-            SubTest subTest = subTestList.get(position);
-            MyViewHolder myViewHolder = (MyViewHolder) holder;
-            myViewHolder.subtest_name.setText(subTest.getName());
-            myViewHolder.referenceValue.setText(subTest.getRefrance());
-            myViewHolder.readingValue.setText(subTest.getReding());
+            try {
+                SubTest subTest = subTestList.get(position-1);
+                MyViewHolder myViewHolder = (MyViewHolder) holder;
+                myViewHolder.subtest_name.setText(subTest.getName());
+                myViewHolder.referenceValue.setText(subTest.getRefrance());
+                myViewHolder.readingValue.setText(subTest.getReding());
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 
@@ -73,7 +79,7 @@ public class SubTestAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemCount() {
         //return subTestList.size() + 2;
-        return subTestList==null?0:subTestList.size();
+        return subTestList==null?1:subTestList.size()+1;
     }
 
     private class HeaderViewHolder extends RecyclerView.ViewHolder {

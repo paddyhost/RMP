@@ -19,5 +19,6 @@ public class WebServiceUrls
     public static final String addPatientVisit = HOST+ "api/v1_1/addPatientVisit";
     public static final String urlAddTestAttributeValues=HOST+ "api/v1_1/addTestAttributeValues";
     public static final String urlGetSinglePatientRecord=HOST+ "api/V1_1/getSinglePatientRecord";
+    public static final String urlGetVisitPatientRecord=HOST+ "api/V1_1/getVisitPatientRecord";
 
 }
