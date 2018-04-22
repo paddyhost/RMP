@@ -46,65 +46,59 @@ public class VaccinationPreviousRecordsFragment extends Fragment {
 
 
     private void setData() {
-        if (previousRecords.getDpt().equalsIgnoreCase("Y")) {
-            txtDpt.setText("Yes");
-        } else {
-            txtDpt.setText("No");
+
+
+        try {
+            if (previousRecords.getDpt().equalsIgnoreCase("Y")) {
+                txtDpt.setText("Yes");
+            } else {
+                txtDpt.setText("No");
+            }
+
+
+            if (previousRecords.getBcg().equalsIgnoreCase("Y")) {
+                txtBcg.setText("Yes");
+            } else {
+                txtBcg.setText("No");
+            }
+
+
+            if (previousRecords.getMeasles().equalsIgnoreCase("Y")) {
+                txtMeasles.setText("Yes");
+            } else {
+                txtMeasles.setText("No");
+            }
+
+
+            if (previousRecords.getOpv().equalsIgnoreCase("Y")) {
+                txtOpv.setText("Yes");
+            } else {
+                txtOpv.setText("No");
+            }
+
+
+            if (previousRecords.getHepatitis().equalsIgnoreCase("Y")) {
+                txtHepatitis.setText("Yes");
+            } else {
+                txtHepatitis.setText("No");
+            }
+
+
+            if (previousRecords.getTtt().equalsIgnoreCase("Y")) {
+                txtTt.setText("Yes");
+            } else {
+                txtTt.setText("No");
+            }
+
+
+            if (previousRecords.getOther().equalsIgnoreCase("") && txtOther.getText().toString().trim().length() <= 0) {
+                txtOther.setText("NA");
+            } else {
+                txtOther.setText(String.valueOf(previousRecords.getOther()));
+            }
+
         }
-
-
-        if (previousRecords.getBcg().equalsIgnoreCase("Y")) {
-            txtBcg.setText("Yes");
-        } else {
-            txtBcg.setText("No");
-        }
-
-
-        if (previousRecords.getMeasles().equalsIgnoreCase("Y")) {
-            txtMeasles.setText("Yes");
-        }
-        else {
-            txtMeasles.setText("No");
-        }
-
-
-        if (previousRecords.getOpv().equalsIgnoreCase("Y"))
-        {
-            txtOpv.setText("Yes");
-        }
-        else
-        {
-            txtOpv.setText("No");
-        }
-
-
-        if(previousRecords.getHepatitis().equalsIgnoreCase("Y")) {
-            txtHepatitis.setText("Yes");
-        }
-        else
-        {
-            txtHepatitis.setText("No");
-        }
-
-
-        if(previousRecords.getTtt().equalsIgnoreCase("Y")) {
-            txtTt.setText("Yes");
-        }
-        else
-        {
-            txtTt.setText("No");
-        }
-
-
-        if(previousRecords.getOther().equalsIgnoreCase("") && txtOther.getText().toString().trim().length()<=0)
-        {
-            txtOther.setText("NA");
-        }
-        else
-        {
-            txtOther.setText(String.valueOf(previousRecords.getOther()));
-        }
-
-
+        catch (Exception e)
+        {}
     }
 }

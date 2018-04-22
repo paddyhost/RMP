@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -33,7 +34,7 @@ public class CheckPreviousRecordsFragment extends Fragment {
     String[] listVisitid;
     //public PatientRegistration patientRegistration;
 
-String patientUniqueId,patientName;
+    String patientUniqueId,patientName;
     public static CheckPreviousRecordsFragment getInstance(String txtPatientName,String txtPatientUniqueId) {
         CheckPreviousRecordsFragment fragment = new CheckPreviousRecordsFragment();
         Bundle args = new Bundle();
@@ -80,7 +81,7 @@ String patientUniqueId,patientName;
             public void onSuccess(final String message) {
 
                 sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                sweetAlertDialog.setTitleText("Patient Previous Records\nHistory!!");
+                sweetAlertDialog.setTitleText(String.valueOf(getResources().getText(R.string.patient_history)));
                 sweetAlertDialog.setConfirmText("Ok");
                 sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
@@ -101,8 +102,6 @@ String patientUniqueId,patientName;
                             }
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),R.layout.spinner_list_row,R.id.txt_item_spinner,visitlist);
                             selectedVisitSpinner.setAdapter(adapter);
-
-
                         }
                         catch (Exception e)
                         {
@@ -165,27 +164,51 @@ String patientUniqueId,patientName;
     private void onClickListeners()
     {
 
+
         btnVerifyPatientHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                try
-                {
-                  int position=  selectedVisitSpinner.getSelectedItemPosition();
-                    String visitid= listVisitid[position-1];
-                    Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
-                    intent.putExtra("VISITID",visitid);
-                    startActivity(intent);
 
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();;
+                    try {
 
-                }
+                        int position = selectedVisitSpinner.getSelectedItemPosition();
+                        String visitid = listVisitid[position - 1];
+                        Intent intent = new Intent(getActivity(), PreviousRecordsActivity.class);
+                        intent.putExtra("VISITID", visitid);
+                        startActivity(intent);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        ;
+
+                    }
 
             }
         });
 
     }
+
+
+    private boolean checkValidation()
+    {
+        boolean response=true;
+
+        if (selectedVisitSpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select District")) {
+
+            View selectedView = selectedVisitSpinner.getSelectedView();
+            if (selectedView != null && selectedView instanceof TextView) {
+                TextView selectedTextView = (TextView) selectedView;
+                if (selectedVisitSpinner.getSelectedItemPosition() == 0) {
+                    String errorString = "Select Visit No";
+                    selectedTextView.setError(errorString);
+                } else {
+                    selectedTextView.setError(null);
+                }
+            }
+            response = false;
+        }
+        return response;
+    }
+
 }

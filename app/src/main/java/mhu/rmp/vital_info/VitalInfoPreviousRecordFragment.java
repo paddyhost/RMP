@@ -44,11 +44,15 @@ public class VitalInfoPreviousRecordFragment extends Fragment {
 
     private void setData()
     {
-        txtHeight.setText(String.valueOf(previousRecords.getHeight()));
-        txtWeight.setText(String.valueOf(previousRecords.getWeight()));
-        txtBp.setText(String.valueOf(previousRecords.getBloodpresure()));
-        txtTemperature.setText(String.valueOf(previousRecords.getTempreture()));
-        txtRespiration.setText(String.valueOf(previousRecords.getRespiration()));
+        try {
+            txtHeight.setText(String.valueOf(previousRecords.getHeight()));
+            txtWeight.setText(String.valueOf(previousRecords.getWeight()));
+            txtBp.setText(String.valueOf(previousRecords.getBloodpresure()));
+            txtTemperature.setText(String.valueOf(previousRecords.getTempreture()));
+            txtRespiration.setText(String.valueOf(previousRecords.getRespiration()));
+        }
+        catch (Exception e)
+        {}
     }
 
 }

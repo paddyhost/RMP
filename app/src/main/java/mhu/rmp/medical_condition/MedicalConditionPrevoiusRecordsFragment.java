@@ -64,151 +64,118 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
 
     private void setData()
     {
+        try {
 
-        if(previousRecords.getDrname1().equalsIgnoreCase("") && txtDoctorName1.getText().toString().trim().length()<=0)
-        {
-            txtDoctorName1.setText("NA");
+            if (previousRecords.getDrname1().equalsIgnoreCase("") && txtDoctorName1.getText().toString().trim().length() <= 0) {
+                txtDoctorName1.setText("NA");
+            } else {
+                txtDoctorName1.setText(String.valueOf(previousRecords.getDrname1()));
+            }
+
+            if (previousRecords.getDrname2().equalsIgnoreCase("") && txtDoctorName2.getText().toString().trim().length() <= 0) {
+                txtDoctorName2.setText("NA");
+            } else {
+                txtDoctorName2.setText(String.valueOf(previousRecords.getDrname2()));
+            }
+
+
+            if (previousRecords.getDrname3().equalsIgnoreCase("") && txtDoctorName3.getText().toString().trim().length() <= 0) {
+                txtDoctorName3.setText("NA");
+            } else {
+                txtDoctorName3.setText(String.valueOf(previousRecords.getDrname3()));
+            }
+
+
+            if (previousRecords.getHospitalname().equalsIgnoreCase("") && txtHosptialName.getText().toString().trim().length() <= 0) {
+                txtHosptialName.setText("NA");
+            } else {
+                txtHosptialName.setText(String.valueOf(previousRecords.getHospitalname()));
+            }
+
+            if (previousRecords.getChiefcomplaints1().equalsIgnoreCase("") && txtCheifComplaint1.getText().toString().trim().length() <= 0) {
+                txtCheifComplaint1.setText("NA");
+            } else {
+                txtCheifComplaint1.setText(String.valueOf(previousRecords.getChiefcomplaints1()));
+            }
+
+
+            if (previousRecords.getChiefcomplaints2().equalsIgnoreCase("") && txtCheifComplaint2.getText().toString().trim().length() <= 0) {
+                txtCheifComplaint2.setText("NA");
+            } else {
+                txtCheifComplaint2.setText(String.valueOf(previousRecords.getChiefcomplaints2()));
+            }
+
+
+            if (previousRecords.getChiefcomplaints3().equalsIgnoreCase("") && txtCheifComplaint3.getText().toString().trim().length() <= 0) {
+                txtCheifComplaint3.setText("NA");
+            } else {
+                txtCheifComplaint3.setText(String.valueOf(previousRecords.getChiefcomplaints3()));
+            }
+
+
+            if (previousRecords.getBriefHistory1().equalsIgnoreCase("") && txtBriefHistory1.getText().toString().trim().length() <= 0) {
+                txtBriefHistory1.setText("NA");
+            } else {
+                txtBriefHistory1.setText(String.valueOf(previousRecords.getBriefHistory1()));
+            }
+
+            if (previousRecords.getBriefHistory2().equalsIgnoreCase("") && txtBriefHistory2.getText().toString().trim().length() <= 0) {
+                txtBriefHistory2.setText("NA");
+            } else {
+                txtBriefHistory2.setText(String.valueOf(previousRecords.getBriefHistory2()));
+            }
+
+
+            if (previousRecords.getBriefHistory3().equalsIgnoreCase("") && txtBriefHistory3.getText().toString().trim().length() <= 0) {
+                txtBriefHistory3.setText("NA");
+            } else {
+                txtBriefHistory3.setText(String.valueOf(previousRecords.getBriefHistory3()));
+            }
+
+
+            if (previousRecords.getInvestigation().equalsIgnoreCase("Y")) {
+                txtPreviousInvestigation.setText("Yes");
+            } else if (previousRecords.getInvestigation().equalsIgnoreCase("N")) {
+                txtPreviousInvestigation.setText("No");
+            } else if (previousRecords.getInvestigation().equalsIgnoreCase("D")) {
+                txtPreviousInvestigation.setText("Don't Know");
+            } else {
+                txtPreviousInvestigation.setText("NA");
+            }
+
+
+            if (previousRecords.getTratementtaken().equalsIgnoreCase("Y")) {
+                txtTreatmentTaken.setText("Yes");
+            } else if (previousRecords.getTratementtaken().equalsIgnoreCase("N")) {
+                txtTreatmentTaken.setText("No");
+            } else if (previousRecords.getTratementtaken().equalsIgnoreCase("D")) {
+                txtTreatmentTaken.setText("Don't Know");
+            } else {
+                txtTreatmentTaken.setText("NA");
+            }
+
+
+            if (previousRecords.getDiagnosys().equalsIgnoreCase("") && txtDiagnosys.getText().toString().trim().length() <= 0) {
+                txtDiagnosys.setText("NA");
+            } else {
+                txtDiagnosys.setText(String.valueOf(previousRecords.getDiagnosys()));
+            }
+
         }
-        else
+        catch(Exception e)
         {
-            txtDoctorName1.setText(String.valueOf(previousRecords.getDrname1()));
+
         }
-
-        if(previousRecords.getDrname2().equalsIgnoreCase("") && txtDoctorName2.getText().toString().trim().length()<=0)
-        {
-            txtDoctorName2.setText("NA");
+        try {
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), OrientationHelper.VERTICAL, false);
+            dose_list.setLayoutManager(linearLayoutManager);
+            dose_list.setItemAnimator(new DefaultItemAnimator());
+            DoseList_Adapter doseAdapter = new DoseList_Adapter(previousRecords.getDoseArrayList(), getActivity().getApplicationContext());
+            dose_list.setAdapter(doseAdapter);
         }
+        catch (Exception e)
+        {}
 
-        else {
-            txtDoctorName2.setText(String.valueOf(previousRecords.getDrname2()));
-        }
-
-
-        if(previousRecords.getDrname3().equalsIgnoreCase("") && txtDoctorName3.getText().toString().trim().length()<=0)
-        {
-            txtDoctorName3.setText("NA");
-        }
-        else {
-            txtDoctorName3.setText(String.valueOf(previousRecords.getDrname3()));
-        }
-
-
-
-        if(previousRecords.getHospitalname().equalsIgnoreCase("") && txtHosptialName.getText().toString().trim().length()<=0)
-        {
-            txtHosptialName.setText("NA");
-        }
-        else
-        {
-            txtHosptialName.setText(String.valueOf(previousRecords.getHospitalname()));
-        }
-
-        if(previousRecords.getChiefcomplaints1().equalsIgnoreCase("") && txtCheifComplaint1.getText().toString().trim().length()<=0)
-        {
-            txtCheifComplaint1.setText("NA");
-        }
-        else
-        {
-            txtCheifComplaint1.setText(String.valueOf(previousRecords.getChiefcomplaints1()));
-        }
-
-
-        if(previousRecords.getChiefcomplaints2().equalsIgnoreCase("") && txtCheifComplaint2.getText().toString().trim().length()<=0)
-        {
-            txtCheifComplaint2.setText("NA");
-        }
-        else
-        {
-            txtCheifComplaint2.setText(String.valueOf(previousRecords.getChiefcomplaints2()));
-        }
-
-
-        if(previousRecords.getChiefcomplaints3().equalsIgnoreCase("") && txtCheifComplaint3.getText().toString().trim().length()<=0)
-        {
-            txtCheifComplaint3.setText("NA");
-        }
-        else
-        {
-            txtCheifComplaint3.setText(String.valueOf(previousRecords.getChiefcomplaints3()));
-        }
-
-
-
-        if(previousRecords.getBriefHistory1().equalsIgnoreCase("") && txtBriefHistory1.getText().toString().trim().length()<=0)
-        {
-            txtBriefHistory1.setText("NA");
-        }
-        else
-        {
-            txtBriefHistory1.setText(String.valueOf(previousRecords.getBriefHistory1()));
-        }
-
-        if(previousRecords.getBriefHistory2().equalsIgnoreCase("") && txtBriefHistory2.getText().toString().trim().length()<=0)
-        {
-            txtBriefHistory2.setText("NA");
-        }
-        else
-        {
-            txtBriefHistory2.setText(String.valueOf(previousRecords.getBriefHistory2()));
-        }
-
-
-        if(previousRecords.getBriefHistory3().equalsIgnoreCase("") && txtBriefHistory3.getText().toString().trim().length()<=0)
-        {
-            txtBriefHistory3.setText("NA");
-        }
-        else
-        {
-            txtBriefHistory3.setText(String.valueOf(previousRecords.getBriefHistory3()));
-        }
-
-
-        if(previousRecords.getInvestigation().equalsIgnoreCase("Y")) {
-            txtPreviousInvestigation.setText("Yes");
-        } else if(previousRecords.getInvestigation().equalsIgnoreCase("N"))
-        {
-            txtPreviousInvestigation.setText("No");
-        }else if(previousRecords.getInvestigation().equalsIgnoreCase("D"))
-        {
-            txtPreviousInvestigation.setText("Don't Know");
-        }else
-        {
-            txtPreviousInvestigation.setText("NA");
-        }
-
-
-        if(previousRecords.getTratementtaken().equalsIgnoreCase("Y")) {
-            txtTreatmentTaken.setText("Yes");
-        }
-        else if(previousRecords.getTratementtaken().equalsIgnoreCase("N"))
-        {
-            txtTreatmentTaken.setText("No");
-        }
-        else if(previousRecords.getTratementtaken().equalsIgnoreCase("D"))
-        {
-            txtTreatmentTaken.setText("Don't Know");
-        }else
-        {
-            txtTreatmentTaken.setText("NA");
-        }
-
-
-
-        if(previousRecords.getDiagnosys().equalsIgnoreCase("") && txtDiagnosys.getText().toString().trim().length()<=0)
-        {
-            txtDiagnosys.setText("NA");
-        }
-        else
-        {
-            txtDiagnosys.setText(String.valueOf(previousRecords.getDiagnosys()));
-        }
-
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), OrientationHelper.VERTICAL, false);
-        dose_list.setLayoutManager(linearLayoutManager);
-        dose_list.setItemAnimator(new DefaultItemAnimator());
-        DoseList_Adapter doseAdapter = new DoseList_Adapter(previousRecords.getDoseArrayList(), getActivity().getApplicationContext());
-        dose_list.setAdapter(doseAdapter);
     }
 
 }

@@ -19,23 +19,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import mhu.rmp.R;
-import mhu.rmp.Utility;
-import mhu.rmp.app.ApiResponseListener;
-import mhu.rmp.check_previous_records.CheckPreviousRecordsFragment;
-import mhu.rmp.patient_previous_history.model.PreviousRecords;
-import mhu.rmp.patient_registration.apihelper.Web_ApiHelper;
-import mhu.rmp.patient_registration.model.PatientRegistration;
-import mhu.rmp.pref_manager.PrefManager;
-import mhu.rmp.user_login.LoginActivity;
-import mhu.rmp.utils.validation.Validations;
-import mhu.rmp.vital_info.Vital_Information;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,9 +35,23 @@ import java.util.Iterator;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import mhu.rmp.R;
+import mhu.rmp.Utility;
+import mhu.rmp.app.ApiResponseListener;
+import mhu.rmp.check_previous_records.CheckPreviousRecordsFragment;
+import mhu.rmp.patient_registration.apihelper.Web_ApiHelper;
+import mhu.rmp.patient_registration.model.PatientRegistration;
+import mhu.rmp.pref_manager.PrefManager;
+import mhu.rmp.user_login.LoginActivity;
+import mhu.rmp.utils.validation.Validations;
+import mhu.rmp.vital_info.Vital_Information;
 
 import static mhu.rmp.constants.AppConstants.PATIENT_PREFIX;
 import static mhu.rmp.constants.AppConstants.REGISTRATION_PREFIX;
+
+/**
+ * Created by Nikam on 16/04/2018.
+ */
 
 public class General_Information extends Fragment {
     public static PatientRegistration registration;
@@ -72,6 +75,7 @@ public class General_Information extends Fragment {
     Map<String, String> category = new Hashtable<String, String>();
     TextView SpinnerValue,locationSpinnerValue;
     ImageView patientCategoryImageview,location_spinner_image;
+    LinearLayout patient_spinner_layout,patient_category_layout,location_spinner_layout,location_layout;
 
     public General_Information() {
         // Required empty public constructor
@@ -110,15 +114,15 @@ public class General_Information extends Fragment {
 
     private int getLocationIndex(String location)
     {
-      String[] loactionlist=  getResources().getStringArray(R.array.location_array);
-      for(int i=0;i<loactionlist.length;i++)
-      {
+        String[] loactionlist=  getResources().getStringArray(R.array.location_array);
+        for(int i=0;i<loactionlist.length;i++)
+        {
 
-          if(loactionlist[i].toString().trim().equalsIgnoreCase(location.trim()));
-          {
-              return i;
-          }
-      }
+            if(loactionlist[i].toString().trim().equalsIgnoreCase(location.trim()));
+            {
+                return i;
+            }
+        }
 
 
         /*String[] list = getResources().getStringArray(R.array.location_array);
@@ -132,7 +136,7 @@ public class General_Information extends Fragment {
             }
             i++;
         }*/
-      return 0;
+        return 0;
 
     }
 
@@ -169,97 +173,96 @@ public class General_Information extends Fragment {
         category.put("Other","O");
         initializations(rootview);
 
-       if(registration==null)
-       {
-           generateUniqueId();
-           generateRegistrationNumber();
-           DOBClickListener();
-           registrationClickListener();
-           genderClickListener();
-       }
-       else
-       {
-           txtPatientUniqueId.setText(registration.getUnique_id());
-           txtRegistrationNumber.setText(registration.getRegistrationNo());
-           edtRegistrationDate.setText(registration.getDateOfRegistration());
-           //patientCategorySpinner.
-           edtFName.setText(registration.getfName());
-           edtFName.setFocusable(false);
-           edtLName.setText(registration.getLname());
-           edtLName.setFocusable(false);
-           edtMobile.setText(registration.getMobileNo());
-           edtMobile.setFocusable(false);
-           edtDob.setText(registration.getDob());
-           edtDob.setFocusable(false);
+        if(registration==null)
+        {
+            generateUniqueId();
+            generateRegistrationNumber();
+            DOBClickListener();
+            registrationClickListener();
+            genderClickListener();
+        }
+        else
+        {
+            txtPatientUniqueId.setText(registration.getUnique_id());
+            txtRegistrationNumber.setText(registration.getRegistrationNo());
+            edtRegistrationDate.setText(registration.getDateOfRegistration());
+            //patientCategorySpinner.
+            edtFName.setText(registration.getfName());
+            edtFName.setFocusable(false);
+            edtLName.setText(registration.getLname());
+            edtLName.setFocusable(false);
+            edtMobile.setText(registration.getMobileNo());
+            edtMobile.setFocusable(false);
+            edtDob.setText(registration.getDob());
+            edtDob.setFocusable(false);
 
 
-           edtAge.setFocusable(false);
-           edtAddress.setText(registration.getAddress());
-           edtAddress.setFocusable(false);
-          // int i=getPatientCategoryIndex(registration.getPatient_category());
-           //patientCategorySpinner.setSelection(i);
-           patientCategorySpinner.setVisibility(View.GONE);
-           patientCategoryImageview.setVisibility(View.GONE);
-           SpinnerValue.setVisibility(View.VISIBLE);
+            edtAge.setFocusable(false);
+            edtAddress.setText(registration.getAddress());
+            edtAddress.setFocusable(false);
+            // int i=getPatientCategoryIndex(registration.getPatient_category());
+            //patientCategorySpinner.setSelection(i);
+            patient_spinner_layout.setVisibility(View.GONE);
+            patient_category_layout.setVisibility(View.VISIBLE);
+            SpinnerValue.setVisibility(View.VISIBLE);
 
 
-           if(registration.getPatient_category().equalsIgnoreCase("PW"))
-           {
-               SpinnerValue.setText("Pregnant Women");
-           }
+            if(registration.getPatient_category().equalsIgnoreCase("PW"))
+            {
+                SpinnerValue.setText("Pregnant Women");
+            }
 
-           else if(registration.getPatient_category().equalsIgnoreCase("LW"))
-           {
-               SpinnerValue.setText("Lactating Women");
-           }
+            else if(registration.getPatient_category().equalsIgnoreCase("LW"))
+            {
+                SpinnerValue.setText("Lactating Women");
+            }
 
-           else if(registration.getPatient_category().equalsIgnoreCase("C"))
-           {
-               SpinnerValue.setText("Child Under-5 Years of Age");
-           }
+            else if(registration.getPatient_category().equalsIgnoreCase("C"))
+            {
+                SpinnerValue.setText("Child Under-5 Years of Age");
+            }
 
-           else if(registration.getPatient_category().equalsIgnoreCase("S"))
-           {
-               SpinnerValue.setText("Senior Citizen-above 60 years of age");
-           }
+            else if(registration.getPatient_category().equalsIgnoreCase("S"))
+            {
+                SpinnerValue.setText("Senior Citizen-above 60 years of age");
+            }
 
-           else if(registration.getPatient_category().equalsIgnoreCase("O"))
-           {
-               SpinnerValue.setText("Other");
+            else if(registration.getPatient_category().equalsIgnoreCase("O"))
+            {
+                SpinnerValue.setText("Other");
 
-           }
-          // patientCategorySpinner.setSelection(1);
-           SpinnerValue.setEnabled(false);
+            }
+            // patientCategorySpinner.setSelection(1);
+            SpinnerValue.setEnabled(false);
 
-           stateSpinner.setSelection(1);
-           stateSpinner.setEnabled(false);
-           districtSpinner.setSelection(1);
-           districtSpinner.setEnabled(false);
-           citySpinner.setSelection(1);
-           citySpinner.setEnabled(false);
-           areaSpinner.setSelection(1);
-           areaSpinner.setEnabled(false);
-           //locationSpinner.setSelection(1);
-           //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
-           locationSpinner.setVisibility(View.GONE);
-           location_spinner_image.setVisibility(View.GONE);
-           locationSpinnerValue.setVisibility(View.VISIBLE);
-           locationSpinnerValue.setText(registration.getLocation());
+            stateSpinner.setSelection(1);
+            stateSpinner.setEnabled(false);
+            districtSpinner.setSelection(1);
+            districtSpinner.setEnabled(false);
+            citySpinner.setSelection(1);
+            citySpinner.setEnabled(false);
+            areaSpinner.setSelection(1);
+            areaSpinner.setEnabled(false);
+            //locationSpinner.setSelection(1);
+            //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
+            location_spinner_layout.setVisibility(View.GONE);
+            location_layout.setVisibility(View.VISIBLE);
+            locationSpinnerValue.setText(registration.getLocation());
 
-           locationSpinnerValue.setEnabled(false);
-           if(registration.getGender().equalsIgnoreCase("M"))
-           {
-              // patientRegistration.setGender("Female");
-               maleBtn.setChecked(true);
-               maleBtn.setClickable(false);
-           }
-           else
-           {
-               //patientRegistration.setGender("Male");
-              femaleBtn.setChecked(true);
-               maleBtn.setClickable(false);
-           }
-       }
+            locationSpinnerValue.setEnabled(false);
+            if(registration.getGender().equalsIgnoreCase("M"))
+            {
+                // patientRegistration.setGender("Female");
+                maleBtn.setChecked(true);
+                maleBtn.setClickable(false);
+            }
+            else
+            {
+                //patientRegistration.setGender("Male");
+                femaleBtn.setChecked(true);
+                maleBtn.setClickable(false);
+            }
+        }
         //calculateDOBFromAge(getActivity(),24,06,00);
         saveClickListener();
         return rootview;
@@ -303,7 +306,12 @@ public class General_Information extends Fragment {
         locationSpinner=(Spinner)view.findViewById(R.id.location_spinner);
         edtDob.setFocusable(false);
         edtRegistrationDate.setFocusable(false);
-        SpinnerValue=(TextView)view.findViewById(R.id.spinner_value);
+        SpinnerValue=(TextView)view.findViewById(R.id.SpinnerValue);
+        patient_spinner_layout=(LinearLayout)view.findViewById(R.id.patient_spinner_layout);
+        patient_category_layout=(LinearLayout)view.findViewById(R.id.patient_category_layout);
+        location_spinner_layout=(LinearLayout)view.findViewById(R.id.location_spinner_layout);
+        location_layout=(LinearLayout)view.findViewById(R.id.location_layout);
+
     }
 
     private void DOBClickListener()
@@ -489,20 +497,19 @@ public class General_Information extends Fragment {
     }
 
     private void saveClickListener()
-    {
+    {try {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                    if(checkValidation())
-                    {
+                if (checkValidation()) {
                     if (registration == null) {
                         setPatientData();
-                         final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
-                            sweetAlertDialog.show();
-                            Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
-                                @Override
-                                public void onSuccess(String message) {
+                        final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
+                        sweetAlertDialog.show();
+                        Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
+                            @Override
+                            public void onSuccess(String message) {
                             /*sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             sweetAlertDialog.setTitleText("Done !!");
                             sweetAlertDialog.setConfirmText("Ok");
@@ -513,7 +520,6 @@ public class General_Information extends Fragment {
                                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                                     Vital_Information vitalInformation = new Vital_Information();
                                     fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
-
                                     edtFName.setText("");
                                     edtLName.setText("");
                                     edtAddress.setText("");
@@ -523,34 +529,34 @@ public class General_Information extends Fragment {
                                     femaleBtn.setChecked(false);
                                 }
                             });*/
-                                    sweetAlertDialog.dismiss();
-                                    addVisit();
-                                }
+                                sweetAlertDialog.dismiss();
+                                addVisit();
+                            }
 
-                                @Override
-                                public void onError(String message) {
-                                    sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                    sweetAlertDialog.setTitleText(message);
-                                    sweetAlertDialog.setConfirmText("Ok");
-                                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                            sweetAlertDialog.dismissWithAnimation();
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                        else
-                            {
-                            addVisit();
-                            //"VISIT_GENERATED"
-                        }
+                            @Override
+                            public void onError(String message) {
+                                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                sweetAlertDialog.setTitleText(message);
+                                sweetAlertDialog.setConfirmText("Ok");
+                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        sweetAlertDialog.dismissWithAnimation();
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        addVisit();
+                        //"VISIT_GENERATED"
+                    }
                 }
             }
         });
 
-
+    }
+    catch (Exception e)
+    {}
     }
 
     private  void addVisit()
