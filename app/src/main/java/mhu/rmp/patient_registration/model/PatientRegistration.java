@@ -10,8 +10,26 @@ import mhu.rmp.check_previous_records.model.CheckPreviousRecordModel;
 
 public class PatientRegistration implements Parcelable
 {
-    private String id, registrationNo, fName,Lname,gender,dateOfRegistration,address,
-            mobileNo,dob,unique_id,patient_category,state,district,city,area,location,visit_id,visit_master_id,selectedVisitSpinner;
+    private String id;
+    private String registrationNo;
+    private String fName;
+    private String Lname;
+    private String gender;
+    private String dateOfRegistration;
+    private String address;
+    private String mobileNo;
+    private String dob;
+    private String age;
+    private String unique_id;
+    private String patient_category;
+    private String state;
+    private String district;
+    private String city;
+    private String area;
+    private String location;
+    private String visit_id;
+    private String visit_master_id;
+    private String selectedVisitSpinner;
 
 
     public PatientRegistration()
@@ -59,6 +77,7 @@ public class PatientRegistration implements Parcelable
         visit_id=in.readString();
         visit_master_id=in.readString();
         selectedVisitSpinner=in.readString();
+        age=in.readString();
     }
 
     @Override
@@ -82,6 +101,7 @@ public class PatientRegistration implements Parcelable
         dest.writeString(visit_id);
         dest.writeString(visit_master_id);
         dest.writeString(selectedVisitSpinner);
+        dest.writeString(age);
     }
 
     @Override
@@ -100,6 +120,17 @@ public class PatientRegistration implements Parcelable
             return new PatientRegistration[size];
         }
     };
+
+
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
 
     public String getId() {
         return id;

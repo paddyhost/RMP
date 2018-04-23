@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Mobile Health Unit</string>
     <string name="na">NA</string>
+    <string name="please_select_location">Please Select Location</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
@@ -25,7 +26,6 @@
         <item>Senior Citizen-above 60 years of age</item>
         <item>Other</item>
     </string-array>
-
 
     <string-array name="state_array">
         <item>Please Select State</item>
@@ -143,6 +143,7 @@
         <item>FOURDERM 5GM OINT</item>
         <item>ACIGENE TAB</item>
         <item>AUSTRO ANTACID ORANGE SYP</item>
+        <item>Other</item>
 
     </string-array>
 

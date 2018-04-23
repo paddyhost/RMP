@@ -470,11 +470,12 @@
                 android:id="@+id/location_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/location_array"
                 style="@android:style/Widget.Holo.Light.Spinner"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                android:entries="@array/location_array"/>
         </LinearLayout>
 
+        <!--android:entries="@array/location_array"-->
         <TextView
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -515,7 +516,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_save_general"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

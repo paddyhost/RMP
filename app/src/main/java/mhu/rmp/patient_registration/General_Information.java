@@ -1,8 +1,10 @@
 package mhu.rmp.patient_registration;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -16,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -39,10 +42,14 @@ import mhu.rmp.vital_info.Vital_Information;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -72,6 +79,8 @@ public class General_Information extends Fragment {
     Map<String, String> category = new Hashtable<String, String>();
     TextView SpinnerValue,locationSpinnerValue;
     ImageView patientCategoryImageview,location_spinner_image;
+
+
 
     public General_Information() {
         // Required empty public constructor
@@ -191,8 +200,7 @@ public class General_Information extends Fragment {
            edtMobile.setFocusable(false);
            edtDob.setText(registration.getDob());
            edtDob.setFocusable(false);
-
-
+           edtAge.setText(String.valueOf(ageYear));
            edtAge.setFocusable(false);
            edtAddress.setText(registration.getAddress());
            edtAddress.setFocusable(false);
@@ -260,8 +268,32 @@ public class General_Information extends Fragment {
                maleBtn.setClickable(false);
            }
        }
+
+
+       /* patient_category*/
+        String[] patientCategoryArray = getResources().getStringArray(R.array.patient_category);
+        List<String> patientCategoryArrayList = Arrays.asList(patientCategoryArray);
+        Collections.sort(patientCategoryArrayList);
+
+        ArrayAdapter patientCategoryArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, patientCategoryArrayList);
+        patientCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        patientCategorySpinner.setPrompt("Please Select Patient Category");
+        patientCategorySpinner.setAdapter(patientCategoryArrayAdapter);
+
+        /*Loaction*/
+        String[] locationArray = getResources().getStringArray(R.array.location_array);
+        List<String> locationArrayList = Arrays.asList(locationArray);
+        Collections.sort(locationArrayList);
+
+        ArrayAdapter locationArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, locationArrayList);
+        locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSpinner.setPrompt(getResources().getString(R.string.please_select_location));
+        locationSpinner.setAdapter(locationArrayAdapter);
+
         //calculateDOBFromAge(getActivity(),24,06,00);
+
         saveClickListener();
+
         return rootview;
     }
 
@@ -288,7 +320,7 @@ public class General_Information extends Fragment {
         genderGrp = (RadioGroup)view.findViewById(R.id.gender);
         maleBtn = (RadioButton)view.findViewById(R.id.male);
         femaleBtn = (RadioButton)view.findViewById(R.id.female);
-        btnSave = (Button)view.findViewById(R.id.btn_save);
+        btnSave = (Button)view.findViewById(R.id.btn_save_general);
         firstname_TextLayout=(TextInputLayout)view.findViewById(R.id.firstname_textLayout);
         lname_TextLayout=(TextInputLayout)view.findViewById(R.id.lname_textLayout);
         mobile_TextLayout=(TextInputLayout)view.findViewById(R.id.mobile_textLayout);
@@ -429,6 +461,8 @@ public class General_Information extends Fragment {
                 ageYear=tYear-year;
 
                 edtAge.setText(String.valueOf(ageYear+"yrs"));
+
+
                 edtAge.setError(null);
                 edtAge.setFocusable(false);
 
@@ -488,70 +522,77 @@ public class General_Information extends Fragment {
         });
     }
 
+
     private void saveClickListener()
     {
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        try {
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (checkValidation()) {
 
-                    if(checkValidation())
-                    {
-                    if (registration == null) {
-                        setPatientData();
-                         final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
-                            sweetAlertDialog.show();
-                            Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
-                                @Override
-                                public void onSuccess(String message) {
-                            /*sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText("Done !!");
-                            sweetAlertDialog.setConfirmText("Ok");
-                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    sweetAlertDialog.dismissWithAnimation();
-                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    Vital_Information vitalInformation = new Vital_Information();
-                                    fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
+                        try {
+                            if (registration == null) {
+                                setPatientData();
+                                final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
+                                sweetAlertDialog.show();
+                                Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
+                                    @Override
+                                    public void onSuccess(String message) {
+                        /*sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("Done !!");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                Vital_Information vitalInformation = new Vital_Information();
+                                fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
 
-                                    edtFName.setText("");
-                                    edtLName.setText("");
-                                    edtAddress.setText("");
-                                    edtMobile.setText("");
-                                    edtDob.setText("");
-                                    maleBtn.setChecked(false);
-                                    femaleBtn.setChecked(false);
-                                }
-                            });*/
-                                    sweetAlertDialog.dismiss();
-                                    addVisit();
-                                }
+                                edtFName.setText("");
+                                edtLName.setText("");
+                                edtAddress.setText("");
+                                edtMobile.setText("");
+                                edtDob.setText("");
+                                maleBtn.setChecked(false);
+                                femaleBtn.setChecked(false);
+                            }
+                        });*/
+                                        sweetAlertDialog.dismiss();
+                                        addVisit();
+                                    }
 
-                                @Override
-                                public void onError(String message) {
-                                    sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                    sweetAlertDialog.setTitleText(message);
-                                    sweetAlertDialog.setConfirmText("Ok");
-                                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                            sweetAlertDialog.dismissWithAnimation();
-                                        }
-                                    });
-                                }
-                            });
+                                    @Override
+                                    public void onError(String message) {
+                                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                        sweetAlertDialog.setTitleText(message);
+                                        sweetAlertDialog.setConfirmText("Ok");
+                                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                sweetAlertDialog.dismissWithAnimation();
+                                            }
+                                        });
+                                    }
+                                });
+                            } else {
+                                addVisit();
+                                //"VISIT_GENERATED"
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        else
-                            {
-                            addVisit();
-                            //"VISIT_GENERATED"
-                        }
+                    }
                 }
-            }
-        });
-
-
+            });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
+
 
     private  void addVisit()
     {
@@ -609,11 +650,7 @@ public class General_Information extends Fragment {
         patientRegistration.setRegistrationNo(txtRegistrationNumber.getText().toString());
         patientRegistration.setDateOfRegistration(edtRegistrationDate.getText().toString());
         patientRegistration.setPatient_category(patientCategorySpinner.getSelectedItem().toString());
-
         patientRegistration.setPatient_category(category.get(patientCategorySpinner.getSelectedItem().toString()));
-
-
-
         patientRegistration.setfName(edtFName.getText().toString());
         patientRegistration.setLname(edtLName.getText().toString());
         patientRegistration.setMobileNo(edtMobile.getText().toString());
@@ -624,7 +661,6 @@ public class General_Information extends Fragment {
         patientRegistration.setCity(citySpinner.getSelectedItem().toString());
         patientRegistration.setArea(areaSpinner.getSelectedItem().toString());
         patientRegistration.setLocation(locationSpinner.getSelectedItem().toString());
-
         patientRegistration.setGender(selected_gender);
 
     }
@@ -654,7 +690,7 @@ public class General_Information extends Fragment {
             edtFName.setError(null);
         }
 
-        if (edtLName.getText().toString().trim().length() == 0)
+       /* if (edtLName.getText().toString().trim().length() == 0)
         {
             //lname_TextLayout.setErrorEnabled(true);
             //lname_TextLayout.setErrorTextAppearance(R.style.error);
@@ -678,7 +714,7 @@ public class General_Information extends Fragment {
             edtMobile.setError(null);
         }
 
-
+*/
 
         if (edtAddress.getText().toString().trim().length() == 0)
         {
@@ -691,7 +727,7 @@ public class General_Information extends Fragment {
             edtAddress.setError(null);
         }
 
-        if (edtDob.getText().toString().trim().length() == 0)
+      /*  if (edtDob.getText().toString().trim().length() == 0)
         {
             //dob_TextLayout.setErrorEnabled(true);
             //dob_TextLayout.setErrorTextAppearance(R.style.error);
@@ -700,7 +736,7 @@ public class General_Information extends Fragment {
         } else {
             //dob_TextLayout.setErrorEnabled(false);
             edtDob.setError(null);
-        }
+        }*/
 
       /*  if (edtAge.getText().toString().trim().length() == 0)
         {

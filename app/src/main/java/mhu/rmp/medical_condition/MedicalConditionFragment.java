@@ -19,7 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -39,6 +41,9 @@ import mhu.rmp.medical_condition.model.Dose;
 import mhu.rmp.pref_manager.PrefManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.medical_condition.apihelper.Web_Medical_ApiHelper;
@@ -54,6 +59,8 @@ import mhu.rmp.vaccination_record.VaccinationRecord;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+
+
 public class MedicalConditionFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     Toolbar medical_toolbar;
@@ -61,7 +68,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
             etBreifHistory1, etBreifHistory2, etBreifHistory3,etPrevsHosptl,edtDiagnosys;
     private TextInputLayout etComplaint1TextInputLayout, etComplaint2TextInputLayout,
             etComplaint3TextInputLayout, etBreifHistory1TextInputLayout,
-            etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout;
+            etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout,medicineNameTextInputLayout;
 
     private RadioGroup investigationGroup, treatmentGroup, improvementGroup;
     private RadioButton BtnInvestigationYes, BtnInvestigationNo, BtnInvestigationDontKnow,
@@ -92,11 +99,12 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
     private TextInputEditText etPreviousHsopital, etDoctorName1, etDoctorName2, etDoctorName3,etDiagnosis;
     private PatientHistory patientHistory;
     private ApiResponseListener apiResponseListener;
-    private LinearLayout addPrescriptionLayout;
+    private LinearLayout addPrescriptionLayout,medicineNameSpinnerLayout;
     private DoseList_Adapter doseAdapter;
     private RecyclerView doseList;
     private LinearLayoutManager mLayoutManager;
     private Spinner medicinNameSpinner;
+    private ImageView medicine_imageView;
 
      SweetAlertDialog sweetAlertDialog;
 
@@ -194,6 +202,11 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         etDoctorName3 = (TextInputEditText)view.findViewById(R.id.drname3);
         //btnMedicinName=(Button)view.findViewById(R.id.btn_medicin_name);
 
+        medicineNameTextInputLayout=(TextInputLayout)view.findViewById(R.id.medicine_name_textInputLayout);
+        medicineNameSpinnerLayout=(LinearLayout)view.findViewById(R.id.medicineNameSpinner_layout);
+        medicine_imageView=(ImageView)view.findViewById(R.id.medicine_imageView);
+
+
 
         doseArrayList = new ArrayList<Dose>();
         doseAdapter = new DoseList_Adapter(doseArrayList, getActivity().getApplicationContext());
@@ -264,8 +277,8 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         });
 
     }
-private void functioncall()
-{
+
+    private void functioncall() {
     Web_PatientHistory_Helper.webAddPatienHistory(getActivity(), patientHistory, new ApiResponseListener() {
         @Override
         public void onSuccess(String message) {
@@ -309,6 +322,7 @@ private void functioncall()
     });
 
 }
+
     private void DiagnosysClickListener(final LayoutInflater inflater) {
         diagnosys.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -317,8 +331,6 @@ private void functioncall()
             }
         });
     }
-
-
 
     private void setMedicalInfo() {
 
@@ -355,6 +367,63 @@ private void functioncall()
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
                 medicinNameSpinner=(Spinner)alertLayout.findViewById(R.id.medicin_name_spinner);
+
+                String[] medicineNameArray = getResources().getStringArray(R.array.medicine_name_array);
+                List<String> medicineNameArrayList = Arrays.asList(medicineNameArray);
+                Collections.sort(medicineNameArrayList);
+
+                ArrayAdapter medicineNameArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, medicineNameArrayList);
+                medicineNameArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+               try {
+                   medicinNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                       @Override
+                       public void onItemSelected(AdapterView<?> parent, View view,
+                                                  int position, long id) {
+
+                           try {
+
+                               //String item = "nothing";
+                               // On selecting a spinner item
+                               if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("Other")) {
+                                   //item = parent.getItemAtPosition(position).toString();
+
+                                   //medicinNameSpinner.setVisibility(View.GONE);
+                                   medicineNameSpinnerLayout.setVisibility(View.GONE);
+                                   medicineNameTextInputLayout.setVisibility(View.VISIBLE);
+                               } else {
+                                   //do other things
+                                   //medicinNameSpinner.setVisibility(View.VISIBLE);
+                                   medicineNameSpinnerLayout.setVisibility(View.VISIBLE);
+                                   medicineNameTextInputLayout.setVisibility(View.GONE);
+                               }
+                           }
+                           catch(Exception e)
+                           {
+                               e.printStackTrace();
+                           }
+                           // showing a toast on selecting an item
+                           //Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG).show();
+                       }
+
+                       @Override
+                       public void onNothingSelected(AdapterView<?> arg0) {
+                           // TODO Auto-generated method stub
+
+                       }
+
+                   });
+
+               }
+               catch (Exception e)
+               {
+                   e.printStackTrace();
+               }
+                medicinNameSpinner.setPrompt("Please Select Medicine Name");
+                medicinNameSpinner.setAdapter(medicineNameArrayAdapter);
+
+
                 final TextInputEditText doseName = (TextInputEditText) alertLayout.findViewById(R.id.et_prescription_dose);
                 final TextInputEditText doseFrequency = (TextInputEditText) alertLayout.findViewById(R.id.et_frequency);
                 final TextInputEditText days = (TextInputEditText) alertLayout.findViewById(R.id.et_days);
@@ -666,7 +735,6 @@ private void functioncall()
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
     }
 
     @Override
