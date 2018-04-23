@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Mobile Health Unit</string>
     <string name="na">NA</string>
-    <string name="patient_history">Patient Previous History</string>
+    <string name="please_select_location">Please Select Location</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
@@ -20,14 +20,12 @@
 
     <string-array name="patient_category">
         <item>Select Patient Category</item>
-        <item>Child Under-5 Years of Age</item>
-        <item>Lactating Women</item>
-        <item>Other</item>
         <item>Pregnant Women</item>
+        <item>Lactating Women</item>
+        <item>Child Under-5 Years of Age</item>
         <item>Senior Citizen-above 60 years of age</item>
-
+        <item>Other</item>
     </string-array>
-
 
     <string-array name="state_array">
         <item>Please Select State</item>
@@ -53,16 +51,14 @@
         <item>Please Select Location</item>
         <item>Ambedkar Part, Indira Vihar</item>
         <item>Durga Mandir, Bharat Nagar</item>
-        <item>Extension Chowk, Sangam Park, Rajeev Nagar</item>
-        <item>Indraprashtha Vidyalaya, Prem Vihar</item>
-        <item>Near Kajal Printers, Vandana Vihar</item>
-        <item>Near Nagar Palika office</item>
-        <item>Near Shriram Builders, Azad Nagar</item>
-        <item>Shiv Park, Jardawala Road, Lord Shiva Public School</item>
-        <item>S S International School, Neelam Vihar</item>
         <item>Valmiki Mandir, Adarsh Nagar</item>
-
-
+        <item>Shiv Park, Jardawala Road, Lord Shiva Public School</item>
+        <item>Near Nagar Palika office</item>
+        <item>Indraprashtha Vidyalaya, Prem Vihar</item>
+        <item>Near Shriram Builders, Azad Nagar</item>
+        <item>S S International School, Neelam Vihar</item>
+        <item>Near Kajal Printers, Vandana Vihar</item>
+        <item>Extension Chowk, Sangam Park, Rajeev Nagar</item>
     </string-array>
 
     <string-array name="medicine_name_array">
@@ -147,6 +143,7 @@
         <item>FOURDERM 5GM OINT</item>
         <item>ACIGENE TAB</item>
         <item>AUSTRO ANTACID ORANGE SYP</item>
+        <item>Other</item>
 
     </string-array>
 

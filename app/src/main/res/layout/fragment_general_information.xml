@@ -166,7 +166,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/patient_spinner_layout"
+            android:id="@+id/patient_calender_layout"
             android:weightSum="2">
 
             <ImageView
@@ -189,35 +189,22 @@
 
         </LinearLayout>
 
-        <LinearLayout
+
+
+        <TextView
+            android:id="@+id/spinner_value"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="16dp"
+            android:layout_gravity="center"
             android:visibility="gone"
-            android:layout_marginTop="12dp"
+            android:padding="5dp"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/patient_category_layout"
-            android:weightSum="2">
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"/>
 
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="0dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_person_outline_black_24dp"/>
-
-
-            <TextView
-                android:layout_marginLeft="12dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingLeft="2dp"
-                android:paddingBottom="5dp"
-                android:textSize="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/SpinnerValue"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_marginTop="15dp"
@@ -465,8 +452,10 @@
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
+
+
+
         <LinearLayout
-            android:id="@+id/location_spinner_layout"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -481,40 +470,25 @@
                 android:id="@+id/location_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/location_array"
                 style="@android:style/Widget.Holo.Light.Spinner"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                android:entries="@array/location_array"/>
         </LinearLayout>
 
-        <LinearLayout
+        <!--android:entries="@array/location_array"-->
+        <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textSize="16dp"
+            android:layout_gravity="center"
             android:visibility="gone"
-            android:layout_marginTop="12dp"
+            android:padding="5dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/village"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/location_layout"
-            android:weightSum="2">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="0dp"
-                android:layout_gravity="center|start"
-                android:src="@drawable/village"/>
-
-
-            <TextView
-                android:paddingLeft="2dp"
-                android:layout_marginLeft="15dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/location_spinner_value"/>
-
-        </LinearLayout>
+            android:id="@+id/location_spinner_value"/>
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -542,7 +516,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_save_general"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

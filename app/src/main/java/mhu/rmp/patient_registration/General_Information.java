@@ -1,8 +1,10 @@
 package mhu.rmp.patient_registration;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -16,29 +18,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import mhu.rmp.R;
 import mhu.rmp.Utility;
 import mhu.rmp.app.ApiResponseListener;
 import mhu.rmp.check_previous_records.CheckPreviousRecordsFragment;
+import mhu.rmp.patient_previous_history.model.PreviousRecords;
 import mhu.rmp.patient_registration.apihelper.Web_ApiHelper;
 import mhu.rmp.patient_registration.model.PatientRegistration;
 import mhu.rmp.pref_manager.PrefManager;
@@ -46,12 +40,22 @@ import mhu.rmp.user_login.LoginActivity;
 import mhu.rmp.utils.validation.Validations;
 import mhu.rmp.vital_info.Vital_Information;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static mhu.rmp.constants.AppConstants.PATIENT_PREFIX;
 import static mhu.rmp.constants.AppConstants.REGISTRATION_PREFIX;
-
-/**
- * Created by Nikam on 16/04/2018.
- */
 
 public class General_Information extends Fragment {
     public static PatientRegistration registration;
@@ -75,7 +79,8 @@ public class General_Information extends Fragment {
     Map<String, String> category = new Hashtable<String, String>();
     TextView SpinnerValue,locationSpinnerValue;
     ImageView patientCategoryImageview,location_spinner_image;
-    LinearLayout patient_spinner_layout,patient_category_layout,location_spinner_layout,location_layout;
+
+
 
     public General_Information() {
         // Required empty public constructor
@@ -114,15 +119,15 @@ public class General_Information extends Fragment {
 
     private int getLocationIndex(String location)
     {
-        String[] loactionlist=  getResources().getStringArray(R.array.location_array);
-        for(int i=0;i<loactionlist.length;i++)
-        {
+      String[] loactionlist=  getResources().getStringArray(R.array.location_array);
+      for(int i=0;i<loactionlist.length;i++)
+      {
 
-            if(loactionlist[i].toString().trim().equalsIgnoreCase(location.trim()));
-            {
-                return i;
-            }
-        }
+          if(loactionlist[i].toString().trim().equalsIgnoreCase(location.trim()));
+          {
+              return i;
+          }
+      }
 
 
         /*String[] list = getResources().getStringArray(R.array.location_array);
@@ -136,7 +141,7 @@ public class General_Information extends Fragment {
             }
             i++;
         }*/
-        return 0;
+      return 0;
 
     }
 
@@ -173,98 +178,122 @@ public class General_Information extends Fragment {
         category.put("Other","O");
         initializations(rootview);
 
-        if(registration==null)
-        {
-            generateUniqueId();
-            generateRegistrationNumber();
-            DOBClickListener();
-            registrationClickListener();
-            genderClickListener();
-        }
-        else
-        {
-            txtPatientUniqueId.setText(registration.getUnique_id());
-            txtRegistrationNumber.setText(registration.getRegistrationNo());
-            edtRegistrationDate.setText(registration.getDateOfRegistration());
-            //patientCategorySpinner.
-            edtFName.setText(registration.getfName());
-            edtFName.setFocusable(false);
-            edtLName.setText(registration.getLname());
-            edtLName.setFocusable(false);
-            edtMobile.setText(registration.getMobileNo());
-            edtMobile.setFocusable(false);
-            edtDob.setText(registration.getDob());
-            edtDob.setFocusable(false);
+       if(registration==null)
+       {
+           generateUniqueId();
+           generateRegistrationNumber();
+           DOBClickListener();
+           registrationClickListener();
+           genderClickListener();
+       }
+       else
+       {
+           txtPatientUniqueId.setText(registration.getUnique_id());
+           txtRegistrationNumber.setText(registration.getRegistrationNo());
+           edtRegistrationDate.setText(registration.getDateOfRegistration());
+           //patientCategorySpinner.
+           edtFName.setText(registration.getfName());
+           edtFName.setFocusable(false);
+           edtLName.setText(registration.getLname());
+           edtLName.setFocusable(false);
+           edtMobile.setText(registration.getMobileNo());
+           edtMobile.setFocusable(false);
+           edtDob.setText(registration.getDob());
+           edtDob.setFocusable(false);
+           edtAge.setText(String.valueOf(ageYear));
+           edtAge.setFocusable(false);
+           edtAddress.setText(registration.getAddress());
+           edtAddress.setFocusable(false);
+          // int i=getPatientCategoryIndex(registration.getPatient_category());
+           //patientCategorySpinner.setSelection(i);
+           patientCategorySpinner.setVisibility(View.GONE);
+           patientCategoryImageview.setVisibility(View.GONE);
+           SpinnerValue.setVisibility(View.VISIBLE);
 
 
-            edtAge.setFocusable(false);
-            edtAddress.setText(registration.getAddress());
-            edtAddress.setFocusable(false);
-            // int i=getPatientCategoryIndex(registration.getPatient_category());
-            //patientCategorySpinner.setSelection(i);
-            patient_spinner_layout.setVisibility(View.GONE);
-            patient_category_layout.setVisibility(View.VISIBLE);
-            SpinnerValue.setVisibility(View.VISIBLE);
+           if(registration.getPatient_category().equalsIgnoreCase("PW"))
+           {
+               SpinnerValue.setText("Pregnant Women");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("LW"))
+           {
+               SpinnerValue.setText("Lactating Women");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("C"))
+           {
+               SpinnerValue.setText("Child Under-5 Years of Age");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("S"))
+           {
+               SpinnerValue.setText("Senior Citizen-above 60 years of age");
+           }
+
+           else if(registration.getPatient_category().equalsIgnoreCase("O"))
+           {
+               SpinnerValue.setText("Other");
+
+           }
+          // patientCategorySpinner.setSelection(1);
+           SpinnerValue.setEnabled(false);
+
+           stateSpinner.setSelection(1);
+           stateSpinner.setEnabled(false);
+           districtSpinner.setSelection(1);
+           districtSpinner.setEnabled(false);
+           citySpinner.setSelection(1);
+           citySpinner.setEnabled(false);
+           areaSpinner.setSelection(1);
+           areaSpinner.setEnabled(false);
+           //locationSpinner.setSelection(1);
+           //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
+           locationSpinner.setVisibility(View.GONE);
+           location_spinner_image.setVisibility(View.GONE);
+           locationSpinnerValue.setVisibility(View.VISIBLE);
+           locationSpinnerValue.setText(registration.getLocation());
+
+           locationSpinnerValue.setEnabled(false);
+           if(registration.getGender().equalsIgnoreCase("M"))
+           {
+              // patientRegistration.setGender("Female");
+               maleBtn.setChecked(true);
+               maleBtn.setClickable(false);
+           }
+           else
+           {
+               //patientRegistration.setGender("Male");
+              femaleBtn.setChecked(true);
+               maleBtn.setClickable(false);
+           }
+       }
 
 
-            if(registration.getPatient_category().equalsIgnoreCase("PW"))
-            {
-                SpinnerValue.setText("Pregnant Women");
-            }
+       /* patient_category*/
+        String[] patientCategoryArray = getResources().getStringArray(R.array.patient_category);
+        List<String> patientCategoryArrayList = Arrays.asList(patientCategoryArray);
+        Collections.sort(patientCategoryArrayList);
 
-            else if(registration.getPatient_category().equalsIgnoreCase("LW"))
-            {
-                SpinnerValue.setText("Lactating Women");
-            }
+        ArrayAdapter patientCategoryArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, patientCategoryArrayList);
+        patientCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        patientCategorySpinner.setPrompt("Please Select Patient Category");
+        patientCategorySpinner.setAdapter(patientCategoryArrayAdapter);
 
-            else if(registration.getPatient_category().equalsIgnoreCase("C"))
-            {
-                SpinnerValue.setText("Child Under-5 Years of Age");
-            }
+        /*Loaction*/
+        String[] locationArray = getResources().getStringArray(R.array.location_array);
+        List<String> locationArrayList = Arrays.asList(locationArray);
+        Collections.sort(locationArrayList);
 
-            else if(registration.getPatient_category().equalsIgnoreCase("S"))
-            {
-                SpinnerValue.setText("Senior Citizen-above 60 years of age");
-            }
+        ArrayAdapter locationArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, locationArrayList);
+        locationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        locationSpinner.setPrompt(getResources().getString(R.string.please_select_location));
+        locationSpinner.setAdapter(locationArrayAdapter);
 
-            else if(registration.getPatient_category().equalsIgnoreCase("O"))
-            {
-                SpinnerValue.setText("Other");
-
-            }
-            // patientCategorySpinner.setSelection(1);
-            SpinnerValue.setEnabled(false);
-
-            stateSpinner.setSelection(1);
-            stateSpinner.setEnabled(false);
-            districtSpinner.setSelection(1);
-            districtSpinner.setEnabled(false);
-            citySpinner.setSelection(1);
-            citySpinner.setEnabled(false);
-            areaSpinner.setSelection(1);
-            areaSpinner.setEnabled(false);
-            //locationSpinner.setSelection(1);
-            //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
-            location_spinner_layout.setVisibility(View.GONE);
-            location_layout.setVisibility(View.VISIBLE);
-            locationSpinnerValue.setText(registration.getLocation());
-
-            locationSpinnerValue.setEnabled(false);
-            if(registration.getGender().equalsIgnoreCase("M"))
-            {
-                // patientRegistration.setGender("Female");
-                maleBtn.setChecked(true);
-                maleBtn.setClickable(false);
-            }
-            else
-            {
-                //patientRegistration.setGender("Male");
-                femaleBtn.setChecked(true);
-                maleBtn.setClickable(false);
-            }
-        }
         //calculateDOBFromAge(getActivity(),24,06,00);
+
         saveClickListener();
+
         return rootview;
     }
 
@@ -291,7 +320,7 @@ public class General_Information extends Fragment {
         genderGrp = (RadioGroup)view.findViewById(R.id.gender);
         maleBtn = (RadioButton)view.findViewById(R.id.male);
         femaleBtn = (RadioButton)view.findViewById(R.id.female);
-        btnSave = (Button)view.findViewById(R.id.btn_save);
+        btnSave = (Button)view.findViewById(R.id.btn_save_general);
         firstname_TextLayout=(TextInputLayout)view.findViewById(R.id.firstname_textLayout);
         lname_TextLayout=(TextInputLayout)view.findViewById(R.id.lname_textLayout);
         mobile_TextLayout=(TextInputLayout)view.findViewById(R.id.mobile_textLayout);
@@ -306,12 +335,7 @@ public class General_Information extends Fragment {
         locationSpinner=(Spinner)view.findViewById(R.id.location_spinner);
         edtDob.setFocusable(false);
         edtRegistrationDate.setFocusable(false);
-        SpinnerValue=(TextView)view.findViewById(R.id.SpinnerValue);
-        patient_spinner_layout=(LinearLayout)view.findViewById(R.id.patient_spinner_layout);
-        patient_category_layout=(LinearLayout)view.findViewById(R.id.patient_category_layout);
-        location_spinner_layout=(LinearLayout)view.findViewById(R.id.location_spinner_layout);
-        location_layout=(LinearLayout)view.findViewById(R.id.location_layout);
-
+        SpinnerValue=(TextView)view.findViewById(R.id.spinner_value);
     }
 
     private void DOBClickListener()
@@ -437,6 +461,8 @@ public class General_Information extends Fragment {
                 ageYear=tYear-year;
 
                 edtAge.setText(String.valueOf(ageYear+"yrs"));
+
+
                 edtAge.setError(null);
                 edtAge.setFocusable(false);
 
@@ -496,68 +522,77 @@ public class General_Information extends Fragment {
         });
     }
 
+
     private void saveClickListener()
-    {try {
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    {
+        try {
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (checkValidation()) {
 
-                if (checkValidation()) {
-                    if (registration == null) {
-                        setPatientData();
-                        final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
-                        sweetAlertDialog.show();
-                        Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
-                            @Override
-                            public void onSuccess(String message) {
-                            /*sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                            sweetAlertDialog.setTitleText("Done !!");
-                            sweetAlertDialog.setConfirmText("Ok");
-                            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    sweetAlertDialog.dismissWithAnimation();
-                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                    Vital_Information vitalInformation = new Vital_Information();
-                                    fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
-                                    edtFName.setText("");
-                                    edtLName.setText("");
-                                    edtAddress.setText("");
-                                    edtMobile.setText("");
-                                    edtDob.setText("");
-                                    maleBtn.setChecked(false);
-                                    femaleBtn.setChecked(false);
-                                }
-                            });*/
-                                sweetAlertDialog.dismiss();
-                                addVisit();
-                            }
-
-                            @Override
-                            public void onError(String message) {
-                                sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
-                                sweetAlertDialog.setTitleText(message);
-                                sweetAlertDialog.setConfirmText("Ok");
-                                sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        try {
+                            if (registration == null) {
+                                setPatientData();
+                                final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE).setTitleText("Please wait");
+                                sweetAlertDialog.show();
+                                Web_ApiHelper.webPatientRegistration(getActivity(), patientRegistration, new ApiResponseListener() {
                                     @Override
-                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                        sweetAlertDialog.dismissWithAnimation();
+                                    public void onSuccess(String message) {
+                        /*sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        sweetAlertDialog.setTitleText("Done !!");
+                        sweetAlertDialog.setConfirmText("Ok");
+                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                sweetAlertDialog.dismissWithAnimation();
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                Vital_Information vitalInformation = new Vital_Information();
+                                fragmentTransaction.replace(R.id.framelayout, vitalInformation).addToBackStack(null).commit();
+
+                                edtFName.setText("");
+                                edtLName.setText("");
+                                edtAddress.setText("");
+                                edtMobile.setText("");
+                                edtDob.setText("");
+                                maleBtn.setChecked(false);
+                                femaleBtn.setChecked(false);
+                            }
+                        });*/
+                                        sweetAlertDialog.dismiss();
+                                        addVisit();
+                                    }
+
+                                    @Override
+                                    public void onError(String message) {
+                                        sweetAlertDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                                        sweetAlertDialog.setTitleText(message);
+                                        sweetAlertDialog.setConfirmText("Ok");
+                                        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                sweetAlertDialog.dismissWithAnimation();
+                                            }
+                                        });
                                     }
                                 });
+                            } else {
+                                addVisit();
+                                //"VISIT_GENERATED"
                             }
-                        });
-                    } else {
-                        addVisit();
-                        //"VISIT_GENERATED"
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
 
-    }
-    catch (Exception e)
-    {}
-    }
 
     private  void addVisit()
     {
@@ -615,11 +650,7 @@ public class General_Information extends Fragment {
         patientRegistration.setRegistrationNo(txtRegistrationNumber.getText().toString());
         patientRegistration.setDateOfRegistration(edtRegistrationDate.getText().toString());
         patientRegistration.setPatient_category(patientCategorySpinner.getSelectedItem().toString());
-
         patientRegistration.setPatient_category(category.get(patientCategorySpinner.getSelectedItem().toString()));
-
-
-
         patientRegistration.setfName(edtFName.getText().toString());
         patientRegistration.setLname(edtLName.getText().toString());
         patientRegistration.setMobileNo(edtMobile.getText().toString());
@@ -630,7 +661,6 @@ public class General_Information extends Fragment {
         patientRegistration.setCity(citySpinner.getSelectedItem().toString());
         patientRegistration.setArea(areaSpinner.getSelectedItem().toString());
         patientRegistration.setLocation(locationSpinner.getSelectedItem().toString());
-
         patientRegistration.setGender(selected_gender);
 
     }
@@ -660,7 +690,7 @@ public class General_Information extends Fragment {
             edtFName.setError(null);
         }
 
-        if (edtLName.getText().toString().trim().length() == 0)
+       /* if (edtLName.getText().toString().trim().length() == 0)
         {
             //lname_TextLayout.setErrorEnabled(true);
             //lname_TextLayout.setErrorTextAppearance(R.style.error);
@@ -684,7 +714,7 @@ public class General_Information extends Fragment {
             edtMobile.setError(null);
         }
 
-
+*/
 
         if (edtAddress.getText().toString().trim().length() == 0)
         {
@@ -697,7 +727,7 @@ public class General_Information extends Fragment {
             edtAddress.setError(null);
         }
 
-        if (edtDob.getText().toString().trim().length() == 0)
+      /*  if (edtDob.getText().toString().trim().length() == 0)
         {
             //dob_TextLayout.setErrorEnabled(true);
             //dob_TextLayout.setErrorTextAppearance(R.style.error);
@@ -706,7 +736,7 @@ public class General_Information extends Fragment {
         } else {
             //dob_TextLayout.setErrorEnabled(false);
             edtDob.setError(null);
-        }
+        }*/
 
       /*  if (edtAge.getText().toString().trim().length() == 0)
         {

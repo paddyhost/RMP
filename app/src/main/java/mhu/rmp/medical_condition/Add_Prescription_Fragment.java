@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 
@@ -22,8 +21,6 @@ import mhu.rmp.medical_condition.adapter.DoseList_Adapter;
 import mhu.rmp.medical_condition.model.Dose;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 
 public class Add_Prescription_Fragment extends Fragment {
@@ -45,32 +42,10 @@ public class Add_Prescription_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add__prescription, container, false);
-       /* ArrayList<String> arrayList = new ArrayList<String>();
-
-        //Add elements to Arraylist
-        arrayList.add("CoderzHeaven");
-        arrayList.add("Google");
-        arrayList.add("Android");
-        arrayList.add("apple");
-        arrayList.add("android");
-        arrayList.add("Microsoft");
-        arrayList.add("Samsung");
-
-
-
-        //sorting function
-        Collections.sort(arrayList);
-
-        IgnoreCaseComparator icc = new IgnoreCaseComparator();
-        java.util.Collections.sort(arrayList,icc);
-        Collections.sort(arrayList);*/
 
         initializations(view);
         onClickListeners();
 
-       /* Spinner nameOfMedicine = (Spinner)view.findViewById(R.id.medicin_name_spinner);
-        ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item,arrayList);
-        nameOfMedicine.setAdapter(categoriesAdapter);*/
 
         return view;
     }
@@ -109,7 +84,7 @@ public class Add_Prescription_Fragment extends Fragment {
                 View alertLayout = inflater2.inflate(R.layout.dose_dialog_row, null);
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
-
+                final Spinner nameOfMedicine = (Spinner) alertLayout.findViewById(R.id.medicin_name_spinner);
                 final TextInputEditText doseName = (TextInputEditText) alertLayout.findViewById(R.id.et_prescription_dose);
                 final TextInputEditText doseFrequency = (TextInputEditText) alertLayout.findViewById(R.id.et_frequency);
                 final TextInputEditText days = (TextInputEditText) alertLayout.findViewById(R.id.et_days);
@@ -142,9 +117,4 @@ public class Add_Prescription_Fragment extends Fragment {
         });
     }
 
-    class IgnoreCaseComparator implements Comparator<String> {
-        public int compare(String strA, String strB) {
-            return strA.compareToIgnoreCase(strB);
-        }
-    }
 }
