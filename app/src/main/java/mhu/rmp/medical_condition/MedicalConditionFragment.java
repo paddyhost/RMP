@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -105,6 +106,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
     private LinearLayoutManager mLayoutManager;
     private Spinner medicinNameSpinner;
     private ImageView medicine_imageView;
+    private EditText edt_medicine_name;
 
      SweetAlertDialog sweetAlertDialog;
 
@@ -204,7 +206,8 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
         medicineNameTextInputLayout=(TextInputLayout)view.findViewById(R.id.medicine_name_textInputLayout);
         medicineNameSpinnerLayout=(LinearLayout)view.findViewById(R.id.medicineNameSpinner_layout);
-        medicine_imageView=(ImageView)view.findViewById(R.id.medicine_imageView);
+        edt_medicine_name=(EditText)view.findViewById(R.id.edt_medicine_name);
+
 
 
 
@@ -215,9 +218,6 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         doseList.setHasFixedSize(true);
         doseList.setLayoutManager(mLayoutManager);
         doseList.setAdapter(doseAdapter);
-
-
-
     }
 
     private void saveMedicalClickListener() {
@@ -367,62 +367,33 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 
                 medicinNameSpinner=(Spinner)alertLayout.findViewById(R.id.medicin_name_spinner);
-
                 String[] medicineNameArray = getResources().getStringArray(R.array.medicine_name_array);
                 List<String> medicineNameArrayList = Arrays.asList(medicineNameArray);
                 Collections.sort(medicineNameArrayList);
 
+               /* medicinNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        if (position == 1) {
+                            medicineNameTextInputLayout.setVisibility(View.VISIBLE);
+                            medicineNameSpinnerLayout.setVisibility(View.GONE);
+                        } else {
+                            medicineNameTextInputLayout.setVisibility(View.GONE);
+                            medicineNameSpinnerLayout.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });*/
+
                 ArrayAdapter medicineNameArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, medicineNameArrayList);
                 medicineNameArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-               try {
-                   medicinNameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                       @Override
-                       public void onItemSelected(AdapterView<?> parent, View view,
-                                                  int position, long id) {
-
-                           try {
-
-                               //String item = "nothing";
-                               // On selecting a spinner item
-                               if (parent.getItemAtPosition(position).toString().equalsIgnoreCase("Other")) {
-                                   //item = parent.getItemAtPosition(position).toString();
-
-                                   //medicinNameSpinner.setVisibility(View.GONE);
-                                   medicineNameSpinnerLayout.setVisibility(View.GONE);
-                                   medicineNameTextInputLayout.setVisibility(View.VISIBLE);
-                               } else {
-                                   //do other things
-                                   //medicinNameSpinner.setVisibility(View.VISIBLE);
-                                   medicineNameSpinnerLayout.setVisibility(View.VISIBLE);
-                                   medicineNameTextInputLayout.setVisibility(View.GONE);
-                               }
-                           }
-                           catch(Exception e)
-                           {
-                               e.printStackTrace();
-                           }
-                           // showing a toast on selecting an item
-                           //Toast.makeText(parent.getContext(), item, Toast.LENGTH_LONG).show();
-                       }
-
-                       @Override
-                       public void onNothingSelected(AdapterView<?> arg0) {
-                           // TODO Auto-generated method stub
-
-                       }
-
-                   });
-
-               }
-               catch (Exception e)
-               {
-                   e.printStackTrace();
-               }
-                medicinNameSpinner.setPrompt("Please Select Medicine Name");
                 medicinNameSpinner.setAdapter(medicineNameArrayAdapter);
-
 
                 final TextInputEditText doseName = (TextInputEditText) alertLayout.findViewById(R.id.et_prescription_dose);
                 final TextInputEditText doseFrequency = (TextInputEditText) alertLayout.findViewById(R.id.et_frequency);

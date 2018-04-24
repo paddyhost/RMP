@@ -162,14 +162,28 @@
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
+
+        <TextView
+            android:id="@+id/txt_patient_category"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:text="@string/patient_category_title"/>
+
         <LinearLayout
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/patient_calender_layout"
+            android:id="@+id/patient_category_spinner_layout"
             android:weightSum="2">
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/patient_category_imageview"
                 android:layout_width="25dp"
                 android:layout_height="40dp"
@@ -179,31 +193,29 @@
 
             <Spinner
                 android:id="@+id/patient_category_spinner"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:entries="@array/patient_category"
                 android:layout_weight="1"
+                android:paddingLeft="15dp"
+                style="@android:style/Widget.Holo.Light.Spinner"
                 android:prompt="@string/patient_category_title"/>
-
+            <!--style="@android:style/Widget.Spinner"-->
         </LinearLayout>
-
-
 
         <TextView
             android:id="@+id/spinner_value"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textSize="16dp"
-            android:layout_gravity="center"
             android:visibility="gone"
-            android:padding="5dp"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_person_outline_black_24dp"/>
+            android:layout_height="wrap_content"/>
 
 
         <LinearLayout
@@ -453,14 +465,26 @@
         </LinearLayout>
 
 
-
+        <TextView
+            android:id="@+id/txt_location"
+            android:drawableLeft="@drawable/village"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:text="@string/please_select_location"/>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:id="@+id/location_spinner_layout"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/location_spinner_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -468,24 +492,26 @@
                 android:layout_marginRight="10dp"/>
             <Spinner
                 android:id="@+id/location_spinner"
-                android:layout_width="match_parent"
+                android:layout_marginLeft="18dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:entries="@array/location_array"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
                 style="@android:style/Widget.Holo.Light.Spinner"
-                android:spinnerMode="dropdown"
-                android:entries="@array/location_array"/>
+                android:prompt="@string/please_select_location"/>
         </LinearLayout>
 
-        <!--android:entries="@array/location_array"-->
+
         <TextView
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:textSize="16dp"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:padding="5dp"
-            android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/village"
-            android:layout_marginTop="15dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/location_spinner_value"/>

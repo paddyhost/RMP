@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -72,14 +73,13 @@ public class General_Information extends Fragment {
     private String selected_gender = "";
     private PatientRegistration patientRegistration;
     private Spinner patientCategorySpinner,stateSpinner,districtSpinner,citySpinner,areaSpinner,locationSpinner;
-    private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber;
+    private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber,txtSelectPatientCategory;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout,age_textLayout,registartion_date_textLayout;
     private PrefManager prefManager;
     FragmentTransaction fragmentTransaction;
     Map<String, String> category = new Hashtable<String, String>();
     TextView SpinnerValue,locationSpinnerValue;
     ImageView patientCategoryImageview,location_spinner_image;
-
 
 
     public General_Information() {
@@ -271,14 +271,16 @@ public class General_Information extends Fragment {
 
 
        /* patient_category*/
-        String[] patientCategoryArray = getResources().getStringArray(R.array.patient_category);
-        List<String> patientCategoryArrayList = Arrays.asList(patientCategoryArray);
-        Collections.sort(patientCategoryArrayList);
 
-        ArrayAdapter patientCategoryArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, patientCategoryArrayList);
-        patientCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        patientCategorySpinner.setPrompt("Please Select Patient Category");
-        patientCategorySpinner.setAdapter(patientCategoryArrayAdapter);
+            String[] patientCategoryArray = getResources().getStringArray(R.array.patient_category);
+            List<String> patientCategoryArrayList = Arrays.asList(patientCategoryArray);
+            Collections.sort(patientCategoryArrayList);
+            ArrayAdapter patientCategoryArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, patientCategoryArrayList);
+            patientCategoryArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            patientCategorySpinner.setPrompt("Please Select Patient Category");
+            patientCategorySpinner.setAdapter(patientCategoryArrayAdapter);
+
+
 
         /*Loaction*/
         String[] locationArray = getResources().getStringArray(R.array.location_array);
@@ -336,6 +338,7 @@ public class General_Information extends Fragment {
         edtDob.setFocusable(false);
         edtRegistrationDate.setFocusable(false);
         SpinnerValue=(TextView)view.findViewById(R.id.spinner_value);
+
     }
 
     private void DOBClickListener()
