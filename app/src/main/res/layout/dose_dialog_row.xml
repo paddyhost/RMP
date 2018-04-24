@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="20dp"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:text="Enter Dose Details"/>
+
+        <TextView
+            android:textSize="16dp"
+            android:drawableLeft="@drawable/medicine"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:text="Medicine Name"/>
+
+        <LinearLayout
+            android:id="@+id/medicineNameSpinner_layout"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/medicine"
+                    android:layout_marginRight="10dp"/>
+                <Spinner
+                    android:layout_gravity="center"
+                    android:id="@+id/medicin_name_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/medicine_name_array"
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:spinnerMode="dropdown" />
+
+
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:visibility="gone"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/medicine_name_textInputLayout">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    android:id="@+id/edt_medicine_name"
+                    android:hint="Enter Medicine Name"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:id="@+id/et_frequency"
+                    android:maxLength="1"
+                    android:hint="Frequency"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/et_days"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:imeOptions="actionNext"
+                    android:hint="Days"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:drawableLeft="@drawable/medicine"
+            android:textSize="16dp"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:text="Instructions Before and After Meal"/>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/edt_before_meal"
+                    android:inputType="text"
+                    android:maxLines="10"
+                    android:imeOptions="actionNext"
+                    android:hint="Instructions Before Meal"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/edt_after_meal"
+                    android:inputType="text"
+                    android:maxLines="10"
+                    android:imeOptions="actionNext"
+                    android:hint="Instructions After Meal"/>
+        </android.support.design.widget.TextInputLayout>
+</LinearLayout>

@@ -141,9 +141,6 @@ public class PreviousRecords implements Parcelable{
     }
 
 
-
-
-
     public PreviousRecords() {
     }
 

@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Mobile Health Unit</string>
     <string name="na">NA</string>
-    <string name="please_select_location">Please Select Location</string>
+    <string name="please_select_location">Select Location</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
-    <string name="patient_category_title">Select Patient Category</string>
+    <string name="patient_category_title">Patient Category</string>
 
     <string-array name="advised_aaray">
         <item>Select Test</item>
@@ -19,7 +19,7 @@
     </string-array>
 
     <string-array name="patient_category">
-        <item>Select Patient Category</item>
+        <!--<item>Select Patient Category</item>-->
         <item>Pregnant Women</item>
         <item>Lactating Women</item>
         <item>Child Under-5 Years of Age</item>
@@ -48,7 +48,7 @@
     </string-array>
 
     <string-array name="location_array">
-        <item>Please Select Location</item>
+        <!--<item>Please Select Location</item>-->
         <item>Ambedkar Part, Indira Vihar</item>
         <item>Durga Mandir, Bharat Nagar</item>
         <item>Valmiki Mandir, Adarsh Nagar</item>
