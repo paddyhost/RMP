@@ -462,7 +462,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
                             //Dose dose = new Dose("Medicine Name: \n"+medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
 
                             //if(medicinNameSpinner.getSelectedItem().toString().equalsIgnoreCase("Other"))
-                           
+
                             Dose dose = new Dose(medicinNameSpinner.getSelectedItem().toString(),frequencySpinner.getSelectedItem().toString(),days.getText().toString());
                             doseArrayList.add(dose);
                             doseAdapter.notifyDataSetChanged();

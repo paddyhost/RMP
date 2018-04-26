@@ -3,6 +3,7 @@ package mhu.rmp.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -11,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import mhu.rmp.R;
+import mhu.rmp.activity.MainActivity;
+import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.patient_registration.UserVerificationFragment;
 
 /**
@@ -35,11 +38,10 @@ public class Utility
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
-                activity.finish();
-               /* FragmentTransaction fragmentTransaction= new AppCompatActivity().getSupportFragmentManager().beginTransaction();
-                UserVerificationFragment userVerificationFragment = new UserVerificationFragment();
-                fragmentTransaction.replace(R.id.framelayout, userVerificationFragment).commit();
-*/
+                //activity.finish();
+                Intent intent = new Intent(activity.getApplicationContext(), MainActivity.class);
+                activity.startActivity(intent);
+
             }
         });
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
