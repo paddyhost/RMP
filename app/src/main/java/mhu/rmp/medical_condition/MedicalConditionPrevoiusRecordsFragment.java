@@ -74,7 +74,7 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
         catch (Exception e){}
 
         try {
-            if (previousRecords.getDrname2().equalsIgnoreCase("") && txtDoctorName2.getText().toString().trim().length() <= 0) {
+            if (previousRecords.getDrname2().equalsIgnoreCase("null") && txtDoctorName2.getText().toString().trim().length() <= 0) {
                 txtDoctorName2.setText("NA");
             } else {
                 txtDoctorName2.setText(String.valueOf(previousRecords.getDrname2()));
@@ -84,7 +84,7 @@ public class MedicalConditionPrevoiusRecordsFragment extends Fragment {
 
 
         try {
-            if (previousRecords.getDrname3().equalsIgnoreCase("") && txtDoctorName3.getText().toString().trim().length() <= 0) {
+            if (previousRecords.getDrname3().equalsIgnoreCase("null") && txtDoctorName3.getText().toString().trim().length() <= 0) {
                 txtDoctorName3.setText("NA");
             } else {
                 txtDoctorName3.setText(String.valueOf(previousRecords.getDrname3()));

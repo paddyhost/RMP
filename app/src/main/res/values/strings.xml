@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Mobile Health Unit</string>
     <string name="na">NA</string>
-    <string name="please_select_location">Select Location</string>
+    <string name="please_select_location">Location</string>
+    <string name="please_select_medicine_name">Select Medicine Name</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Fahrenheit">\u00B0 F</string>
@@ -19,12 +20,13 @@
     </string-array>
 
     <string-array name="patient_category">
-        <!--<item>Select Patient Category</item>-->
-        <item>Pregnant Women</item>
-        <item>Lactating Women</item>
+        <item>Select Patient Category</item>
         <item>Child Under-5 Years of Age</item>
-        <item>Senior Citizen-above 60 years of age</item>
+        <item>Lactating Women</item>
         <item>Other</item>
+        <item>Pregnant Women</item>
+        <item>Senior Citizen-above 60 years of age</item>
+
     </string-array>
 
     <string-array name="state_array">
@@ -48,17 +50,17 @@
     </string-array>
 
     <string-array name="location_array">
-        <!--<item>Please Select Location</item>-->
+        <item>Please Select Location</item>
         <item>Ambedkar Part, Indira Vihar</item>
         <item>Durga Mandir, Bharat Nagar</item>
-        <item>Valmiki Mandir, Adarsh Nagar</item>
-        <item>Shiv Park, Jardawala Road, Lord Shiva Public School</item>
-        <item>Near Nagar Palika office</item>
+        <item>Extension Chowk, Sangam Park, Rajeev Nagar</item>
         <item>Indraprashtha Vidyalaya, Prem Vihar</item>
+        <item>Near Kajal Printers, Vandana Vihar</item>
+        <item>Near Nagar Palika office</item>
         <item>Near Shriram Builders, Azad Nagar</item>
         <item>S S International School, Neelam Vihar</item>
-        <item>Near Kajal Printers, Vandana Vihar</item>
-        <item>Extension Chowk, Sangam Park, Rajeev Nagar</item>
+        <item>Shiv Park, Jardawala Road, Lord Shiva Public School</item>
+        <item>Valmiki Mandir, Adarsh Nagar</item>
     </string-array>
 
     <string-array name="medicine_name_array">
@@ -144,6 +146,16 @@
         <item>ACIGENE TAB</item>
         <item>AUSTRO ANTACID ORANGE SYP</item>
         <item>Other</item>
+
+    </string-array>
+
+    <string-array name="frequency_array">
+        <item>Select Frequency</item>
+        <item>Once a day</item>
+        <item>Twice a Day</item>
+        <item>Four Times a Day</item>
+        <item>Fifth Times a Day</item>
+        <item>Six Times a Day</item>
 
     </string-array>
 

@@ -71,10 +71,10 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
             etComplaint3TextInputLayout, etBreifHistory1TextInputLayout,
             etBreifHistory2TextInputLayout, etBreifHistory3TextInputLayout,medicineNameTextInputLayout;
 
-    private RadioGroup investigationGroup, treatmentGroup, improvementGroup;
+    private RadioGroup investigationGroup, treatmentGroup, improvementGroup,afterMealRadioGroup,beforeMealRadioGroup;
     private RadioButton BtnInvestigationYes, BtnInvestigationNo, BtnInvestigationDontKnow,
-            BtnTreatmentYes, BtnTreatmentNo, BtnTreatmentDontKnow,
-            BtnImprovementYes, BtnImprovementNo, BtnImprovementDontKnow;
+            BtnTreatmentYes, BtnTreatmentNo, BtnTreatmentDontKnow,BtnImprovementYes, BtnImprovementNo, BtnImprovementDontKnow;
+
     private Button btnSaveMedical;
     private Medical_Conditions medicalCondition;
     private String investigationSelected = "", treatmentSelected = "", improvementSelected = "";
@@ -104,9 +104,10 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
     private DoseList_Adapter doseAdapter;
     private RecyclerView doseList;
     private LinearLayoutManager mLayoutManager;
-    private Spinner medicinNameSpinner;
+    private Spinner medicinNameSpinner,frequencySpinner;
     private ImageView medicine_imageView;
     private EditText edt_medicine_name;
+    private String selected_instruction = "";
 
      SweetAlertDialog sweetAlertDialog;
 
@@ -207,9 +208,6 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         medicineNameTextInputLayout=(TextInputLayout)view.findViewById(R.id.medicine_name_textInputLayout);
         medicineNameSpinnerLayout=(LinearLayout)view.findViewById(R.id.medicineNameSpinner_layout);
         edt_medicine_name=(EditText)view.findViewById(R.id.edt_medicine_name);
-
-
-
 
         doseArrayList = new ArrayList<Dose>();
         doseAdapter = new DoseList_Adapter(doseArrayList, getActivity().getApplicationContext());
@@ -350,6 +348,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         medicalCondition.setDiagnosys(edtDiagnosys.getText().toString());
 
 
+
         patientHistory = new PatientHistory();
         patientHistory.setPrevHospital(etPreviousHsopital.getText().toString());
         patientHistory.setDoctorName1(etDoctorName1.getText().toString());
@@ -391,13 +390,63 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
                 ArrayAdapter medicineNameArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, medicineNameArrayList);
                 medicineNameArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
+                medicinNameSpinner.setPrompt("Select Medicine Name");
                 medicinNameSpinner.setAdapter(medicineNameArrayAdapter);
 
                 final TextInputEditText doseName = (TextInputEditText) alertLayout.findViewById(R.id.et_prescription_dose);
                 final TextInputEditText doseFrequency = (TextInputEditText) alertLayout.findViewById(R.id.et_frequency);
                 final TextInputEditText days = (TextInputEditText) alertLayout.findViewById(R.id.et_days);
+                frequencySpinner=(Spinner)view.findViewById(R.id.frequency_spinner);
+
+                final RadioGroup beforeMealRadioGroup=(RadioGroup) alertLayout.findViewById(R.id.before_meal_radioGroup);
+                final RadioGroup afterMealRadioGroup=(RadioGroup) alertLayout.findViewById(R.id.after_meal_radioGroup);
+                final RadioButton radioBtnBeforeMealYes=(RadioButton) alertLayout.findViewById(R.id.radioBtn_beforeMeal_yes);
+                final RadioButton radioBtnBeforeMealNo=(RadioButton) alertLayout.findViewById(R.id.radioBtn_beforeMeal_no);
+                final RadioButton radioBtnAfterMealYes=(RadioButton) alertLayout.findViewById(R.id.radioBtn_afterMeal_yes);
+                final RadioButton radioBtnAfterMealNo=(RadioButton) alertLayout.findViewById(R.id.radioBtn_afterMeal_no);
+
+
+                    beforeMealRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+
+                            if(checkedId== R.id.radioBtn_beforeMeal_yes)
+                            {
+                                selected_instruction="Yes";
+                            }
+
+                            else if(checkedId == R.id.radioBtn_beforeMeal_no) {
+                                selected_instruction = "No";
+                            }
+
+                            else
+                            {
+                                selected_instruction="No";
+                            }
+                        }
+                    });
+
+
+                    afterMealRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+
+                            if(checkedId== R.id.radioBtn_afterMeal_yes)
+                            {
+                                selected_instruction="Yes";
+                            }
+
+                            else if(checkedId == R.id.radioBtn_afterMeal_no) {
+                                selected_instruction = "No";
+                            }
+
+                            else
+                            {
+                                selected_instruction="No";
+                            }
+                        }
+                    });
+
 
                 // this is set the view from XML inside AlertDialog
                 alert.setView(alertLayout);
@@ -411,7 +460,10 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
 
                         if(medicinNameSpinner.getSelectedItemPosition()>0) {
                             //Dose dose = new Dose("Medicine Name: \n"+medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
-                            Dose dose = new Dose(medicinNameSpinner.getSelectedItem().toString(),doseFrequency.getText().toString(),days.getText().toString());
+
+                            //if(medicinNameSpinner.getSelectedItem().toString().equalsIgnoreCase("Other"))
+                           
+                            Dose dose = new Dose(medicinNameSpinner.getSelectedItem().toString(),frequencySpinner.getSelectedItem().toString(),days.getText().toString());
                             doseArrayList.add(dose);
                             doseAdapter.notifyDataSetChanged();
                             dialog.dismiss();
@@ -435,6 +487,7 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
             }
         });
     }
+
 
     private void investigationRadioGrpListner() {
         investigationGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -680,7 +733,6 @@ public class MedicalConditionFragment extends Fragment implements AdapterView.On
         return response;
 
     }
-
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

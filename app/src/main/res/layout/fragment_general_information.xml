@@ -499,8 +499,7 @@
                 android:entries="@array/location_array"
                 android:layout_weight="1"
                 android:paddingLeft="15dp"
-                style="@android:style/Widget.Holo.Light.Spinner"
-                android:prompt="@string/please_select_location"/>
+                style="@android:style/Widget.Holo.Light.Spinner" />
         </LinearLayout>
 
 
@@ -542,7 +541,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/btn_save_general"
+            android:id="@+id/btn_save_general_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"

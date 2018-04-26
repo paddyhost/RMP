@@ -10,11 +10,13 @@ import android.widget.TextView;
 import mhu.rmp.R;
 import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.patient_previous_history.model.PreviousRecords;
+import mhu.rmp.patient_registration.model.PatientRegistration;
 
 
 public class GeneralInformationPreviousRecordFragment extends Fragment {
 
     private PreviousRecords previousRecords;
+
 
     public  String visit_id;
 
@@ -63,8 +65,6 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
 
     private void setData()
     {
-
-
             if (txtPatientUniqueId!=null)
             {
                 txtPatientUniqueId.setText(String.valueOf(previousRecords.getUnique_id()));
@@ -129,7 +129,14 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
     }
 
         try {
-            txtPatientLname.setText(String.valueOf(previousRecords.getLanme()));
+
+                if(previousRecords.getLanme().equalsIgnoreCase(" ") || txtPatientLname.getText().toString().trim().length()<=0) {
+                    txtPatientLname.setText("NA");
+                }
+                else
+                {
+                    txtPatientLname.setText(String.valueOf(previousRecords.getLanme()));
+                }
         }
 
         catch (Exception e)
@@ -138,20 +145,23 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
         }
 
         try{
-            txtPatientMobile.setText(String.valueOf(previousRecords.getMobile()));
+
+
+            if(previousRecords.getMobile().equalsIgnoreCase(" ") || txtPatientMobile.getText().toString().trim().length()<=0) {
+                txtPatientMobile.setText("NA");
+            }
+            else
+            {
+                txtPatientMobile.setText(String.valueOf(previousRecords.getMobile()));
+            }
+
         }
 
         catch (Exception e)
         {
 
         }
-    try{
-        txtPatientDob.setText(String.valueOf(previousRecords.getDob()));
-    }
-    catch (Exception e)
-    {
 
-    }
     try
     {
         txtPatientAddress.setText(String.valueOf(previousRecords.getAddress()));
@@ -212,12 +222,26 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
       }
       try
       {
-          txtAge.setText(General_Information.ageYear);
+              txtAge.setText("NA");
+
+
       }
       catch(Exception e)
       {
 
       }
+
+
+        try {
+            if(previousRecords.getDob().equalsIgnoreCase(" ") || txtPatientDob.getText().toString().trim().length()<=0) {
+                txtPatientDob.setText("NA");
+            }
+
+            else{
+                txtPatientDob.setText(String.valueOf(previousRecords.getDob()));
+            }
+        }
+        catch(Exception e){}
 
 
 
