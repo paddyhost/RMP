@@ -44,11 +44,76 @@ public class VitalInfoPreviousRecordFragment extends Fragment {
 
     private void setData()
     {
-        txtHeight.setText(String.valueOf(previousRecords.getHeight()));
-        txtWeight.setText(String.valueOf(previousRecords.getWeight()));
-        txtBp.setText(String.valueOf(previousRecords.getBloodpresure()));
-        txtTemperature.setText(String.valueOf(previousRecords.getTempreture()));
-        txtRespiration.setText(String.valueOf(previousRecords.getRespiration()));
+
+        try
+        {
+            if(txtHeight.getText().toString().trim().length()<=0 && previousRecords.getHeight().equalsIgnoreCase("0"))
+            {
+                txtHeight.setText("NA");
+
+            }
+            else
+            {
+                txtHeight.setText(String.valueOf(previousRecords.getHeight()));
+            }
+        }
+        catch(Exception e){}
+
+
+        try {
+            if(txtWeight.getText().toString().trim().length()<=0 && previousRecords.getWeight().equalsIgnoreCase("0")) {
+                txtWeight.setText("NA");
+            }
+
+            else{
+                txtWeight.setText(String.valueOf(previousRecords.getWeight()));
+            }
+        }
+        catch(Exception e){}
+
+
+        try {
+
+            if(txtBp.getText().toString().trim().length()<=0 && previousRecords.getBloodpresure().equalsIgnoreCase("0")) {
+                txtBp.setText("NA");
+            }
+
+            else{
+                txtBp.setText(String.valueOf(previousRecords.getBloodpresure()));
+            }
+
+
+        }
+        catch(Exception e){}
+
+        try {
+
+            if(txtTemperature.getText().toString().trim().length()<=0 && previousRecords.getTempreture().equalsIgnoreCase("0")) {
+                txtTemperature.setText("NA");
+            }
+            else
+            {
+                txtTemperature.setText(String.valueOf(previousRecords.getTempreture()));
+            }
+        }
+        catch(Exception e){}
+
+
+        try {
+
+            if(txtRespiration.getText().toString().trim().length()<=0 && previousRecords.getRespiration().equalsIgnoreCase("0")) {
+                txtRespiration.setText("NA");
+            }
+            else
+            {
+                txtRespiration.setText(String.valueOf(previousRecords.getRespiration()));
+            }
+
+        }
+        catch(Exception e){}
+
+
+
     }
 
 }

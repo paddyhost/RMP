@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -66,8 +67,6 @@ String patientUniqueId,patientName;
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_check_previous_records, container, false);
 
-
-
         initializations(view);
         setData();
         final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
@@ -88,7 +87,7 @@ String patientUniqueId,patientName;
                         sweetAlertDialog.dismiss();
                         try
                         {
-                             listVisitid = message.split(",");
+                            listVisitid = message.split(",");
                             totalVisit.setText(listVisitid.length+"");
                             ArrayList<String> visitlist = new ArrayList<>();
                             TextView tv=new TextView(getActivity());
@@ -108,8 +107,6 @@ String patientUniqueId,patientName;
                         {
 
                         }
-                      /* */
-
 
                     }
                 });
@@ -129,11 +126,6 @@ String patientUniqueId,patientName;
             }
         });
 
-
-
-
-
-
         onClickListeners();
 
         return view;
@@ -148,7 +140,6 @@ String patientUniqueId,patientName;
         totalVisit=(TextView)view.findViewById(R.id.txt_total_visit);
         selectedVisitSpinner=(Spinner)view.findViewById(R.id.selected_visit_spinner);
         txtItemSpinner=(TextView)view.findViewById(R.id.txt_item_spinner);
-
     }
 
 
@@ -169,23 +160,30 @@ String patientUniqueId,patientName;
             @Override
             public void onClick(View v) {
 
-                try
-                {
-                  int position=  selectedVisitSpinner.getSelectedItemPosition();
-                    String visitid= listVisitid[position-1];
-                    Intent intent=new Intent(getActivity(), PreviousRecordsActivity.class);
-                    intent.putExtra("VISITID",visitid);
-                    startActivity(intent);
+                    try {
+                        if(selectedVisitSpinner.getSelectedItemPosition()>0) {
+                            int position = selectedVisitSpinner.getSelectedItemPosition();
+                            String visitid = listVisitid[position - 1];
+                            Intent intent = new Intent(getActivity(), PreviousRecordsActivity.class);
+                            intent.putExtra("VISITID", visitid);
+                            startActivity(intent);
+                        }
+                        else
+                        {
+                            Toast.makeText(getActivity(),"Please atleast one visit no",Toast.LENGTH_SHORT).show();
+                        }
 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        //;
+
+                    }
                 }
-                catch (Exception e)
-                {
-                    e.printStackTrace();;
 
-                }
 
-            }
         });
 
     }
+
+
 }

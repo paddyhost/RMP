@@ -47,8 +47,10 @@
                     android:id="@+id/medicin_name_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:prompt="@string/please_select_medicine_name"
                     android:entries="@array/medicine_name_array"
-                    style="@android:style/Widget.Holo.Light.Spinner"
+                    style="@android:style/Widget.Spinner"
+
                     android:spinnerMode="dropdown" />
         </LinearLayout>
 
@@ -67,7 +69,9 @@
                     android:hint="Enter Medicine Name"/>
         </android.support.design.widget.TextInputLayout>
 
+        <!--hide frequency-->
         <android.support.design.widget.TextInputLayout
+            android:visibility="gone"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -83,9 +87,38 @@
                     android:hint="Frequency"/>
         </android.support.design.widget.TextInputLayout>
 
+        <TextView
+            android:textSize="16dp"
+            android:drawableLeft="@drawable/medicine"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:text="Frequency"/>
+
+        <LinearLayout
+            android:id="@+id/frequencySpinner_layout"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+                <Spinner
+                    android:layout_gravity="center"
+                    android:id="@+id/frequency_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/frequency_array"
+                    style="@android:style/Widget.Spinner"
+                    android:spinnerMode="dropdown" />
+        </LinearLayout>
+        <!--style="@android:style/Widget.Holo.Light.Spinner"-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
@@ -98,42 +131,75 @@
         </android.support.design.widget.TextInputLayout>
 
         <TextView
-            android:drawableLeft="@drawable/medicine"
             android:textSize="16dp"
-            android:layout_marginTop="18dp"
+            android:drawableLeft="@drawable/medicine"
+            android:layout_marginTop="15dp"
             android:textColor="@color/black"
             android:layout_gravity="center"
             android:gravity="center|start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="15dp"
-            android:text="Instructions Before and After Meal"/>
+            android:text="Instructions Before Meal"/>
 
-        <android.support.design.widget.TextInputLayout
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/before_meal_radioGroup"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:id="@+id/edt_before_meal"
-                    android:inputType="text"
-                    android:maxLines="10"
-                    android:imeOptions="actionNext"
-                    android:hint="Instructions Before Meal"/>
-        </android.support.design.widget.TextInputLayout>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/radioBtn_beforeMeal_yes"/>
 
-        <android.support.design.widget.TextInputLayout
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:id="@+id/radioBtn_beforeMeal_no"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="16dp"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:textSize="16dp"
+            android:drawableLeft="@drawable/medicine"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center|start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:drawablePadding="15dp"
+            android:text="Instructions After Meal"/>
 
-                <android.support.design.widget.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:id="@+id/edt_after_meal"
-                    android:inputType="text"
-                    android:maxLines="10"
-                    android:imeOptions="actionNext"
-                    android:hint="Instructions After Meal"/>
-        </android.support.design.widget.TextInputLayout>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/after_meal_radioGroup"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yes"
+                    android:id="@+id/radioBtn_afterMeal_yes"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No"
+                    android:id="@+id/radioBtn_afterMeal_no"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="16dp"/>
+
+        </RadioGroup>
+
 </LinearLayout>
