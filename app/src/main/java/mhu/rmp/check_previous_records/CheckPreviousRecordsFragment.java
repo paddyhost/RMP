@@ -79,7 +79,7 @@ String patientUniqueId,patientName;
             public void onSuccess(final String message) {
 
                 sweetAlertDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                sweetAlertDialog.setTitleText("Patient Previous Records\nHistory!!");
+                sweetAlertDialog.setTitleText("Patient Previous Records History!!");
                 sweetAlertDialog.setConfirmText("Ok");
                 sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
