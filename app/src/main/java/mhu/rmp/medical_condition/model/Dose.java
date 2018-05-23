@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 public class Dose implements Parcelable
 {
-    private String doseName, doseFrequency, doseNoOfDays;
+    private String doseName, doseFrequency, doseNoOfDays,time;
 
 //    ArrayList<String> nameOfMedicine;
 
@@ -14,19 +14,27 @@ public class Dose implements Parcelable
     public Dose() {
     }
 
-    public Dose(String doseName, String doseFrequency, String doseNoOfDays) {
+    public Dose(String doseName, String doseFrequency, String doseNoOfDays,String time) {
         this.doseName = doseName;
         this.doseFrequency = doseFrequency;
         this.doseNoOfDays = doseNoOfDays;
-        //this.nameOfMedicine=nameOfMedicine;
+        this.time=time;
 
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     protected Dose(Parcel in) {
         doseName = in.readString();
         doseFrequency = in.readString();
         doseNoOfDays = in.readString();
-        //nameOfMedicine = in.createStringArrayList();
+        time = in.readString();
     }
 
     public static final Creator<Dose> CREATOR = new Creator<Dose>() {
@@ -52,7 +60,7 @@ public class Dose implements Parcelable
         dest.writeString(doseName);
         dest.writeString(doseFrequency);
         dest.writeString(doseNoOfDays);
-        //dest.writeStringList(nameOfMedicine);
+        dest.writeString(time);
     }
 
 

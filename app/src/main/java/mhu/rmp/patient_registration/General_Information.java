@@ -41,6 +41,7 @@ import mhu.rmp.user_login.LoginActivity;
 import mhu.rmp.utils.validation.Validations;
 import mhu.rmp.vital_info.Vital_Information;
 
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -909,12 +910,16 @@ public class General_Information extends Fragment {
     {
         if(adharid==null) {
             Date dNow = new Date();
-            SimpleDateFormat ft = new SimpleDateFormat("yyMMddhhmmssMs");
+            SimpleDateFormat ft = new SimpleDateFormat("yyMMdd");
             String datetime = ft.format(dNow);
             txtPatientUniqueId.setText(PATIENT_PREFIX + datetime);
             String randomNumber = String.valueOf(Utility.generateRandomNumber(getActivity()));
+            SecureRandom random = new SecureRandom();
+            int num = random.nextInt(100000);
+            String formatted = String.format("%05d", num);
+            System.out.println(formatted);
 
-            txtPatientUniqueId.setText(PATIENT_PREFIX + datetime + "_" + randomNumber);
+            txtPatientUniqueId.setText(PATIENT_PREFIX + datetime+formatted);
         }
         else
         {

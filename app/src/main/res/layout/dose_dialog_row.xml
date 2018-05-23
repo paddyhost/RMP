@@ -64,7 +64,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:inputType="number"
+
                     android:id="@+id/edt_medicine_name"
                     android:hint="Enter Medicine Name"/>
         </android.support.design.widget.TextInputLayout>
@@ -130,22 +130,13 @@
                     android:hint="Days"/>
         </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:textSize="16dp"
-            android:drawableLeft="@drawable/medicine"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:gravity="center|start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="15dp"
-            android:text="Instructions Before Meal"/>
+
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+
             android:id="@+id/before_meal_radioGroup"
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
@@ -153,53 +144,19 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
-                    android:id="@+id/radioBtn_beforeMeal_yes"/>
+                    android:text="Before Meal"
+                    android:id="@+id/radioBtn_beforeMeal"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
-                    android:id="@+id/radioBtn_beforeMeal_no"
+                    android:text="After Meal"
+                    android:id="@+id/radioBtn_AfterMeal"
                     android:paddingLeft="10dp"
                     android:layout_marginLeft="16dp"/>
 
         </RadioGroup>
 
-        <TextView
-            android:textSize="16dp"
-            android:drawableLeft="@drawable/medicine"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:gravity="center|start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawablePadding="15dp"
-            android:text="Instructions After Meal"/>
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/after_meal_radioGroup"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Yes"
-                    android:id="@+id/radioBtn_afterMeal_yes"/>
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No"
-                    android:id="@+id/radioBtn_afterMeal_no"
-                    android:paddingLeft="10dp"
-                    android:layout_marginLeft="16dp"/>
-
-        </RadioGroup>
 
 </LinearLayout>
