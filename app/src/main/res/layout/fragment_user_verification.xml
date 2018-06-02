@@ -56,7 +56,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="35dp"
                 android:background="@color/colorPrimary"
-                android:text="Proceed with Aadhar/UID"
+                android:text="Proceed with UID"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="25dp" />
@@ -79,7 +79,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
-                android:text="Proceed without Aadhar"
+                android:text="Proceed without UID"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="25dp" />

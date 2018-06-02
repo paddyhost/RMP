@@ -15,7 +15,7 @@
         <item>Blood Pressure</item>
         <item>Cholesterol level check</item>
         <item>Throat check</item>
-        <item>Electrocardiogram </item>
+        <item>Electrocardiogram</item>
 
     </string-array>
 
@@ -23,30 +23,90 @@
         <item>Select Patient Category</item>
         <item>Child Under-5 Years of Age</item>
         <item>Lactating Women</item>
-        <item>Other</item>
         <item>Pregnant Women</item>
         <item>Senior Citizen-above 60 years of age</item>
+        <item>Other</item>
 
     </string-array>
 
     <string-array name="state_array">
         <item>Please Select State</item>
         <item>Uttar Pradesh</item>
+        <item>Madya Pradesh</item>
+        <item>Delhi</item>
+        <item>Maharashtra</item>
+        <item>Uttarakhand</item>
+        <item>Haryana</item>
     </string-array>
 
-    <string-array name="district_array">
+    <string-array name="district_array_maharastra">
+        <item>Please Select District</item>
+        <item> Mumbai City</item>
+        <item>Mumbai Suburban</item>
+        <item>Raigad</item>
+        <item>Ratnagiri</item>
+        <item>Thane</item>
+        <item>Palghar</item>
+    </string-array>
+
+
+    <string-array name="district_array_up">
         <item>Please Select District</item>
         <item>Ghaziabad</item>
+        <item>NOIDA</item>
+        <item>Merrut</item>
+        <item>Hapur</item>
+        <item>Bullandshahr</item>
+        <item>Allahabad</item>
+        <item>Varanasi</item>
     </string-array>
+
+
+
+    <string-array name="district_array_haryana">
+        <item>Please Select District</item>
+        <item>Kaithal</item>
+        <item>Nuh</item>
+        <item>Rewari</item>
+        <item>Bhiwani</item>
+        <item>Rohtak</item>
+        <item>Palwal</item>
+
+    </string-array>
+
+    <string-array name="district_array_uttarakhand">
+        <item>Please Select District</item>
+        <item>Haridwar</item>
+
+
+    </string-array>
+    <string-array name="district_array_delhi">
+        <item>Please Select District</item>
+        <item>Delhi</item>
+
+
+    </string-array>
+    <string-array name="district_array_mp">
+        <item>Please Select District</item>
+        <item>Neemuch</item>
+        <item>Ratlam</item>
+        <item>Merrut</item>
+        <item>Bhopal</item>
+        <item>Indorer</item>
+
+    </string-array>
+
 
     <string-array name="city_array">
         <item>Please Select City</item>
         <item>Ghaziabad</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="area_array">
         <item>Please Select Area</item>
         <item>Khora</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="location_array">
@@ -61,6 +121,7 @@
         <item>S S International School, Neelam Vihar</item>
         <item>Shiv Park, Jardawala Road, Lord Shiva Public School</item>
         <item>Valmiki Mandir, Adarsh Nagar</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="medicine_name_array">
@@ -151,8 +212,9 @@
 
     <string-array name="frequency_array">
         <item>Select Frequency</item>
-        <item>Once a day</item>
+        <item>Once a Day</item>
         <item>Twice a Day</item>
+        <item>Thrice a Day</item>
         <item>Four Times a Day</item>
         <item>Fifth Times a Day</item>
         <item>Six Times a Day</item>

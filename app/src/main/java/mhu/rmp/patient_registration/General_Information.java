@@ -12,12 +12,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -66,6 +69,7 @@ public class General_Information extends Fragment {
     Button btnSaveGeneralInformation;
     TextInputEditText edtFName,edtLName,edtMobile,edtAge,edtAddress,edtRegistrationDate;
     static TextInputEditText edtDob;
+    TextView lableuiid;
     RadioGroup genderGrp;
     static int ageYear;
     RadioButton maleBtn, femaleBtn;
@@ -74,13 +78,15 @@ public class General_Information extends Fragment {
     private String selected_gender = "";
     private PatientRegistration patientRegistration;
     private Spinner patientCategorySpinner,stateSpinner,districtSpinner,citySpinner,areaSpinner,locationSpinner;
-    private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber,txtSelectPatientCategory;
+    private TextView txtPatientUniqueId,txtRegistrationNumber,txtVisitNumber,txtSelectPatientCategory,citytext,locationtext,areatext;
     TextInputLayout firstname_TextLayout,lname_TextLayout,mobile_TextLayout,dob_TextLayout,address_TextLayout,age_textLayout,registartion_date_textLayout;
     private PrefManager prefManager;
     FragmentTransaction fragmentTransaction;
     Map<String, String> category = new Hashtable<String, String>();
     TextView SpinnerValue,locationSpinnerValue;
     ImageView patientCategoryImageview,location_spinner_image;
+    List<String> districtArrayList=new ArrayList<>();
+    ArrayList<String> districtNameArrayList1;
 
 
     public General_Information() {
@@ -174,7 +180,7 @@ public class General_Information extends Fragment {
         category.put("Select Patient Category","");
         category.put("Pregnant Women","PW");
         category.put("Lactating Women","LW");
-        category.put("Child Under-5 Years of Age","C");
+        category.put("Child Under-19 Years of Age","C");
         category.put("Senior Citizen-above 60 years of age","S");
         category.put("Other","O");
 
@@ -203,7 +209,7 @@ public class General_Information extends Fragment {
            edtFName.setFocusable(false);
 
            try {
-               if(registration.getLname().toString().equalsIgnoreCase(" ") || edtLName.getText().toString().trim().length()<=0) {
+               if(registration.getLname().toString().equalsIgnoreCase(" ") || registration.getLname().trim().length()<=0) {
                    edtLName.setText("NA");
                }
                else
@@ -217,7 +223,7 @@ public class General_Information extends Fragment {
            edtLName.setFocusable(false);
 
            try {
-               if(registration.getMobileNo().toString().equalsIgnoreCase(" ") || edtMobile.getText().toString().trim().length()<=0) {
+               if(registration.getMobileNo().toString().equalsIgnoreCase(" ") || registration.getMobileNo().trim().length()<=0) {
                    edtMobile.setText("NA");
                }
                else
@@ -298,21 +304,48 @@ public class General_Information extends Fragment {
            }
           // patientCategorySpinner.setSelection(1);
            SpinnerValue.setEnabled(false);
+           String  statelist[]= getResources().getStringArray(R.array.state_array);
+           for(int i=0;i<statelist.length;i++)
+           {
+               if(statelist[i].equalsIgnoreCase(registration.getState())) {
+                   stateSpinner.setSelection(i);
+                   stateSpinner.setEnabled(false);
+                   break;
+               }
+           }
+           districtArrayList.add(registration.getDistrict());
+           for(int i=0;districtArrayList!=null&&i<districtArrayList.size();i++)
+           {
+               if(districtArrayList.get(i).equalsIgnoreCase(registration.getDistrict()))
+               {
+                   districtSpinner.setSelection(i);
+                   districtSpinner.setEnabled(false);
 
-           stateSpinner.setSelection(1);
-           stateSpinner.setEnabled(false);
-           districtSpinner.setSelection(1);
-           districtSpinner.setEnabled(false);
+                   break;
+               }
+           }
+
+
+           citytext.setText(registration.getCity());
+           citytext.setVisibility(View.VISIBLE);
+
            citySpinner.setSelection(1);
            citySpinner.setEnabled(false);
-           areaSpinner.setSelection(1);
+           citySpinner.setVisibility(View.GONE);
+
+
+           areaSpinner.setVisibility(View.GONE);
            areaSpinner.setEnabled(false);
+           areatext.setText(registration.getArea());
+           areatext.setVisibility(View.VISIBLE);
+
            //locationSpinner.setSelection(1);
            //locationSpinner.setSelection(getLocationIndex(registration.getLocation()));
            locationSpinner.setVisibility(View.GONE);
            location_spinner_image.setVisibility(View.GONE);
            locationSpinnerValue.setVisibility(View.VISIBLE);
            locationSpinnerValue.setText(registration.getLocation());
+           locationtext.setText(registration.getLocation());
 
            locationSpinnerValue.setEnabled(false);
            if(registration.getGender().equalsIgnoreCase("M"))
@@ -368,15 +401,168 @@ public class General_Information extends Fragment {
         address_TextLayout=(TextInputLayout)view.findViewById(R.id.address_textLayout);
         age_textLayout=(TextInputLayout)view.findViewById(R.id.age_textLayout);
         patientCategorySpinner=(Spinner)view.findViewById(R.id.patient_category_spinner);
+
         stateSpinner=(Spinner)view.findViewById(R.id.state_spinner);
         districtSpinner=(Spinner)view.findViewById(R.id.district_spinner);
         citySpinner=(Spinner)view.findViewById(R.id.city_spinner);
+        citytext=(TextView) view.findViewById(R.id.citytext);
         areaSpinner=(Spinner)view.findViewById(R.id.area_spinner);
+        areatext=(TextView) view.findViewById(R.id.areatext);
+        locationtext=(TextView) view.findViewById(R.id.locationtext);
+
         locationSpinner=(Spinner)view.findViewById(R.id.location_spinner);
         edtDob.setFocusable(false);
         edtRegistrationDate.setFocusable(false);
         SpinnerValue=(TextView)view.findViewById(R.id.spinner_value);
 
+        lableuiid=(TextView) view.findViewById(R.id.lableuiid);
+
+        stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String[] districtNameArray = new String[0];
+                if(stateSpinner.getSelectedItem().toString().equalsIgnoreCase("Uttar Pradesh"))
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_up);
+                }
+                else if(stateSpinner.getSelectedItem().toString().equalsIgnoreCase("Madya Pradesh"))
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_mp);
+
+                }
+                else if(stateSpinner.getSelectedItem().toString().equalsIgnoreCase("Delhi"))
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_haryana);
+
+                }
+                else if(stateSpinner.getSelectedItem().toString().equalsIgnoreCase("Maharashtra"))
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_maharastra);
+                }
+                else if(stateSpinner.getSelectedItem().toString().equalsIgnoreCase("Uttarakhand"))
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_uttarakhand);
+                }
+                else if(stateSpinner.getSelectedItem().toString().equalsIgnoreCase("Haryana"))
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_haryana);
+                }
+                else
+                {
+                    districtNameArray = getResources().getStringArray(R.array.district_array_maharastra);
+                }
+
+
+
+                districtArrayList = Arrays.asList(districtNameArray);
+                //Collections.sort(districtArrayList);
+                districtNameArrayList1  = new ArrayList<String>(districtArrayList);
+                ArrayAdapter districtNameArrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, districtNameArrayList1);
+                districtNameArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                districtSpinner.setAdapter(districtNameArrayAdapter);
+
+            }
+            //P18052552134
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(citySpinner.getSelectedItem().toString().equalsIgnoreCase("Other"))
+                {
+                    citytext.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    citytext.setVisibility(View.GONE);
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        areaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(areaSpinner.getSelectedItem().toString().equalsIgnoreCase("Other"))
+                {
+
+                    areatext.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    areatext.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        locationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    if(locationSpinner.getSelectedItem().toString().equalsIgnoreCase("Other"))
+                    {
+
+                        locationtext.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        locationtext.setVisibility(View.GONE);
+                    }
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        edtAge.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                final Calendar TodayDate = Calendar.getInstance();
+                tYear = TodayDate.get(Calendar.YEAR);
+                tMonth = TodayDate.get(Calendar.MONTH);
+                tDay = TodayDate.get(Calendar.DAY_OF_MONTH);
+                try {
+                    TodayDate.set(Calendar.YEAR, tYear - Integer.parseInt(s.toString()));
+
+                    edtDob.setText(tYear - Integer.parseInt(s.toString()) + "-" + tMonth + "-" + tDay);
+                }
+                catch (Exception e)
+                {
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     private void DOBClickListener()
@@ -501,11 +687,11 @@ public class General_Information extends Fragment {
 
                 ageYear=tYear-year;
 
-                edtAge.setText(String.valueOf(ageYear+"yrs"));
+                edtAge.setText(String.valueOf(ageYear+""));
 
 
                 edtAge.setError(null);
-                edtAge.setFocusable(false);
+//                edtAge.setFocusable(false);
 
             }
         }, dYear, dMonth, dDay);
@@ -667,7 +853,14 @@ public class General_Information extends Fragment {
     private void setPatientData()
     {
         patientRegistration = new PatientRegistration();
-        patientRegistration.setUnique_id(txtPatientUniqueId.getText().toString());
+if(txtPatientUniqueId.getText().toString().equalsIgnoreCase(""))
+{
+    patientRegistration.setUnique_id(null);
+
+}
+else {
+    patientRegistration.setUnique_id(txtPatientUniqueId.getText().toString());
+}
         patientRegistration.setRegistrationNo(txtRegistrationNumber.getText().toString());
         patientRegistration.setDateOfRegistration(edtRegistrationDate.getText().toString());
         patientRegistration.setPatient_category(patientCategorySpinner.getSelectedItem().toString());
@@ -680,8 +873,17 @@ public class General_Information extends Fragment {
         patientRegistration.setState(stateSpinner.getSelectedItem().toString());
         patientRegistration.setDistrict(districtSpinner.getSelectedItem().toString());
         patientRegistration.setCity(citySpinner.getSelectedItem().toString());
+        if(citySpinner.getSelectedItem().toString().equalsIgnoreCase("Other")) {
+            patientRegistration.setCity(citytext.getText().toString());
+        }
         patientRegistration.setArea(areaSpinner.getSelectedItem().toString());
+        if(areaSpinner.getSelectedItem().toString().equalsIgnoreCase("Other")) {
+            patientRegistration.setArea(areatext.getText().toString());
+        }
         patientRegistration.setLocation(locationSpinner.getSelectedItem().toString());
+        if(locationSpinner.getSelectedItem().toString().equalsIgnoreCase("Other")) {
+            patientRegistration.setLocation(locationtext.getText().toString());
+        }
         patientRegistration.setGender(selected_gender);
 
     }
@@ -789,6 +991,73 @@ public class General_Information extends Fragment {
                 }
             }
             response = false;
+        }
+        else
+        {int age;
+        try {
+            age = Integer.parseInt(edtAge.getText().toString());
+
+            age_textLayout.setError(null);
+           switch (patientCategorySpinner.getSelectedItemPosition())
+           {
+               case 1:
+                   if(!(age>=0 && age<=19))
+                   {
+                       response = false;
+                       age_textLayout.setError("age must less than 19");
+                   }
+                   break;
+               case 2:
+               case 3:
+                   if(!(age>=15 && age<=45))
+                   {
+                       response = false;
+                       age_textLayout.setError("age must between 20-45");
+
+                   }
+
+break;
+               case 4:
+                   if(!(age>=60))
+                   {
+                       response = false;
+                       age_textLayout.setError("age greter than 60");
+
+                   }
+                   break;
+               case 5:
+
+
+
+
+
+           }
+
+        }
+        catch(Exception e)
+        {
+            age=-1;
+            age_textLayout.setError("Select Birthdate or age");
+
+        }
+
+
+
+
+//
+
+
+//
+//                    <item>Child Under-5 Years of Age</item>
+//        <item>Lactating Women</item>
+//        <item>Other</item>
+//        <item>Pregnant Women</item>
+//        <item>Senior Citizen-above 60 years of age</item>
+
+//                    Lactating and Pregnant women 15-45
+//            Children 0-19
+//            Elderly - 60 and above
+
         }
 
         if (stateSpinner.getSelectedItem().toString().trim().equalsIgnoreCase("Please Select State")) {
@@ -919,7 +1188,9 @@ public class General_Information extends Fragment {
             String formatted = String.format("%05d", num);
             System.out.println(formatted);
 
-            txtPatientUniqueId.setText(PATIENT_PREFIX + datetime+formatted);
+            txtPatientUniqueId.setText("");
+            txtPatientUniqueId.setVisibility(View.GONE);
+            lableuiid.setVisibility(View.GONE);
         }
         else
         {

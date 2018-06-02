@@ -145,7 +145,7 @@ public class Web_ApiHelper
                 params.put("address",patientRegistration.getAddress());
                 params.put("regitrationdate",patientRegistration.getDateOfRegistration());
                 params.put("dob",patientRegistration.getDob());
-                params.put("unique_id",patientRegistration.getUnique_id());
+
                 params.put("registration_no",patientRegistration.getRegistrationNo());
                 params.put("patient_category",patientRegistration.getPatient_category());
                 params.put("state",patientRegistration.getState());
@@ -156,6 +156,11 @@ public class Web_ApiHelper
                 params.put("mobile",new PrefManager(activity).getMobile());
                 params.put("password",new PrefManager(activity).getPassword());
                 params.put("format","json");
+
+                if(patientRegistration.getUnique_id()!=null)
+                {
+                    params.put("unique_id",patientRegistration.getUnique_id());
+                }
 
 
                 //returning parameters

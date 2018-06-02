@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_filter_1_black_24dp"
                 android:layout_gravity="center_vertical"
+                android:visibility="gone"
                 android:layout_marginRight="16dp"/>
 
 
@@ -421,8 +422,8 @@
                 android:id="@+id/district_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:entries="@array/district_array_maharastra"
                 android:spinnerMode="dropdown"
-                android:entries="@array/district_array"
                 style="@android:style/Widget.Holo.Light.Spinner" />
         </LinearLayout>
 
@@ -436,13 +437,26 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/city"
                 android:layout_marginRight="10dp"/>
-            <Spinner
-                android:id="@+id/city_spinner"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:entries="@array/city_array"
-                style="@android:style/Widget.Holo.Light.Spinner" />
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/city_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/city_array"
+                    style="@android:style/Widget.Holo.Light.Spinner" />
+                <EditText
+                    android:id="@+id/citytext"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -456,6 +470,10 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/village"
                 android:layout_marginRight="10dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <Spinner
                 android:id="@+id/area_spinner"
                 android:layout_width="match_parent"
@@ -463,6 +481,15 @@
                 android:entries="@array/area_array"
                 style="@android:style/Widget.Holo.Light.Spinner"
                 android:spinnerMode="dropdown" />
+                <EditText
+                    android:id="@+id/areatext"
+
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    />
+            </LinearLayout>
         </LinearLayout>
 
 
@@ -491,6 +518,10 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/village"
                 android:layout_marginRight="10dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <Spinner
                 android:id="@+id/location_spinner"
                 android:layout_marginLeft="18dp"
@@ -501,6 +532,16 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp"
                 style="@android:style/Widget.Holo.Light.Spinner" />
+                <EditText
+                    android:id="@+id/locationtext"
+                    android:paddingLeft="15dp"
+
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    />
+            </LinearLayout>
         </LinearLayout>
 
 
