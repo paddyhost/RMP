@@ -11,7 +11,6 @@ import mhu.rmp.R;
 import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.patient_previous_history.model.PreviousRecords;
 
-import static com.google.android.gms.internal.zzbgp.NULL;
 
 
 public class TestAdvicedPreviousRecordsFragment extends Fragment {

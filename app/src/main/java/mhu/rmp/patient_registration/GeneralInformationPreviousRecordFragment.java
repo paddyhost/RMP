@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import mhu.rmp.R;
 import mhu.rmp.patient_previous_history.PreviousRecordsActivity;
 import mhu.rmp.patient_previous_history.model.PreviousRecords;
@@ -130,7 +135,7 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
 
         try {
 
-                if(previousRecords.getLanme().equalsIgnoreCase(" ") || txtPatientLname.getText().toString().trim().length()<=0) {
+                if(previousRecords.getLanme().equalsIgnoreCase("") || previousRecords.getLanme().toString().trim().length()<=0) {
                     txtPatientLname.setText("NA");
                 }
                 else
@@ -147,7 +152,7 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
         try{
 
 
-            if(previousRecords.getMobile().equalsIgnoreCase(" ") || txtPatientMobile.getText().toString().trim().length()<=0) {
+            if(previousRecords.getMobile().equalsIgnoreCase("") || previousRecords.getMobile().trim().length()<=0) {
                 txtPatientMobile.setText("NA");
             }
             else
@@ -233,12 +238,31 @@ public class GeneralInformationPreviousRecordFragment extends Fragment {
 
 
         try {
-            if(previousRecords.getDob().equalsIgnoreCase(" ") || txtPatientDob.getText().toString().trim().length()<=0) {
+            if(previousRecords.getDob().equalsIgnoreCase("") || previousRecords.getDob().trim().length()<=0) {
                 txtPatientDob.setText("NA");
+                txtAge.setText(String.valueOf("NA"));
             }
 
             else{
                 txtPatientDob.setText(String.valueOf(previousRecords.getDob()));
+
+                try{
+                SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+                Date date=format.parse(previousRecords.getDob());
+                final Calendar TodayDate = Calendar.getInstance();
+                int  tYear = TodayDate.get(Calendar.YEAR);
+
+                TodayDate.setTime(date);;
+                int  ageYear=tYear-TodayDate.get(Calendar.YEAR);
+
+                txtAge.setText(String.valueOf(ageYear+"yrs"));
+                }
+                catch (Exception e)
+                {
+
+                }
+
+
             }
         }
         catch(Exception e){}

@@ -230,6 +230,7 @@ public class Web_Medical_ApiHelper
                 params.put("name",dose.getDoseName());
                 params.put("frequency",dose.getDoseFrequency());
                 params.put("days",dose.getDoseNoOfDays());
+                params.put("time",dose.getTime());
                 params.put("medicalconditionid",medicalconditionid);
 
                 params.put("patient_id",MainActivity.PATIENT_ID);

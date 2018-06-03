@@ -485,6 +485,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
+                e.printStackTrace();
 
             }
             try {
@@ -497,7 +498,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -545,7 +546,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -557,7 +558,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+                e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -569,7 +570,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+                e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -581,7 +582,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+                e.printStackTrace();
             }
 
             try {
@@ -606,7 +607,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -618,7 +619,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -630,7 +631,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -642,7 +643,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -654,7 +655,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -666,7 +667,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -678,7 +679,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
             JSONObject jsonobj = new JSONObject();
@@ -690,6 +691,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
+                e.printStackTrace();
 
             }
             try {
@@ -702,7 +704,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -714,7 +716,7 @@ public class MhuTest extends Fragment {
             }
             catch (Exception e)
             {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -727,6 +729,7 @@ public class MhuTest extends Fragment {
             catch (Exception e)
             {
 
+                e.printStackTrace();
             }
 
 
@@ -761,7 +764,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtCreatReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -771,7 +774,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtUricAcidReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -781,7 +784,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtElectrolyteReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
             try {
                 JSONObject jsonobj = new JSONObject();
@@ -791,7 +794,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtTProtReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
            try {
@@ -802,7 +805,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtA1bKidneyFunctionReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -814,7 +817,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtA1bCrRatioReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -826,7 +829,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtMicroAlbuminReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -838,7 +841,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtCompLftReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -863,7 +866,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtCholesterolReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -875,7 +878,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtTagReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -886,7 +889,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtHdlReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -898,7 +901,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtCompleteLipidProfileReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -922,7 +925,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtFbgReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -934,7 +937,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtTwohrReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -947,7 +950,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtRandomReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -959,7 +962,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtGlucoseProfileGttReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -970,7 +973,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtHba1cReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -982,7 +985,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtUrinaryMicroAlbuminReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -994,7 +997,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtInsulinFppReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1019,7 +1022,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtWidaltextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1066,7 +1069,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtMalariaSerologyTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1090,7 +1093,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtRaFactorTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1114,7 +1117,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtHbsagTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1138,7 +1141,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtRoutineMicrosocopicReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -1150,7 +1153,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtProteinReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -1162,7 +1165,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtSugarReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -1174,7 +1177,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtKetoneBodiesReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -1186,7 +1189,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtBileSaltBilePigmentsReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -1198,7 +1201,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtUrinePregnancyTestReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1222,7 +1225,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtCrpTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
 
@@ -1247,7 +1250,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtAntiHcvTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1271,7 +1274,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtHivTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1294,7 +1297,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtVdrlTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
-
+e.printStackTrace();
             }
 
             try {
@@ -1341,6 +1344,7 @@ public class MhuTest extends Fragment {
                 jsonobj.put("reading", edtAboRhTextReading.getText());
                 jsonArray.put(jsonobj);
             } catch (Exception e) {
+                e.printStackTrace();
 
             }
 
